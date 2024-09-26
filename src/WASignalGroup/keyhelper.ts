@@ -1,21 +1,21 @@
-import { curve } from 'libsignal';
-import nodeCrypto from 'crypto';
+import { randomBytes } from "@noble/hashes/utils";
+import { randomInt, Curve } from "../Utils/crypto";
 
 export const generateSenderKey = () => {
-    return nodeCrypto.randomBytes(32);
-}
+  return randomBytes(32);
+};
 
 export const generateSenderKeyId = () => {
-    return nodeCrypto.randomInt(2147483647);
-}
+  return randomInt(2147483647);
+};
 
 export const generateSenderSigningKey = (key?: any) => {
-    if(!key) {
-        key = curve.generateKeyPair()
-    }
+  if (!key) {
+    key = Curve.generateKeyPair();
+  }
 
-    return {
-        public: key.pubKey,
-        private: key.privKey,
-    }
-}
+  return {
+    public: key.pubKey,
+    private: key.privKey,
+  };
+};

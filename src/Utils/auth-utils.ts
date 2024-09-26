@@ -1,4 +1,4 @@
-import { randomBytes } from 'crypto'
+import { randomBytes } from 'node:crypto'
 import NodeCache from 'node-cache'
 import type { Logger } from 'pino'
 import { v4 as uuidv4 } from 'uuid'

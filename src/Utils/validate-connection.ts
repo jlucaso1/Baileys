@@ -1,5 +1,5 @@
 import { Boom } from '@hapi/boom'
-import { createHash } from 'crypto'
+import { createHash } from 'node:crypto'
 import { KEY_BUNDLE_TYPE } from '../Defaults'
 import * as proto from '../Proto'
 import { AuthenticationCreds, SignalCreds, SocketConfig } from '../Types'

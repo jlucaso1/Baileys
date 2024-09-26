@@ -1,6 +1,6 @@
 import { AxiosRequestConfig } from 'axios'
-import { promisify } from 'util'
-import { inflate } from 'zlib'
+import { promisify } from 'node:util'
+import { inflate } from 'node:zlib'
 import * as proto from '../Proto'
 import { Chat, Contact, WAMessageStubType } from '../Types'
 import { isJidUser } from '../WABinary'

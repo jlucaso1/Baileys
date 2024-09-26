@@ -29,7 +29,7 @@ export function makeLibSignalRepository(auth: SignalAuthState): SignalRepository
 		async decryptMessage({ jid, type, ciphertext }) {
 			const addr = jidToSignalProtocolAddress(jid)
 			const session = new SessionCipher(storage, addr)
-			let result: Buffer
+			let result: Uint8Array
 			switch (type) {
 			case 'pkmsg':
 				result = await session.decryptPreKeyWhisperMessage(ciphertext)
@@ -47,7 +47,7 @@ export function makeLibSignalRepository(auth: SignalAuthState): SignalRepository
 
 			const { type: sigType, body } = await cipher.encrypt(data)
 			const type = sigType === 3 ? 'pkmsg' : 'msg'
-			return { type, ciphertext: Buffer.from(body, 'binary') }
+			return { type, ciphertext: body }
 		},
 		async encryptGroupMessage({ group, meId, data }) {
 			const senderName = jidToSignalSenderKeyName(group, meId)

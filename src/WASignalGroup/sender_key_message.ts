@@ -74,7 +74,7 @@ export class SenderKeyMessage extends CipherTextMessage {
     }
     const part1 = this.serialized?.slice(0, this.serialized.length - this.SIGNATURE_LENGTH);
     const part2 = this.serialized?.slice(-1 * this.SIGNATURE_LENGTH);
-    const res = curve.verifySignature(signatureKey, part1, part2);
+    const res = curve.verifySignature(signatureKey, part1!, part2!);
     if (!res) throw new Error('Invalid signature!');
   }
 

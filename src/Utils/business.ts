@@ -1,5 +1,5 @@
 import { Boom } from '@hapi/boom'
-import { createHash } from 'crypto'
+import { createHash } from 'node:crypto'
 import { CatalogCollection, CatalogStatus, OrderDetails, OrderProduct, Product, ProductCreate, ProductUpdate, WAMediaUpload, WAMediaUploadFunction } from '../Types'
 import { BinaryNode, getBinaryNodeChild, getBinaryNodeChildren, getBinaryNodeChildString } from '../WABinary'
 import { getStream, getUrlFromDirectPath, toReadable } from './messages-media'

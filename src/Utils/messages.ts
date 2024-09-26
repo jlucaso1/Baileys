@@ -1,9 +1,9 @@
 import { Boom } from '@hapi/boom'
 import axios from 'axios'
-import { randomBytes } from 'crypto'
-import { promises as fs } from 'fs'
+import { randomBytes } from 'node:crypto'
+import { promises as fs } from 'node:fs'
 import { Logger } from 'pino'
-import { type Transform } from 'stream'
+import { type Transform } from 'node:stream'
 import { MEDIA_KEYS, URL_REGEX, WA_DEFAULT_EPHEMERAL } from '../Defaults'
 import * as proto from '../Proto'
 import {

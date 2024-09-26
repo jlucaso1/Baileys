@@ -1,7 +1,7 @@
 import { Boom } from '@hapi/boom'
-import { randomBytes } from 'crypto'
-import { URL } from 'url'
-import { promisify } from 'util'
+import { randomBytes } from 'node:crypto'
+import { URL } from 'node:url'
+import { promisify } from 'node:util'
 import {
 	DEF_CALLBACK_PREFIX,
 	DEF_TAG_PREFIX,

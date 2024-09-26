@@ -1,11 +1,11 @@
-import { createHash } from 'crypto'
+import { createHash } from 'node:crypto'
 import * as proto from '../Proto'
 import { makeLibSignalRepository } from '../Signal/libsignal'
 import type { AuthenticationState, MediaType, SocketConfig, WAVersion } from '../Types'
 import { Browsers } from '../Utils'
 import logger from '../Utils/logger'
-import { version } from './baileys-version.json'
-import phoneNumberMCC from './phonenumber-mcc.json'
+import { version } from './baileys-version' 
+import phoneNumberMCC from './phonenumber-mcc.json' with {type: 'json'}
 
 export const UNAUTHORIZED_CODES = [401, 403, 419]
 

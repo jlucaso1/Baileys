@@ -1,5 +1,5 @@
-import { promisify } from 'util'
-import { inflate } from 'zlib'
+import { promisify } from 'node:util'
+import { inflate } from 'node:zlib'
 import * as constants from './constants'
 import { jidEncode } from './jid-utils'
 import type { BinaryNode, BinaryNodeCodingOptions } from './types'
