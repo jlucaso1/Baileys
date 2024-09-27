@@ -1,12 +1,12 @@
-import cacheManager from 'cache-manager'
+import { caching, Store } from 'cache-manager'
 import { AuthenticationCreds } from '../Types'
 import { BufferJSON, initAuthCreds } from '../Utils'
 import logger from '../Utils/logger'
 
-const makeCacheManagerAuthState = async(store: cacheManager.Storage, sessionKey: string) => {
+const makeCacheManagerAuthState = async(store: Store, sessionKey: string) => {
 	const defaultKey = (file: string): string => `${sessionKey}:${file}`
 
-	const databaseConn = await cacheManager.caching(store)
+	const databaseConn = await caching(store)
 
 	const writeData = async(file: string, data: object) => {
 		let ttl: number | undefined = undefined

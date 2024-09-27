@@ -477,6 +477,7 @@ export const chatModificationToAppPatch = (
 	mod: ChatModification,
 	jid: string
 ) => {
+	const OP = proto.SyncdMutationSyncdOperation
 	const getMessageRange = (lastMessages: LastMessageList) => {
 		// let messageRange: proto.SyncActionValue.ISyncActionMessageRange
 		let messageRange: proto.SyncActionValueSyncActionMessageRange
@@ -619,6 +620,21 @@ export const chatModificationToAppPatch = (
 			type: 'critical_block',
 			apiVersion: 1,
 			operation: proto.SyncdMutationSyncdOperation.SET,
+		}
+	} else if('addLabel' in mod) {
+		patch = {
+			syncAction: {
+				labelEditAction: {
+					name: mod.addLabel.name,
+					color: mod.addLabel.color,
+					predefinedId : mod.addLabel.predefinedId,
+					deleted: mod.addLabel.deleted
+				}
+			},
+			index: ['label_edit', mod.addLabel.id],
+			type: 'regular',
+			apiVersion: 3,
+			operation: OP.SET,
 		}
 	} else if('addChatLabel' in mod) {
 		patch = {

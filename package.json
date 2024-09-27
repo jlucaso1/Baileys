@@ -1,6 +1,6 @@
 {
   "name": "baileys",
-  "version": "6.7.7",
+  "version": "6.7.8",
   "description": "WhatsApp API",
   "keywords": [
     "whatsapp",
@@ -49,7 +49,7 @@
     "@noble/hashes": "^1.5.0",
     "async-lock": "^1.4.1",
     "axios": "^1.6.0",
-    "cache-manager": "4.0.1",
+    "cache-manager": "^5.7.6",
     "libsignal": "npm:@jlucaso/libsignal-node@2.1.0",
     "lodash": "^4.17.21",
     "node-cache": "^5.1.2",

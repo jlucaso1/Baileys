@@ -225,7 +225,8 @@ const processMessage = async(
 					isLatest:
 						histNotification.syncType !== proto.MessageHistorySyncNotificationHistorySyncType.ON_DEMAND
 							? isLatest
-							: undefined
+							: undefined,
+					peerDataRequestSessionId: histNotification.peerDataRequestSessionId
 				})
 			}
 
