@@ -1,6 +1,6 @@
-import EventEmitter from 'events'
+import EventEmitter from 'node:events'
 import { Logger } from 'pino'
-import { proto } from '../../WAProto'
+import * as proto from '../Proto'
 import { BaileysEvent, BaileysEventEmitter, BaileysEventMap, BufferedEventData, Chat, ChatUpdate, Contact, WAMessage, WAMessageStatus } from '../Types'
 import { trimUndefined } from './generics'
 import { updateMessageWithReaction, updateMessageWithReceipt } from './messages'
@@ -230,6 +230,9 @@ function append<E extends BufferableEvent>(
 		}
 
 		data.historySets.empty = false
+		data.historySets.syncType = eventData.syncType
+		data.historySets.progress = eventData.progress
+		data.historySets.peerDataRequestSessionId = eventData.peerDataRequestSessionId
 		data.historySets.isLatest = eventData.isLatest || data.historySets.isLatest
 
 		break
@@ -521,7 +524,10 @@ function consolidateEvents(data: BufferedEventData) {
 			chats: Object.values(data.historySets.chats),
 			messages: Object.values(data.historySets.messages),
 			contacts: Object.values(data.historySets.contacts),
-			isLatest: data.historySets.isLatest
+			syncType: data.historySets.syncType,
+			progress: data.historySets.progress,
+			isLatest: data.historySets.isLatest,
+			peerDataRequestSessionId: data.historySets.peerDataRequestSessionId
 		}
 	}
 
@@ -592,12 +598,10 @@ function consolidateEvents(data: BufferedEventData) {
 }
 
 function concatChats<C extends Partial<Chat>>(a: C, b: Partial<Chat>) {
-	if(b.unreadCount === null) {
-		// neutralize unread counter
-		if(a.unreadCount! < 0) {
-			a.unreadCount = undefined
-			b.unreadCount = undefined
-		}
+	if(b.unreadCount === null && // neutralize unread counter
+		a.unreadCount! < 0) {
+		a.unreadCount = undefined
+		b.unreadCount = undefined
 	}
 
 	if(typeof a.unreadCount === 'number' && typeof b.unreadCount === 'number') {
@@ -610,4 +614,4 @@ function concatChats<C extends Partial<Chat>>(a: C, b: Partial<Chat>) {
 	return Object.assign(a, b)
 }
 
-const stringifyMessageKey = (key: proto.IMessageKey) => `${key.remoteJid},${key.id},${key.fromMe ? '1' : '0'}`
+const stringifyMessageKey = (key: proto.MessageKey) => `${key.remoteJid},${key.id},${key.fromMe ? '1' : '0'}`

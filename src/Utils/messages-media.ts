@@ -1,21 +1,22 @@
 import { Boom } from '@hapi/boom'
 import axios, { AxiosRequestConfig } from 'axios'
-import { exec } from 'child_process'
-import * as Crypto from 'crypto'
-import { once } from 'events'
-import { createReadStream, createWriteStream, promises as fs, WriteStream } from 'fs'
+import { exec } from 'node:child_process'
+import * as Crypto from 'node:crypto'
+import { once } from 'node:events'
+import { createReadStream, createWriteStream, promises as fs, WriteStream } from 'node:fs'
 import type { IAudioMetadata } from 'music-metadata'
-import { tmpdir } from 'os'
-import { join } from 'path'
+import { tmpdir } from 'node:os'
+import { join } from 'node:path'
 import type { Logger } from 'pino'
-import { Readable, Transform } from 'stream'
-import { URL } from 'url'
-import { proto } from '../../WAProto'
+import { Readable, Transform } from 'node:stream'
+import { URL } from 'node:url'
 import { DEFAULT_ORIGIN, MEDIA_HKDF_KEY_MAPPING, MEDIA_PATH_MAP } from '../Defaults'
+import * as proto from '../Proto'
 import { BaileysEventMap, DownloadableMessage, MediaConnInfo, MediaDecryptionKeyInfo, MediaType, MessageType, SocketConfig, WAGenericMediaMessage, WAMediaUpload, WAMediaUploadFunction, WAMessageContent } from '../Types'
 import { BinaryNode, getBinaryNodeChild, getBinaryNodeChildBuffer, jidNormalizedUser } from '../WABinary'
 import { aesDecryptGCM, aesEncryptGCM, hkdf } from './crypto'
 import { generateMessageID } from './generics'
+import { readBinaryNode, writeBinaryNode } from './proto-utils'
 
 const getTmpFilesDirectory = () => tmpdir()
 
@@ -23,6 +24,7 @@ const getImageProcessingLibrary = async() => {
 	const [_jimp, sharp] = await Promise.all([
 		(async() => {
 			const jimp = await (
+				// @ts-ignore
 				import('jimp')
 					.catch(() => { })
 			)
@@ -97,7 +99,7 @@ export const extractImageThumb = async(bufferOrFilePath: Readable | Buffer | str
 
 	const lib = await getImageProcessingLibrary()
 	if('sharp' in lib && typeof lib.sharp?.default === 'function') {
-		const img = lib.sharp!.default(bufferOrFilePath)
+		const img = lib.sharp.default(bufferOrFilePath)
 		const dimensions = await img.metadata()
 
 		const buffer = await img
@@ -154,7 +156,7 @@ export const generateProfilePicture = async(mediaUpload: WAMediaUpload) => {
 	const lib = await getImageProcessingLibrary()
 	let img: Promise<Buffer>
 	if('sharp' in lib && typeof lib.sharp?.default === 'function') {
-		img = lib.sharp!.default(bufferOrFilePath)
+		img = lib.sharp.default(bufferOrFilePath)
 			.resize(640, 640)
 			.jpeg({
 				quality: 50,
@@ -382,10 +384,8 @@ export const encryptedStream = async(
 			}
 
 			sha256Plain = sha256Plain.update(data)
-			if(writeStream) {
-				if(!writeStream.write(data)) {
-					await once(writeStream, 'drain')
-				}
+			if(writeStream && !writeStream.write(data)) {
+				await once(writeStream, 'drain')
 			}
 
 			onChunk(aes.update(data))
@@ -501,9 +501,9 @@ export const downloadEncryptedContent = async(
 		Origin: DEFAULT_ORIGIN,
 	}
 	if(startChunk || endChunk) {
-		headers!.Range = `bytes=${startChunk}-`
+		headers.Range = `bytes=${startChunk}-`
 		if(endChunk) {
-			headers!.Range += endChunk
+			headers.Range += endChunk
 		}
 	}
 
@@ -675,12 +675,12 @@ const getMediaRetryKey = (mediaKey: Buffer | Uint8Array) => {
  * Generate a binary node that will request the phone to re-upload the media & return the newly uploaded URL
  */
 export const encryptMediaRetryRequest = (
-	key: proto.IMessageKey,
+	key: proto.MessageKey,
 	mediaKey: Buffer | Uint8Array,
 	meId: string
 ) => {
-	const recp: proto.IServerErrorReceipt = { stanzaId: key.id }
-	const recpBuffer = proto.ServerErrorReceipt.encode(recp).finish()
+	const recp: proto.ServerErrorReceipt = { stanzaId: key.id }
+	const recpBuffer = writeBinaryNode(proto.writeServerErrorReceipt, recp)
 
 	const iv = Crypto.randomBytes(12)
 	const retryKey = getMediaRetryKey(mediaKey)
@@ -760,16 +760,16 @@ export const decryptMediaRetryData = (
 ) => {
 	const retryKey = getMediaRetryKey(mediaKey)
 	const plaintext = aesDecryptGCM(ciphertext, retryKey, iv, Buffer.from(msgId))
-	return proto.MediaRetryNotification.decode(plaintext)
+	return readBinaryNode(proto.readMediaRetryNotification, plaintext)
 }
 
 export const getStatusCodeForMediaRetry = (code: number) => MEDIA_RETRY_STATUS_MAP[code]
 
 const MEDIA_RETRY_STATUS_MAP = {
-	[proto.MediaRetryNotification.ResultType.SUCCESS]: 200,
-	[proto.MediaRetryNotification.ResultType.DECRYPTION_ERROR]: 412,
-	[proto.MediaRetryNotification.ResultType.NOT_FOUND]: 404,
-	[proto.MediaRetryNotification.ResultType.GENERAL_ERROR]: 418,
+	[proto.MediaRetryNotificationResultType.SUCCESS]: 200,
+	[proto.MediaRetryNotificationResultType.DECRYPTION_ERROR]: 412,
+	[proto.MediaRetryNotificationResultType.NOT_FOUND]: 404,
+	[proto.MediaRetryNotificationResultType.GENERAL_ERROR]: 418,
 } as const
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars

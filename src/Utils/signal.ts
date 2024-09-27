@@ -1,4 +1,4 @@
-import { chunk } from 'lodash'
+import _ from 'lodash';
 import { KEY_BUNDLE_TYPE } from '../Defaults'
 import { SignalRepository } from '../Types'
 import { AuthenticationCreds, AuthenticationState, KeyPair, SignalIdentity, SignalKeyStore, SignedKeyPair } from '../Types/Auth'
@@ -88,7 +88,7 @@ export const parseAndInjectE2ESessions = async(
 	// This way we chunk it in smaller parts and between those parts we can yield to the event loop
 	// It's rare case when you need to E2E sessions for so many users, but it's possible
 	const chunkSize = 100
-	const chunks = chunk(nodes, chunkSize)
+	const chunks = _.chunk(nodes, chunkSize)
 	for(const nodesChunk of chunks) {
 		await Promise.all(
 			nodesChunk.map(
@@ -125,8 +125,10 @@ export const extractDeviceJids = (result: BinaryNode, myJid: string, excludeZero
 				const devicesNode = getBinaryNodeChild(item, 'devices')
 				const deviceListNode = getBinaryNodeChild(devicesNode, 'device-list')
 				if(Array.isArray(deviceListNode?.content)) {
+					// eslint-disable-next-line max-depth
 					for(const { tag, attrs } of deviceListNode!.content) {
 						const device = +attrs.id
+						// eslint-disable-next-line max-depth
 						if(
 							tag === 'device' && // ensure the "device" tag
 							(!excludeZeroDevices || device !== 0) && // if zero devices are not-excluded, or device is non zero

@@ -1,10 +1,9 @@
-import { caching, Storage } from 'cache-manager'
-import { proto } from '../../WAProto'
+import { caching, Store } from 'cache-manager'
 import { AuthenticationCreds } from '../Types'
 import { BufferJSON, initAuthCreds } from '../Utils'
 import logger from '../Utils/logger'
 
-const makeCacheManagerAuthState = async(store: Storage, sessionKey: string) => {
+const makeCacheManagerAuthState = async(store: Store, sessionKey: string) => {
 	const defaultKey = (file: string): string => `${sessionKey}:${file}`
 
 	const databaseConn = await caching(store)
@@ -67,13 +66,7 @@ const makeCacheManagerAuthState = async(store: Storage, sessionKey: string) => {
 					const data = {}
 					await Promise.all(
 						ids.map(async(id) => {
-							let value: proto.Message.AppStateSyncKeyData | AuthenticationCreds | null =
-                                await readData(`${type}-${id}`)
-							if(type === 'app-state-sync-key' && value) {
-								value = proto.Message.AppStateSyncKeyData.fromObject(value)
-							}
-
-							data[id] = value
+							data[id] = await readData(`${type}-${id}`)
 						})
 					)
 

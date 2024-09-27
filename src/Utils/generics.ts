@@ -1,12 +1,13 @@
 import { Boom } from '@hapi/boom'
 import axios, { AxiosRequestConfig } from 'axios'
-import { createHash, randomBytes } from 'crypto'
-import { platform, release } from 'os'
+import { createHash, randomBytes } from 'node:crypto'
+import { platform, release } from 'node:os'
 import { Logger } from 'pino'
-import { proto } from '../../WAProto'
-import { version as baileysVersion } from '../Defaults/baileys-version.json'
+import { version as baileysVersion } from '../Defaults/baileys-version'
+import * as proto from '../Proto'
 import { BaileysEventEmitter, BaileysEventMap, BrowsersMap, DisconnectReason, WACallUpdateType, WAVersion } from '../Types'
 import { BinaryNode, getAllBinaryNodeChildren, jidDecode } from '../WABinary'
+import { writeBinaryNode } from './proto-utils'
 
 const PLATFORM_MAP = {
 	'aix': 'AIX',
@@ -28,7 +29,7 @@ export const Browsers: BrowsersMap = {
 }
 
 export const getPlatformId = (browser: string) => {
-	const platformType = proto.DeviceProps.PlatformType[browser.toUpperCase()]
+	const platformType = proto.DevicePropsPlatformType[browser.toUpperCase()]
 	return platformType ? platformType.toString().charCodeAt(0).toString() : '49' //chrome
 }
 
@@ -51,8 +52,8 @@ export const BufferJSON = {
 }
 
 export const getKeyAuthor = (
-	key: proto.IMessageKey | undefined | null,
-	meId: string = 'me'
+	key: proto.MessageKey | undefined | null,
+	meId = 'me'
 ) => (
 	(key?.fromMe ? meId : key?.participant || key?.remoteJid) || ''
 )
@@ -81,11 +82,12 @@ export const unpadRandomMax16 = (e: Uint8Array | Buffer) => {
 	return new Uint8Array(t.buffer, t.byteOffset, t.length - r)
 }
 
-export const encodeWAMessage = (message: proto.IMessage) => (
-	writeRandomPadMax16(
-		proto.Message.encode(message).finish()
+export const encodeWAMessage = (message: proto.Message) => {
+	return writeRandomPadMax16(
+		writeBinaryNode(proto.writeMessage, message)
 	)
-)
+}
+
 
 export const generateRegistrationId = (): number => {
 	return Uint16Array.from(randomBytes(2))[0] & 16383
@@ -109,7 +111,7 @@ export const unixTimestampSeconds = (date: Date = new Date()) => Math.floor(date
 
 export type DebouncedTimeout = ReturnType<typeof debouncedTimeout>
 
-export const debouncedTimeout = (intervalMs: number = 1000, task?: () => void) => {
+export const debouncedTimeout = (intervalMs = 1000, task?: () => void) => {
 	let timeout: NodeJS.Timeout | undefined
 	return {
 		start: (newIntervalMs?: number, newTask?: () => void) => {
@@ -184,9 +186,9 @@ export const generateMessageIDV2 = (userId?: string): string => {
 	const data = Buffer.alloc(8 + 20 + 16)
 	data.writeBigUInt64BE(BigInt(Math.floor(Date.now() / 1000)))
 
-	if (userId) {
+	if(userId) {
 		const id = jidDecode(userId)
-		if (id?.user) {
+		if(id?.user) {
 			data.write(id.user, 8)
 			data.write('@c.us', 8 + id.user.length)
 		}
@@ -312,10 +314,10 @@ export const generateMdTagPrefix = () => {
 	return `${bytes.readUInt16BE()}.${bytes.readUInt16BE(2)}-`
 }
 
-const STATUS_MAP: { [_: string]: proto.WebMessageInfo.Status } = {
-	'played': proto.WebMessageInfo.Status.PLAYED,
-	'read': proto.WebMessageInfo.Status.READ,
-	'read-self': proto.WebMessageInfo.Status.READ
+const STATUS_MAP: { [_: string]: proto.WebMessageInfoStatus } = {
+	'played': proto.WebMessageInfoStatus.PLAYED,
+	'read': proto.WebMessageInfoStatus.READ,
+	'read-self': proto.WebMessageInfoStatus.READ
 }
 /**
  * Given a type of receipt, returns what the new status of the message should be
@@ -324,7 +326,7 @@ const STATUS_MAP: { [_: string]: proto.WebMessageInfo.Status } = {
 export const getStatusFromReceiptType = (type: string | undefined) => {
 	const status = STATUS_MAP[type!]
 	if(typeof type === 'undefined') {
-		return proto.WebMessageInfo.Status.DELIVERY_ACK
+		return proto.WebMessageInfoStatus.DELIVERY_ACK
 	}
 
 	return status
@@ -364,7 +366,8 @@ export const getCallStatusFromNode = ({ tag, attrs }: BinaryNode) => {
 		if(attrs.reason === 'timeout') {
 			status = 'timeout'
 		} else {
-			status = 'reject'
+			//fired when accepted/rejected/timeout/caller hangs up
+			status = 'terminate'
 		}
 
 		break
@@ -426,8 +429,8 @@ export function bytesToCrockford(buffer: Buffer): string {
 	let bitCount = 0
 	const crockford: string[] = []
 
-	for(let i = 0; i < buffer.length; i++) {
-		value = (value << 8) | (buffer[i] & 0xff)
+	for(const element of buffer) {
+		value = (value << 8) | (element & 0xff)
 		bitCount += 8
 
 		while(bitCount >= 5) {

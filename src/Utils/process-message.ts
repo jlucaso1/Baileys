@@ -1,12 +1,13 @@
 import { AxiosRequestConfig } from 'axios'
 import type { Logger } from 'pino'
-import { proto } from '../../WAProto'
+import * as proto from '../Proto'
 import { AuthenticationCreds, BaileysEventEmitter, CacheStore, Chat, GroupMetadata, ParticipantAction, RequestJoinAction, RequestJoinMethod, SignalKeyStoreWithTransaction, SocketConfig, WAMessageStubType } from '../Types'
 import { getContentType, normalizeMessageContent } from '../Utils/messages'
 import { areJidsSameUser, isJidBroadcast, isJidStatusBroadcast, jidNormalizedUser } from '../WABinary'
 import { aesDecryptGCM, hmacSign } from './crypto'
 import { getKeyAuthor, toNumber } from './generics'
 import { downloadAndProcessHistorySyncNotification } from './history'
+import { readBinaryNode } from './proto-utils'
 
 type ProcessMessageContext = {
 	shouldProcessHistoryMsg: boolean
@@ -31,11 +32,11 @@ const REAL_MSG_REQ_ME_STUB_TYPES = new Set([
 ])
 
 /** Cleans a received message to further processing */
-export const cleanMessage = (message: proto.IWebMessageInfo, meId: string) => {
+export const cleanMessage = (message: proto.WebMessageInfo, meId: string) => {
 	// ensure remoteJid and participant doesn't have device or agent in it
-	message.key.remoteJid = jidNormalizedUser(message.key.remoteJid!)
+	message.key.remoteJid = jidNormalizedUser(message.key.remoteJid)
 	message.key.participant = message.key.participant ? jidNormalizedUser(message.key.participant) : undefined
-	const content = normalizeMessageContent(message.message)
+	const content = normalizeMessageContent(message.message!)
 	// if the message has a reaction, ensure fromMe & remoteJid are from our perspective
 	if(content?.reactionMessage) {
 		normaliseKey(content.reactionMessage.key!)
@@ -45,7 +46,7 @@ export const cleanMessage = (message: proto.IWebMessageInfo, meId: string) => {
 		normaliseKey(content.pollUpdateMessage.pollCreationMessageKey!)
 	}
 
-	function normaliseKey(msgKey: proto.IMessageKey) {
+	function normaliseKey(msgKey: proto.MessageKey) {
 		// if the reaction is from another user
 		// we've to correctly map the key to this user's perspective
 		if(!message.key.fromMe) {
@@ -64,8 +65,8 @@ export const cleanMessage = (message: proto.IWebMessageInfo, meId: string) => {
 	}
 }
 
-export const isRealMessage = (message: proto.IWebMessageInfo, meId: string) => {
-	const normalizedContent = normalizeMessageContent(message.message)
+export const isRealMessage = (message: proto.WebMessageInfo, meId: string) => {
+	const normalizedContent = normalizeMessageContent(message.message!)
 	const hasSomeContent = !!getContentType(normalizedContent)
 	return (
 		!!normalizedContent
@@ -81,7 +82,7 @@ export const isRealMessage = (message: proto.IWebMessageInfo, meId: string) => {
 	&& !normalizedContent?.pollUpdateMessage
 }
 
-export const shouldIncrementChatUnread = (message: proto.IWebMessageInfo) => (
+export const shouldIncrementChatUnread = (message: proto.WebMessageInfo) => (
 	!message.key.fromMe && !message.messageStubType
 )
 
@@ -89,9 +90,9 @@ export const shouldIncrementChatUnread = (message: proto.IWebMessageInfo) => (
  * Get the ID of the chat from the given key.
  * Typically -- that'll be the remoteJid, but for broadcasts, it'll be the participant
  */
-export const getChatId = ({ remoteJid, participant, fromMe }: proto.IMessageKey) => {
+export const getChatId = ({ remoteJid, participant, fromMe }: proto.MessageKey) => {
 	if(
-		isJidBroadcast(remoteJid!)
+		isJidBroadcast(remoteJid)
 		&& !isJidStatusBroadcast(remoteJid!)
 		&& !fromMe
 	) {
@@ -119,7 +120,7 @@ type PollContext = {
  * @returns list of SHA256 options
  */
 export function decryptPollVote(
-	{ encPayload, encIv }: proto.Message.IPollEncValue,
+	{ encPayload, encIv }: proto.MessagePollEncValue,
 	{
 		pollCreatorJid,
 		pollMsgId,
@@ -142,15 +143,16 @@ export function decryptPollVote(
 	const aad = toBinary(`${pollMsgId}\u0000${voterJid}`)
 
 	const decrypted = aesDecryptGCM(encPayload!, decKey, encIv!, aad)
-	return proto.Message.PollVoteMessage.decode(decrypted)
 
-	function toBinary(txt: string) {
-		return Buffer.from(txt)
-	}
+	return readBinaryNode(proto.readMessagePollVoteMessage, decrypted)
+}
+
+function toBinary(txt: string) {
+	return Buffer.from(txt)
 }
 
 const processMessage = async(
-	message: proto.IWebMessageInfo,
+	message: proto.WebMessageInfo,
 	{
 		shouldProcessHistoryMsg,
 		placeholderResendCache,
@@ -176,7 +178,7 @@ const processMessage = async(
 		}
 	}
 
-	const content = normalizeMessageContent(message.message)
+	const content = normalizeMessageContent(message.message!)
 
 	// unarchive chat if it's a real message, or someone reacted to our message
 	// and we've the unarchive chats setting on
@@ -191,7 +193,7 @@ const processMessage = async(
 	const protocolMsg = content?.protocolMessage
 	if(protocolMsg) {
 		switch (protocolMsg.type) {
-		case proto.Message.ProtocolMessage.Type.HISTORY_SYNC_NOTIFICATION:
+		case proto.MessageProtocolMessageType.HISTORY_SYNC_NOTIFICATION:
 			const histNotification = protocolMsg.historySyncNotification!
 			const process = shouldProcessHistoryMsg
 			const isLatest = !creds.processedHistoryMessages?.length
@@ -204,7 +206,7 @@ const processMessage = async(
 			}, 'got history notification')
 
 			if(process) {
-				if(histNotification.syncType !== proto.HistorySync.HistorySyncType.ON_DEMAND) {
+				if(histNotification.syncType !== proto.MessageHistorySyncNotificationHistorySyncType.ON_DEMAND) {
 					ev.emit('creds.update', {
 						processedHistoryMessages: [
 							...(creds.processedHistoryMessages || []),
@@ -221,14 +223,15 @@ const processMessage = async(
 				ev.emit('messaging-history.set', {
 					...data,
 					isLatest:
-						histNotification.syncType !== proto.HistorySync.HistorySyncType.ON_DEMAND
+						histNotification.syncType !== proto.MessageHistorySyncNotificationHistorySyncType.ON_DEMAND
 							? isLatest
-							: undefined
+							: undefined,
+					peerDataRequestSessionId: histNotification.peerDataRequestSessionId
 				})
 			}
 
 			break
-		case proto.Message.ProtocolMessage.Type.APP_STATE_SYNC_KEY_SHARE:
+		case proto.MessageProtocolMessageType.APP_STATE_SYNC_KEY_SHARE:
 			const keys = protocolMsg.appStateSyncKeyShare!.keys
 			if(keys?.length) {
 				let newAppStateSyncKeyId = ''
@@ -257,24 +260,24 @@ const processMessage = async(
 			}
 
 			break
-		case proto.Message.ProtocolMessage.Type.REVOKE:
+		case proto.MessageProtocolMessageType.REVOKE:
 			ev.emit('messages.update', [
 				{
 					key: {
 						...message.key,
 						id: protocolMsg.key!.id
 					},
-					update: { message: null, messageStubType: WAMessageStubType.REVOKE, key: message.key }
+					update: { message: undefined, messageStubType: WAMessageStubType.REVOKE, key: message.key }
 				}
 			])
 			break
-		case proto.Message.ProtocolMessage.Type.EPHEMERAL_SETTING:
+		case proto.MessageProtocolMessageType.EPHEMERAL_SETTING:
 			Object.assign(chat, {
 				ephemeralSettingTimestamp: toNumber(message.messageTimestamp),
 				ephemeralExpiration: protocolMsg.ephemeralExpiration || null
 			})
 			break
-		case proto.Message.ProtocolMessage.Type.PEER_DATA_OPERATION_REQUEST_RESPONSE_MESSAGE:
+		case proto.MessageProtocolMessageType.PEER_DATA_OPERATION_REQUEST_RESPONSE_MESSAGE:
 			const response = protocolMsg.peerDataOperationRequestResponseMessage!
 			if(response) {
 				placeholderResendCache?.del(response.stanzaId!)
@@ -282,8 +285,9 @@ const processMessage = async(
 				const { peerDataOperationResult } = response
 				for(const result of peerDataOperationResult!) {
 					const { placeholderMessageResendResponse: retryResponse } = result
-					if(retryResponse) {
-						const webMessageInfo = proto.WebMessageInfo.decode(retryResponse.webMessageInfoBytes!)
+					// eslint-disable-next-line max-depth
+					if(retryResponse?.webMessageInfoBytes) {
+						const webMessageInfo = readBinaryNode(proto.readWebMessageInfo, retryResponse.webMessageInfoBytes)
 						// wait till another upsert event is available, don't want it to be part of the PDO response message
 						setTimeout(() => {
 							ev.emit('messages.upsert', {
@@ -299,7 +303,7 @@ const processMessage = async(
 			break
 		}
 	} else if(content?.reactionMessage) {
-		const reaction: proto.IReaction = {
+		const reaction: proto.Reaction = {
 			...content.reactionMessage,
 			key: message.key,
 		}
@@ -423,7 +427,7 @@ const processMessage = async(
 								{
 									pollUpdateMessageKey: message.key,
 									vote: voteMsg,
-									senderTimestampMs: (content.pollUpdateMessage.senderTimestampMs! as Long).toNumber(),
+									senderTimestampMs: content.pollUpdateMessage.senderTimestampMs,
 								}
 							]
 						}

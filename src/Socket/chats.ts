@@ -1,13 +1,15 @@
 import { Boom } from '@hapi/boom'
 import NodeCache from 'node-cache'
-import { proto } from '../../WAProto'
 import { DEFAULT_CACHE_TTLS, PROCESSABLE_HISTORY_TYPES } from '../Defaults'
+import * as proto from '../Proto'
 import { ALL_WA_PATCH_NAMES, ChatModification, ChatMutation, LTHashState, MessageUpsertType, PresenceData, SocketConfig, WABusinessHoursConfig, WABusinessProfile, WAMediaUpload, WAMessage, WAPatchCreate, WAPatchName, WAPresence, WAPrivacyCallValue, WAPrivacyGroupAddValue, WAPrivacyOnlineValue, WAPrivacyValue, WAReadReceiptsValue } from '../Types'
 import { chatModificationToAppPatch, ChatMutationMap, decodePatches, decodeSyncdSnapshot, encodeSyncdPatch, extractSyncdPatches, generateProfilePicture, getHistoryMsg, newLTHashState, processSyncAction } from '../Utils'
 import { makeMutex } from '../Utils/make-mutex'
 import processMessage from '../Utils/process-message'
+import { writeBinaryNode } from '../Utils/proto-utils'
 import { BinaryNode, getBinaryNodeChild, getBinaryNodeChildren, jidNormalizedUser, reduceBinaryNodeToDictionary, S_WHATSAPP_NET } from '../WABinary'
 import { makeSocket } from './socket'
+import { Label, LabelActionBody } from '../Types/Label'
 
 const MAX_SYNC_ATTEMPTS = 2
 
@@ -220,11 +222,21 @@ export const makeChatsSocket = (config: SocketConfig) => {
 
 	/** update the profile picture for yourself or a group */
 	const updateProfilePicture = async(jid: string, content: WAMediaUpload) => {
+		let targetJid = ''
+		if(!jid) {
+			throw new Boom('Illegal no-jid profile update. Please specify either your ID or the ID of the chat you wish to update')
+		}
+
+		if(jidNormalizedUser(jid) !== jidNormalizedUser(authState.creds.me!.id)) {
+			targetJid = jid // in case it is someone other than us
+		}
+
 		const { img } = await generateProfilePicture(content)
 		await query({
 			tag: 'iq',
 			attrs: {
-				to: jidNormalizedUser(jid),
+				target: targetJid,
+				to: S_WHATSAPP_NET,
 				type: 'set',
 				xmlns: 'w:profile:picture'
 			},
@@ -240,10 +252,20 @@ export const makeChatsSocket = (config: SocketConfig) => {
 
 	/** remove the profile picture for yourself or a group */
 	const removeProfilePicture = async(jid: string) => {
+		let targetJid = ''
+		if(!jid) {
+			throw new Boom('Illegal no-jid profile update. Please specify either your ID or the ID of the chat you wish to update')
+		}
+
+		if(jidNormalizedUser(jid) !== jidNormalizedUser(authState.creds.me!.id)) {
+			targetJid = jid // in case it is someone other than us
+		}
+
 		await query({
 			tag: 'iq',
 			attrs: {
-				to: jidNormalizedUser(jid),
+				target: targetJid,
+				to: S_WHATSAPP_NET,
 				type: 'set',
 				xmlns: 'w:profile:picture'
 			}
@@ -653,7 +675,7 @@ export const makeChatsSocket = (config: SocketConfig) => {
 		}
 
 		let initial: LTHashState
-		let encodeResult: { patch: proto.ISyncdPatch, state: LTHashState }
+		let encodeResult: { patch: proto.SyncdPatch, state: LTHashState }
 
 		await processingMutex.mutex(
 			async() => {
@@ -697,7 +719,7 @@ export const makeChatsSocket = (config: SocketConfig) => {
 												{
 													tag: 'patch',
 													attrs: {},
-													content: proto.SyncdPatch.encode(patch).finish()
+													content: writeBinaryNode(proto.writeSyncdPatch, patch)
 												}
 											]
 										}
@@ -785,6 +807,17 @@ export const makeChatsSocket = (config: SocketConfig) => {
 	}
 
 	/**
+	 * Adds label
+	 */
+	const addLabel = (jid: string, labels: LabelActionBody) => {
+		return chatModify({
+			addLabel: {
+				...labels
+			}
+		}, jid)
+	}
+
+	/**
 	 * Adds label for the chats
 	 */
 	const addChatLabel = (jid: string, labelId: string) => {
@@ -847,7 +880,7 @@ export const makeChatsSocket = (config: SocketConfig) => {
 
 		if(!!msg.pushName) {
 			let jid = msg.key.fromMe ? authState.creds.me!.id : (msg.key.participant || msg.key.remoteJid)
-			jid = jidNormalizedUser(jid!)
+			jid = jidNormalizedUser(jid)
 
 			if(!msg.key.fromMe) {
 				ev.emit('contacts.update', [{ id: jid, notify: msg.pushName, verifiedName: msg.verifiedBizName! }])
@@ -964,14 +997,12 @@ export const makeChatsSocket = (config: SocketConfig) => {
 				)
 		}
 
-		if(receivedPendingNotifications) {
-			// if we don't have the app state key
+		if(receivedPendingNotifications && // if we don't have the app state key
 			// we keep buffering events until we finally have
 			// the key and can sync the messages
-			if(!authState.creds?.myAppStateKeyId && !config.mobile) {
-				ev.buffer()
-				needToFlushWithAppStateSync = true
-			}
+			!authState.creds?.myAppStateKeyId && !config.mobile) {
+			ev.buffer()
+			needToFlushWithAppStateSync = true
 		}
 	})
 
@@ -1004,6 +1035,7 @@ export const makeChatsSocket = (config: SocketConfig) => {
 		resyncAppState,
 		chatModify,
 		cleanDirtyBits,
+		addLabel,
 		addChatLabel,
 		removeChatLabel,
 		addMessageLabel,

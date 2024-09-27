@@ -1,9 +1,9 @@
-import * as libsignal from 'libsignal'
-import { GroupCipher, GroupSessionBuilder, SenderKeyDistributionMessage, SenderKeyName, SenderKeyRecord } from '../../WASignalGroup'
+import { ProtocolAddress, SessionBuilder, SessionCipher, SessionRecord } from 'libsignal'
 import { SignalAuthState } from '../Types'
 import { SignalRepository } from '../Types/Signal'
 import { generateSignalPubKey } from '../Utils'
 import { jidDecode } from '../WABinary'
+import { GroupCipher, GroupSessionBuilder, SenderKeyDistributionMessage, SenderKeyName, SenderKeyRecord } from '../WASignalGroup'
 
 export function makeLibSignalRepository(auth: SignalAuthState): SignalRepository {
 	const storage = signalStorage(auth)
@@ -18,7 +18,7 @@ export function makeLibSignalRepository(auth: SignalAuthState): SignalRepository
 			const builder = new GroupSessionBuilder(storage)
 			const senderName = jidToSignalSenderKeyName(item.groupId!, authorJid)
 
-			const senderMsg = new SenderKeyDistributionMessage(null, null, null, null, item.axolotlSenderKeyDistributionMessage)
+			const senderMsg = new SenderKeyDistributionMessage(undefined, undefined, undefined, undefined, item.axolotlSenderKeyDistributionMessage)
 			const { [senderName]: senderKey } = await auth.keys.get('sender-key', [senderName])
 			if(!senderKey) {
 				await storage.storeSenderKey(senderName, new SenderKeyRecord())
@@ -28,8 +28,8 @@ export function makeLibSignalRepository(auth: SignalAuthState): SignalRepository
 		},
 		async decryptMessage({ jid, type, ciphertext }) {
 			const addr = jidToSignalProtocolAddress(jid)
-			const session = new libsignal.SessionCipher(storage, addr)
-			let result: Buffer
+			const session = new SessionCipher(storage, addr)
+			let result: Uint8Array
 			switch (type) {
 			case 'pkmsg':
 				result = await session.decryptPreKeyWhisperMessage(ciphertext)
@@ -43,11 +43,11 @@ export function makeLibSignalRepository(auth: SignalAuthState): SignalRepository
 		},
 		async encryptMessage({ jid, data }) {
 			const addr = jidToSignalProtocolAddress(jid)
-			const cipher = new libsignal.SessionCipher(storage, addr)
+			const cipher = new SessionCipher(storage, addr)
 
 			const { type: sigType, body } = await cipher.encrypt(data)
 			const type = sigType === 3 ? 'pkmsg' : 'msg'
-			return { type, ciphertext: Buffer.from(body, 'binary') }
+			return { type, ciphertext: body }
 		},
 		async encryptGroupMessage({ group, meId, data }) {
 			const senderName = jidToSignalSenderKeyName(group, meId)
@@ -68,7 +68,7 @@ export function makeLibSignalRepository(auth: SignalAuthState): SignalRepository
 			}
 		},
 		async injectE2ESession({ jid, session }) {
-			const cipher = new libsignal.SessionBuilder(storage, jidToSignalProtocolAddress(jid))
+			const cipher = new SessionBuilder(storage, jidToSignalProtocolAddress(jid))
 			await cipher.initOutgoing(session)
 		},
 		jidToSignalProtocolAddress(jid) {
@@ -79,7 +79,7 @@ export function makeLibSignalRepository(auth: SignalAuthState): SignalRepository
 
 const jidToSignalProtocolAddress = (jid: string) => {
 	const { user, device } = jidDecode(jid)!
-	return new libsignal.ProtocolAddress(user, device || 0)
+	return new ProtocolAddress(user, device || 0)
 }
 
 const jidToSignalSenderKeyName = (group: string, user: string): string => {
@@ -91,7 +91,7 @@ function signalStorage({ creds, keys }: SignalAuthState) {
 		loadSession: async(id: string) => {
 			const { [id]: sess } = await keys.get('session', [id])
 			if(sess) {
-				return libsignal.SessionRecord.deserialize(sess)
+				return SessionRecord.deserialize(sess)
 			}
 		},
 		storeSession: async(id, session) => {
