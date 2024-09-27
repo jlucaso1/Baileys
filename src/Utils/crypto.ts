@@ -18,11 +18,13 @@ export const randomInt = (max: number) => {
 };
 
 export const randomBytes = (size: number) =>
-  Buffer.from(crypto.getRandomValues(new Uint8Array(size)));
+  crypto.getRandomValues(new Uint8Array(size));
 
 /** prefix version byte to the pub keys, required for some curve crypto functions */
-export const generateSignalPubKey = (pubKey: Uint8Array | Buffer) =>
-  pubKey.length === 33 ? pubKey : Buffer.concat([KEY_BUNDLE_TYPE, pubKey]);
+export const generateSignalPubKey = (pubKey: Uint8Array) =>
+  pubKey.length === 33
+    ? pubKey
+    : new Uint8Array([...KEY_BUNDLE_TYPE, ...pubKey]);
 
 function scrubPubKeyFormat(pubKey: Uint8Array) {
   if (!(pubKey instanceof Uint8Array)) {
@@ -45,9 +47,9 @@ export const Curve = {
   generateKeyPair: (): KeyPair => {
     const { pubKey, privKey } = curve.generateKeyPair();
     return {
-      private: Buffer.from(privKey),
+      private: privKey,
       // remove version byte
-      public: Buffer.from((pubKey as Uint8Array).slice(1)),
+      public: pubKey.slice(1),
     };
   },
   sharedKey: (privateKey: Uint8Array, publicKey: Uint8Array) => {
@@ -55,7 +57,7 @@ export const Curve = {
       generateSignalPubKey(publicKey),
       privateKey
     );
-    return Buffer.from(shared);
+    return shared;
   },
   sign: (privateKey: Uint8Array, buf: Uint8Array) =>
     curve.calculateSignature(privateKey, buf),
@@ -89,7 +91,7 @@ export function aesEncryptGCM(
   additionalData: Uint8Array
 ) {
   const aes = gcm(key, iv, additionalData);
-  return Buffer.from(aes.encrypt(plaintext));
+  return aes.encrypt(plaintext);
 }
 
 /**
@@ -106,7 +108,7 @@ export function aesDecryptGCM(
 
   const decrypted = aes.decrypt(ciphertext);
 
-  return Buffer.from(decrypted);
+  return decrypted;
 }
 
 export function aesEncryptCTR(
@@ -115,7 +117,7 @@ export function aesEncryptCTR(
   iv: Uint8Array
 ) {
   const aes = ctr(key, iv);
-  return Buffer.from(aes.encrypt(plaintext));
+  return aes.encrypt(plaintext);
 }
 
 export function aesDecryptCTR(
@@ -124,7 +126,7 @@ export function aesDecryptCTR(
   iv: Uint8Array
 ) {
   const aes = ctr(key, iv);
-  return Buffer.from(aes.decrypt(ciphertext));
+  return aes.decrypt(ciphertext);
 }
 
 /** decrypt AES 256 CBC; where the IV is prefixed to the buffer */
@@ -143,7 +145,7 @@ export function aesDecryptWithIV(
   IV: Uint8Array
 ) {
   const aes = cbc(key, IV);
-  return Buffer.from(aes.decrypt(buffer));
+  return aes.decrypt(buffer);
 }
 
 // encrypt AES 256 CBC; where a random IV is prefixed to the buffer
@@ -151,7 +153,7 @@ export function aesEncrypt(buffer: Uint8Array, key: Uint8Array) {
   const IV = randomBytes(16);
 
   const aes = cbc(key, IV);
-  return Buffer.from(aes.encrypt(buffer));
+  return aes.encrypt(buffer);
 }
 
 // encrypt AES 256 CBC with a given IV
@@ -161,7 +163,7 @@ export function aesEncrypWithIV(
   IV: Uint8Array
 ) {
   const aes = cbc(key, IV);
-  return Buffer.from(aes.encrypt(buffer));
+  return aes.encrypt(buffer);
 }
 
 const VARIANT_SHA_MAP = {
@@ -175,25 +177,23 @@ export function hmacSign(
   key: Uint8Array,
   variant: "sha256" | "sha512" = "sha256"
 ) {
-  return Buffer.from(HMAC(VARIANT_SHA_MAP[variant], key, buffer));
+  return HMAC(VARIANT_SHA_MAP[variant], key, buffer);
 }
 
-export const md5 = (buffer: Buffer) => Buffer.from(MD5(buffer));
+export const md5 = (buffer: Uint8Array) => MD5(buffer);
 
-export const sha256 = (buffer: Buffer) => Buffer.from(SHA256(buffer));
+export const sha256 = (buffer: Uint8Array) => SHA256(buffer);
 
 // HKDF key expansion
 export function hkdf(
-  buffer: Uint8Array | Buffer,
+  buffer: Uint8Array,
   expandedLength: number,
-  info: { salt?: Buffer; info?: string }
+  info: { salt?: Uint8Array; info?: string }
 ) {
-  return Buffer.from(
-    HKDF(SHA256, buffer, info.salt, info.info, expandedLength)
-  );
+  return HKDF(SHA256, buffer, info.salt, info.info, expandedLength);
 }
 
-export async function derivePairingCodeKey(pairingCode: string, salt: Buffer) {
+export async function derivePairingCodeKey(pairingCode: string, salt: Uint8Array) {
   return pbkdf2(SHA256, pairingCode, salt, {
     c: 2 << 16,
     dkLen: 32,
