@@ -1,5 +1,4 @@
-import { randomBytes } from "@noble/hashes/utils";
-import { randomInt, Curve } from "../Utils/crypto";
+import { randomInt, Curve, randomBytes } from "../Utils/crypto";
 
 export const generateSenderKey = () => {
   return randomBytes(32);
