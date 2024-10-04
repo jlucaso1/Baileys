@@ -1,29 +1,29 @@
 export const WEB_EVENTS: Event[] = [
 	{
-		name: 'WebcFingerprint',
+		name: "WebcFingerprint",
 		id: 1704,
 		props: {
-			webcCanvasFingerprint: [25, 'string'],
-			webcDocumentDriverEvaluate: [9, 'boolean'],
-			webcDocumentDriverUnwrapped: [7, 'boolean'],
-			webcDocumentElementAttrDriver: [14, 'boolean'],
-			webcDocumentElementAttrSelenium: [12, 'boolean'],
-			webcDocumentElementAttrWebdriver: [13, 'boolean'],
-			webcDocumentFxdriverEvaluate: [6, 'boolean'],
-			webcDocumentFxdriverUnwrapped: [11, 'boolean'],
-			webcDocumentSeleniumEvaluate: [2, 'boolean'],
-			webcDocumentSeleniumUnwrapped: [10, 'boolean'],
-			webcDocumentWebdriverEvaluate: [1, 'boolean'],
-			webcDocumentWebdriverScriptFn: [5, 'boolean'],
-			webcDocumentWebdriverScriptFunc: [4, 'boolean'],
-			webcDocumentWebdriverScriptFunction: [3, 'boolean'],
-			webcDocumentWebdriverUnwrapped: [8, 'boolean'],
-			webcWebglFingerprint: [24, 'string'],
-			webcWebglRenderer: [23, 'string'],
-			webcWebglVendor: [22, 'string'],
-			webcWindowSeleniumIdeRecorder: [20, 'boolean'],
-			webcWindowCallphantom: [18, 'boolean'],
-			webcWindowCallselenium: [19, 'boolean'],
+			webcCanvasFingerprint: [25, "string"],
+			webcDocumentDriverEvaluate: [9, "boolean"],
+			webcDocumentDriverUnwrapped: [7, "boolean"],
+			webcDocumentElementAttrDriver: [14, "boolean"],
+			webcDocumentElementAttrSelenium: [12, "boolean"],
+			webcDocumentElementAttrWebdriver: [13, "boolean"],
+			webcDocumentFxdriverEvaluate: [6, "boolean"],
+			webcDocumentFxdriverUnwrapped: [11, "boolean"],
+			webcDocumentSeleniumEvaluate: [2, "boolean"],
+			webcDocumentSeleniumUnwrapped: [10, "boolean"],
+			webcDocumentWebdriverEvaluate: [1, "boolean"],
+			webcDocumentWebdriverScriptFn: [5, "boolean"],
+			webcDocumentWebdriverScriptFunc: [4, "boolean"],
+			webcDocumentWebdriverScriptFunction: [3, "boolean"],
+			webcDocumentWebdriverUnwrapped: [8, "boolean"],
+			webcWebglFingerprint: [24, "string"],
+			webcWebglRenderer: [23, "string"],
+			webcWebglVendor: [22, "string"],
+			webcWindowSeleniumIdeRecorder: [20, "boolean"],
+			webcWindowCallphantom: [18, "boolean"],
+			webcWindowCallselenium: [19, "boolean"],
 			webcWindowNavigatorWebdriver: [
 				21,
 				{
@@ -32,16 +32,16 @@ export const WEB_EVENTS: Event[] = [
 					UNDEFINED: 2,
 				},
 			],
-			webcWindowNightmare: [16, 'boolean'],
-			webcWindowPhantom: [15, 'boolean'],
-			webcWindowSelenium: [17, 'boolean'],
+			webcWindowNightmare: [16, "boolean"],
+			webcWindowPhantom: [15, "boolean"],
+			webcWindowSelenium: [17, "boolean"],
 		},
 		weight: 1,
-		wamChannel: 'regular',
+		wamChannel: "regular",
 		privateStatsIdInt: -1,
 	},
 	{
-		name: 'Login',
+		name: "Login",
 		id: 460,
 		props: {
 			androidKeystoreState: [
@@ -79,7 +79,7 @@ export const WEB_EVENTS: Event[] = [
 					NO_DNS_HTTP: 11,
 				},
 			],
-			connectionT: [5, 'timer'],
+			connectionT: [5, "timer"],
 			dnsResolutionMethod: [
 				12,
 				{
@@ -130,21 +130,21 @@ export const WEB_EVENTS: Event[] = [
 					CERTIFICATE_ERROR: 7,
 				},
 			],
-			loginT: [3, 'timer'],
-			longConnect: [4, 'boolean'],
-			noiseProtocolVersion: [16, 'integer'],
-			passive: [8, 'boolean'],
-			pendingAcksCount: [17, 'integer'],
-			retryCount: [2, 'integer'],
-			sequenceStep: [7, 'integer'],
-			serverErrorCode: [9, 'integer'],
+			loginT: [3, "timer"],
+			longConnect: [4, "boolean"],
+			noiseProtocolVersion: [16, "integer"],
+			passive: [8, "boolean"],
+			pendingAcksCount: [17, "integer"],
+			retryCount: [2, "integer"],
+			sequenceStep: [7, "integer"],
+			serverErrorCode: [9, "integer"],
 		},
 		weight: 1,
-		wamChannel: 'regular',
+		wamChannel: "regular",
 		privateStatsIdInt: -1,
 	},
 	{
-		name: 'WebcPageLoad',
+		name: "WebcPageLoad",
 		id: 642,
 		props: {
 			webcAppcacheStatus: [
@@ -158,32 +158,32 @@ export const WEB_EVENTS: Event[] = [
 					OBSOLETE: 5,
 				},
 			],
-			webcCached: [30, 'boolean'],
-			webcConnectEnd: [10, 'timer'],
-			webcConnectStart: [9, 'timer'],
-			webcDomComplete: [19, 'timer'],
-			webcDomContentLoadedEventEnd: [18, 'timer'],
-			webcDomContentLoadedEventStart: [17, 'timer'],
-			webcDomInteractive: [16, 'timer'],
-			webcDomLoading: [15, 'timer'],
-			webcDomainLookupEnd: [8, 'timer'],
-			webcDomainLookupStart: [7, 'timer'],
-			webcExeDone: [23, 'timer'],
-			webcExeStart: [22, 'timer'],
-			webcFetchStart: [6, 'timer'],
-			webcInitialMountT: [38, 'timer'],
-			webcInitialNavMountT: [39, 'timer'],
-			webcInitialPanel: [42, 'string'],
-			webcInitialPanelMountStartT: [43, 'timer'],
-			webcInitialPanelMountT: [40, 'timer'],
-			webcInitialPanelRenderT: [46, 'timer'],
-			webcJsLoadT: [37, 'timer'],
-			webcLoadEventEnd: [21, 'timer'],
-			webcLoadEventStart: [20, 'timer'],
-			webcLoadInForeground: [53, 'boolean'],
-			webcMainScriptEnd: [45, 'timer'],
-			webcMainScriptStart: [44, 'timer'],
-			webcNativeLoadT: [36, 'timer'],
+			webcCached: [30, "boolean"],
+			webcConnectEnd: [10, "timer"],
+			webcConnectStart: [9, "timer"],
+			webcDomComplete: [19, "timer"],
+			webcDomContentLoadedEventEnd: [18, "timer"],
+			webcDomContentLoadedEventStart: [17, "timer"],
+			webcDomInteractive: [16, "timer"],
+			webcDomLoading: [15, "timer"],
+			webcDomainLookupEnd: [8, "timer"],
+			webcDomainLookupStart: [7, "timer"],
+			webcExeDone: [23, "timer"],
+			webcExeStart: [22, "timer"],
+			webcFetchStart: [6, "timer"],
+			webcInitialMountT: [38, "timer"],
+			webcInitialNavMountT: [39, "timer"],
+			webcInitialPanel: [42, "string"],
+			webcInitialPanelMountStartT: [43, "timer"],
+			webcInitialPanelMountT: [40, "timer"],
+			webcInitialPanelRenderT: [46, "timer"],
+			webcJsLoadT: [37, "timer"],
+			webcLoadEventEnd: [21, "timer"],
+			webcLoadEventStart: [20, "timer"],
+			webcLoadInForeground: [53, "boolean"],
+			webcMainScriptEnd: [45, "timer"],
+			webcMainScriptStart: [44, "timer"],
+			webcNativeLoadT: [36, "timer"],
 			webcNavigation: [
 				32,
 				{
@@ -193,51 +193,51 @@ export const WEB_EVENTS: Event[] = [
 					UNDEFINED: 255,
 				},
 			],
-			webcPageLoadT: [34, 'timer'],
-			webcParallellyFetched: [41, 'boolean'],
-			webcQrCode: [31, 'boolean'],
-			webcRedirectCount: [33, 'number'],
-			webcRedirectEnd: [5, 'timer'],
-			webcRedirectStart: [4, 'timer'],
-			webcRequestStart: [12, 'timer'],
-			webcResponseEnd: [14, 'timer'],
-			webcResponseStart: [13, 'timer'],
-			webcSecureConnectionStart: [11, 'timer'],
-			webcUnloadEventEnd: [3, 'timer'],
-			webcUnloadEventStart: [2, 'timer'],
-			webcWsAttempts: [28, 'number'],
-			webcWsNormal: [27, 'timer'],
-			webcWsOpening: [24, 'timer'],
-			webcWsPairing: [25, 'timer'],
-			webcWsSyncing: [26, 'timer'],
+			webcPageLoadT: [34, "timer"],
+			webcParallellyFetched: [41, "boolean"],
+			webcQrCode: [31, "boolean"],
+			webcRedirectCount: [33, "number"],
+			webcRedirectEnd: [5, "timer"],
+			webcRedirectStart: [4, "timer"],
+			webcRequestStart: [12, "timer"],
+			webcResponseEnd: [14, "timer"],
+			webcResponseStart: [13, "timer"],
+			webcSecureConnectionStart: [11, "timer"],
+			webcUnloadEventEnd: [3, "timer"],
+			webcUnloadEventStart: [2, "timer"],
+			webcWsAttempts: [28, "number"],
+			webcWsNormal: [27, "timer"],
+			webcWsOpening: [24, "timer"],
+			webcWsPairing: [25, "timer"],
+			webcWsSyncing: [26, "timer"],
 		},
 		weight: 1,
-		wamChannel: 'regular',
+		wamChannel: "regular",
 		privateStatsIdInt: -1,
 	},
 	{
-		name: 'OfflineResume',
+		name: "OfflineResume",
 		id: 3112,
 		props: {
-			affectedBySleepMode: [35, 'boolean'],
-			chatThreadCount: [1, 'integer'],
-			expectedOfflineCallCount: [23, 'integer'],
-			expectedOfflineMessageCount: [17, 'integer'],
-			expectedOfflineNotificationCount: [18, 'integer'],
-			expectedOfflineReceiptCount: [19, 'integer'],
-			isOfflineCompleteMissed: [2, 'boolean'],
-			isResumeInForeground: [13, 'boolean'],
-			isRunningFromServiceExtension: [22, 'boolean'],
-			lastStanzaT: [3, 'timer'],
-			mailboxAge: [14, 'integer'],
-			mainScreenLoadT: [4, 'timer'],
-			offlineCallCount: [24, 'integer'],
-			offlineDecryptErrorCount: [5, 'integer'],
-			offlineMessageCount: [6, 'integer'],
-			offlineNotificationCount: [7, 'integer'],
-			offlinePreviewT: [8, 'timer'],
-			offlineProcessingT: [20, 'timer'],
-			offlineReceiptCount: [9, 'integer'],
+			affectedBySleepMode: [35, "boolean"],
+			chatThreadCount: [1, "integer"],
+			expectedOfflineCallCount: [23, "integer"],
+			expectedOfflineMessageCount: [17, "integer"],
+			expectedOfflineNotificationCount: [18, "integer"],
+			expectedOfflineReceiptCount: [19, "integer"],
+			isOfflineCompleteMissed: [2, "boolean"],
+			isResumeInForeground: [13, "boolean"],
+			isRunningFromServiceExtension: [22, "boolean"],
+			lastStanzaT: [3, "timer"],
+			mailboxAge: [14, "integer"],
+			mainScreenLoadT: [4, "timer"],
+			offlineCallCount: [24, "integer"],
+			offlineDecryptErrorCount: [5, "integer"],
+			offlineMessageCount: [6, "integer"],
+			offlineNotificationCount: [7, "integer"],
+			offlinePreviewT: [8, "timer"],
+			offlineProcessingT: [20, "timer"],
+			offlineReceiptCount: [9, "integer"],
 			offlineResumeResult: [
 				21,
 				{
@@ -247,42 +247,42 @@ export const WEB_EVENTS: Event[] = [
 					INCOMPLETE_APP_RESTART: 4,
 				},
 			],
-			offlineSizeBytes: [10, 'integer'],
-			onTrickleMode: [15, 'boolean'],
-			pageLoadT: [11, 'timer'],
-			passiveModeT: [25, 'timer'],
-			preackCallCount: [26, 'integer'],
-			preackMessageCount: [27, 'integer'],
-			preackNotificationCount: [28, 'integer'],
-			preackReceiptCount: [29, 'integer'],
-			processedCallCount: [30, 'integer'],
-			processedMessageCount: [31, 'integer'],
-			processedNotificationCount: [32, 'integer'],
-			processedReceiptCount: [33, 'integer'],
-			socketConnectT: [12, 'timer'],
-			transientOfflineSessionId: [34, 'string'],
+			offlineSizeBytes: [10, "integer"],
+			onTrickleMode: [15, "boolean"],
+			pageLoadT: [11, "timer"],
+			passiveModeT: [25, "timer"],
+			preackCallCount: [26, "integer"],
+			preackMessageCount: [27, "integer"],
+			preackNotificationCount: [28, "integer"],
+			preackReceiptCount: [29, "integer"],
+			processedCallCount: [30, "integer"],
+			processedMessageCount: [31, "integer"],
+			processedNotificationCount: [32, "integer"],
+			processedReceiptCount: [33, "integer"],
+			socketConnectT: [12, "timer"],
+			transientOfflineSessionId: [34, "string"],
 		},
 		weight: 1,
-		wamChannel: 'regular',
+		wamChannel: "regular",
 		privateStatsIdInt: -1,
 	},
 	{
-		name: 'WebcDbOpen',
+		name: "WebcDbOpen",
 		id: 1940,
 		props: {
-			webcDbName: [1, 'string'],
-			webcDbOpenNumAttempts: [3, 'integer'],
-			webcDbOpenWasSuccess: [2, 'boolean'],
+			webcDbName: [1, "string"],
+			webcDbOpenNumAttempts: [3, "integer"],
+			webcDbOpenWasSuccess: [2, "boolean"],
 		},
 		weight: 1,
-		wamChannel: 'regular',
+		wamChannel: "regular",
 		privateStatsIdInt: -1,
 	},
 	{
-		name: 'PsIdUpdate',
+		name: "PsIdUpdate",
 		id: 2862,
 		props: {
-			isFromWamsys: [4, 'boolean'],
+			isFromWamsys: [4, "boolean"],
 			psIdAction: [
 				2,
 				{
@@ -291,15 +291,15 @@ export const WEB_EVENTS: Event[] = [
 					DELETED: 3,
 				},
 			],
-			psIdKey: [1, 'integer'],
-			psIdRotationFrequence: [3, 'integer'],
+			psIdKey: [1, "integer"],
+			psIdRotationFrequence: [3, "integer"],
 		},
 		weight: 1,
-		wamChannel: 'regular',
+		wamChannel: "regular",
 		privateStatsIdInt: -1,
 	},
 	{
-		name: 'WebDbVersionsSource',
+		name: "WebDbVersionsSource",
 		id: 4784,
 		props: {
 			webDbVersionSource: [
@@ -321,11 +321,11 @@ export const WEB_EVENTS: Event[] = [
 			],
 		},
 		weight: 1,
-		wamChannel: 'regular',
+		wamChannel: "regular",
 		privateStatsIdInt: -1,
 	},
 	{
-		name: 'WebcAssetLoad',
+		name: "WebcAssetLoad",
 		id: 1358,
 		props: {
 			webcAssetCacheType: [
@@ -336,34 +336,34 @@ export const WEB_EVENTS: Event[] = [
 					SW: 2,
 				},
 			],
-			webcAssetFromCache: [2, 'boolean'],
-			webcAssetLoadT: [3, 'timer'],
-			webcAssetName: [1, 'string'],
-			webcAssetSize: [5, 'number'],
+			webcAssetFromCache: [2, "boolean"],
+			webcAssetLoadT: [3, "timer"],
+			webcAssetName: [1, "string"],
+			webcAssetSize: [5, "number"],
 		},
 		weight: 1,
-		wamChannel: 'regular',
+		wamChannel: "regular",
 		privateStatsIdInt: -1,
 	},
 	{
-		name: 'WebcStorageStat',
+		name: "WebcStorageStat",
 		id: 1504,
 		props: {
-			webcAgeOfStorage: [3, 'integer'],
-			webcPackingEnabled: [4, 'boolean'],
-			webcStorageQuota: [2, 'integer'],
-			webcStorageUsage: [1, 'integer'],
+			webcAgeOfStorage: [3, "integer"],
+			webcPackingEnabled: [4, "boolean"],
+			webcStorageQuota: [2, "integer"],
+			webcStorageUsage: [1, "integer"],
 		},
 		weight: 1,
-		wamChannel: 'regular',
+		wamChannel: "regular",
 		privateStatsIdInt: -1,
 	},
 	{
-		name: 'OfflineResumeStage',
+		name: "OfflineResumeStage",
 		id: 3536,
 		props: {
-			attemptId: [13, 'integer'],
-			chatThreadCount: [4, 'integer'],
+			attemptId: [13, "integer"],
+			chatThreadCount: [4, "integer"],
 			currentOfflineStage: [
 				1,
 				{
@@ -376,15 +376,15 @@ export const WEB_EVENTS: Event[] = [
 					PREACKS_SENT: 7,
 				},
 			],
-			isResumeInForeground: [5, 'boolean'],
-			isResumeStartedInForeground: [14, 'boolean'],
-			lastPushTimestampMs: [12, 'integer'],
-			mailboxAge: [6, 'integer'],
-			offlineCallCount: [15, 'integer'],
-			offlineDecryptErrorCount: [7, 'integer'],
-			offlineMessageCount: [8, 'integer'],
-			offlineNotificationCount: [9, 'integer'],
-			offlineReceiptCount: [10, 'integer'],
+			isResumeInForeground: [5, "boolean"],
+			isResumeStartedInForeground: [14, "boolean"],
+			lastPushTimestampMs: [12, "integer"],
+			mailboxAge: [6, "integer"],
+			offlineCallCount: [15, "integer"],
+			offlineDecryptErrorCount: [7, "integer"],
+			offlineMessageCount: [8, "integer"],
+			offlineNotificationCount: [9, "integer"],
+			offlineReceiptCount: [10, "integer"],
 			offlineResumeMode: [
 				11,
 				{
@@ -396,17 +396,17 @@ export const WEB_EVENTS: Event[] = [
 					CONNECT_REASON_BACKOFF: 6,
 				},
 			],
-			offlineSessionId: [2, 'string'],
-			offlineSizeBytes: [16, 'integer'],
-			offlineStageTimestampMs: [3, 'integer'],
-			passiveModeT: [17, 'timer'],
+			offlineSessionId: [2, "string"],
+			offlineSizeBytes: [16, "integer"],
+			offlineStageTimestampMs: [3, "integer"],
+			passiveModeT: [17, "timer"],
 		},
 		weight: 1,
-		wamChannel: 'regular',
+		wamChannel: "regular",
 		privateStatsIdInt: -1,
 	},
 	{
-		name: 'WebcStreamModeChange',
+		name: "WebcStreamModeChange",
 		id: 770,
 		props: {
 			webcStreamMode: [
@@ -426,30 +426,30 @@ export const WEB_EVENTS: Event[] = [
 			],
 		},
 		weight: 1,
-		wamChannel: 'regular',
+		wamChannel: "regular",
 		privateStatsIdInt: -1,
 	},
 	{
-		name: 'WebcStatusSync',
+		name: "WebcStatusSync",
 		id: 1878,
 		props: {
-			webcStatusMutedItemCount: [4, 'integer'],
-			webcStatusMutedRowCount: [7, 'integer'],
-			webcStatusRecentItemCount: [2, 'integer'],
-			webcStatusRecentRowCount: [5, 'integer'],
-			webcStatusSyncT: [1, 'timer'],
-			webcStatusViewedItemCount: [3, 'integer'],
-			webcStatusViewedRowCount: [6, 'integer'],
+			webcStatusMutedItemCount: [4, "integer"],
+			webcStatusMutedRowCount: [7, "integer"],
+			webcStatusRecentItemCount: [2, "integer"],
+			webcStatusRecentRowCount: [5, "integer"],
+			webcStatusSyncT: [1, "timer"],
+			webcStatusViewedItemCount: [3, "integer"],
+			webcStatusViewedRowCount: [6, "integer"],
 		},
 		weight: 1,
-		wamChannel: 'regular',
+		wamChannel: "regular",
 		privateStatsIdInt: -1,
 	},
 	{
-		name: 'TsNavigation',
+		name: "TsNavigation",
 		id: 4334,
 		props: {
-			cid: [19, 'string'],
+			cid: [19, "string"],
 			entryPointConversationInitiated: [
 				23,
 				{
@@ -458,13 +458,13 @@ export const WEB_EVENTS: Event[] = [
 					NO_MESSAGES_LAST_24H: 2,
 				},
 			],
-			entryPointConversionApp: [24, 'string'],
-			entryPointConversionSource: [25, 'string'],
-			groupSize: [1, 'integer'],
-			isCatalogVisible: [29, 'boolean'],
-			isCloudapi: [26, 'boolean'],
-			isOnpremises: [27, 'boolean'],
-			isSmb: [28, 'boolean'],
+			entryPointConversionApp: [24, "string"],
+			entryPointConversionSource: [25, "string"],
+			groupSize: [1, "integer"],
+			isCatalogVisible: [29, "boolean"],
+			isCloudapi: [26, "boolean"],
+			isOnpremises: [27, "boolean"],
+			isSmb: [28, "boolean"],
 			navigationDestination: [
 				2,
 				{
@@ -657,10 +657,10 @@ export const WEB_EVENTS: Event[] = [
 					GROUP_CREATION: 92,
 				},
 			],
-			relativeTimestampMs: [4, 'integer'],
-			smbCatalogBusinessVertical: [20, 'string'],
-			smbCatalogIsCatalogVisible: [21, 'boolean'],
-			smbCatalogIsToggleCart: [22, 'boolean'],
+			relativeTimestampMs: [4, "integer"],
+			smbCatalogBusinessVertical: [20, "string"],
+			smbCatalogIsCatalogVisible: [21, "boolean"],
+			smbCatalogIsToggleCart: [22, "boolean"],
 			threadType: [
 				7,
 				{
@@ -674,7 +674,7 @@ export const WEB_EVENTS: Event[] = [
 					PARENT_GROUP: 8,
 				},
 			],
-			tsSessionId: [5, 'integer'],
+			tsSessionId: [5, "integer"],
 			typeOfGroup: [
 				6,
 				{
@@ -685,65 +685,65 @@ export const WEB_EVENTS: Event[] = [
 			],
 		},
 		weight: 1,
-		wamChannel: 'regular',
+		wamChannel: "regular",
 		privateStatsIdInt: -1,
 	},
 	{
-		name: 'UserActivity',
+		name: "UserActivity",
 		id: 1384,
 		props: {
-			userActivityBitmapHigh: [4, 'integer'],
-			userActivityBitmapLen: [5, 'integer'],
-			userActivityBitmapLow: [3, 'integer'],
-			userActivitySessionCum: [7, 'integer'],
-			userActivitySessionId: [1, 'string'],
-			userActivitySessionSeq: [6, 'integer'],
-			userActivityStartTime: [2, 'integer'],
+			userActivityBitmapHigh: [4, "integer"],
+			userActivityBitmapLen: [5, "integer"],
+			userActivityBitmapLow: [3, "integer"],
+			userActivitySessionCum: [7, "integer"],
+			userActivitySessionId: [1, "string"],
+			userActivitySessionSeq: [6, "integer"],
+			userActivityStartTime: [2, "integer"],
 		},
 		weight: 1,
-		wamChannel: 'regular',
+		wamChannel: "regular",
 		privateStatsIdInt: -1,
 	},
 	{
-		name: 'TsBitArray',
+		name: "TsBitArray",
 		id: 4332,
 		props: {
-			bitarrayHigh: [1, 'integer'],
-			bitarrayLength: [2, 'integer'],
-			bitarrayLow: [3, 'integer'],
-			cumulativeBits: [4, 'integer'],
-			relativeTimestampMs: [5, 'integer'],
-			sessionSeq: [6, 'integer'],
-			tsSessionId: [7, 'integer'],
+			bitarrayHigh: [1, "integer"],
+			bitarrayLength: [2, "integer"],
+			bitarrayLow: [3, "integer"],
+			cumulativeBits: [4, "integer"],
+			relativeTimestampMs: [5, "integer"],
+			sessionSeq: [6, "integer"],
+			tsSessionId: [7, "integer"],
 		},
 		weight: 1,
-		wamChannel: 'regular',
+		wamChannel: "regular",
 		privateStatsIdInt: -1,
 	},
 	{
-		name: 'WebcResourceLoad',
+		name: "WebcResourceLoad",
 		id: 688,
 		props: {
-			webcResourceCached: [3, 'boolean'],
-			webcResourceDuration: [2, 'timer'],
-			webcResourceName: [1, 'string'],
+			webcResourceCached: [3, "boolean"],
+			webcResourceDuration: [2, "timer"],
+			webcResourceName: [1, "string"],
 		},
 		weight: 1,
-		wamChannel: 'regular',
+		wamChannel: "regular",
 		privateStatsIdInt: -1,
 	},
 	{
-		name: 'MdAppStateMessageRange',
+		name: "MdAppStateMessageRange",
 		id: 2522,
 		props: {
-			additionalMessagesCount: [1, 'integer'],
+			additionalMessagesCount: [1, "integer"],
 		},
 		weight: 1000,
-		wamChannel: 'regular',
+		wamChannel: "regular",
 		privateStatsIdInt: -1,
 	},
 	{
-		name: 'MdBootstrapDataApplied',
+		name: "MdBootstrapDataApplied",
 		id: 2298,
 		props: {
 			collection: [
@@ -756,9 +756,9 @@ export const WEB_EVENTS: Event[] = [
 					CRITICAL_UNBLOCK_LOW: 5,
 				},
 			],
-			historySyncChunkOrder: [14, 'integer'],
-			historySyncStageProgress: [11, 'integer'],
-			mdBootstrapContactsCount: [8, 'integer'],
+			historySyncChunkOrder: [14, "integer"],
+			historySyncStageProgress: [11, "integer"],
+			mdBootstrapContactsCount: [8, "integer"],
 			mdBootstrapHistoryPayloadType: [
 				10,
 				{
@@ -785,7 +785,7 @@ export const WEB_EVENTS: Event[] = [
 					HISTORY: 2,
 				},
 			],
-			mdBootstrapStepDuration: [6, 'integer'],
+			mdBootstrapStepDuration: [6, "integer"],
 			mdBootstrapStepResult: [
 				12,
 				{
@@ -793,21 +793,21 @@ export const WEB_EVENTS: Event[] = [
 					FAILURE: 2,
 				},
 			],
-			mdRegAttemptId: [9, 'string'],
-			mdSessionId: [1, 'string'],
-			mdTimestamp: [4, 'integer'],
-			sentViaMms: [13, 'boolean'],
-			usedSnapshot: [7, 'boolean'],
+			mdRegAttemptId: [9, "string"],
+			mdSessionId: [1, "string"],
+			mdTimestamp: [4, "integer"],
+			sentViaMms: [13, "boolean"],
+			usedSnapshot: [7, "boolean"],
 		},
 		weight: 1,
-		wamChannel: 'regular',
+		wamChannel: "regular",
 		privateStatsIdInt: -1,
 	},
 	{
-		name: 'MdBootstrapAppStateDataDownloaded',
+		name: "MdBootstrapAppStateDataDownloaded",
 		id: 2294,
 		props: {
-			mdBootstrapContactsCount: [5, 'integer'],
+			mdBootstrapContactsCount: [5, "integer"],
 			mdBootstrapHistoryPayloadType: [
 				11,
 				{
@@ -820,7 +820,7 @@ export const WEB_EVENTS: Event[] = [
 					ON_DEMAND: 7,
 				},
 			],
-			mdBootstrapPayloadSize: [4, 'integer'],
+			mdBootstrapPayloadSize: [4, "integer"],
 			mdBootstrapPayloadType: [
 				2,
 				{
@@ -828,7 +828,7 @@ export const WEB_EVENTS: Event[] = [
 					NON_CRITICAL: 2,
 				},
 			],
-			mdBootstrapStepDuration: [6, 'integer'],
+			mdBootstrapStepDuration: [6, "integer"],
 			mdBootstrapStepResult: [
 				7,
 				{
@@ -836,18 +836,18 @@ export const WEB_EVENTS: Event[] = [
 					FAILURE: 2,
 				},
 			],
-			mdRegAttemptId: [10, 'string'],
-			mdSessionId: [1, 'string'],
-			mdStorageQuotaBytes: [8, 'integer'],
-			mdStorageQuotaUsedBytes: [9, 'integer'],
-			mdTimestamp: [3, 'integer'],
+			mdRegAttemptId: [10, "string"],
+			mdSessionId: [1, "string"],
+			mdStorageQuotaBytes: [8, "integer"],
+			mdStorageQuotaUsedBytes: [9, "integer"],
+			mdTimestamp: [3, "integer"],
 		},
 		weight: 1,
-		wamChannel: 'regular',
+		wamChannel: "regular",
 		privateStatsIdInt: -1,
 	},
 	{
-		name: 'MdAppStateKeyRotation',
+		name: "MdAppStateKeyRotation",
 		id: 2518,
 		props: {
 			mdAppStateKeyRotationReason: [
@@ -860,29 +860,29 @@ export const WEB_EVENTS: Event[] = [
 			],
 		},
 		weight: 1000,
-		wamChannel: 'regular',
+		wamChannel: "regular",
 		privateStatsIdInt: -1,
 	},
 	{
-		name: 'MdAppStateSyncDaily',
+		name: "MdAppStateSyncDaily",
 		id: 2300,
 		props: {
-			crossIndexConflictCount: [11, 'integer'],
-			invalidActionCount: [4, 'integer'],
-			keyRotationRemoveCount: [12, 'integer'],
-			missingKeyCount: [9, 'integer'],
-			mutationCount: [1, 'integer'],
-			storedMutationCount: [7, 'integer'],
-			unsetActionCount: [8, 'integer'],
-			unsupportedActionCount: [5, 'integer'],
-			uploadConflictCount: [10, 'integer'],
+			crossIndexConflictCount: [11, "integer"],
+			invalidActionCount: [4, "integer"],
+			keyRotationRemoveCount: [12, "integer"],
+			missingKeyCount: [9, "integer"],
+			mutationCount: [1, "integer"],
+			storedMutationCount: [7, "integer"],
+			unsetActionCount: [8, "integer"],
+			unsupportedActionCount: [5, "integer"],
+			uploadConflictCount: [10, "integer"],
 		},
 		weight: 1,
-		wamChannel: 'regular',
+		wamChannel: "regular",
 		privateStatsIdInt: -1,
 	},
 	{
-		name: 'WebcPwaEvent',
+		name: "WebcPwaEvent",
 		id: 4116,
 		props: {
 			webcPwaAction: [
@@ -893,23 +893,23 @@ export const WEB_EVENTS: Event[] = [
 			],
 		},
 		weight: 1,
-		wamChannel: 'regular',
+		wamChannel: "regular",
 		privateStatsIdInt: -1,
 	},
 	{
-		name: 'DeepLinkClick',
+		name: "DeepLinkClick",
 		id: 1156,
 		props: {
-			deepLinkHasPhoneNumber: [2, 'boolean'],
-			deepLinkHasText: [1, 'boolean'],
-			deepLinkSessionId: [3, 'string'],
+			deepLinkHasPhoneNumber: [2, "boolean"],
+			deepLinkHasText: [1, "boolean"],
+			deepLinkSessionId: [3, "string"],
 		},
 		weight: 1,
-		wamChannel: 'regular',
+		wamChannel: "regular",
 		privateStatsIdInt: -1,
 	},
 	{
-		name: 'MessageSecretErrors',
+		name: "MessageSecretErrors",
 		id: 3686,
 		props: {
 			messageMediaType: [
@@ -996,16 +996,16 @@ export const WEB_EVENTS: Event[] = [
 			],
 		},
 		weight: 1,
-		wamChannel: 'regular',
+		wamChannel: "regular",
 		privateStatsIdInt: -1,
 	},
 	{
-		name: 'ChatMessageCounts',
+		name: "ChatMessageCounts",
 		id: 1644,
 		props: {
-			audioMessagesReceived: [149, 'integer'],
-			audioMessagesSent: [150, 'integer'],
-			awayMsgsSent: [56, 'integer'],
+			audioMessagesReceived: [149, "integer"],
+			audioMessagesSent: [150, "integer"],
+			awayMsgsSent: [56, "integer"],
 			bizCatalogType: [
 				60,
 				{
@@ -1013,7 +1013,7 @@ export const WEB_EVENTS: Event[] = [
 					NATIVE: 1,
 				},
 			],
-			bizConversationDepth: [65, 'integer'],
+			bizConversationDepth: [65, "integer"],
 			blockReason: [
 				33,
 				{
@@ -1025,19 +1025,19 @@ export const WEB_EVENTS: Event[] = [
 					OTP_DID_NOT_REQUEST: 5,
 				},
 			],
-			broadcastMsgsReceived: [30, 'integer'],
-			broadcastMsgsSent: [29, 'integer'],
-			callOffersReceived: [27, 'integer'],
-			callOffersSent: [26, 'integer'],
-			callsResultBusy: [70, 'integer'],
-			callsResultCancelled: [71, 'integer'],
-			callsResultConnected: [72, 'integer'],
-			callsResultError: [78, 'integer'],
-			callsResultMissed: [73, 'integer'],
-			callsResultRejected: [74, 'integer'],
-			canEditDmSettings: [88, 'boolean'],
-			cartViews: [86, 'integer'],
-			chatEphemeralityDuration: [15, 'integer'],
+			broadcastMsgsReceived: [30, "integer"],
+			broadcastMsgsSent: [29, "integer"],
+			callOffersReceived: [27, "integer"],
+			callOffersSent: [26, "integer"],
+			callsResultBusy: [70, "integer"],
+			callsResultCancelled: [71, "integer"],
+			callsResultConnected: [72, "integer"],
+			callsResultError: [78, "integer"],
+			callsResultMissed: [73, "integer"],
+			callsResultRejected: [74, "integer"],
+			canEditDmSettings: [88, "boolean"],
+			cartViews: [86, "integer"],
+			chatEphemeralityDuration: [15, "integer"],
 			chatMuted: [
 				8,
 				{
@@ -1054,7 +1054,7 @@ export const WEB_EVENTS: Event[] = [
 					OTHERS: 3,
 				},
 			],
-			chatOverflowClicks: [79, 'integer'],
+			chatOverflowClicks: [79, "integer"],
 			chatTypeInd: [
 				2,
 				{
@@ -1064,11 +1064,11 @@ export const WEB_EVENTS: Event[] = [
 					INTEROP: 4,
 				},
 			],
-			collectionInquiriesSent: [44, 'integer'],
-			commandSheetShow: [174, 'integer'],
-			commentsReceived: [126, 'integer'],
-			commerceMsgsReceived: [41, 'integer'],
-			commerceMsgsSent: [40, 'integer'],
+			collectionInquiriesSent: [44, "integer"],
+			commandSheetShow: [174, "integer"],
+			commentsReceived: [126, "integer"],
+			commerceMsgsReceived: [41, "integer"],
+			commerceMsgsSent: [40, "integer"],
 			disappearingChatInitiator: [
 				59,
 				{
@@ -1079,14 +1079,14 @@ export const WEB_EVENTS: Event[] = [
 					BIZ_UPGRADE_FB_HOSTING: 5,
 				},
 			],
-			documentMessagesReceived: [151, 'integer'],
-			documentMessagesSent: [152, 'integer'],
-			editedMsgsSent: [100, 'integer'],
-			entryPointConversionApp: [47, 'string'],
-			entryPointConversionSource: [46, 'string'],
-			ephemeralMessagesReceived: [14, 'integer'],
-			ephemeralMessagesSent: [13, 'integer'],
-			ephemeralMessagesUnreadExpired: [69, 'integer'],
+			documentMessagesReceived: [151, "integer"],
+			documentMessagesSent: [152, "integer"],
+			editedMsgsSent: [100, "integer"],
+			entryPointConversionApp: [47, "string"],
+			entryPointConversionSource: [46, "string"],
+			ephemeralMessagesReceived: [14, "integer"],
+			ephemeralMessagesSent: [13, "integer"],
+			ephemeralMessagesUnreadExpired: [69, "integer"],
 			ephemeralityInitiator: [
 				109,
 				{
@@ -1105,34 +1105,34 @@ export const WEB_EVENTS: Event[] = [
 					BIZ_SUPPORTS_FB_HOSTING: 4,
 				},
 			],
-			eventCreationMessagesReceived: [142, 'integer'],
-			eventCreationMessagesSent: [143, 'integer'],
-			eventResponseMessagesReceived: [144, 'integer'],
-			eventResponseMessagesSent: [145, 'integer'],
-			fbCtaInquiriesSent: [45, 'integer'],
-			firstResponseTime: [25, 'integer'],
-			forwardAudioMessagesReceived: [153, 'integer'],
-			forwardAudioMessagesSent: [154, 'integer'],
-			forwardDocumentMessagesReceived: [155, 'integer'],
-			forwardDocumentMessagesSent: [156, 'integer'],
-			forwardGifMessagesReceived: [157, 'integer'],
-			forwardGifMessagesSent: [158, 'integer'],
-			forwardMessagesReceived: [89, 'integer'],
-			forwardMessagesSent: [90, 'integer'],
-			forwardPhotoMessagesReceived: [128, 'integer'],
-			forwardPhotoMessagesSent: [129, 'integer'],
-			forwardPtvMessagesReceived: [159, 'integer'],
-			forwardPtvMessagesSent: [160, 'integer'],
-			forwardStatusReplyMessagesReceived: [161, 'integer'],
-			forwardStatusReplyMessagesSent: [162, 'integer'],
-			forwardStickerMessagesReceived: [163, 'integer'],
-			forwardStickerMessagesSent: [164, 'integer'],
-			forwardTextMessagesReceived: [130, 'integer'],
-			forwardTextMessagesSent: [131, 'integer'],
-			forwardUrlMessagesReceived: [132, 'integer'],
-			forwardUrlMessagesSent: [133, 'integer'],
-			forwardVideoMessagesReceived: [165, 'integer'],
-			forwardVideoMessagesSent: [166, 'integer'],
+			eventCreationMessagesReceived: [142, "integer"],
+			eventCreationMessagesSent: [143, "integer"],
+			eventResponseMessagesReceived: [144, "integer"],
+			eventResponseMessagesSent: [145, "integer"],
+			fbCtaInquiriesSent: [45, "integer"],
+			firstResponseTime: [25, "integer"],
+			forwardAudioMessagesReceived: [153, "integer"],
+			forwardAudioMessagesSent: [154, "integer"],
+			forwardDocumentMessagesReceived: [155, "integer"],
+			forwardDocumentMessagesSent: [156, "integer"],
+			forwardGifMessagesReceived: [157, "integer"],
+			forwardGifMessagesSent: [158, "integer"],
+			forwardMessagesReceived: [89, "integer"],
+			forwardMessagesSent: [90, "integer"],
+			forwardPhotoMessagesReceived: [128, "integer"],
+			forwardPhotoMessagesSent: [129, "integer"],
+			forwardPtvMessagesReceived: [159, "integer"],
+			forwardPtvMessagesSent: [160, "integer"],
+			forwardStatusReplyMessagesReceived: [161, "integer"],
+			forwardStatusReplyMessagesSent: [162, "integer"],
+			forwardStickerMessagesReceived: [163, "integer"],
+			forwardStickerMessagesSent: [164, "integer"],
+			forwardTextMessagesReceived: [130, "integer"],
+			forwardTextMessagesSent: [131, "integer"],
+			forwardUrlMessagesReceived: [132, "integer"],
+			forwardUrlMessagesSent: [133, "integer"],
+			forwardVideoMessagesReceived: [165, "integer"],
+			forwardVideoMessagesSent: [166, "integer"],
 			gaStatus: [
 				22,
 				{
@@ -1141,10 +1141,10 @@ export const WEB_EVENTS: Event[] = [
 					RESURRECTED: 2,
 				},
 			],
-			gifMessagesReceived: [167, 'integer'],
-			gifMessagesSent: [168, 'integer'],
-			greetingMsgsSent: [57, 'integer'],
-			groupContainsBiz: [75, 'boolean'],
+			gifMessagesReceived: [167, "integer"],
+			gifMessagesSent: [168, "integer"],
+			greetingMsgsSent: [57, "integer"],
+			groupContainsBiz: [75, "boolean"],
 			groupInfoSetting: [
 				87,
 				{
@@ -1152,43 +1152,43 @@ export const WEB_EVENTS: Event[] = [
 					ALL_PARTICIPANTS: 2,
 				},
 			],
-			groupMembershipReplies: [51, 'integer'],
-			groupPrivateReplies: [52, 'integer'],
-			groupSize: [19, 'integer'],
-			hasUsername: [180, 'boolean'],
-			imagineCommandClick: [175, 'integer'],
-			imagineMentionClick: [146, 'integer'],
-			imagineMentionShow: [176, 'integer'],
-			isAContact: [6, 'boolean'],
-			isAGroup: [5, 'boolean'],
-			isArchived: [10, 'boolean'],
-			isAutoMuted: [108, 'boolean'],
-			isBlocked: [32, 'boolean'],
-			isCartAddClicked: [36, 'boolean'],
-			isCommerceViewed: [35, 'boolean'],
-			isCtaOnPdpClicked: [37, 'boolean'],
-			isInviteCreatedThread: [106, 'boolean'],
-			isLabelled: [54, 'boolean'],
-			isMessageYourself: [91, 'boolean'],
-			isOppositePartyInitiated: [62, 'boolean'],
-			isPinned: [9, 'boolean'],
-			isPnhEnabledChat: [92, 'boolean'],
-			isUser1pBizBotChat: [141, 'boolean'],
-			isUser3pBotChat: [140, 'boolean'],
-			isUserAgent: [111, 'boolean'],
-			isUserCreatedAgent: [123, 'boolean'],
-			isWaPayRegistered: [81, 'boolean'],
-			labelledMsgs: [55, 'integer'],
-			locationsSent: [96, 'integer'],
-			messagesRead: [127, 'integer'],
-			messagesReceived: [4, 'integer'],
-			messagesSent: [3, 'integer'],
-			messagesStarred: [12, 'integer'],
-			messagesUnread: [11, 'integer'],
-			metaAiMentionClick: [147, 'integer'],
-			metaAiMentionShow: [148, 'integer'],
-			newThread: [68, 'boolean'],
-			odReceived: [82, 'integer'],
+			groupMembershipReplies: [51, "integer"],
+			groupPrivateReplies: [52, "integer"],
+			groupSize: [19, "integer"],
+			hasUsername: [180, "boolean"],
+			imagineCommandClick: [175, "integer"],
+			imagineMentionClick: [146, "integer"],
+			imagineMentionShow: [176, "integer"],
+			isAContact: [6, "boolean"],
+			isAGroup: [5, "boolean"],
+			isArchived: [10, "boolean"],
+			isAutoMuted: [108, "boolean"],
+			isBlocked: [32, "boolean"],
+			isCartAddClicked: [36, "boolean"],
+			isCommerceViewed: [35, "boolean"],
+			isCtaOnPdpClicked: [37, "boolean"],
+			isInviteCreatedThread: [106, "boolean"],
+			isLabelled: [54, "boolean"],
+			isMessageYourself: [91, "boolean"],
+			isOppositePartyInitiated: [62, "boolean"],
+			isPinned: [9, "boolean"],
+			isPnhEnabledChat: [92, "boolean"],
+			isUser1pBizBotChat: [141, "boolean"],
+			isUser3pBotChat: [140, "boolean"],
+			isUserAgent: [111, "boolean"],
+			isUserCreatedAgent: [123, "boolean"],
+			isWaPayRegistered: [81, "boolean"],
+			labelledMsgs: [55, "integer"],
+			locationsSent: [96, "integer"],
+			messagesRead: [127, "integer"],
+			messagesReceived: [4, "integer"],
+			messagesSent: [3, "integer"],
+			messagesStarred: [12, "integer"],
+			messagesUnread: [11, "integer"],
+			metaAiMentionClick: [147, "integer"],
+			metaAiMentionShow: [148, "integer"],
+			newThread: [68, "boolean"],
+			odReceived: [82, "integer"],
 			oppositeVisibleIdentification: [
 				181,
 				{
@@ -1201,58 +1201,58 @@ export const WEB_EVENTS: Event[] = [
 					PUSHNAME: 7,
 				},
 			],
-			ordersSent: [38, 'integer'],
-			p2mOdNnpTransactionsSent: [83, 'integer'],
-			p2mOdNpTransactionsSent: [84, 'integer'],
-			paymentsSent: [39, 'integer'],
-			pdpInquiriesSent: [42, 'integer'],
-			pdpViews: [61, 'integer'],
-			photoMessagesReceived: [134, 'integer'],
-			photoMessagesSent: [135, 'integer'],
-			pollCreationMessagesReceived: [115, 'integer'],
-			pollCreationMessagesSent: [116, 'integer'],
-			pollUpdateMessagesReceived: [117, 'integer'],
-			pollUpdateMessagesSent: [118, 'integer'],
-			profileReplies: [64, 'integer'],
-			profileViews: [63, 'integer'],
-			pttMessagesReceived: [119, 'integer'],
-			pttMessagesSent: [120, 'integer'],
-			ptvMessagesReceived: [121, 'integer'],
-			ptvMessagesSent: [122, 'integer'],
-			quickRepliesSent: [58, 'integer'],
-			reactionsReceived: [97, 'integer'],
-			reactionsSent: [98, 'integer'],
-			receiverDefaultDisappearingDuration: [21, 'integer'],
-			repliesSent: [80, 'integer'],
-			requestedPhoneNumber: [93, 'boolean'],
-			seenMaskedPhoneNumber: [94, 'boolean'],
-			senderDefaultDisappearingDuration: [20, 'integer'],
-			sharedPhoneNumber: [99, 'boolean'],
-			smbMarketingMessagesReactionsSent: [101, 'integer'],
-			smbMarketingMessagesRepliesSent: [102, 'integer'],
-			smbMarketingMessagesSpamReports: [103, 'integer'],
-			smbMarketingMsgsReceived: [104, 'integer'],
-			smbMarketingMsgsSent: [105, 'integer'],
-			spamReports: [31, 'integer'],
-			startTime: [7, 'integer'],
-			statusReplies: [50, 'integer'],
-			statusReplyMessagesReceived: [169, 'integer'],
-			statusViews: [49, 'integer'],
-			stickerMessagesReceived: [170, 'integer'],
-			stickerMessagesSent: [171, 'integer'],
-			storefrontInquiriesSent: [43, 'integer'],
-			suggestionPromptsClick: [177, 'integer'],
-			suggestionPromptsShow: [178, 'integer'],
-			textMessagesReceived: [136, 'integer'],
-			textMessagesSent: [137, 'integer'],
-			textMessagesToUserCreatedAgentCnt: [124, 'integer'],
-			threadDs: [66, 'string'],
-			threadId: [67, 'string'],
-			totalCallDuration: [28, 'integer'],
-			totalMessageEditsFromAgentCnt: [112, 'integer'],
-			totalMessageFromAgentCnt: [113, 'integer'],
-			totalMessageToAgentCnt: [114, 'integer'],
-			totalMessagesToUserCreatedAgentCnt: [125, 'integer'],
+			ordersSent: [38, "integer"],
+			p2mOdNnpTransactionsSent: [83, "integer"],
+			p2mOdNpTransactionsSent: [84, "integer"],
+			paymentsSent: [39, "integer"],
+			pdpInquiriesSent: [42, "integer"],
+			pdpViews: [61, "integer"],
+			photoMessagesReceived: [134, "integer"],
+			photoMessagesSent: [135, "integer"],
+			pollCreationMessagesReceived: [115, "integer"],
+			pollCreationMessagesSent: [116, "integer"],
+			pollUpdateMessagesReceived: [117, "integer"],
+			pollUpdateMessagesSent: [118, "integer"],
+			profileReplies: [64, "integer"],
+			profileViews: [63, "integer"],
+			pttMessagesReceived: [119, "integer"],
+			pttMessagesSent: [120, "integer"],
+			ptvMessagesReceived: [121, "integer"],
+			ptvMessagesSent: [122, "integer"],
+			quickRepliesSent: [58, "integer"],
+			reactionsReceived: [97, "integer"],
+			reactionsSent: [98, "integer"],
+			receiverDefaultDisappearingDuration: [21, "integer"],
+			repliesSent: [80, "integer"],
+			requestedPhoneNumber: [93, "boolean"],
+			seenMaskedPhoneNumber: [94, "boolean"],
+			senderDefaultDisappearingDuration: [20, "integer"],
+			sharedPhoneNumber: [99, "boolean"],
+			smbMarketingMessagesReactionsSent: [101, "integer"],
+			smbMarketingMessagesRepliesSent: [102, "integer"],
+			smbMarketingMessagesSpamReports: [103, "integer"],
+			smbMarketingMsgsReceived: [104, "integer"],
+			smbMarketingMsgsSent: [105, "integer"],
+			spamReports: [31, "integer"],
+			startTime: [7, "integer"],
+			statusReplies: [50, "integer"],
+			statusReplyMessagesReceived: [169, "integer"],
+			statusViews: [49, "integer"],
+			stickerMessagesReceived: [170, "integer"],
+			stickerMessagesSent: [171, "integer"],
+			storefrontInquiriesSent: [43, "integer"],
+			suggestionPromptsClick: [177, "integer"],
+			suggestionPromptsShow: [178, "integer"],
+			textMessagesReceived: [136, "integer"],
+			textMessagesSent: [137, "integer"],
+			textMessagesToUserCreatedAgentCnt: [124, "integer"],
+			threadDs: [66, "string"],
+			threadId: [67, "string"],
+			totalCallDuration: [28, "integer"],
+			totalMessageEditsFromAgentCnt: [112, "integer"],
+			totalMessageFromAgentCnt: [113, "integer"],
+			totalMessageToAgentCnt: [114, "integer"],
+			totalMessagesToUserCreatedAgentCnt: [125, "integer"],
 			typeOfGroup: [
 				85,
 				{
@@ -1261,23 +1261,23 @@ export const WEB_EVENTS: Event[] = [
 					DEFAULT_SUBGROUP: 3,
 				},
 			],
-			urlMessagesReceived: [138, 'integer'],
-			urlMessagesSent: [139, 'integer'],
-			viaContactlessChats: [107, 'boolean'],
-			videoCallsOffered: [76, 'integer'],
-			videoMessagesReceived: [172, 'integer'],
-			videoMessagesSent: [173, 'integer'],
-			viewOnceMessagesOpened: [18, 'integer'],
-			viewOnceMessagesReceived: [17, 'integer'],
-			viewOnceMessagesSent: [16, 'integer'],
-			voiceCallsOffered: [77, 'integer'],
+			urlMessagesReceived: [138, "integer"],
+			urlMessagesSent: [139, "integer"],
+			viaContactlessChats: [107, "boolean"],
+			videoCallsOffered: [76, "integer"],
+			videoMessagesReceived: [172, "integer"],
+			videoMessagesSent: [173, "integer"],
+			viewOnceMessagesOpened: [18, "integer"],
+			viewOnceMessagesReceived: [17, "integer"],
+			viewOnceMessagesSent: [16, "integer"],
+			voiceCallsOffered: [77, "integer"],
 		},
 		weight: 1,
-		wamChannel: 'regular',
+		wamChannel: "regular",
 		privateStatsIdInt: -1,
 	},
 	{
-		name: 'AddressingModeMismatch',
+		name: "AddressingModeMismatch",
 		id: 4750,
 		props: {
 			iqResponse: [
@@ -1306,7 +1306,7 @@ export const WEB_EVENTS: Event[] = [
 					IQ_RESPONSES: 5,
 				},
 			],
-			notificationTag: [3, 'string'],
+			notificationTag: [3, "string"],
 			serverAddressingMode: [
 				5,
 				{
@@ -1316,11 +1316,11 @@ export const WEB_EVENTS: Event[] = [
 			],
 		},
 		weight: 1,
-		wamChannel: 'regular',
+		wamChannel: "regular",
 		privateStatsIdInt: -1,
 	},
 	{
-		name: 'MdBadDeviceSentMessage',
+		name: "MdBadDeviceSentMessage",
 		id: 2176,
 		props: {
 			dsmError: [
@@ -1340,11 +1340,11 @@ export const WEB_EVENTS: Event[] = [
 			],
 		},
 		weight: 1,
-		wamChannel: 'regular',
+		wamChannel: "regular",
 		privateStatsIdInt: -1,
 	},
 	{
-		name: 'GatedMessageReceived',
+		name: "GatedMessageReceived",
 		id: 3152,
 		props: {
 			chatGatedReason: [
@@ -1356,11 +1356,11 @@ export const WEB_EVENTS: Event[] = [
 			],
 		},
 		weight: 1,
-		wamChannel: 'regular',
+		wamChannel: "regular",
 		privateStatsIdInt: -1,
 	},
 	{
-		name: 'MessageReceive',
+		name: "MessageReceive",
 		id: 450,
 		props: {
 			agentEngagementType: [
@@ -1388,7 +1388,7 @@ export const WEB_EVENTS: Event[] = [
 					OTHERS: 3,
 				},
 			],
-			deviceCount: [16, 'integer'],
+			deviceCount: [16, "integer"],
 			deviceSizeBucket: [
 				10,
 				{
@@ -1429,7 +1429,7 @@ export const WEB_EVENTS: Event[] = [
 					ADMIN_REVOKE: 3,
 				},
 			],
-			ephemeralityDuration: [13, 'integer'],
+			ephemeralityDuration: [13, "integer"],
 			ephemeralityInitiator: [
 				26,
 				{
@@ -1448,12 +1448,12 @@ export const WEB_EVENTS: Event[] = [
 					BIZ_SUPPORTS_FB_HOSTING: 4,
 				},
 			],
-			hasUsername: [39, 'boolean'],
-			isAComment: [36, 'boolean'],
-			isAReply: [19, 'boolean'],
-			isForwardedForward: [18, 'boolean'],
-			isLid: [24, 'boolean'],
-			isViewOnce: [9, 'boolean'],
+			hasUsername: [39, "boolean"],
+			isAComment: [36, "boolean"],
+			isAReply: [19, "boolean"],
+			isForwardedForward: [18, "boolean"],
+			isLid: [24, "boolean"],
+			isViewOnce: [9, "boolean"],
 			localAddressingMode: [
 				33,
 				{
@@ -1468,9 +1468,9 @@ export const WEB_EVENTS: Event[] = [
 					LID: 2,
 				},
 			],
-			messageIsInternational: [4, 'boolean'],
-			messageIsInvisible: [23, 'boolean'],
-			messageIsOffline: [5, 'boolean'],
+			messageIsInternational: [4, "boolean"],
+			messageIsInvisible: [23, "boolean"],
+			messageIsOffline: [5, "boolean"],
 			messageMediaType: [
 				2,
 				{
@@ -1538,9 +1538,9 @@ export const WEB_EVENTS: Event[] = [
 					INTERACTIVE_PRODUCT: 62,
 				},
 			],
-			messageQueueTime: [15, 'timer'],
-			messageReceiveT0: [6, 'timer'],
-			messageReceiveT1: [7, 'timer'],
+			messageQueueTime: [15, "timer"],
+			messageReceiveT0: [6, "timer"],
+			messageReceiveT1: [7, "timer"],
 			messageType: [
 				1,
 				{
@@ -1552,9 +1552,9 @@ export const WEB_EVENTS: Event[] = [
 					INTEROP: 6,
 				},
 			],
-			mutedGroupMessage: [8, 'boolean'],
-			numOfWebUrlsInTextMessage: [3, 'integer'],
-			offlineCount: [30, 'integer'],
+			mutedGroupMessage: [8, "boolean"],
+			numOfWebUrlsInTextMessage: [3, "integer"],
+			offlineCount: [30, "integer"],
 			oppositeVisibleIdentification: [
 				40,
 				{
@@ -1567,9 +1567,9 @@ export const WEB_EVENTS: Event[] = [
 					PUSHNAME: 7,
 				},
 			],
-			paddingBytesSize: [22, 'integer'],
-			participantCount: [17, 'integer'],
-			receiverDefaultDisappearingDuration: [12, 'integer'],
+			paddingBytesSize: [22, "integer"],
+			participantCount: [17, "integer"],
+			receiverDefaultDisappearingDuration: [12, "integer"],
 			revokeType: [
 				20,
 				{
@@ -1577,7 +1577,7 @@ export const WEB_EVENTS: Event[] = [
 					ADMIN: 1,
 				},
 			],
-			senderDefaultDisappearingDuration: [11, 'integer'],
+			senderDefaultDisappearingDuration: [11, "integer"],
 			serverAddressingMode: [
 				35,
 				{
@@ -1585,8 +1585,8 @@ export const WEB_EVENTS: Event[] = [
 					LID: 2,
 				},
 			],
-			stickerIsAi: [29, 'boolean'],
-			stickerIsFromStickerMaker: [31, 'boolean'],
+			stickerIsAi: [29, "boolean"],
+			stickerIsFromStickerMaker: [31, "boolean"],
 			stickerMakerSourceType: [
 				32,
 				{
@@ -1607,14 +1607,14 @@ export const WEB_EVENTS: Event[] = [
 			],
 		},
 		weight: 1,
-		wamChannel: 'regular',
+		wamChannel: "regular",
 		privateStatsIdInt: -1,
 	},
 	{
-		name: 'PlaceholderActivity',
+		name: "PlaceholderActivity",
 		id: 1980,
 		props: {
-			deviceCount: [9, 'integer'],
+			deviceCount: [9, "integer"],
 			deviceSizeBucket: [
 				8,
 				{
@@ -1647,11 +1647,11 @@ export const WEB_EVENTS: Event[] = [
 					OTHER_HOSTED_COMPANION: 6,
 				},
 			],
-			isHostedChat: [19, 'boolean'],
-			isLid: [12, 'boolean'],
-			messageBeforeReg: [15, 'boolean'],
-			messageIsRevoke: [7, 'boolean'],
-			messageKeyHash: [14, 'string'],
+			isHostedChat: [19, "boolean"],
+			isLid: [12, "boolean"],
+			messageBeforeReg: [15, "boolean"],
+			messageIsRevoke: [7, "boolean"],
+			messageKeyHash: [14, "string"],
 			messageMediaType: [
 				6,
 				{
@@ -1730,7 +1730,7 @@ export const WEB_EVENTS: Event[] = [
 					INTEROP: 6,
 				},
 			],
-			participantCount: [10, 'integer'],
+			participantCount: [10, "integer"],
 			placeholderActionInd: [
 				2,
 				{
@@ -1780,7 +1780,7 @@ export const WEB_EVENTS: Event[] = [
 					RESEND: 3,
 				},
 			],
-			placeholderTimePeriod: [4, 'integer'],
+			placeholderTimePeriod: [4, "integer"],
 			placeholderTypeInd: [
 				1,
 				{
@@ -1800,11 +1800,11 @@ export const WEB_EVENTS: Event[] = [
 			],
 		},
 		weight: 1,
-		wamChannel: 'regular',
+		wamChannel: "regular",
 		privateStatsIdInt: -1,
 	},
 	{
-		name: 'SenderKeyExpired',
+		name: "SenderKeyExpired",
 		id: 3130,
 		props: {
 			chatType: [
@@ -1854,32 +1854,32 @@ export const WEB_EVENTS: Event[] = [
 			],
 		},
 		weight: 1,
-		wamChannel: 'regular',
+		wamChannel: "regular",
 		privateStatsIdInt: -1,
 	},
 	{
-		name: 'MexEventV2',
+		name: "MexEventV2",
 		id: 4336,
 		props: {
-			mexEventV2DurationMs: [1, 'timer'],
-			mexEventV2EndTime: [2, 'integer'],
-			mexEventV2ErrorCodes: [3, 'string'],
-			mexEventV2Errors: [4, 'string'],
-			mexEventV2HasData: [5, 'boolean'],
-			mexEventV2IsMex: [6, 'boolean'],
-			mexEventV2OperationName: [7, 'string'],
-			mexEventV2QueryId: [8, 'string'],
-			mexEventV2StartTime: [9, 'integer'],
+			mexEventV2DurationMs: [1, "timer"],
+			mexEventV2EndTime: [2, "integer"],
+			mexEventV2ErrorCodes: [3, "string"],
+			mexEventV2Errors: [4, "string"],
+			mexEventV2HasData: [5, "boolean"],
+			mexEventV2IsMex: [6, "boolean"],
+			mexEventV2OperationName: [7, "string"],
+			mexEventV2QueryId: [8, "string"],
+			mexEventV2StartTime: [9, "integer"],
 		},
 		weight: 1,
-		wamChannel: 'regular',
+		wamChannel: "regular",
 		privateStatsIdInt: -1,
 	},
 	{
-		name: 'GraphqlCatalogRequest',
+		name: "GraphqlCatalogRequest",
 		id: 3206,
 		props: {
-			businessJid: [4, 'string'],
+			businessJid: [4, "string"],
 			businessType: [
 				5,
 				{
@@ -1901,7 +1901,7 @@ export const WEB_EVENTS: Event[] = [
 					GET_PROMOTIONS: 8,
 				},
 			],
-			graphqlErrorCode: [3, 'integer'],
+			graphqlErrorCode: [3, "integer"],
 			graphqlRequestResult: [
 				2,
 				{
@@ -1911,35 +1911,35 @@ export const WEB_EVENTS: Event[] = [
 			],
 		},
 		weight: 1,
-		wamChannel: 'private',
+		wamChannel: "private",
 		privateStatsIdInt: 0,
 	},
 	{
-		name: 'MexEvent',
+		name: "MexEvent",
 		id: 3782,
 		props: {
-			isMex: [1, 'boolean'],
-			mexEventData: [2, 'string'],
-			mexEventDurationT: [12, 'timer'],
-			mexEventEndTime: [3, 'integer'],
-			mexEventEnvelopeResponseStatus: [13, 'integer'],
-			mexEventOperation: [7, 'string'],
-			mexEventPayloadResponseStatus: [14, 'integer'],
-			mexEventRequestSize: [8, 'integer'],
-			mexEventResponseSize: [9, 'integer'],
-			mexEventRetries: [10, 'integer'],
-			mexEventStartTime: [11, 'integer'],
+			isMex: [1, "boolean"],
+			mexEventData: [2, "string"],
+			mexEventDurationT: [12, "timer"],
+			mexEventEndTime: [3, "integer"],
+			mexEventEnvelopeResponseStatus: [13, "integer"],
+			mexEventOperation: [7, "string"],
+			mexEventPayloadResponseStatus: [14, "integer"],
+			mexEventRequestSize: [8, "integer"],
+			mexEventResponseSize: [9, "integer"],
+			mexEventRetries: [10, "integer"],
+			mexEventStartTime: [11, "integer"],
 		},
 		weight: 1,
-		wamChannel: 'regular',
+		wamChannel: "regular",
 		privateStatsIdInt: -1,
 	},
 	{
-		name: 'FmxAction',
+		name: "FmxAction",
 		id: 4444,
 		props: {
-			commonGroupNum: [1, 'integer'],
-			countryShown: [2, 'boolean'],
+			commonGroupNum: [1, "integer"],
+			countryShown: [2, "boolean"],
 			fmxEntryPoint: [
 				3,
 				{
@@ -1974,26 +1974,26 @@ export const WEB_EVENTS: Event[] = [
 					MORE: 6,
 				},
 			],
-			isSenderSmb: [7, 'boolean'],
-			notAContactShown: [5, 'boolean'],
+			isSenderSmb: [7, "boolean"],
+			notAContactShown: [5, "boolean"],
 		},
 		weight: 1,
-		wamChannel: 'regular',
+		wamChannel: "regular",
 		privateStatsIdInt: -1,
 	},
 	{
-		name: 'UnknownStanza',
+		name: "UnknownStanza",
 		id: 3448,
 		props: {
-			unknownStanzaTag: [1, 'string'],
-			unknownStanzaType: [2, 'string'],
+			unknownStanzaTag: [1, "string"],
+			unknownStanzaType: [2, "string"],
 		},
 		weight: 1,
-		wamChannel: 'regular',
+		wamChannel: "regular",
 		privateStatsIdInt: -1,
 	},
 	{
-		name: 'IncomingMessageDrop',
+		name: "IncomingMessageDrop",
 		id: 3724,
 		props: {
 			agentEngagementType: [
@@ -2244,9 +2244,9 @@ export const WEB_EVENTS: Event[] = [
 					INTERACTIVE_PRODUCT: 62,
 				},
 			],
-			offline: [6, 'boolean'],
-			offlineCount: [11, 'integer'],
-			retryCount: [7, 'integer'],
+			offline: [6, "boolean"],
+			offlineCount: [11, "integer"],
+			retryCount: [7, "integer"],
 			revokeType: [
 				8,
 				{
@@ -2264,11 +2264,11 @@ export const WEB_EVENTS: Event[] = [
 			],
 		},
 		weight: 1,
-		wamChannel: 'regular',
+		wamChannel: "regular",
 		privateStatsIdInt: -1,
 	},
 	{
-		name: 'WebcOfflineNotificationProcess',
+		name: "WebcOfflineNotificationProcess",
 		id: 4222,
 		props: {
 			currentOfflineProcessStage: [
@@ -2282,12 +2282,12 @@ export const WEB_EVENTS: Event[] = [
 					PROCESS_INTERRUPTED: 6,
 				},
 			],
-			offlineProcessDecryptErrorCount: [5, 'integer'],
-			offlineProcessMailboxAge: [6, 'integer'],
-			offlineProcessMessageCount: [7, 'integer'],
-			offlineProcessNotificationCount: [8, 'integer'],
-			offlineProcessSessionId: [9, 'string'],
-			offlineProcessStageTimestampMs: [10, 'integer'],
+			offlineProcessDecryptErrorCount: [5, "integer"],
+			offlineProcessMailboxAge: [6, "integer"],
+			offlineProcessMessageCount: [7, "integer"],
+			offlineProcessNotificationCount: [8, "integer"],
+			offlineProcessSessionId: [9, "string"],
+			offlineProcessStageTimestampMs: [10, "integer"],
 			runReason: [
 				12,
 				{
@@ -2295,14 +2295,14 @@ export const WEB_EVENTS: Event[] = [
 					PERIODIC_BACKGROUND_SYNC: 2,
 				},
 			],
-			swVersion: [11, 'string'],
+			swVersion: [11, "string"],
 		},
 		weight: 1,
-		wamChannel: 'regular',
+		wamChannel: "regular",
 		privateStatsIdInt: -1,
 	},
 	{
-		name: 'MdCriticalEvent',
+		name: "MdCriticalEvent",
 		id: 2746,
 		props: {
 			collection: [
@@ -2338,15 +2338,15 @@ export const WEB_EVENTS: Event[] = [
 			],
 		},
 		weight: 1,
-		wamChannel: 'regular',
+		wamChannel: "regular",
 		privateStatsIdInt: -1,
 	},
 	{
-		name: 'MdLinkDeviceCompanion',
+		name: "MdLinkDeviceCompanion",
 		id: 2576,
 		props: {
-			mdDurationS: [8, 'integer'],
-			mdLinkDeviceCompanionErrorCode: [6, 'integer'],
+			mdDurationS: [8, "integer"],
+			mdLinkDeviceCompanionErrorCode: [6, "integer"],
 			mdLinkDeviceCompanionStage: [
 				4,
 				{
@@ -2359,30 +2359,30 @@ export const WEB_EVENTS: Event[] = [
 					SENT_PREKEYS: 7,
 				},
 			],
-			mdRegAttemptId: [9, 'string'],
-			mdSessionId: [1, 'string'],
-			mdTimestampS: [7, 'integer'],
-			mdWasUpgraded: [5, 'boolean'],
+			mdRegAttemptId: [9, "string"],
+			mdSessionId: [1, "string"],
+			mdTimestampS: [7, "integer"],
+			mdWasUpgraded: [5, "boolean"],
 		},
 		weight: 1,
-		wamChannel: 'regular',
+		wamChannel: "regular",
 		privateStatsIdInt: -1,
 	},
 	{
-		name: 'AdvStoredTimestampExpired',
+		name: "AdvStoredTimestampExpired",
 		id: 3036,
 		props: {
-			advExpireTimeInHours: [1, 'integer'],
+			advExpireTimeInHours: [1, "integer"],
 		},
 		weight: 1,
-		wamChannel: 'regular',
+		wamChannel: "regular",
 		privateStatsIdInt: -1,
 	},
 	{
-		name: 'WebcQplHealth',
+		name: "WebcQplHealth",
 		id: 3134,
 		props: {
-			webcQplHealthEventData: [1, 'string'],
+			webcQplHealthEventData: [1, "string"],
 			webcQplHealthEventType: [
 				2,
 				{
@@ -2402,45 +2402,45 @@ export const WEB_EVENTS: Event[] = [
 			],
 		},
 		weight: 1,
-		wamChannel: 'regular',
+		wamChannel: "regular",
 		privateStatsIdInt: -1,
 	},
 	{
-		name: 'CommunityHomeAction',
+		name: "CommunityHomeAction",
 		id: 3494,
 		props: {
-			communityHomeGroupDiscoveries: [1, 'integer'],
-			communityHomeGroupJoins: [2, 'integer'],
-			communityHomeGroupNavigations: [3, 'integer'],
-			communityHomeId: [4, 'string'],
-			communityHomeViews: [5, 'integer'],
+			communityHomeGroupDiscoveries: [1, "integer"],
+			communityHomeGroupJoins: [2, "integer"],
+			communityHomeGroupNavigations: [3, "integer"],
+			communityHomeId: [4, "string"],
+			communityHomeViews: [5, "integer"],
 		},
 		weight: 1,
-		wamChannel: 'regular',
+		wamChannel: "regular",
 		privateStatsIdInt: -1,
 	},
 	{
-		name: 'CommunityTabAction',
+		name: "CommunityTabAction",
 		id: 3496,
 		props: {
-			communityNoActionTabViews: [4, 'integer'],
-			communityTabGroupNavigations: [1, 'integer'],
-			communityTabToHomeViews: [2, 'integer'],
-			communityTabViews: [3, 'integer'],
-			communityTabViewsViaContextMenu: [5, 'integer'],
+			communityNoActionTabViews: [4, "integer"],
+			communityTabGroupNavigations: [1, "integer"],
+			communityTabToHomeViews: [2, "integer"],
+			communityTabViews: [3, "integer"],
+			communityTabViewsViaContextMenu: [5, "integer"],
 		},
 		weight: 1,
-		wamChannel: 'regular',
+		wamChannel: "regular",
 		privateStatsIdInt: -1,
 	},
 	{
-		name: 'Daily',
+		name: "Daily",
 		id: 1158,
 		props: {
-			accessibilityVoiceover: [108, 'boolean'],
-			addressbookSize: [11, 'integer'],
-			addressbookWhatsappSize: [12, 'integer'],
-			androidAdvertisingId: [135, 'string'],
+			accessibilityVoiceover: [108, "boolean"],
+			addressbookSize: [11, "integer"],
+			addressbookWhatsappSize: [12, "integer"],
+			androidAdvertisingId: [135, "string"],
 			androidKeystoreState: [
 				139,
 				{
@@ -2452,21 +2452,21 @@ export const WEB_EVENTS: Event[] = [
 					ENC_KEY_PLAIN_RECOVERED: 6,
 				},
 			],
-			androidXmppWorkersRuntime: [167, 'integer'],
-			appCodeHash: [103, 'string'],
-			appStandbyBucket: [121, 'integer'],
-			autoDlAudioCellular: [90, 'boolean'],
-			autoDlAudioRoaming: [91, 'boolean'],
-			autoDlAudioWifi: [89, 'boolean'],
-			autoDlDocCellular: [96, 'boolean'],
-			autoDlDocRoaming: [97, 'boolean'],
-			autoDlDocWifi: [95, 'boolean'],
-			autoDlImageCellular: [87, 'boolean'],
-			autoDlImageRoaming: [88, 'boolean'],
-			autoDlImageWifi: [86, 'boolean'],
-			autoDlVideoCellular: [93, 'boolean'],
-			autoDlVideoRoaming: [94, 'boolean'],
-			autoDlVideoWifi: [92, 'boolean'],
+			androidXmppWorkersRuntime: [167, "integer"],
+			appCodeHash: [103, "string"],
+			appStandbyBucket: [121, "integer"],
+			autoDlAudioCellular: [90, "boolean"],
+			autoDlAudioRoaming: [91, "boolean"],
+			autoDlAudioWifi: [89, "boolean"],
+			autoDlDocCellular: [96, "boolean"],
+			autoDlDocRoaming: [97, "boolean"],
+			autoDlDocWifi: [95, "boolean"],
+			autoDlImageCellular: [87, "boolean"],
+			autoDlImageRoaming: [88, "boolean"],
+			autoDlImageWifi: [86, "boolean"],
+			autoDlVideoCellular: [93, "boolean"],
+			autoDlVideoRoaming: [94, "boolean"],
+			autoDlVideoWifi: [92, "boolean"],
 			backupNetworkSetting: [
 				10,
 				{
@@ -2474,7 +2474,7 @@ export const WEB_EVENTS: Event[] = [
 					WIFI_OR_CELLULAR: 1,
 				},
 			],
-			backupRestoreEncryptionVersion: [138, 'integer'],
+			backupRestoreEncryptionVersion: [138, "integer"],
 			backupSchedule: [
 				9,
 				{
@@ -2485,13 +2485,13 @@ export const WEB_EVENTS: Event[] = [
 					MANUAL: 4,
 				},
 			],
-			channelsMediaFolderSize: [186, 'integer'],
-			chatDatabaseSize: [19, 'integer'],
-			chatLockFolderCount: [168, 'integer'],
-			countEphemeralThreads: [181, 'integer'],
-			countEphemeralThreadsEnabledByMe: [182, 'integer'],
-			defaultDisappearingDuration: [140, 'integer'],
-			deviceLanguage: [153, 'string'],
+			channelsMediaFolderSize: [186, "integer"],
+			chatDatabaseSize: [19, "integer"],
+			chatLockFolderCount: [168, "integer"],
+			countEphemeralThreads: [181, "integer"],
+			countEphemeralThreadsEnabledByMe: [182, "integer"],
+			defaultDisappearingDuration: [140, "integer"],
+			deviceLanguage: [153, "string"],
 			emailState: [
 				174,
 				{
@@ -2500,39 +2500,39 @@ export const WEB_EVENTS: Event[] = [
 					VERIFIED: 3,
 				},
 			],
-			entSecurityNotificationsEnabled: [134, 'boolean'],
-			experimentTmoPreloadGroupDaily: [166, 'integer'],
-			favoritedAnimatedStickerCount: [113, 'integer'],
-			favoritedFirstPartyStickerCount: [112, 'integer'],
-			favoritedTotalStickerCount: [111, 'integer'],
-			hasTextstatusEmojiModified24h: [175, 'boolean'],
-			hasTextstatusModified24h: [176, 'boolean'],
-			hasTextstatusTextModified24h: [177, 'boolean'],
-			hasUsername: [187, 'boolean'],
-			installedAnimatedStickerPackCount: [116, 'integer'],
-			installedAnimatedThirdPartyStickerPackCount: [137, 'integer'],
-			installedFirstPartyStickerPackCount: [115, 'integer'],
-			installedTotalStickerPackCount: [114, 'integer'],
-			ipStr: [122, 'string'],
-			isDefaultDisappearingMessagingUser: [183, 'boolean'],
-			isEphemeralMessagingUser: [184, 'boolean'],
-			keyboardLanguage: [154, 'string'],
-			languageCode: [5, 'string'],
-			lastCloudBackupSize: [185, 'integer'],
-			locationCode: [6, 'string'],
-			lockFolderHidden: [171, 'boolean'],
-			lowestAppStandbyBucket: [160, 'integer'],
-			mdPairTime: [124, 'integer'],
-			mediaFolderFileCount: [21, 'integer'],
-			mediaFolderSize: [20, 'integer'],
-			modifiedInternalProps: [155, 'boolean'],
-			networkIsRoaming: [7, 'boolean'],
-			networkOperatorName: [159, 'string'],
-			numAccounts: [163, 'integer'],
-			numContactsWithTextstatus24h: [178, 'integer'],
-			numContactsWithTextstatusEmoji24h: [179, 'integer'],
-			numContactsWithTextstatusText24h: [180, 'integer'],
-			osBuildNumber: [4, 'string'],
+			entSecurityNotificationsEnabled: [134, "boolean"],
+			experimentTmoPreloadGroupDaily: [166, "integer"],
+			favoritedAnimatedStickerCount: [113, "integer"],
+			favoritedFirstPartyStickerCount: [112, "integer"],
+			favoritedTotalStickerCount: [111, "integer"],
+			hasTextstatusEmojiModified24h: [175, "boolean"],
+			hasTextstatusModified24h: [176, "boolean"],
+			hasTextstatusTextModified24h: [177, "boolean"],
+			hasUsername: [187, "boolean"],
+			installedAnimatedStickerPackCount: [116, "integer"],
+			installedAnimatedThirdPartyStickerPackCount: [137, "integer"],
+			installedFirstPartyStickerPackCount: [115, "integer"],
+			installedTotalStickerPackCount: [114, "integer"],
+			ipStr: [122, "string"],
+			isDefaultDisappearingMessagingUser: [183, "boolean"],
+			isEphemeralMessagingUser: [184, "boolean"],
+			keyboardLanguage: [154, "string"],
+			languageCode: [5, "string"],
+			lastCloudBackupSize: [185, "integer"],
+			locationCode: [6, "string"],
+			lockFolderHidden: [171, "boolean"],
+			lowestAppStandbyBucket: [160, "integer"],
+			mdPairTime: [124, "integer"],
+			mediaFolderFileCount: [21, "integer"],
+			mediaFolderSize: [20, "integer"],
+			modifiedInternalProps: [155, "boolean"],
+			networkIsRoaming: [7, "boolean"],
+			networkOperatorName: [159, "string"],
+			numAccounts: [163, "integer"],
+			numContactsWithTextstatus24h: [178, "integer"],
+			numContactsWithTextstatusEmoji24h: [179, "integer"],
+			numContactsWithTextstatusText24h: [180, "integer"],
+			osBuildNumber: [4, "string"],
 			osNotificationSetting: [
 				118,
 				{
@@ -2541,17 +2541,17 @@ export const WEB_EVENTS: Event[] = [
 					UNKNOWN: 3,
 				},
 			],
-			packageName: [102, 'string'],
-			passkeyExists: [165, 'boolean'],
-			paymentsIsEnabled: [100, 'boolean'],
-			permissionAccessCoarseLocation: [57, 'integer'],
-			permissionAccessFineLocation: [58, 'integer'],
-			permissionCamera: [56, 'integer'],
-			permissionContacts: [104, 'boolean'],
-			permissionReadExternalStorage: [53, 'integer'],
-			permissionRecordAudio: [55, 'integer'],
-			phoneCores: [156, 'integer'],
-			phoneyid: [162, 'string'],
+			packageName: [102, "string"],
+			passkeyExists: [165, "boolean"],
+			paymentsIsEnabled: [100, "boolean"],
+			permissionAccessCoarseLocation: [57, "integer"],
+			permissionAccessFineLocation: [58, "integer"],
+			permissionCamera: [56, "integer"],
+			permissionContacts: [104, "boolean"],
+			permissionReadExternalStorage: [53, "integer"],
+			permissionRecordAudio: [55, "integer"],
+			phoneCores: [156, "integer"],
+			phoneyid: [162, "string"],
 			privacySettingsAbout: [
 				141,
 				{
@@ -2716,41 +2716,41 @@ export const WEB_EVENTS: Event[] = [
 					B100: 14,
 				},
 			],
-			receiptsEnabled: [8, 'boolean'],
-			secretCodeActive: [172, 'boolean'],
-			showMetaAiButtonSetting: [173, 'boolean'],
-			simMcc: [2, 'integer'],
-			simMnc: [3, 'integer'],
-			storageAvailSize: [31, 'integer'],
-			storageTotalSize: [32, 'integer'],
-			supportedDecoders: [169, 'string'],
-			supportedEncoders: [170, 'string'],
-			videoFolderFileCount: [23, 'integer'],
-			videoFolderSize: [22, 'integer'],
+			receiptsEnabled: [8, "boolean"],
+			secretCodeActive: [172, "boolean"],
+			showMetaAiButtonSetting: [173, "boolean"],
+			simMcc: [2, "integer"],
+			simMnc: [3, "integer"],
+			storageAvailSize: [31, "integer"],
+			storageTotalSize: [32, "integer"],
+			supportedDecoders: [169, "string"],
+			supportedEncoders: [170, "string"],
+			videoFolderFileCount: [23, "integer"],
+			videoFolderSize: [22, "integer"],
 		},
 		weight: 1,
-		wamChannel: 'regular',
+		wamChannel: "regular",
 		privateStatsIdInt: -1,
 	},
 	{
-		name: 'KeepInChatNotif',
+		name: "KeepInChatNotif",
 		id: 3484,
 		props: {
-			kicGroupNotificationTaps: [3, 'integer'],
-			kicGroupNotifications: [4, 'integer'],
-			kicNotificationTaps: [5, 'integer'],
-			kicNotifications: [6, 'integer'],
+			kicGroupNotificationTaps: [3, "integer"],
+			kicGroupNotifications: [4, "integer"],
+			kicNotificationTaps: [5, "integer"],
+			kicNotifications: [6, "integer"],
 		},
 		weight: 1,
-		wamChannel: 'regular',
+		wamChannel: "regular",
 		privateStatsIdInt: -1,
 	},
 	{
-		name: 'NotificationSetting',
+		name: "NotificationSetting",
 		id: 3684,
 		props: {
-			groupReactionNotification: [1, 'boolean'],
-			groupShowNotification: [2, 'boolean'],
+			groupReactionNotification: [1, "boolean"],
+			groupShowNotification: [2, "boolean"],
 			groupSoundTone: [
 				3,
 				{
@@ -2766,10 +2766,10 @@ export const WEB_EVENTS: Event[] = [
 					ALERTS: 3,
 				},
 			],
-			inAppNotificationSound: [5, 'boolean'],
-			inAppNotificationVibrate: [6, 'boolean'],
-			messageReactionNotification: [7, 'boolean'],
-			messageShowNotification: [8, 'boolean'],
+			inAppNotificationSound: [5, "boolean"],
+			inAppNotificationVibrate: [6, "boolean"],
+			messageReactionNotification: [7, "boolean"],
+			messageShowNotification: [8, "boolean"],
 			messageSoundTone: [
 				9,
 				{
@@ -2777,36 +2777,36 @@ export const WEB_EVENTS: Event[] = [
 					CUSTOM: 2,
 				},
 			],
-			offlineNotification: [11, 'boolean'],
-			showPreview: [10, 'boolean'],
+			offlineNotification: [11, "boolean"],
+			showPreview: [10, "boolean"],
 		},
 		weight: 1,
-		wamChannel: 'regular',
+		wamChannel: "regular",
 		privateStatsIdInt: -1,
 	},
 	{
-		name: 'PnhDailyCtwa',
+		name: "PnhDailyCtwa",
 		id: 4280,
 		props: {
-			matMessagesReceived: [1, 'integer'],
-			threadDs: [3, 'string'],
-			threadId: [2, 'string'],
+			matMessagesReceived: [1, "integer"],
+			threadDs: [3, "string"],
+			threadId: [2, "string"],
 		},
 		weight: 1,
-		wamChannel: 'regular',
+		wamChannel: "regular",
 		privateStatsIdInt: -1,
 	},
 	{
-		name: 'PnhDaily',
+		name: "PnhDaily",
 		id: 3806,
 		props: {
-			communityId: [1, 'string'],
-			mappingMissing: [7, 'integer'],
-			pnhIndicatorClicksChat: [2, 'integer'],
-			pnhIndicatorClicksInfoScreen: [3, 'integer'],
-			reactionDeleteCount: [4, 'integer'],
-			reactionOpenTrayCount: [5, 'integer'],
-			totalContacts: [8, 'integer'],
+			communityId: [1, "string"],
+			mappingMissing: [7, "integer"],
+			pnhIndicatorClicksChat: [2, "integer"],
+			pnhIndicatorClicksInfoScreen: [3, "integer"],
+			reactionDeleteCount: [4, "integer"],
+			reactionOpenTrayCount: [5, "integer"],
+			totalContacts: [8, "integer"],
 			typeOfGroup: [
 				6,
 				{
@@ -2817,16 +2817,16 @@ export const WEB_EVENTS: Event[] = [
 			],
 		},
 		weight: 1,
-		wamChannel: 'regular',
+		wamChannel: "regular",
 		privateStatsIdInt: -1,
 	},
 	{
-		name: 'PrivacyHighlightDaily',
+		name: "PrivacyHighlightDaily",
 		id: 3522,
 		props: {
-			dialogAppearCount: [1, 'integer'],
-			dialogSelectCount: [2, 'integer'],
-			narrativeAppearCount: [3, 'integer'],
+			dialogAppearCount: [1, "integer"],
+			dialogSelectCount: [2, "integer"],
+			narrativeAppearCount: [3, "integer"],
 			privacyHighlightCategory: [
 				4,
 				{
@@ -2853,103 +2853,103 @@ export const WEB_EVENTS: Event[] = [
 			],
 		},
 		weight: 1,
-		wamChannel: 'regular',
+		wamChannel: "regular",
 		privateStatsIdInt: -1,
 	},
 	{
-		name: 'PttDaily',
+		name: "PttDaily",
 		id: 2938,
 		props: {
-			pttCancelBroadcast: [9, 'integer'],
-			pttCancelGroup: [8, 'integer'],
-			pttCancelIndividual: [7, 'integer'],
-			pttCancelInterop: [42, 'integer'],
-			pttCancelNewsletter: [32, 'integer'],
-			pttDraftReviewBroadcast: [15, 'integer'],
-			pttDraftReviewGroup: [14, 'integer'],
-			pttDraftReviewIndividual: [13, 'integer'],
-			pttDraftReviewInterop: [43, 'integer'],
-			pttDraftReviewNewsletter: [33, 'integer'],
-			pttFastplaybackBroadcast: [21, 'integer'],
-			pttFastplaybackGroup: [20, 'integer'],
-			pttFastplaybackIndividual: [19, 'integer'],
-			pttFastplaybackInterop: [44, 'integer'],
-			pttFastplaybackNewsletter: [34, 'integer'],
-			pttLockBroadcast: [12, 'integer'],
-			pttLockGroup: [11, 'integer'],
-			pttLockIndividual: [10, 'integer'],
-			pttLockInterop: [45, 'integer'],
-			pttLockNewsletter: [35, 'integer'],
-			pttOutOfChatBroadcast: [29, 'integer'],
-			pttOutOfChatGroup: [30, 'integer'],
-			pttOutOfChatIndividual: [31, 'integer'],
-			pttOutOfChatInterop: [46, 'integer'],
-			pttOutOfChatNewsletter: [36, 'integer'],
-			pttPausedRecordBroadcast: [22, 'integer'],
-			pttPausedRecordGroup: [23, 'integer'],
-			pttPausedRecordIndividual: [24, 'integer'],
-			pttPausedRecordInterop: [47, 'integer'],
-			pttPausedRecordNewsletter: [37, 'integer'],
-			pttPlaybackBroadcast: [18, 'integer'],
-			pttPlaybackGroup: [17, 'integer'],
-			pttPlaybackIndividual: [16, 'integer'],
-			pttPlaybackInterop: [48, 'integer'],
-			pttPlaybackNewsletter: [38, 'integer'],
-			pttRecordBroadcast: [3, 'integer'],
-			pttRecordGroup: [2, 'integer'],
-			pttRecordIndividual: [1, 'integer'],
-			pttRecordInterop: [49, 'integer'],
-			pttRecordNewsletter: [39, 'integer'],
-			pttSendBroadcast: [6, 'integer'],
-			pttSendGroup: [5, 'integer'],
-			pttSendIndividual: [4, 'integer'],
-			pttSendInterop: [50, 'integer'],
-			pttSendNewsletter: [40, 'integer'],
-			pttStopTapBroadcast: [25, 'integer'],
-			pttStopTapGroup: [26, 'integer'],
-			pttStopTapIndividual: [27, 'integer'],
-			pttStopTapInterop: [51, 'integer'],
-			pttStopTapNewsletter: [41, 'integer'],
+			pttCancelBroadcast: [9, "integer"],
+			pttCancelGroup: [8, "integer"],
+			pttCancelIndividual: [7, "integer"],
+			pttCancelInterop: [42, "integer"],
+			pttCancelNewsletter: [32, "integer"],
+			pttDraftReviewBroadcast: [15, "integer"],
+			pttDraftReviewGroup: [14, "integer"],
+			pttDraftReviewIndividual: [13, "integer"],
+			pttDraftReviewInterop: [43, "integer"],
+			pttDraftReviewNewsletter: [33, "integer"],
+			pttFastplaybackBroadcast: [21, "integer"],
+			pttFastplaybackGroup: [20, "integer"],
+			pttFastplaybackIndividual: [19, "integer"],
+			pttFastplaybackInterop: [44, "integer"],
+			pttFastplaybackNewsletter: [34, "integer"],
+			pttLockBroadcast: [12, "integer"],
+			pttLockGroup: [11, "integer"],
+			pttLockIndividual: [10, "integer"],
+			pttLockInterop: [45, "integer"],
+			pttLockNewsletter: [35, "integer"],
+			pttOutOfChatBroadcast: [29, "integer"],
+			pttOutOfChatGroup: [30, "integer"],
+			pttOutOfChatIndividual: [31, "integer"],
+			pttOutOfChatInterop: [46, "integer"],
+			pttOutOfChatNewsletter: [36, "integer"],
+			pttPausedRecordBroadcast: [22, "integer"],
+			pttPausedRecordGroup: [23, "integer"],
+			pttPausedRecordIndividual: [24, "integer"],
+			pttPausedRecordInterop: [47, "integer"],
+			pttPausedRecordNewsletter: [37, "integer"],
+			pttPlaybackBroadcast: [18, "integer"],
+			pttPlaybackGroup: [17, "integer"],
+			pttPlaybackIndividual: [16, "integer"],
+			pttPlaybackInterop: [48, "integer"],
+			pttPlaybackNewsletter: [38, "integer"],
+			pttRecordBroadcast: [3, "integer"],
+			pttRecordGroup: [2, "integer"],
+			pttRecordIndividual: [1, "integer"],
+			pttRecordInterop: [49, "integer"],
+			pttRecordNewsletter: [39, "integer"],
+			pttSendBroadcast: [6, "integer"],
+			pttSendGroup: [5, "integer"],
+			pttSendIndividual: [4, "integer"],
+			pttSendInterop: [50, "integer"],
+			pttSendNewsletter: [40, "integer"],
+			pttStopTapBroadcast: [25, "integer"],
+			pttStopTapGroup: [26, "integer"],
+			pttStopTapIndividual: [27, "integer"],
+			pttStopTapInterop: [51, "integer"],
+			pttStopTapNewsletter: [41, "integer"],
 		},
 		weight: 1,
-		wamChannel: 'regular',
+		wamChannel: "regular",
 		privateStatsIdInt: -1,
 	},
 	{
-		name: 'ScreenLockSettingsData',
+		name: "ScreenLockSettingsData",
 		id: 4802,
 		props: {
-			screenAutoLockDuration: [1, 'integer'],
+			screenAutoLockDuration: [1, "integer"],
 		},
 		weight: 1,
-		wamChannel: 'regular',
+		wamChannel: "regular",
 		privateStatsIdInt: -1,
 	},
 	{
-		name: 'ScreenLockSettings',
+		name: "ScreenLockSettings",
 		id: 3872,
 		props: {
-			screenLockDuration: [1, 'integer'],
+			screenLockDuration: [1, "integer"],
 		},
 		weight: 1,
-		wamChannel: 'private',
+		wamChannel: "private",
 		privateStatsIdInt: 113760892,
 	},
 	{
-		name: 'WebcFtsStorage',
+		name: "WebcFtsStorage",
 		id: 3642,
 		props: {
-			ftsTotalSize: [1, 'integer'],
+			ftsTotalSize: [1, "integer"],
 		},
 		weight: 1,
-		wamChannel: 'regular',
+		wamChannel: "regular",
 		privateStatsIdInt: -1,
 	},
 	{
-		name: 'NotificationEngagement',
+		name: "NotificationEngagement",
 		id: 3796,
 		props: {
-			avgNotifEngagementT: [1, 'timer'],
+			avgNotifEngagementT: [1, "timer"],
 			groupSizeBucket: [
 				2,
 				{
@@ -2980,28 +2980,28 @@ export const WEB_EVENTS: Event[] = [
 					PARENT_GROUP: 4,
 				},
 			],
-			isAGroup: [4, 'boolean'],
-			isWebBackgroundSyncNotif: [18, 'boolean'],
-			threadId: [5, 'string'],
-			totalMessageReminderNotifShown: [16, 'integer'],
-			totalMessageReminderNotifTapToOpen: [17, 'integer'],
-			totalNotifMarkAsRead: [6, 'integer'],
-			totalNotifMissedCallVoipCallback: [7, 'integer'],
-			totalNotifMissedCallVoipMessage: [8, 'integer'],
-			totalNotifOthers: [9, 'integer'],
-			totalNotifReply: [10, 'integer'],
-			totalNotifRtcVoipAccept: [11, 'integer'],
-			totalNotifRtcVoipDecline: [12, 'integer'],
-			totalNotifShowPreview: [13, 'integer'],
-			totalNotifShown: [14, 'integer'],
-			totalNotifTapToOpen: [15, 'integer'],
+			isAGroup: [4, "boolean"],
+			isWebBackgroundSyncNotif: [18, "boolean"],
+			threadId: [5, "string"],
+			totalMessageReminderNotifShown: [16, "integer"],
+			totalMessageReminderNotifTapToOpen: [17, "integer"],
+			totalNotifMarkAsRead: [6, "integer"],
+			totalNotifMissedCallVoipCallback: [7, "integer"],
+			totalNotifMissedCallVoipMessage: [8, "integer"],
+			totalNotifOthers: [9, "integer"],
+			totalNotifReply: [10, "integer"],
+			totalNotifRtcVoipAccept: [11, "integer"],
+			totalNotifRtcVoipDecline: [12, "integer"],
+			totalNotifShowPreview: [13, "integer"],
+			totalNotifShown: [14, "integer"],
+			totalNotifTapToOpen: [15, "integer"],
 		},
 		weight: 1,
-		wamChannel: 'regular',
+		wamChannel: "regular",
 		privateStatsIdInt: -1,
 	},
 	{
-		name: 'MdBootstrapHistorySyncStatusAfterPairing',
+		name: "MdBootstrapHistorySyncStatusAfterPairing",
 		id: 4652,
 		props: {
 			activeTimeAfterPairing: [
@@ -3014,9 +3014,9 @@ export const WEB_EVENTS: Event[] = [
 					MINS_5: 5,
 				},
 			],
-			isLoopRunning: [12, 'boolean'],
-			lastProcessedNotificationChunkOrder: [2, 'integer'],
-			lastProcessedNotificationChunkProgress: [3, 'integer'],
+			isLoopRunning: [12, "boolean"],
+			lastProcessedNotificationChunkOrder: [2, "integer"],
+			lastProcessedNotificationChunkProgress: [3, "integer"],
 			mdBootstrapHistoryPayloadType: [
 				4,
 				{
@@ -3047,19 +3047,19 @@ export const WEB_EVENTS: Event[] = [
 					FAIL_TO_ENCRYPT: 13,
 				},
 			],
-			mdSessionId: [6, 'string'],
-			mdTimestamp: [7, 'integer'],
-			missingNotificationCount: [8, 'integer'],
-			nextNotificationChunkOrder: [9, 'integer'],
-			totalProcessedMessageCount: [10, 'integer'],
-			unprocessedNotificationCount: [11, 'integer'],
+			mdSessionId: [6, "string"],
+			mdTimestamp: [7, "integer"],
+			missingNotificationCount: [8, "integer"],
+			nextNotificationChunkOrder: [9, "integer"],
+			totalProcessedMessageCount: [10, "integer"],
+			unprocessedNotificationCount: [11, "integer"],
 		},
 		weight: 1,
-		wamChannel: 'regular',
+		wamChannel: "regular",
 		privateStatsIdInt: -1,
 	},
 	{
-		name: 'WebDbVersionNonAnonymous',
+		name: "WebDbVersionNonAnonymous",
 		id: 4816,
 		props: {
 			webDbName: [
@@ -3079,28 +3079,28 @@ export const WEB_EVENTS: Event[] = [
 					WAWC_DB_ENC: 12,
 				},
 			],
-			webDbVersionNumber: [2, 'integer'],
+			webDbVersionNumber: [2, "integer"],
 		},
 		weight: 1,
-		wamChannel: 'regular',
+		wamChannel: "regular",
 		privateStatsIdInt: -1,
 	},
 	{
-		name: 'SyncdKeyCount',
+		name: "SyncdKeyCount",
 		id: 3978,
 		props: {
-			keysUsedInSnapshotCount: [1, 'integer'],
-			p80MuationsPerKey: [2, 'integer'],
-			p95MuationsPerKey: [3, 'integer'],
-			syncdSessionLengthDays: [4, 'integer'],
-			totalKeyCount: [5, 'integer'],
+			keysUsedInSnapshotCount: [1, "integer"],
+			p80MuationsPerKey: [2, "integer"],
+			p95MuationsPerKey: [3, "integer"],
+			syncdSessionLengthDays: [4, "integer"],
+			totalKeyCount: [5, "integer"],
 		},
 		weight: 1,
-		wamChannel: 'regular',
+		wamChannel: "regular",
 		privateStatsIdInt: -1,
 	},
 	{
-		name: 'MdAppStateSyncMutationStats',
+		name: "MdAppStateSyncMutationStats",
 		id: 3180,
 		props: {
 			applied: [
@@ -3155,7 +3155,7 @@ export const WEB_EVENTS: Event[] = [
 					GTE5K: 8,
 				},
 			],
-			syncdAction: [5, 'string'],
+			syncdAction: [5, "string"],
 			unsupported: [
 				6,
 				{
@@ -3171,19 +3171,19 @@ export const WEB_EVENTS: Event[] = [
 			],
 		},
 		weight: 20,
-		wamChannel: 'private',
+		wamChannel: "private",
 		privateStatsIdInt: 0,
 	},
 	{
-		name: 'GroupJoinC',
+		name: "GroupJoinC",
 		id: 158,
 		props: {},
 		weight: 1,
-		wamChannel: 'regular',
+		wamChannel: "regular",
 		privateStatsIdInt: -1,
 	},
 	{
-		name: 'MessageHighRetryCount',
+		name: "MessageHighRetryCount",
 		id: 3132,
 		props: {
 			deviceSizeBucket: [
@@ -3296,14 +3296,14 @@ export const WEB_EVENTS: Event[] = [
 					INTEROP: 6,
 				},
 			],
-			retryCount: [2, 'integer'],
+			retryCount: [2, "integer"],
 		},
 		weight: 20,
-		wamChannel: 'regular',
+		wamChannel: "regular",
 		privateStatsIdInt: -1,
 	},
 	{
-		name: 'OfflineCountTooHigh',
+		name: "OfflineCountTooHigh",
 		id: 2638,
 		props: {
 			callStanzaType: [
@@ -3408,9 +3408,9 @@ export const WEB_EVENTS: Event[] = [
 					INTEROP: 6,
 				},
 			],
-			notificationStanzaType: [6, 'string'],
-			offlineCount: [2, 'integer'],
-			receiptStanzaType: [5, 'string'],
+			notificationStanzaType: [6, "string"],
+			offlineCount: [2, "integer"],
+			receiptStanzaType: [5, "string"],
 			stanzaType: [
 				1,
 				{
@@ -3423,11 +3423,11 @@ export const WEB_EVENTS: Event[] = [
 			],
 		},
 		weight: 1,
-		wamChannel: 'regular',
+		wamChannel: "regular",
 		privateStatsIdInt: -1,
 	},
 	{
-		name: 'E2eMessageRecv',
+		name: "E2eMessageRecv",
 		id: 478,
 		props: {
 			agentEngagementType: [
@@ -3456,7 +3456,7 @@ export const WEB_EVENTS: Event[] = [
 					MESSAGE_SECRET_MESSAGE: 3,
 				},
 			],
-			e2eCiphertextVersion: [6, 'integer'],
+			e2eCiphertextVersion: [6, "integer"],
 			e2eDestination: [
 				4,
 				{
@@ -3583,7 +3583,7 @@ export const WEB_EVENTS: Event[] = [
 					OTHER_HOSTED_COMPANION: 6,
 				},
 			],
-			e2eSuccessful: [1, 'boolean'],
+			e2eSuccessful: [1, "boolean"],
 			editType: [
 				13,
 				{
@@ -3593,8 +3593,8 @@ export const WEB_EVENTS: Event[] = [
 					ADMIN_REVOKE: 3,
 				},
 			],
-			isHostedChat: [20, 'boolean'],
-			isLid: [11, 'boolean'],
+			isHostedChat: [20, "boolean"],
+			isLid: [11, "boolean"],
 			localAddressingMode: [
 				16,
 				{
@@ -3676,8 +3676,8 @@ export const WEB_EVENTS: Event[] = [
 					INTERACTIVE_PRODUCT: 62,
 				},
 			],
-			offline: [9, 'boolean'],
-			retryCount: [3, 'integer'],
+			offline: [9, "boolean"],
+			retryCount: [3, "integer"],
 			revokeType: [
 				10,
 				{
@@ -3712,15 +3712,15 @@ export const WEB_EVENTS: Event[] = [
 			],
 		},
 		weight: 20,
-		wamChannel: 'regular',
+		wamChannel: "regular",
 		privateStatsIdInt: -1,
 	},
 	{
-		name: 'ReceiptStanzaReceive',
+		name: "ReceiptStanzaReceive",
 		id: 2496,
 		props: {
-			dbReadsCount: [12, 'integer'],
-			dbWritesCount: [13, 'integer'],
+			dbReadsCount: [12, "integer"],
+			dbWritesCount: [13, "integer"],
 			mediaType: [
 				2,
 				{
@@ -3807,11 +3807,11 @@ export const WEB_EVENTS: Event[] = [
 					MULTI_PARTICIPANTS: 2,
 				},
 			],
-			receiptStanzaDuration: [1, 'timer'],
-			receiptStanzaHasOrphaned: [6, 'boolean'],
-			receiptStanzaOfflineCount: [3, 'integer'],
-			receiptStanzaProcessedCount: [8, 'integer'],
-			receiptStanzaRetryVer: [5, 'integer'],
+			receiptStanzaDuration: [1, "timer"],
+			receiptStanzaHasOrphaned: [6, "boolean"],
+			receiptStanzaOfflineCount: [3, "integer"],
+			receiptStanzaProcessedCount: [8, "integer"],
+			receiptStanzaRetryVer: [5, "integer"],
 			receiptStanzaStage: [
 				9,
 				{
@@ -3823,24 +3823,24 @@ export const WEB_EVENTS: Event[] = [
 					ACK: 4,
 				},
 			],
-			receiptStanzaTotalCount: [7, 'integer'],
-			receiptStanzaType: [4, 'string'],
+			receiptStanzaTotalCount: [7, "integer"],
+			receiptStanzaType: [4, "string"],
 		},
 		weight: 1,
-		wamChannel: 'regular',
+		wamChannel: "regular",
 		privateStatsIdInt: -1,
 	},
 	{
-		name: 'CtwaActionBannerUnderstand',
+		name: "CtwaActionBannerUnderstand",
 		id: 3586,
 		props: {
-			bannerIdentifier: [1, 'string'],
-			bannerLocale: [2, 'string'],
-			clientLocale: [3, 'string'],
-			hasLocalLink: [4, 'boolean'],
-			hasUniversalLink: [5, 'boolean'],
-			invalidLink: [6, 'string'],
-			lwiFlowIdentifier: [7, 'string'],
+			bannerIdentifier: [1, "string"],
+			bannerLocale: [2, "string"],
+			clientLocale: [3, "string"],
+			hasLocalLink: [4, "boolean"],
+			hasUniversalLink: [5, "boolean"],
+			invalidLink: [6, "string"],
+			lwiFlowIdentifier: [7, "string"],
 			preferredLink: [
 				8,
 				{
@@ -3848,28 +3848,28 @@ export const WEB_EVENTS: Event[] = [
 					UNIVERSAL: 1,
 				},
 			],
-			validLocale: [9, 'boolean'],
-			validNotification: [10, 'boolean'],
+			validLocale: [9, "boolean"],
+			validNotification: [10, "boolean"],
 		},
 		weight: 1,
-		wamChannel: 'private',
+		wamChannel: "private",
 		privateStatsIdInt: 0,
 	},
 	{
-		name: 'WaOldCode',
+		name: "WaOldCode",
 		id: 3940,
 		props: {
-			deviceId: [1, 'string'],
+			deviceId: [1, "string"],
 		},
 		weight: 1,
-		wamChannel: 'regular',
+		wamChannel: "regular",
 		privateStatsIdInt: -1,
 	},
 	{
-		name: 'NotificationDelivery',
+		name: "NotificationDelivery",
 		id: 3748,
 		props: {
-			clientMessageId: [1, 'string'],
+			clientMessageId: [1, "string"],
 			notificationAction: [
 				2,
 				{
@@ -3877,7 +3877,7 @@ export const WEB_EVENTS: Event[] = [
 					REMOVE: 2,
 				},
 			],
-			notificationDeliveryT: [3, 'integer'],
+			notificationDeliveryT: [3, "integer"],
 			notificationDestination: [
 				4,
 				{
@@ -3888,7 +3888,7 @@ export const WEB_EVENTS: Event[] = [
 					INTEROP: 5,
 				},
 			],
-			notificationId: [5, 'string'],
+			notificationId: [5, "string"],
 			notificationSource: [
 				6,
 				{
@@ -3897,7 +3897,7 @@ export const WEB_EVENTS: Event[] = [
 					IN_APP: 3,
 				},
 			],
-			threadId: [7, 'string'],
+			threadId: [7, "string"],
 			uiNotificationType: [
 				8,
 				{
@@ -3934,34 +3934,34 @@ export const WEB_EVENTS: Event[] = [
 			],
 		},
 		weight: 1,
-		wamChannel: 'regular',
+		wamChannel: "regular",
 		privateStatsIdInt: -1,
 	},
 	{
-		name: 'MdAppStateDirtyBits',
+		name: "MdAppStateDirtyBits",
 		id: 2520,
 		props: {
-			dirtyBitsFalsePositive: [2, 'boolean'],
+			dirtyBitsFalsePositive: [2, "boolean"],
 		},
 		weight: 1000,
-		wamChannel: 'regular',
+		wamChannel: "regular",
 		privateStatsIdInt: -1,
 	},
 	{
-		name: 'MdAppStateOfflineNotifications',
+		name: "MdAppStateOfflineNotifications",
 		id: 2602,
 		props: {
-			redundantCount: [1, 'integer'],
+			redundantCount: [1, "integer"],
 		},
 		weight: 1000,
-		wamChannel: 'regular',
+		wamChannel: "regular",
 		privateStatsIdInt: -1,
 	},
 	{
-		name: 'MdRetryFromUnknownDevice',
+		name: "MdRetryFromUnknownDevice",
 		id: 2178,
 		props: {
-			offline: [2, 'boolean'],
+			offline: [2, "boolean"],
 			senderType: [
 				1,
 				{
@@ -3971,11 +3971,11 @@ export const WEB_EVENTS: Event[] = [
 			],
 		},
 		weight: 1,
-		wamChannel: 'regular',
+		wamChannel: "regular",
 		privateStatsIdInt: -1,
 	},
 	{
-		name: 'E2eRetryReject',
+		name: "E2eRetryReject",
 		id: 3578,
 		props: {
 			messageType: [
@@ -3989,7 +3989,7 @@ export const WEB_EVENTS: Event[] = [
 					INTEROP: 6,
 				},
 			],
-			msgRetryCount: [2, 'integer'],
+			msgRetryCount: [2, "integer"],
 			retryRejectReason: [
 				3,
 				{
@@ -3999,7 +3999,7 @@ export const WEB_EVENTS: Event[] = [
 					MESSAGE_NOT_EXIST: 3,
 				},
 			],
-			retryRevoke: [4, 'boolean'],
+			retryRevoke: [4, "boolean"],
 			senderDeviceType: [
 				5,
 				{
@@ -4009,21 +4009,21 @@ export const WEB_EVENTS: Event[] = [
 			],
 		},
 		weight: 1,
-		wamChannel: 'regular',
+		wamChannel: "regular",
 		privateStatsIdInt: -1,
 	},
 	{
-		name: 'ClockSkewDifferenceT',
+		name: "ClockSkewDifferenceT",
 		id: 3178,
 		props: {
-			clockSkewHourly: [1, 'integer'],
+			clockSkewHourly: [1, "integer"],
 		},
 		weight: 10000,
-		wamChannel: 'private',
+		wamChannel: "private",
 		privateStatsIdInt: 37887164,
 	},
 	{
-		name: 'MdBootstrapAppStateCriticalDataProcessing',
+		name: "MdBootstrapAppStateCriticalDataProcessing",
 		id: 3164,
 		props: {
 			bootstrapAppStateDataStage: [
@@ -4049,16 +4049,16 @@ export const WEB_EVENTS: Event[] = [
 					NON_CRITICAL: 2,
 				},
 			],
-			mdRegAttemptId: [3, 'string'],
-			mdSessionId: [4, 'string'],
-			mdTimestamp: [5, 'integer'],
+			mdRegAttemptId: [3, "string"],
+			mdSessionId: [4, "string"],
+			mdTimestamp: [5, "integer"],
 		},
 		weight: 1,
-		wamChannel: 'regular',
+		wamChannel: "regular",
 		privateStatsIdInt: -1,
 	},
 	{
-		name: 'WebcNativeUpsellCta',
+		name: "WebcNativeUpsellCta",
 		id: 3934,
 		props: {
 			webcNativeUpsellCtaEventType: [
@@ -4086,21 +4086,21 @@ export const WEB_EVENTS: Event[] = [
 			],
 		},
 		weight: 1,
-		wamChannel: 'regular',
+		wamChannel: "regular",
 		privateStatsIdInt: -1,
 	},
 	{
-		name: 'WebDbTableUsage',
+		name: "WebDbTableUsage",
 		id: 5074,
 		props: {
-			offlineSessionId: [1, 'string'],
+			offlineSessionId: [1, "string"],
 			webScenario: [
 				2,
 				{
 					OFFLINE_RESUME: 0,
 				},
 			],
-			webTable: [3, 'string'],
+			webTable: [3, "string"],
 			webTableLogReason: [
 				4,
 				{
@@ -4108,15 +4108,15 @@ export const WEB_EVENTS: Event[] = [
 					EXCEEDED_THRESHOLD: 1,
 				},
 			],
-			webTableReadCount: [5, 'integer'],
-			webTableWriteCount: [6, 'integer'],
+			webTableReadCount: [5, "integer"],
+			webTableWriteCount: [6, "integer"],
 		},
 		weight: 1,
-		wamChannel: 'regular',
+		wamChannel: "regular",
 		privateStatsIdInt: -1,
 	},
 	{
-		name: 'WebDbLoadFromVersionFailureNonAnonymous',
+		name: "WebDbLoadFromVersionFailureNonAnonymous",
 		id: 4814,
 		props: {
 			webDbLoader: [
@@ -4146,15 +4146,15 @@ export const WEB_EVENTS: Event[] = [
 			],
 		},
 		weight: 1,
-		wamChannel: 'regular',
+		wamChannel: "regular",
 		privateStatsIdInt: -1,
 	},
 	{
-		name: 'WebcJobInfo',
+		name: "WebcJobInfo",
 		id: 3054,
 		props: {
-			jobName: [1, 'string'],
-			jobPriority: [2, 'string'],
+			jobName: [1, "string"],
+			jobPriority: [2, "string"],
 			jobResultType: [
 				5,
 				{
@@ -4164,7 +4164,7 @@ export const WEB_EVENTS: Event[] = [
 					ABORTED: 3,
 				},
 			],
-			pendingJobsCount: [4, 'integer'],
+			pendingJobsCount: [4, "integer"],
 			scenario: [
 				3,
 				{
@@ -4173,34 +4173,34 @@ export const WEB_EVENTS: Event[] = [
 					IDLE: 2,
 				},
 			],
-			webcJobAddedT: [6, 'integer'],
-			webcJobCompletedT: [8, 'integer'],
-			webcJobStartedT: [7, 'integer'],
+			webcJobAddedT: [6, "integer"],
+			webcJobCompletedT: [8, "integer"],
+			webcJobStartedT: [7, "integer"],
 		},
 		weight: 1,
-		wamChannel: 'regular',
+		wamChannel: "regular",
 		privateStatsIdInt: -1,
 	},
 	{
-		name: 'WebcRawPlatforms',
+		name: "WebcRawPlatforms",
 		id: 2416,
 		props: {
-			webcRawPlatform: [1, 'string'],
+			webcRawPlatform: [1, "string"],
 		},
 		weight: 1,
-		wamChannel: 'regular',
+		wamChannel: "regular",
 		privateStatsIdInt: -1,
 	},
 	{
-		name: 'WebWamForceFlush',
+		name: "WebWamForceFlush",
 		id: 3264,
 		props: {},
 		weight: 1,
-		wamChannel: 'regular',
+		wamChannel: "regular",
 		privateStatsIdInt: -1,
 	},
 	{
-		name: 'ChatMute',
+		name: "ChatMute",
 		id: 2280,
 		props: {
 			actionConducted: [
@@ -4227,7 +4227,7 @@ export const WEB_EVENTS: Event[] = [
 					INTEROP: 4,
 				},
 			],
-			muteDuration: [1, 'timer'],
+			muteDuration: [1, "timer"],
 			muteEntryPoint: [
 				6,
 				{
@@ -4236,7 +4236,7 @@ export const WEB_EVENTS: Event[] = [
 					CONVERSATION_SCREEN: 3,
 				},
 			],
-			muteGroupSize: [2, 'integer'],
+			muteGroupSize: [2, "integer"],
 			waOfficialAccountName: [
 				7,
 				{
@@ -4245,11 +4245,11 @@ export const WEB_EVENTS: Event[] = [
 			],
 		},
 		weight: 1,
-		wamChannel: 'regular',
+		wamChannel: "regular",
 		privateStatsIdInt: -1,
 	},
 	{
-		name: 'ChatPsaAction',
+		name: "ChatPsaAction",
 		id: 3572,
 		props: {
 			messageMediaType: [
@@ -4319,7 +4319,7 @@ export const WEB_EVENTS: Event[] = [
 					INTERACTIVE_PRODUCT: 62,
 				},
 			],
-			psaCampaignId: [4, 'string'],
+			psaCampaignId: [4, "string"],
 			psaMessageActionType: [
 				2,
 				{
@@ -4331,14 +4331,14 @@ export const WEB_EVENTS: Event[] = [
 					DELETE: 6,
 				},
 			],
-			psaMsgId: [5, 'string'],
+			psaMsgId: [5, "string"],
 		},
 		weight: 1,
-		wamChannel: 'regular',
+		wamChannel: "regular",
 		privateStatsIdInt: -1,
 	},
 	{
-		name: 'ChatPsaRead',
+		name: "ChatPsaRead",
 		id: 3574,
 		props: {
 			messageMediaType: [
@@ -4408,8 +4408,8 @@ export const WEB_EVENTS: Event[] = [
 					INTERACTIVE_PRODUCT: 62,
 				},
 			],
-			psaCampaignId: [4, 'string'],
-			psaMsgId: [5, 'string'],
+			psaCampaignId: [4, "string"],
+			psaMsgId: [5, "string"],
 			readEntryPoint: [
 				3,
 				{
@@ -4419,11 +4419,11 @@ export const WEB_EVENTS: Event[] = [
 			],
 		},
 		weight: 1,
-		wamChannel: 'regular',
+		wamChannel: "regular",
 		privateStatsIdInt: -1,
 	},
 	{
-		name: 'ChatPsaRemove',
+		name: "ChatPsaRemove",
 		id: 3582,
 		props: {
 			lastReceivedMediaType: [
@@ -4493,8 +4493,8 @@ export const WEB_EVENTS: Event[] = [
 					INTERACTIVE_PRODUCT: 62,
 				},
 			],
-			lastReceivedMessageTs: [4, 'timer'],
-			lastReceivedMsgId: [8, 'string'],
+			lastReceivedMessageTs: [4, "timer"],
+			lastReceivedMsgId: [8, "string"],
 			psaBlockReason: [
 				10,
 				{
@@ -4504,7 +4504,7 @@ export const WEB_EVENTS: Event[] = [
 					IT_LOOKS_SUSPICIOUS: 3,
 				},
 			],
-			psaCampaignId: [9, 'string'],
+			psaCampaignId: [9, "string"],
 			psaMessageRemoveAction: [
 				5,
 				{
@@ -4544,11 +4544,11 @@ export const WEB_EVENTS: Event[] = [
 			],
 		},
 		weight: 1,
-		wamChannel: 'regular',
+		wamChannel: "regular",
 		privateStatsIdInt: -1,
 	},
 	{
-		name: 'ForwardSend',
+		name: "ForwardSend",
 		id: 1728,
 		props: {
 			disappearingChatInitiator: [
@@ -4570,8 +4570,8 @@ export const WEB_EVENTS: Event[] = [
 					MESSAGE_SECRET_MESSAGE: 3,
 				},
 			],
-			e2eCiphertextVersion: [11, 'integer'],
-			ephemeralityDuration: [18, 'integer'],
+			e2eCiphertextVersion: [11, "integer"],
+			ephemeralityDuration: [18, "integer"],
 			ephemeralityInitiator: [
 				24,
 				{
@@ -4590,10 +4590,10 @@ export const WEB_EVENTS: Event[] = [
 					BIZ_SUPPORTS_FB_HOSTING: 4,
 				},
 			],
-			fastForwardEnabled: [5, 'boolean'],
-			isForwardedForward: [22, 'boolean'],
-			isFrequentlyForwarded: [14, 'boolean'],
-			mediaCaptionPresent: [10, 'boolean'],
+			fastForwardEnabled: [5, "boolean"],
+			isForwardedForward: [22, "boolean"],
+			isFrequentlyForwarded: [14, "boolean"],
+			mediaCaptionPresent: [10, "boolean"],
 			messageBizType: [
 				26,
 				{
@@ -4604,10 +4604,10 @@ export const WEB_EVENTS: Event[] = [
 					SMB_BIZ_MSG: 4,
 				},
 			],
-			messageForwardAgeT: [4, 'timer'],
-			messageIsFanout: [6, 'boolean'],
-			messageIsFastForward: [3, 'boolean'],
-			messageIsInternational: [9, 'boolean'],
+			messageForwardAgeT: [4, "timer"],
+			messageIsFanout: [6, "boolean"],
+			messageIsFastForward: [3, "boolean"],
+			messageIsInternational: [9, "boolean"],
 			messageMediaType: [
 				2,
 				{
@@ -4675,7 +4675,7 @@ export const WEB_EVENTS: Event[] = [
 					INTERACTIVE_PRODUCT: 62,
 				},
 			],
-			messageSendT: [13, 'timer'],
+			messageSendT: [13, "timer"],
 			messageType: [
 				1,
 				{
@@ -4687,10 +4687,10 @@ export const WEB_EVENTS: Event[] = [
 					INTEROP: 6,
 				},
 			],
-			receiverDefaultDisappearingDuration: [20, 'integer'],
-			resendCount: [8, 'integer'],
-			retryCount: [7, 'integer'],
-			senderDefaultDisappearingDuration: [19, 'integer'],
+			receiverDefaultDisappearingDuration: [20, "integer"],
+			resendCount: [8, "integer"],
+			retryCount: [7, "integer"],
+			senderDefaultDisappearingDuration: [19, "integer"],
 			typeOfGroup: [
 				23,
 				{
@@ -4699,22 +4699,22 @@ export const WEB_EVENTS: Event[] = [
 					DEFAULT_SUBGROUP: 3,
 				},
 			],
-			wouldBeFrequentlyForwardedAt3: [16, 'boolean'],
-			wouldBeFrequentlyForwardedAt4: [17, 'boolean'],
+			wouldBeFrequentlyForwardedAt3: [16, "boolean"],
+			wouldBeFrequentlyForwardedAt4: [17, "boolean"],
 		},
 		weight: 1,
-		wamChannel: 'regular',
+		wamChannel: "regular",
 		privateStatsIdInt: -1,
 	},
 	{
-		name: 'NonMessagePeerDataMediaUpload',
+		name: "NonMessagePeerDataMediaUpload",
 		id: 3902,
 		props: {
-			peerDataErrorCount: [1, 'integer'],
-			peerDataExistingDataNoUploadCount: [2, 'integer'],
-			peerDataNotFoundCount: [3, 'integer'],
-			peerDataRequestCount: [4, 'integer'],
-			peerDataRequestSessionId: [5, 'string'],
+			peerDataErrorCount: [1, "integer"],
+			peerDataExistingDataNoUploadCount: [2, "integer"],
+			peerDataNotFoundCount: [3, "integer"],
+			peerDataRequestCount: [4, "integer"],
+			peerDataRequestSessionId: [5, "string"],
 			peerDataRequestType: [
 				6,
 				{
@@ -4737,20 +4737,20 @@ export const WEB_EVENTS: Event[] = [
 					REQUEST_TOO_OLD: 7,
 				},
 			],
-			peerDataSuccessInlineNoUploadCount: [9, 'integer'],
-			peerDataSuccessUploadCount: [7, 'integer'],
+			peerDataSuccessInlineNoUploadCount: [9, "integer"],
+			peerDataSuccessUploadCount: [7, "integer"],
 		},
 		weight: 1,
-		wamChannel: 'regular',
+		wamChannel: "regular",
 		privateStatsIdInt: -1,
 	},
 	{
-		name: 'NonMessagePeerDataOperationResponse',
+		name: "NonMessagePeerDataOperationResponse",
 		id: 3904,
 		props: {
-			peerDataErrorCount: [1, 'integer'],
-			peerDataNotFoundCount: [2, 'integer'],
-			peerDataRequestSessionId: [3, 'string'],
+			peerDataErrorCount: [1, "integer"],
+			peerDataNotFoundCount: [2, "integer"],
+			peerDataRequestSessionId: [3, "string"],
 			peerDataRequestType: [
 				4,
 				{
@@ -4771,20 +4771,20 @@ export const WEB_EVENTS: Event[] = [
 					REQUEST_TIMEOUT: 5,
 				},
 			],
-			peerDataResponseCount: [5, 'integer'],
-			peerDataSuccessProcessCount: [6, 'integer'],
-			peerDataSuccessResponseCount: [7, 'integer'],
+			peerDataResponseCount: [5, "integer"],
+			peerDataSuccessProcessCount: [6, "integer"],
+			peerDataSuccessResponseCount: [7, "integer"],
 		},
 		weight: 1,
-		wamChannel: 'regular',
+		wamChannel: "regular",
 		privateStatsIdInt: -1,
 	},
 	{
-		name: 'NonMessagePeerDataRequest',
+		name: "NonMessagePeerDataRequest",
 		id: 3906,
 		props: {
-			peerDataRequestCount: [1, 'integer'],
-			peerDataRequestSessionId: [2, 'string'],
+			peerDataRequestCount: [1, "integer"],
+			peerDataRequestSessionId: [2, "string"],
 			peerDataRequestType: [
 				3,
 				{
@@ -4797,29 +4797,29 @@ export const WEB_EVENTS: Event[] = [
 			],
 		},
 		weight: 1,
-		wamChannel: 'regular',
+		wamChannel: "regular",
 		privateStatsIdInt: -1,
 	},
 	{
-		name: 'WebcLinkPreviewResponseHandle',
+		name: "WebcLinkPreviewResponseHandle",
 		id: 3860,
 		props: {
-			didRespondHqPreview: [5, 'boolean'],
-			isPreviewSuccess: [2, 'boolean'],
-			previewDurationMs: [4, 'integer'],
-			previewSessionId: [3, 'string'],
+			didRespondHqPreview: [5, "boolean"],
+			isPreviewSuccess: [2, "boolean"],
+			previewDurationMs: [4, "integer"],
+			previewSessionId: [3, "string"],
 		},
 		weight: 1,
-		wamChannel: 'regular',
+		wamChannel: "regular",
 		privateStatsIdInt: -1,
 	},
 	{
-		name: 'MdBootstrapHistoryDataDownloaded',
+		name: "MdBootstrapHistoryDataDownloaded",
 		id: 2296,
 		props: {
-			historySyncChunkOrder: [15, 'integer'],
-			historySyncStageProgress: [14, 'integer'],
-			mdBootstrapChatsCount: [6, 'integer'],
+			historySyncChunkOrder: [15, "integer"],
+			historySyncStageProgress: [14, "integer"],
+			mdBootstrapChatsCount: [6, "integer"],
 			mdBootstrapHistoryPayloadType: [
 				13,
 				{
@@ -4832,8 +4832,8 @@ export const WEB_EVENTS: Event[] = [
 					ON_DEMAND: 7,
 				},
 			],
-			mdBootstrapMessagesCount: [5, 'integer'],
-			mdBootstrapPayloadSize: [4, 'integer'],
+			mdBootstrapMessagesCount: [5, "integer"],
+			mdBootstrapPayloadSize: [4, "integer"],
 			mdBootstrapPayloadType: [
 				2,
 				{
@@ -4841,7 +4841,7 @@ export const WEB_EVENTS: Event[] = [
 					NON_CRITICAL: 2,
 				},
 			],
-			mdBootstrapStepDuration: [7, 'integer'],
+			mdBootstrapStepDuration: [7, "integer"],
 			mdBootstrapStepResult: [
 				8,
 				{
@@ -4849,23 +4849,23 @@ export const WEB_EVENTS: Event[] = [
 					FAILURE: 2,
 				},
 			],
-			mdHsOldestMessageTimestamp: [11, 'integer'],
-			mdRegAttemptId: [12, 'string'],
-			mdSessionId: [1, 'string'],
-			mdStorageQuotaBytes: [9, 'integer'],
-			mdStorageQuotaUsedBytes: [10, 'integer'],
-			mdTimestamp: [3, 'integer'],
+			mdHsOldestMessageTimestamp: [11, "integer"],
+			mdRegAttemptId: [12, "string"],
+			mdSessionId: [1, "string"],
+			mdStorageQuotaBytes: [9, "integer"],
+			mdStorageQuotaUsedBytes: [10, "integer"],
+			mdTimestamp: [3, "integer"],
 		},
 		weight: 1,
-		wamChannel: 'regular',
+		wamChannel: "regular",
 		privateStatsIdInt: -1,
 	},
 	{
-		name: 'MdBootstrapHistoryDataStartDownloading',
+		name: "MdBootstrapHistoryDataStartDownloading",
 		id: 4650,
 		props: {
-			historySyncChunkOrder: [1, 'integer'],
-			historySyncStageProgress: [2, 'integer'],
+			historySyncChunkOrder: [1, "integer"],
+			historySyncStageProgress: [2, "integer"],
 			mdBootstrapHistoryPayloadType: [
 				3,
 				{
@@ -4878,7 +4878,7 @@ export const WEB_EVENTS: Event[] = [
 					ON_DEMAND: 7,
 				},
 			],
-			mdBootstrapPayloadSize: [4, 'integer'],
+			mdBootstrapPayloadSize: [4, "integer"],
 			mdBootstrapPayloadType: [
 				5,
 				{
@@ -4886,16 +4886,16 @@ export const WEB_EVENTS: Event[] = [
 					NON_CRITICAL: 2,
 				},
 			],
-			mdBootstrapStepDuration: [6, 'integer'],
-			mdSessionId: [7, 'string'],
-			mdTimestamp: [8, 'integer'],
+			mdBootstrapStepDuration: [6, "integer"],
+			mdSessionId: [7, "string"],
+			mdTimestamp: [8, "integer"],
 		},
 		weight: 1,
-		wamChannel: 'regular',
+		wamChannel: "regular",
 		privateStatsIdInt: -1,
 	},
 	{
-		name: 'E2eMessageSend',
+		name: "E2eMessageSend",
 		id: 476,
 		props: {
 			agentEngagementType: [
@@ -4924,7 +4924,7 @@ export const WEB_EVENTS: Event[] = [
 					MESSAGE_SECRET_MESSAGE: 3,
 				},
 			],
-			e2eCiphertextVersion: [6, 'integer'],
+			e2eCiphertextVersion: [6, "integer"],
 			e2eDestination: [
 				4,
 				{
@@ -5047,7 +5047,7 @@ export const WEB_EVENTS: Event[] = [
 					COMPANION: 2,
 				},
 			],
-			e2eSuccessful: [1, 'boolean'],
+			e2eSuccessful: [1, "boolean"],
 			editType: [
 				14,
 				{
@@ -5057,8 +5057,8 @@ export const WEB_EVENTS: Event[] = [
 					ADMIN_REVOKE: 3,
 				},
 			],
-			encRetryCount: [9, 'integer'],
-			isLid: [12, 'boolean'],
+			encRetryCount: [9, "integer"],
+			isLid: [12, "boolean"],
 			localAddressingMode: [
 				16,
 				{
@@ -5066,7 +5066,7 @@ export const WEB_EVENTS: Event[] = [
 					LID: 2,
 				},
 			],
-			messageIsInvisible: [10, 'boolean'],
+			messageIsInvisible: [10, "boolean"],
 			messageMediaType: [
 				7,
 				{
@@ -5134,7 +5134,7 @@ export const WEB_EVENTS: Event[] = [
 					INTERACTIVE_PRODUCT: 62,
 				},
 			],
-			retryCount: [3, 'integer'],
+			retryCount: [3, "integer"],
 			revokeType: [
 				11,
 				{
@@ -5152,11 +5152,11 @@ export const WEB_EVENTS: Event[] = [
 			],
 		},
 		weight: 1,
-		wamChannel: 'regular',
+		wamChannel: "regular",
 		privateStatsIdInt: -1,
 	},
 	{
-		name: 'PrekeysDepletion',
+		name: "PrekeysDepletion",
 		id: 3014,
 		props: {
 			deviceSizeBucket: [
@@ -5211,17 +5211,17 @@ export const WEB_EVENTS: Event[] = [
 			],
 		},
 		weight: 1,
-		wamChannel: 'regular',
+		wamChannel: "regular",
 		privateStatsIdInt: -1,
 	},
 	{
-		name: 'AndroidMessageSendPerf',
+		name: "AndroidMessageSendPerf",
 		id: 1994,
 		props: {
-			appRestart: [16, 'boolean'],
-			bucketedSenderKeyDistributionCountPercentage: [32, 'integer'],
-			bucketedSenderKeyDistributionHashTime: [35, 'integer'],
-			deviceCount: [36, 'integer'],
+			appRestart: [16, "boolean"],
+			bucketedSenderKeyDistributionCountPercentage: [32, "integer"],
+			bucketedSenderKeyDistributionHashTime: [35, "integer"],
+			deviceCount: [36, "integer"],
 			deviceSizeBucket: [
 				26,
 				{
@@ -5243,9 +5243,9 @@ export const WEB_EVENTS: Event[] = [
 					LARGEST_BUCKET: 15,
 				},
 			],
-			durationAbs: [11, 'timer'],
-			durationRelative: [12, 'timer'],
-			durationT: [1, 'timer'],
+			durationAbs: [11, "timer"],
+			durationRelative: [12, "timer"],
+			durationT: [1, "timer"],
 			editType: [
 				42,
 				{
@@ -5255,8 +5255,8 @@ export const WEB_EVENTS: Event[] = [
 					ADMIN_REVOKE: 3,
 				},
 			],
-			fetchPrekeys: [15, 'boolean'],
-			fetchPrekeysPercentage: [21, 'integer'],
+			fetchPrekeys: [15, "boolean"],
+			fetchPrekeysPercentage: [21, "integer"],
 			groupSizeBucket: [
 				17,
 				{
@@ -5278,14 +5278,14 @@ export const WEB_EVENTS: Event[] = [
 					LARGEST_BUCKET: 15,
 				},
 			],
-			isDirectedMessage: [33, 'boolean'],
-			isE2eBackfill: [27, 'boolean'],
-			isLid: [41, 'boolean'],
-			isMessageFanout: [9, 'boolean'],
-			isMessageForward: [8, 'boolean'],
-			isRevokeMessage: [24, 'boolean'],
-			isViewOnce: [29, 'boolean'],
-			jobsInQueue: [18, 'integer'],
+			isDirectedMessage: [33, "boolean"],
+			isE2eBackfill: [27, "boolean"],
+			isLid: [41, "boolean"],
+			isMessageFanout: [9, "boolean"],
+			isMessageForward: [8, "boolean"],
+			isRevokeMessage: [24, "boolean"],
+			isViewOnce: [29, "boolean"],
+			jobsInQueue: [18, "integer"],
 			mediaType: [
 				3,
 				{
@@ -5353,8 +5353,8 @@ export const WEB_EVENTS: Event[] = [
 					INTERACTIVE_PRODUCT: 62,
 				},
 			],
-			messageIsFirstUserMessage: [30, 'boolean'],
-			messageIsInvisible: [31, 'boolean'],
+			messageIsFirstUserMessage: [30, "boolean"],
+			messageIsInvisible: [31, "boolean"],
 			messageType: [
 				4,
 				{
@@ -5366,13 +5366,13 @@ export const WEB_EVENTS: Event[] = [
 					INTEROP: 6,
 				},
 			],
-			networkWasDisconnected: [14, 'boolean'],
-			participantCount: [37, 'integer'],
-			phoneCores: [34, 'integer'],
-			prekeysEligibleForPrallelProcessing: [28, 'boolean'],
-			receiverDeviceCount: [39, 'integer'],
-			sendCount: [13, 'integer'],
-			sendRetryCount: [10, 'integer'],
+			networkWasDisconnected: [14, "boolean"],
+			participantCount: [37, "integer"],
+			phoneCores: [34, "integer"],
+			prekeysEligibleForPrallelProcessing: [28, "boolean"],
+			receiverDeviceCount: [39, "integer"],
+			sendCount: [13, "integer"],
+			sendRetryCount: [10, "integer"],
 			sendStage: [
 				2,
 				{
@@ -5386,9 +5386,9 @@ export const WEB_EVENTS: Event[] = [
 					CLIENT_PREKEYS_FETCH: 8,
 				},
 			],
-			senderDeviceCount: [40, 'integer'],
-			senderKeyDistributionCountPercentage: [23, 'integer'],
-			sessionsMissingWhenComposing: [25, 'boolean'],
+			senderDeviceCount: [40, "integer"],
+			senderKeyDistributionCountPercentage: [23, "integer"],
+			sessionsMissingWhenComposing: [25, "boolean"],
 			targetDeviceGroupSizeBucket: [
 				20,
 				{
@@ -5410,7 +5410,7 @@ export const WEB_EVENTS: Event[] = [
 					LARGEST_BUCKET: 15,
 				},
 			],
-			threadsInExecution: [19, 'integer'],
+			threadsInExecution: [19, "integer"],
 			typeOfGroup: [
 				38,
 				{
@@ -5421,11 +5421,11 @@ export const WEB_EVENTS: Event[] = [
 			],
 		},
 		weight: 2000,
-		wamChannel: 'regular',
+		wamChannel: "regular",
 		privateStatsIdInt: -1,
 	},
 	{
-		name: 'MdDeviceSyncAck',
+		name: "MdDeviceSyncAck",
 		id: 2180,
 		props: {
 			chatType: [
@@ -5439,7 +5439,7 @@ export const WEB_EVENTS: Event[] = [
 					CHANNEL: 5,
 				},
 			],
-			isLid: [3, 'boolean'],
+			isLid: [3, "boolean"],
 			localAddressingMode: [
 				5,
 				{
@@ -5447,7 +5447,7 @@ export const WEB_EVENTS: Event[] = [
 					LID: 2,
 				},
 			],
-			revoke: [2, 'boolean'],
+			revoke: [2, "boolean"],
 			serverAddressingMode: [
 				6,
 				{
@@ -5465,21 +5465,21 @@ export const WEB_EVENTS: Event[] = [
 			],
 		},
 		weight: 1,
-		wamChannel: 'regular',
+		wamChannel: "regular",
 		privateStatsIdInt: -1,
 	},
 	{
-		name: 'AdvMetadataCreationFailure',
+		name: "AdvMetadataCreationFailure",
 		id: 3048,
 		props: {
-			advMetadataIsMe: [1, 'boolean'],
+			advMetadataIsMe: [1, "boolean"],
 		},
 		weight: 1,
-		wamChannel: 'regular',
+		wamChannel: "regular",
 		privateStatsIdInt: -1,
 	},
 	{
-		name: 'MdGroupParticipantMissAck',
+		name: "MdGroupParticipantMissAck",
 		id: 4146,
 		props: {
 			groupSizeBucket: [
@@ -5503,10 +5503,10 @@ export const WEB_EVENTS: Event[] = [
 					LARGEST_BUCKET: 15,
 				},
 			],
-			isLid: [2, 'boolean'],
-			messageIsRevoke: [3, 'boolean'],
-			participantAddCount: [4, 'integer'],
-			participantRemoveCount: [5, 'integer'],
+			isLid: [2, "boolean"],
+			messageIsRevoke: [3, "boolean"],
+			participantAddCount: [4, "integer"],
+			participantRemoveCount: [5, "integer"],
 			typeOfGroup: [
 				6,
 				{
@@ -5517,16 +5517,16 @@ export const WEB_EVENTS: Event[] = [
 			],
 		},
 		weight: 1,
-		wamChannel: 'regular',
+		wamChannel: "regular",
 		privateStatsIdInt: -1,
 	},
 	{
-		name: 'CrashLog',
+		name: "CrashLog",
 		id: 494,
 		props: {
-			crashContext: [3, 'string'],
-			crashCount: [5, 'integer'],
-			crashReason: [2, 'string'],
+			crashContext: [3, "string"],
+			crashCount: [5, "integer"],
+			crashReason: [2, "string"],
 			crashType: [
 				6,
 				{
@@ -5552,32 +5552,32 @@ export const WEB_EVENTS: Event[] = [
 			],
 		},
 		weight: 100,
-		wamChannel: 'regular',
+		wamChannel: "regular",
 		privateStatsIdInt: -1,
 	},
 	{
-		name: 'WebcPageResume',
+		name: "WebcPageResume",
 		id: 884,
 		props: {
-			webcResumeCount: [1, 'integer'],
+			webcResumeCount: [1, "integer"],
 		},
 		weight: 1,
-		wamChannel: 'regular',
+		wamChannel: "regular",
 		privateStatsIdInt: -1,
 	},
 	{
-		name: 'WebcPhoneDisconnected',
+		name: "WebcPhoneDisconnected",
 		id: 878,
 		props: {
-			webcPhoneBbarShownT: [2, 'timer'],
-			webcPhoneDisconnectedT: [1, 'timer'],
+			webcPhoneBbarShownT: [2, "timer"],
+			webcPhoneDisconnectedT: [1, "timer"],
 		},
 		weight: 1,
-		wamChannel: 'regular',
+		wamChannel: "regular",
 		privateStatsIdInt: -1,
 	},
 	{
-		name: 'MdSyncdDogfoodingFeatureUsage',
+		name: "MdSyncdDogfoodingFeatureUsage",
 		id: 3016,
 		props: {
 			mdSyncdDogfoodingFeature: [
@@ -5592,11 +5592,11 @@ export const WEB_EVENTS: Event[] = [
 			],
 		},
 		weight: 1,
-		wamChannel: 'regular',
+		wamChannel: "regular",
 		privateStatsIdInt: -1,
 	},
 	{
-		name: 'MdFatalError',
+		name: "MdFatalError",
 		id: 2304,
 		props: {
 			collection: [
@@ -5609,36 +5609,42 @@ export const WEB_EVENTS: Event[] = [
 					CRITICAL_UNBLOCK_LOW: 5,
 				},
 			],
-			currentPrimaryAppVersion: [14, 'string'],
-			daysSinceLastPeriodicSync: [11, 'integer'],
-			didBootstrapFromSnapshot: [38, 'boolean'],
-			hoursSinceFirstFiniteFailure: [12, 'integer'],
-			isBootstrap: [3, 'boolean'],
-			isFatal: [16, 'boolean'],
-			isPatchSenderPrimary: [23, 'boolean'],
-			isPreviousPatchAnIncomingPatch: [24, 'boolean'],
-			isPreviousPatchSenderPrimary: [25, 'boolean'],
-			isSenderIndexSameAsPreviousSenderIndex: [39, 'boolean'],
-			isThereAnotherSyncdCompanion: [40, 'boolean'],
-			isWebLthashConsistent: [17, 'boolean'],
-			macFatalCollectionNameMismatch: [18, 'boolean'],
-			macFatalCurrentLthashMismatch: [19, 'boolean'],
-			macFatalDidPreviousPatchFailPostSaveValidation: [26, 'boolean'],
-			macFatalDidUseMacFetchFallback: [36, 'boolean'],
-			macFatalFirstTwoBytesFromAHashOfSnapshotMacKeyMismatch: [20, 'boolean'],
-			macFatalHasMissingRemove: [37, 'boolean'],
-			macFatalNewLthashMismatch: [21, 'boolean'],
-			macFatalNewLthashSubtractMismatch: [27, 'boolean'],
-			macFatalNumberAddMismatch: [28, 'boolean'],
-			macFatalNumberHasOverrideMutation: [29, 'boolean'],
-			macFatalNumberNumAddMutation: [30, 'integer'],
-			macFatalNumberNumRemoveMutation: [31, 'integer'],
-			macFatalNumberOverrideMismatch: [32, 'boolean'],
-			macFatalNumberRemoveMismatch: [33, 'boolean'],
-			macFatalPatchVersionMismatch: [22, 'boolean'],
-			macFatalPreviousPatchNewLthashToCurrentPatchCurrentLthash: [34, 'boolean'],
-			macFatalSenderCurrentLthashToLocalCalculatedCurrentLthashMismatch: [35, 'boolean'],
-			mailboxAgeDays: [13, 'integer'],
+			currentPrimaryAppVersion: [14, "string"],
+			daysSinceLastPeriodicSync: [11, "integer"],
+			didBootstrapFromSnapshot: [38, "boolean"],
+			hoursSinceFirstFiniteFailure: [12, "integer"],
+			isBootstrap: [3, "boolean"],
+			isFatal: [16, "boolean"],
+			isPatchSenderPrimary: [23, "boolean"],
+			isPreviousPatchAnIncomingPatch: [24, "boolean"],
+			isPreviousPatchSenderPrimary: [25, "boolean"],
+			isSenderIndexSameAsPreviousSenderIndex: [39, "boolean"],
+			isThereAnotherSyncdCompanion: [40, "boolean"],
+			isWebLthashConsistent: [17, "boolean"],
+			macFatalCollectionNameMismatch: [18, "boolean"],
+			macFatalCurrentLthashMismatch: [19, "boolean"],
+			macFatalDidPreviousPatchFailPostSaveValidation: [26, "boolean"],
+			macFatalDidUseMacFetchFallback: [36, "boolean"],
+			macFatalFirstTwoBytesFromAHashOfSnapshotMacKeyMismatch: [20, "boolean"],
+			macFatalHasMissingRemove: [37, "boolean"],
+			macFatalNewLthashMismatch: [21, "boolean"],
+			macFatalNewLthashSubtractMismatch: [27, "boolean"],
+			macFatalNumberAddMismatch: [28, "boolean"],
+			macFatalNumberHasOverrideMutation: [29, "boolean"],
+			macFatalNumberNumAddMutation: [30, "integer"],
+			macFatalNumberNumRemoveMutation: [31, "integer"],
+			macFatalNumberOverrideMismatch: [32, "boolean"],
+			macFatalNumberRemoveMismatch: [33, "boolean"],
+			macFatalPatchVersionMismatch: [22, "boolean"],
+			macFatalPreviousPatchNewLthashToCurrentPatchCurrentLthash: [
+				34,
+				"boolean",
+			],
+			macFatalSenderCurrentLthashToLocalCalculatedCurrentLthashMismatch: [
+				35,
+				"boolean",
+			],
+			mailboxAgeDays: [13, "integer"],
 			mdFatalErrorCode: [
 				1,
 				{
@@ -5738,9 +5744,9 @@ export const WEB_EVENTS: Event[] = [
 					CHAT_DB_CORRUPTION: 102,
 				},
 			],
-			patchSnapshotMutationCount: [9, 'integer'],
-			patchVersion: [5, 'integer'],
-			sessionStartPrimaryAppVersion: [15, 'string'],
+			patchSnapshotMutationCount: [9, "integer"],
+			patchVersion: [5, "integer"],
+			sessionStartPrimaryAppVersion: [15, "string"],
 			sourceType: [
 				10,
 				{
@@ -5749,19 +5755,19 @@ export const WEB_EVENTS: Event[] = [
 					INLINE_PATCH: 3,
 				},
 			],
-			timeSincePairingMs: [6, 'integer'],
-			timeSinceRefreshMs: [7, 'integer'],
-			timeSinceTabTakeoverMs: [8, 'integer'],
+			timeSincePairingMs: [6, "integer"],
+			timeSinceRefreshMs: [7, "integer"],
+			timeSinceTabTakeoverMs: [8, "integer"],
 		},
 		weight: 1,
-		wamChannel: 'regular',
+		wamChannel: "regular",
 		privateStatsIdInt: -1,
 	},
 	{
-		name: 'MediaUpload2',
+		name: "MediaUpload2",
 		id: 1588,
 		props: {
-			batchSize: [57, 'integer'],
+			batchSize: [57, "integer"],
 			connectionType: [
 				43,
 				{
@@ -5770,16 +5776,16 @@ export const WEB_EVENTS: Event[] = [
 					IP6: 2,
 				},
 			],
-			debugMediaException: [34, 'string'],
-			debugMediaIp: [32, 'string'],
-			debugUrl: [33, 'string'],
-			estimatedBandwidth: [45, 'number'],
-			fileHeight: [55, 'integer'],
-			fileWidth: [56, 'integer'],
-			finalizeConnectT: [28, 'timer'],
-			finalizeHttpCode: [31, 'integer'],
-			finalizeIsReuse: [30, 'boolean'],
-			finalizeNetworkT: [29, 'timer'],
+			debugMediaException: [34, "string"],
+			debugMediaIp: [32, "string"],
+			debugUrl: [33, "string"],
+			estimatedBandwidth: [45, "number"],
+			fileHeight: [55, "integer"],
+			fileWidth: [56, "integer"],
+			finalizeConnectT: [28, "timer"],
+			finalizeHttpCode: [31, "integer"],
+			finalizeIsReuse: [30, "boolean"],
+			finalizeNetworkT: [29, "timer"],
 			httpProtocolVersionType: [
 				51,
 				{
@@ -5788,9 +5794,9 @@ export const WEB_EVENTS: Event[] = [
 					HTTP3: 2,
 				},
 			],
-			isViewOnce: [49, 'boolean'],
-			mediaId: [46, 'integer'],
-			messageKeyHash: [58, 'string'],
+			isViewOnce: [49, "boolean"],
+			mediaId: [46, "integer"],
+			messageKeyHash: [58, "string"],
 			networkStack: [
 				42,
 				{
@@ -5802,17 +5808,17 @@ export const WEB_EVENTS: Event[] = [
 					CRONET: 5,
 				},
 			],
-			originalSize: [53, 'integer'],
-			overallAttemptCount: [4, 'integer'],
-			overallConnBlockFetchT: [10, 'timer'],
-			overallConnectionClass: [41, 'string'],
-			overallCumT: [37, 'timer'],
-			overallCumUserVisibleT: [38, 'timer'],
-			overallDomain: [5, 'string'],
-			overallEncryptT: [50, 'timer'],
-			overallIsFinal: [36, 'boolean'],
-			overallIsForward: [16, 'boolean'],
-			overallIsManual: [13, 'boolean'],
+			originalSize: [53, "integer"],
+			overallAttemptCount: [4, "integer"],
+			overallConnBlockFetchT: [10, "timer"],
+			overallConnectionClass: [41, "string"],
+			overallCumT: [37, "timer"],
+			overallCumUserVisibleT: [38, "timer"],
+			overallDomain: [5, "string"],
+			overallEncryptT: [50, "timer"],
+			overallIsFinal: [36, "boolean"],
+			overallIsForward: [16, "boolean"],
+			overallIsManual: [13, "boolean"],
 			overallLastUploadRetryPhase: [
 				11,
 				{
@@ -5830,7 +5836,7 @@ export const WEB_EVENTS: Event[] = [
 					NONE_WAS_STATUS: 4,
 				},
 			],
-			overallMediaSize: [7, 'number'],
+			overallMediaSize: [7, "number"],
 			overallMediaType: [
 				1,
 				{
@@ -5898,7 +5904,7 @@ export const WEB_EVENTS: Event[] = [
 					INTERACTIVE_PRODUCT: 62,
 				},
 			],
-			overallMmsVersion: [6, 'integer'],
+			overallMmsVersion: [6, "integer"],
 			overallOptimisticFlag: [
 				12,
 				{
@@ -5909,10 +5915,10 @@ export const WEB_EVENTS: Event[] = [
 					OPT_DISABLED: 4,
 				},
 			],
-			overallQueueT: [9, 'timer'],
-			overallRetryCount: [3, 'integer'],
-			overallT: [8, 'timer'],
-			overallTranscodeT: [15, 'timer'],
+			overallQueueT: [9, "timer"],
+			overallRetryCount: [3, "integer"],
+			overallT: [8, "timer"],
+			overallTranscodeT: [15, "timer"],
 			overallUploadMode: [
 				39,
 				{
@@ -5990,7 +5996,7 @@ export const WEB_EVENTS: Event[] = [
 					ERROR_INVALID_URL: 41,
 				},
 			],
-			overallUserVisibleT: [14, 'timer'],
+			overallUserVisibleT: [14, "timer"],
 			photoQualitySetting: [
 				52,
 				{
@@ -6000,17 +6006,17 @@ export const WEB_EVENTS: Event[] = [
 					HIGHEST_QUALITY: 3,
 				},
 			],
-			resumeConnectT: [17, 'timer'],
-			resumeHttpCode: [20, 'integer'],
-			resumeIsReuse: [19, 'boolean'],
-			resumeNetworkT: [18, 'timer'],
-			uploadBytesTransferred: [27, 'number'],
-			uploadConnectT: [22, 'timer'],
-			uploadHttpCode: [25, 'integer'],
-			uploadIsReuse: [24, 'boolean'],
-			uploadIsStreaming: [26, 'boolean'],
-			uploadNetworkT: [23, 'timer'],
-			uploadResumePoint: [21, 'integer'],
+			resumeConnectT: [17, "timer"],
+			resumeHttpCode: [20, "integer"],
+			resumeIsReuse: [19, "boolean"],
+			resumeNetworkT: [18, "timer"],
+			uploadBytesTransferred: [27, "number"],
+			uploadConnectT: [22, "timer"],
+			uploadHttpCode: [25, "integer"],
+			uploadIsReuse: [24, "boolean"],
+			uploadIsStreaming: [26, "boolean"],
+			uploadNetworkT: [23, "timer"],
+			uploadResumePoint: [21, "integer"],
 			uploadSource: [
 				48,
 				{
@@ -6020,7 +6026,7 @@ export const WEB_EVENTS: Event[] = [
 					SHARE: 4,
 				},
 			],
-			usedFallbackHint: [47, 'string'],
+			usedFallbackHint: [47, "string"],
 			videoQualitySetting: [
 				54,
 				{
@@ -6032,16 +6038,16 @@ export const WEB_EVENTS: Event[] = [
 			],
 		},
 		weight: 1,
-		wamChannel: 'regular',
+		wamChannel: "regular",
 		privateStatsIdInt: -1,
 	},
 	{
-		name: 'WebcMediaErrorUnknownDetails',
+		name: "WebcMediaErrorUnknownDetails",
 		id: 2352,
 		props: {
-			mediaId: [1, 'integer'],
-			webcMediaErrorMessage: [4, 'string'],
-			webcMediaErrorName: [3, 'string'],
+			mediaId: [1, "integer"],
+			webcMediaErrorMessage: [4, "string"],
+			webcMediaErrorName: [3, "string"],
 			webcMediaOperation: [
 				2,
 				{
@@ -6051,11 +6057,11 @@ export const WEB_EVENTS: Event[] = [
 			],
 		},
 		weight: 1,
-		wamChannel: 'regular',
+		wamChannel: "regular",
 		privateStatsIdInt: -1,
 	},
 	{
-		name: 'WebcMediaLoad',
+		name: "WebcMediaLoad",
 		id: 1202,
 		props: {
 			webcMediaLoadResult: [
@@ -6066,14 +6072,14 @@ export const WEB_EVENTS: Event[] = [
 					ZEROWIDTH: 2,
 				},
 			],
-			webcMediaLoadT: [1, 'timer'],
+			webcMediaLoadT: [1, "timer"],
 		},
 		weight: 1,
-		wamChannel: 'regular',
+		wamChannel: "regular",
 		privateStatsIdInt: -1,
 	},
 	{
-		name: 'StickerError',
+		name: "StickerError",
 		id: 5024,
 		props: {
 			stickerErrorType: [
@@ -6086,44 +6092,44 @@ export const WEB_EVENTS: Event[] = [
 			],
 		},
 		weight: 1,
-		wamChannel: 'regular',
+		wamChannel: "regular",
 		privateStatsIdInt: -1,
 	},
 	{
-		name: 'StickerLatency',
+		name: "StickerLatency",
 		id: 5026,
 		props: {
-			size: [1, 'integer'],
+			size: [1, "integer"],
 			stickerLatencyAction: [
 				2,
 				{
 					DECOMPRESSION: 2,
 				},
 			],
-			stickerLatencyTtAction: [3, 'integer'],
+			stickerLatencyTtAction: [3, "integer"],
 		},
 		weight: 1,
-		wamChannel: 'regular',
+		wamChannel: "regular",
 		privateStatsIdInt: -1,
 	},
 	{
-		name: 'WebcProgressiveImage',
+		name: "WebcProgressiveImage",
 		id: 2226,
 		props: {
-			webcFirstRenderScans: [1, 'integer'],
-			webcFirstRenderT: [2, 'timer'],
-			webcFullQualityT: [4, 'timer'],
-			webcMidQualityT: [3, 'timer'],
+			webcFirstRenderScans: [1, "integer"],
+			webcFirstRenderT: [2, "timer"],
+			webcFullQualityT: [4, "timer"],
+			webcMidQualityT: [3, "timer"],
 		},
 		weight: 10,
-		wamChannel: 'regular',
+		wamChannel: "regular",
 		privateStatsIdInt: -1,
 	},
 	{
-		name: 'SendDocument',
+		name: "SendDocument",
 		id: 2172,
 		props: {
-			documentSize: [1, 'number'],
+			documentSize: [1, "number"],
 			documentType: [
 				2,
 				{
@@ -6139,28 +6145,28 @@ export const WEB_EVENTS: Event[] = [
 			],
 		},
 		weight: 1,
-		wamChannel: 'regular',
+		wamChannel: "regular",
 		privateStatsIdInt: -1,
 	},
 	{
-		name: 'WebcMediaAnalyzed',
+		name: "WebcMediaAnalyzed",
 		id: 912,
 		props: {
-			webcMediaAnalyzeT: [3, 'timer'],
-			webcMediaExtensions: [2, 'string'],
-			webcMediaSupported: [1, 'boolean'],
+			webcMediaAnalyzeT: [3, "timer"],
+			webcMediaExtensions: [2, "string"],
+			webcMediaSupported: [1, "boolean"],
 		},
 		weight: 1,
-		wamChannel: 'regular',
+		wamChannel: "regular",
 		privateStatsIdInt: -1,
 	},
 	{
-		name: 'VideoTranscoder',
+		name: "VideoTranscoder",
 		id: 1802,
 		props: {
-			sourceAudioBitRate: [12, 'number'],
-			sourceDuration: [8, 'timer'],
-			sourceFileSize: [7, 'number'],
+			sourceAudioBitRate: [12, "number"],
+			sourceDuration: [8, "timer"],
+			sourceFileSize: [7, "number"],
 			sourceFormat: [
 				14,
 				{
@@ -6169,13 +6175,13 @@ export const WEB_EVENTS: Event[] = [
 					GIF: 2,
 				},
 			],
-			sourceFrameRate: [13, 'number'],
-			sourceHeight: [10, 'number'],
-			sourceVideoBitRate: [11, 'number'],
-			sourceWidth: [9, 'number'],
-			targetAudioBitRate: [20, 'number'],
-			targetDuration: [16, 'timer'],
-			targetFileSize: [15, 'number'],
+			sourceFrameRate: [13, "number"],
+			sourceHeight: [10, "number"],
+			sourceVideoBitRate: [11, "number"],
+			sourceWidth: [9, "number"],
+			targetAudioBitRate: [20, "number"],
+			targetDuration: [16, "timer"],
+			targetFileSize: [15, "number"],
 			targetFormat: [
 				22,
 				{
@@ -6184,10 +6190,10 @@ export const WEB_EVENTS: Event[] = [
 					GIF: 2,
 				},
 			],
-			targetFrameRate: [21, 'number'],
-			targetHeight: [18, 'number'],
-			targetVideoBitRate: [19, 'number'],
-			targetWidth: [17, 'number'],
+			targetFrameRate: [21, "number"],
+			targetHeight: [18, "number"],
+			targetVideoBitRate: [19, "number"],
+			targetWidth: [17, "number"],
 			transcoderAlgorithm: [
 				1,
 				{
@@ -6195,9 +6201,9 @@ export const WEB_EVENTS: Event[] = [
 					FB_IPHONE: 1,
 				},
 			],
-			transcoderContainsVideocomposition: [5, 'boolean'],
-			transcoderHasEdits: [6, 'boolean'],
-			transcoderIsPassthrough: [4, 'boolean'],
+			transcoderContainsVideocomposition: [5, "boolean"],
+			transcoderHasEdits: [6, "boolean"],
+			transcoderIsPassthrough: [4, "boolean"],
 			transcoderResult: [
 				2,
 				{
@@ -6207,24 +6213,24 @@ export const WEB_EVENTS: Event[] = [
 					CANCELLED: 3,
 				},
 			],
-			transcoderT: [3, 'timer'],
+			transcoderT: [3, "timer"],
 		},
 		weight: 1,
-		wamChannel: 'regular',
+		wamChannel: "regular",
 		privateStatsIdInt: -1,
 	},
 	{
-		name: 'StickerSend',
+		name: "StickerSend",
 		id: 1840,
 		props: {
-			stickerIsAi: [7, 'boolean'],
-			stickerIsAnimated: [3, 'boolean'],
-			stickerIsAvatar: [6, 'boolean'],
-			stickerIsFirstParty: [2, 'boolean'],
-			stickerIsFromStickerMaker: [5, 'boolean'],
-			stickerIsGiphy: [10, 'boolean'],
-			stickerIsLottie: [9, 'boolean'],
-			stickerIsTenor: [11, 'boolean'],
+			stickerIsAi: [7, "boolean"],
+			stickerIsAnimated: [3, "boolean"],
+			stickerIsAvatar: [6, "boolean"],
+			stickerIsFirstParty: [2, "boolean"],
+			stickerIsFromStickerMaker: [5, "boolean"],
+			stickerIsGiphy: [10, "boolean"],
+			stickerIsLottie: [9, "boolean"],
+			stickerIsTenor: [11, "boolean"],
 			stickerMakerSourceType: [
 				8,
 				{
@@ -6262,14 +6268,14 @@ export const WEB_EVENTS: Event[] = [
 			],
 		},
 		weight: 1,
-		wamChannel: 'regular',
+		wamChannel: "regular",
 		privateStatsIdInt: -1,
 	},
 	{
-		name: 'MediaDownload2',
+		name: "MediaDownload2",
 		id: 1590,
 		props: {
-			clientMessageId: [50, 'string'],
+			clientMessageId: [50, "string"],
 			connectionType: [
 				31,
 				{
@@ -6278,17 +6284,17 @@ export const WEB_EVENTS: Event[] = [
 					IP6: 2,
 				},
 			],
-			daysSinceReceive: [46, 'integer'],
-			debugMediaException: [24, 'string'],
-			debugMediaIp: [22, 'string'],
-			debugUrl: [23, 'string'],
-			deviceCount: [49, 'integer'],
-			downloadBytesTransferred: [20, 'number'],
-			downloadConnectT: [15, 'timer'],
-			downloadHttpCode: [18, 'integer'],
-			downloadIsReuse: [17, 'boolean'],
-			downloadIsStreaming: [19, 'boolean'],
-			downloadNetworkT: [16, 'timer'],
+			daysSinceReceive: [46, "integer"],
+			debugMediaException: [24, "string"],
+			debugMediaIp: [22, "string"],
+			debugUrl: [23, "string"],
+			deviceCount: [49, "integer"],
+			downloadBytesTransferred: [20, "number"],
+			downloadConnectT: [15, "timer"],
+			downloadHttpCode: [18, "integer"],
+			downloadIsReuse: [17, "boolean"],
+			downloadIsStreaming: [19, "boolean"],
+			downloadNetworkT: [16, "timer"],
 			downloadQuality: [
 				37,
 				{
@@ -6300,14 +6306,14 @@ export const WEB_EVENTS: Event[] = [
 					NOT_DOWNLOADED_ENOUGH_BYTES_TO_DETERMINE_ELIGIBILITY: 6,
 				},
 			],
-			downloadResumePoint: [14, 'integer'],
-			downloadTimeToFirstByteT: [21, 'timer'],
-			estimatedBandwidth: [36, 'number'],
-			expressPathBytesSaved: [42, 'number'],
-			expressPathTimeSavedMs: [43, 'timer'],
-			fileHeight: [47, 'integer'],
-			fileWidth: [48, 'integer'],
-			hasLeveragedExpressPath: [44, 'boolean'],
+			downloadResumePoint: [14, "integer"],
+			downloadTimeToFirstByteT: [21, "timer"],
+			estimatedBandwidth: [36, "number"],
+			expressPathBytesSaved: [42, "number"],
+			expressPathTimeSavedMs: [43, "timer"],
+			fileHeight: [47, "integer"],
+			fileWidth: [48, "integer"],
+			hasLeveragedExpressPath: [44, "boolean"],
 			httpProtocolVersionType: [
 				45,
 				{
@@ -6316,9 +6322,9 @@ export const WEB_EVENTS: Event[] = [
 					HTTP3: 2,
 				},
 			],
-			isSenderPlatformCapi: [52, 'boolean'],
-			isViewOnce: [41, 'boolean'],
-			mediaId: [38, 'integer'],
+			isSenderPlatformCapi: [52, "boolean"],
+			isViewOnce: [41, "boolean"],
+			mediaId: [38, "integer"],
 			networkStack: [
 				30,
 				{
@@ -6330,7 +6336,7 @@ export const WEB_EVENTS: Event[] = [
 					CRONET: 5,
 				},
 			],
-			overallAttemptCount: [4, 'integer'],
+			overallAttemptCount: [4, "integer"],
 			overallBackendStore: [
 				39,
 				{
@@ -6343,12 +6349,12 @@ export const WEB_EVENTS: Event[] = [
 					MANIFOLD: 6,
 				},
 			],
-			overallConnBlockFetchT: [10, 'timer'],
-			overallConnectionClass: [29, 'string'],
-			overallCumT: [27, 'timer'],
-			overallCumV2T: [53, 'timer'],
-			overallDecryptT: [12, 'timer'],
-			overallDomain: [5, 'string'],
+			overallConnBlockFetchT: [10, "timer"],
+			overallConnectionClass: [29, "string"],
+			overallCumT: [27, "timer"],
+			overallCumV2T: [53, "timer"],
+			overallDecryptT: [12, "timer"],
+			overallDomain: [5, "string"],
 			overallDownloadMode: [
 				11,
 				{
@@ -6423,10 +6429,10 @@ export const WEB_EVENTS: Event[] = [
 					ERROR_HASH_VERIFICATION_FAILURE: 39,
 				},
 			],
-			overallFileValidationT: [13, 'timer'],
-			overallIsEncrypted: [28, 'boolean'],
-			overallIsFinal: [26, 'boolean'],
-			overallMediaSize: [7, 'number'],
+			overallFileValidationT: [13, "timer"],
+			overallIsEncrypted: [28, "boolean"],
+			overallIsFinal: [26, "boolean"],
+			overallMediaSize: [7, "number"],
 			overallMediaType: [
 				1,
 				{
@@ -6494,19 +6500,19 @@ export const WEB_EVENTS: Event[] = [
 					INTERACTIVE_PRODUCT: 62,
 				},
 			],
-			overallMmsVersion: [6, 'integer'],
-			overallQueueT: [9, 'timer'],
-			overallRetryCount: [3, 'integer'],
-			overallT: [8, 'timer'],
-			sleepModeAffected: [51, 'boolean'],
-			usedFallbackHint: [40, 'string'],
+			overallMmsVersion: [6, "integer"],
+			overallQueueT: [9, "timer"],
+			overallRetryCount: [3, "integer"],
+			overallT: [8, "timer"],
+			sleepModeAffected: [51, "boolean"],
+			usedFallbackHint: [40, "string"],
 		},
 		weight: 50,
-		wamChannel: 'regular',
+		wamChannel: "regular",
 		privateStatsIdInt: -1,
 	},
 	{
-		name: 'WebcMediaRmr',
+		name: "WebcMediaRmr",
 		id: 1906,
 		props: {
 			messageMediaType: [
@@ -6576,10 +6582,10 @@ export const WEB_EVENTS: Event[] = [
 					INTERACTIVE_PRODUCT: 62,
 				},
 			],
-			webcBrowserNetworkType: [2, 'string'],
-			webcBrowserStorageQuotaBytes: [11, 'integer'],
-			webcBrowserStorageQuotaUsedBytes: [12, 'integer'],
-			webcChatPosition: [1, 'integer'],
+			webcBrowserNetworkType: [2, "string"],
+			webcBrowserStorageQuotaBytes: [11, "integer"],
+			webcBrowserStorageQuotaUsedBytes: [12, "integer"],
+			webcChatPosition: [1, "integer"],
 			webcChatType: [
 				9,
 				{
@@ -6590,11 +6596,11 @@ export const WEB_EVENTS: Event[] = [
 					NEWSLETTER: 4,
 				},
 			],
-			webcMediaRmrError: [8, 'boolean'],
-			webcMediaRmrT: [6, 'timer'],
-			webcMediaSize: [7, 'integer'],
-			webcMessageIndex: [3, 'integer'],
-			webcMessageT: [5, 'timer'],
+			webcMediaRmrError: [8, "boolean"],
+			webcMediaRmrT: [6, "timer"],
+			webcMediaSize: [7, "integer"],
+			webcMessageIndex: [3, "integer"],
+			webcMessageT: [5, "timer"],
 			webcRmrReason: [
 				14,
 				{
@@ -6616,14 +6622,14 @@ export const WEB_EVENTS: Event[] = [
 					MSG_RENDER: 15,
 				},
 			],
-			webcRmrStatusCode: [13, 'integer'],
+			webcRmrStatusCode: [13, "integer"],
 		},
 		weight: 1,
-		wamChannel: 'regular',
+		wamChannel: "regular",
 		privateStatsIdInt: -1,
 	},
 	{
-		name: 'BlockEventsFs',
+		name: "BlockEventsFs",
 		id: 4288,
 		props: {
 			blockEntryPoint: [
@@ -6688,9 +6694,9 @@ export const WEB_EVENTS: Event[] = [
 					UNBLOCK: 1,
 				},
 			],
-			blockEventIsSuspicious: [3, 'boolean'],
-			blockEventIsUnsub: [4, 'boolean'],
-			pastCall: [5, 'boolean'],
+			blockEventIsSuspicious: [3, "boolean"],
+			blockEventIsUnsub: [4, "boolean"],
+			pastCall: [5, "boolean"],
 			pastCallResult: [
 				6,
 				{
@@ -6727,11 +6733,11 @@ export const WEB_EVENTS: Event[] = [
 			],
 		},
 		weight: 1,
-		wamChannel: 'regular',
+		wamChannel: "regular",
 		privateStatsIdInt: -1,
 	},
 	{
-		name: 'SignCredential',
+		name: "SignCredential",
 		id: 2242,
 		props: {
 			applicationState: [
@@ -6741,8 +6747,8 @@ export const WEB_EVENTS: Event[] = [
 					BACKGROUND: 2,
 				},
 			],
-			isFromWameta: [8, 'boolean'],
-			overallT: [4, 'timer'],
+			isFromWameta: [8, "boolean"],
+			overallT: [4, "timer"],
 			projectCode: [
 				7,
 				{
@@ -6750,7 +6756,7 @@ export const WEB_EVENTS: Event[] = [
 					DIRECTORY_SEARCH: 2,
 				},
 			],
-			retryCount: [2, 'integer'],
+			retryCount: [2, "integer"],
 			signCredentialResult: [
 				1,
 				{
@@ -6761,15 +6767,15 @@ export const WEB_EVENTS: Event[] = [
 					ERROR_CLIENT_NETWORK: 5,
 				},
 			],
-			signCredentialT: [3, 'timer'],
-			waConnectedToChatd: [5, 'boolean'],
+			signCredentialT: [3, "timer"],
+			waConnectedToChatd: [5, "boolean"],
 		},
 		weight: 1,
-		wamChannel: 'regular',
+		wamChannel: "regular",
 		privateStatsIdInt: -1,
 	},
 	{
-		name: 'PsBufferUpload',
+		name: "PsBufferUpload",
 		id: 2244,
 		props: {
 			applicationState: [
@@ -6779,10 +6785,10 @@ export const WEB_EVENTS: Event[] = [
 					BACKGROUND: 2,
 				},
 			],
-			isFromWamsys: [12, 'boolean'],
-			isUserSampled: [14, 'boolean'],
-			psBufferSequenceNumber: [13, 'integer'],
-			psBufferUploadHttpResponseCode: [3, 'integer'],
+			isFromWamsys: [12, "boolean"],
+			isUserSampled: [14, "boolean"],
+			psBufferSequenceNumber: [13, "integer"],
+			psBufferUploadHttpResponseCode: [3, "integer"],
 			psBufferUploadResult: [
 				1,
 				{
@@ -6799,9 +6805,9 @@ export const WEB_EVENTS: Event[] = [
 					ERROR_ACCESS_TOKEN: 11,
 				},
 			],
-			psBufferUploadT: [2, 'timer'],
-			psDitheredT: [11, 'integer'],
-			psForceUpload: [10, 'boolean'],
+			psBufferUploadT: [2, "timer"],
+			psDitheredT: [11, "integer"],
+			psForceUpload: [10, "boolean"],
 			psTokenNotReadyReason: [
 				4,
 				{
@@ -6830,17 +6836,17 @@ export const WEB_EVENTS: Event[] = [
 					REASON_PS_OFFCYCLE: 1,
 				},
 			],
-			waConnectedToChatd: [5, 'boolean'],
+			waConnectedToChatd: [5, "boolean"],
 		},
 		weight: 1,
-		wamChannel: 'regular',
+		wamChannel: "regular",
 		privateStatsIdInt: -1,
 	},
 	{
-		name: 'EditMessageSend',
+		name: "EditMessageSend",
 		id: 3990,
 		props: {
-			editDuration: [1, 'integer'],
+			editDuration: [1, "integer"],
 			editType: [
 				2,
 				{
@@ -6917,7 +6923,7 @@ export const WEB_EVENTS: Event[] = [
 					INTERACTIVE_PRODUCT: 62,
 				},
 			],
-			messageSendResultIsTerminal: [3, 'boolean'],
+			messageSendResultIsTerminal: [3, "boolean"],
 			messageType: [
 				4,
 				{
@@ -6929,8 +6935,8 @@ export const WEB_EVENTS: Event[] = [
 					INTEROP: 6,
 				},
 			],
-			resendCount: [5, 'integer'],
-			retryCount: [6, 'integer'],
+			resendCount: [5, "integer"],
+			retryCount: [6, "integer"],
 			typeOfGroup: [
 				9,
 				{
@@ -6941,11 +6947,11 @@ export const WEB_EVENTS: Event[] = [
 			],
 		},
 		weight: 1,
-		wamChannel: 'regular',
+		wamChannel: "regular",
 		privateStatsIdInt: -1,
 	},
 	{
-		name: 'MessageSend',
+		name: "MessageSend",
 		id: 854,
 		props: {
 			agentEngagementType: [
@@ -6973,7 +6979,7 @@ export const WEB_EVENTS: Event[] = [
 					OTHERS: 3,
 				},
 			],
-			deviceCount: [31, 'integer'],
+			deviceCount: [31, "integer"],
 			deviceSizeBucket: [
 				25,
 				{
@@ -7005,7 +7011,7 @@ export const WEB_EVENTS: Event[] = [
 					BIZ_UPGRADE_FB_HOSTING: 5,
 				},
 			],
-			e2eBackfill: [23, 'boolean'],
+			e2eBackfill: [23, "boolean"],
 			e2eCiphertextType: [
 				10,
 				{
@@ -7015,7 +7021,7 @@ export const WEB_EVENTS: Event[] = [
 					MESSAGE_SECRET_MESSAGE: 3,
 				},
 			],
-			e2eCiphertextVersion: [9, 'integer'],
+			e2eCiphertextVersion: [9, "integer"],
 			e2eFailureReason: [
 				46,
 				{
@@ -7120,7 +7126,7 @@ export const WEB_EVENTS: Event[] = [
 					ERROR_SESSION_STATE_GET_REMOTE_IDENTITY_KEY: 98,
 				},
 			],
-			editDuration: [43, 'integer'],
+			editDuration: [43, "integer"],
 			editType: [
 				44,
 				{
@@ -7130,7 +7136,7 @@ export const WEB_EVENTS: Event[] = [
 					ADMIN_REVOKE: 3,
 				},
 			],
-			ephemeralityDuration: [21, 'integer'],
+			ephemeralityDuration: [21, "integer"],
 			ephemeralityInitiator: [
 				47,
 				{
@@ -7149,14 +7155,14 @@ export const WEB_EVENTS: Event[] = [
 					BIZ_SUPPORTS_FB_HOSTING: 4,
 				},
 			],
-			excessPayloadKbSize: [40, 'integer'],
-			fastForwardEnabled: [15, 'boolean'],
-			hasUsername: [59, 'boolean'],
-			isAComment: [54, 'boolean'],
-			isAReply: [35, 'boolean'],
-			isFromWamsys: [19, 'boolean'],
-			isLid: [39, 'boolean'],
-			isViewOnce: [22, 'boolean'],
+			excessPayloadKbSize: [40, "integer"],
+			fastForwardEnabled: [15, "boolean"],
+			hasUsername: [59, "boolean"],
+			isAComment: [54, "boolean"],
+			isAReply: [35, "boolean"],
+			isFromWamsys: [19, "boolean"],
+			isLid: [39, "boolean"],
+			isViewOnce: [22, "boolean"],
 			localAddressingMode: [
 				53,
 				{
@@ -7164,7 +7170,7 @@ export const WEB_EVENTS: Event[] = [
 					LID: 2,
 				},
 			],
-			mediaCaptionPresent: [8, 'boolean'],
+			mediaCaptionPresent: [8, "boolean"],
 			messageDistributionType: [
 				41,
 				{
@@ -7173,15 +7179,15 @@ export const WEB_EVENTS: Event[] = [
 					SENDER_KEY_DISTRIBUTION_MESSAGE: 2,
 				},
 			],
-			messageForwardAgeT: [14, 'timer'],
-			messageIsFanout: [5, 'boolean'],
-			messageIsFastForward: [13, 'boolean'],
-			messageIsFirstUserMessage: [26, 'boolean'],
-			messageIsForward: [4, 'boolean'],
-			messageIsInternational: [7, 'boolean'],
-			messageIsInvisible: [29, 'boolean'],
-			messageIsRevoke: [24, 'boolean'],
-			messageKeyHash: [57, 'string'],
+			messageForwardAgeT: [14, "timer"],
+			messageIsFanout: [5, "boolean"],
+			messageIsFastForward: [13, "boolean"],
+			messageIsFirstUserMessage: [26, "boolean"],
+			messageIsForward: [4, "boolean"],
+			messageIsInternational: [7, "boolean"],
+			messageIsInvisible: [29, "boolean"],
+			messageIsRevoke: [24, "boolean"],
+			messageKeyHash: [57, "string"],
 			messageMediaType: [
 				3,
 				{
@@ -7249,7 +7255,7 @@ export const WEB_EVENTS: Event[] = [
 					INTERACTIVE_PRODUCT: 62,
 				},
 			],
-			messageSendOptUploadEnabled: [12, 'boolean'],
+			messageSendOptUploadEnabled: [12, "boolean"],
 			messageSendResult: [
 				1,
 				{
@@ -7269,8 +7275,8 @@ export const WEB_EVENTS: Event[] = [
 					EPHEMERALLY_EXPIRED: 15,
 				},
 			],
-			messageSendResultIsTerminal: [17, 'boolean'],
-			messageSendT: [11, 'timer'],
+			messageSendResultIsTerminal: [17, "boolean"],
+			messageSendT: [11, "timer"],
 			messageType: [
 				2,
 				{
@@ -7282,7 +7288,7 @@ export const WEB_EVENTS: Event[] = [
 					INTEROP: 6,
 				},
 			],
-			networkWasDisconnected: [37, 'boolean'],
+			networkWasDisconnected: [37, "boolean"],
 			oppositeVisibleIdentification: [
 				60,
 				{
@@ -7295,12 +7301,12 @@ export const WEB_EVENTS: Event[] = [
 					PUSHNAME: 7,
 				},
 			],
-			overallMediaSize: [42, 'number'],
-			participantCount: [32, 'integer'],
-			receiverDefaultDisappearingDuration: [28, 'integer'],
-			resendCount: [16, 'integer'],
-			retryCount: [6, 'integer'],
-			revokeDuration: [33, 'integer'],
+			overallMediaSize: [42, "number"],
+			participantCount: [32, "integer"],
+			receiverDefaultDisappearingDuration: [28, "integer"],
+			resendCount: [16, "integer"],
+			retryCount: [6, "integer"],
+			revokeDuration: [33, "integer"],
 			revokeType: [
 				34,
 				{
@@ -7308,13 +7314,13 @@ export const WEB_EVENTS: Event[] = [
 					ADMIN: 1,
 				},
 			],
-			sendButtonPressT: [45, 'integer'],
-			senderDefaultDisappearingDuration: [27, 'integer'],
-			serverErrorCode: [56, 'integer'],
-			stickerIsAi: [50, 'boolean'],
-			stickerIsAvatar: [38, 'boolean'],
-			stickerIsFirstParty: [18, 'boolean'],
-			stickerIsFromStickerMaker: [51, 'boolean'],
+			sendButtonPressT: [45, "integer"],
+			senderDefaultDisappearingDuration: [27, "integer"],
+			serverErrorCode: [56, "integer"],
+			stickerIsAi: [50, "boolean"],
+			stickerIsAvatar: [38, "boolean"],
+			stickerIsFirstParty: [18, "boolean"],
+			stickerIsFromStickerMaker: [51, "boolean"],
 			stickerMakerSourceType: [
 				52,
 				{
@@ -7325,7 +7331,7 @@ export const WEB_EVENTS: Event[] = [
 					TRANSPARENT_IMAGE: 5,
 				},
 			],
-			thumbSize: [20, 'number'],
+			thumbSize: [20, "number"],
 			typeOfGroup: [
 				36,
 				{
@@ -7336,14 +7342,14 @@ export const WEB_EVENTS: Event[] = [
 			],
 		},
 		weight: 1,
-		wamChannel: 'regular',
+		wamChannel: "regular",
 		privateStatsIdInt: -1,
 	},
 	{
-		name: 'RevokeMessageSend',
+		name: "RevokeMessageSend",
 		id: 3656,
 		props: {
-			messageSendResultIsTerminal: [1, 'boolean'],
+			messageSendResultIsTerminal: [1, "boolean"],
 			messageType: [
 				2,
 				{
@@ -7355,9 +7361,9 @@ export const WEB_EVENTS: Event[] = [
 					INTEROP: 6,
 				},
 			],
-			resendCount: [3, 'integer'],
-			retryCount: [4, 'integer'],
-			revokeDuration: [5, 'integer'],
+			resendCount: [3, "integer"],
+			retryCount: [4, "integer"],
+			revokeDuration: [5, "integer"],
 			revokeType: [
 				6,
 				{
@@ -7367,14 +7373,14 @@ export const WEB_EVENTS: Event[] = [
 			],
 		},
 		weight: 1,
-		wamChannel: 'regular',
+		wamChannel: "regular",
 		privateStatsIdInt: -1,
 	},
 	{
-		name: 'BotBizJourney',
+		name: "BotBizJourney",
 		id: 4868,
 		props: {
-			appSessionId: [1, 'string'],
+			appSessionId: [1, "string"],
 			botBizActionType: [
 				5,
 				{
@@ -7414,15 +7420,15 @@ export const WEB_EVENTS: Event[] = [
 			],
 		},
 		weight: 1,
-		wamChannel: 'regular',
+		wamChannel: "regular",
 		privateStatsIdInt: -1,
 	},
 	{
-		name: 'TsExternal',
+		name: "TsExternal",
 		id: 4574,
 		props: {
-			relativeTimestampMs: [1, 'integer'],
-			tsDuration: [2, 'integer'],
+			relativeTimestampMs: [1, "integer"],
+			tsDuration: [2, "integer"],
 			tsExternalEventSource: [
 				3,
 				{
@@ -7432,14 +7438,14 @@ export const WEB_EVENTS: Event[] = [
 					PTT_PLAY: 4,
 				},
 			],
-			tsSessionId: [4, 'integer'],
+			tsSessionId: [4, "integer"],
 		},
 		weight: 1,
-		wamChannel: 'regular',
+		wamChannel: "regular",
 		privateStatsIdInt: -1,
 	},
 	{
-		name: 'DeepLinkConversion',
+		name: "DeepLinkConversion",
 		id: 1432,
 		props: {
 			callInitiator: [
@@ -7476,9 +7482,9 @@ export const WEB_EVENTS: Event[] = [
 					THIRD_MESSAGE_CONTINUATION: 14,
 				},
 			],
-			deepLinkConversionData: [2, 'string'],
-			deepLinkConversionSource: [1, 'string'],
-			isPriority: [7, 'boolean'],
+			deepLinkConversionData: [2, "string"],
+			deepLinkConversionSource: [1, "string"],
+			isPriority: [7, "boolean"],
 			trustBannerAction: [
 				5,
 				{
@@ -7486,14 +7492,14 @@ export const WEB_EVENTS: Event[] = [
 					DISMISSED: 1,
 				},
 			],
-			trustBannerType: [6, 'string'],
+			trustBannerType: [6, "string"],
 		},
 		weight: 1,
-		wamChannel: 'regular',
+		wamChannel: "regular",
 		privateStatsIdInt: -1,
 	},
 	{
-		name: 'EphemeralOutOfSyncInfo',
+		name: "EphemeralOutOfSyncInfo",
 		id: 3892,
 		props: {
 			groupSizeBucket: [
@@ -7517,20 +7523,20 @@ export const WEB_EVENTS: Event[] = [
 					LARGEST_BUCKET: 15,
 				},
 			],
-			incomingMessageEphemeralityDuration: [2, 'integer'],
-			isAGroup: [3, 'boolean'],
-			isNewThreadForUser: [5, 'boolean'],
-			otherDefaultModeDuration: [6, 'integer'],
-			threadEphemeralityDuration: [7, 'integer'],
-			threadId: [8, 'string'],
-			userDefaultModeDuration: [9, 'integer'],
+			incomingMessageEphemeralityDuration: [2, "integer"],
+			isAGroup: [3, "boolean"],
+			isNewThreadForUser: [5, "boolean"],
+			otherDefaultModeDuration: [6, "integer"],
+			threadEphemeralityDuration: [7, "integer"],
+			threadId: [8, "string"],
+			userDefaultModeDuration: [9, "integer"],
 		},
 		weight: 1,
-		wamChannel: 'regular',
+		wamChannel: "regular",
 		privateStatsIdInt: -1,
 	},
 	{
-		name: 'EphemeralSyncResponseReceive',
+		name: "EphemeralSyncResponseReceive",
 		id: 4780,
 		props: {
 			clientDisappearingModeInitiator: [
@@ -7543,7 +7549,7 @@ export const WEB_EVENTS: Event[] = [
 					BIZ_UPGRADE_FB_HOSTING: 5,
 				},
 			],
-			clientEphemeralityDuration: [2, 'integer'],
+			clientEphemeralityDuration: [2, "integer"],
 			clientEphemeralityInitiator: [
 				3,
 				{
@@ -7552,7 +7558,7 @@ export const WEB_EVENTS: Event[] = [
 					BIZ_UPGRADE_FB_HOSTING: 3,
 				},
 			],
-			clientEphemeralitySettingTimestamp: [4, 'integer'],
+			clientEphemeralitySettingTimestamp: [4, "integer"],
 			clientEphemeralityTriggerAction: [
 				5,
 				{
@@ -7573,7 +7579,7 @@ export const WEB_EVENTS: Event[] = [
 					BIZ_UPGRADE_FB_HOSTING: 5,
 				},
 			],
-			esrEphemeralityDuration: [7, 'integer'],
+			esrEphemeralityDuration: [7, "integer"],
 			esrEphemeralityInitiator: [
 				8,
 				{
@@ -7582,7 +7588,7 @@ export const WEB_EVENTS: Event[] = [
 					BIZ_UPGRADE_FB_HOSTING: 3,
 				},
 			],
-			esrEphemeralitySettingTimestamp: [9, 'integer'],
+			esrEphemeralitySettingTimestamp: [9, "integer"],
 			esrEphemeralityTriggerAction: [
 				10,
 				{
@@ -7614,15 +7620,15 @@ export const WEB_EVENTS: Event[] = [
 					ERROR: 2,
 				},
 			],
-			isAGroup: [13, 'boolean'],
-			threadId: [14, 'string'],
+			isAGroup: [13, "boolean"],
+			threadId: [14, "string"],
 		},
 		weight: 1,
-		wamChannel: 'regular',
+		wamChannel: "regular",
 		privateStatsIdInt: -1,
 	},
 	{
-		name: 'EphemeralSyncResponseSend',
+		name: "EphemeralSyncResponseSend",
 		id: 4778,
 		props: {
 			clientDisappearingModeInitiator: [
@@ -7635,7 +7641,7 @@ export const WEB_EVENTS: Event[] = [
 					BIZ_UPGRADE_FB_HOSTING: 5,
 				},
 			],
-			clientEphemeralityDuration: [2, 'integer'],
+			clientEphemeralityDuration: [2, "integer"],
 			clientEphemeralityInitiator: [
 				3,
 				{
@@ -7644,7 +7650,7 @@ export const WEB_EVENTS: Event[] = [
 					BIZ_UPGRADE_FB_HOSTING: 3,
 				},
 			],
-			clientEphemeralitySettingTimestamp: [4, 'integer'],
+			clientEphemeralitySettingTimestamp: [4, "integer"],
 			clientEphemeralityTriggerAction: [
 				5,
 				{
@@ -7665,7 +7671,7 @@ export const WEB_EVENTS: Event[] = [
 					BIZ_UPGRADE_FB_HOSTING: 5,
 				},
 			],
-			esrEphemeralityDuration: [7, 'integer'],
+			esrEphemeralityDuration: [7, "integer"],
 			esrEphemeralityInitiator: [
 				8,
 				{
@@ -7674,7 +7680,7 @@ export const WEB_EVENTS: Event[] = [
 					BIZ_UPGRADE_FB_HOSTING: 3,
 				},
 			],
-			esrEphemeralitySettingTimestamp: [9, 'integer'],
+			esrEphemeralitySettingTimestamp: [9, "integer"],
 			esrEphemeralityTriggerAction: [
 				10,
 				{
@@ -7699,7 +7705,7 @@ export const WEB_EVENTS: Event[] = [
 					INVALID_EPHEMERAL_DURATION: 9,
 				},
 			],
-			esrSendAttempt: [12, 'integer'],
+			esrSendAttempt: [12, "integer"],
 			esrSendResult: [
 				13,
 				{
@@ -7707,7 +7713,7 @@ export const WEB_EVENTS: Event[] = [
 					ERROR: 2,
 				},
 			],
-			isAGroup: [14, 'boolean'],
+			isAGroup: [14, "boolean"],
 			messageDisappearingModeInitiator: [
 				15,
 				{
@@ -7718,7 +7724,7 @@ export const WEB_EVENTS: Event[] = [
 					BIZ_UPGRADE_FB_HOSTING: 5,
 				},
 			],
-			messageEphemeralityDuration: [16, 'integer'],
+			messageEphemeralityDuration: [16, "integer"],
 			messageEphemeralityInitiator: [
 				17,
 				{
@@ -7727,7 +7733,7 @@ export const WEB_EVENTS: Event[] = [
 					BIZ_UPGRADE_FB_HOSTING: 3,
 				},
 			],
-			messageEphemeralitySettingTimestamp: [18, 'integer'],
+			messageEphemeralitySettingTimestamp: [18, "integer"],
 			messageEphemeralityTriggerAction: [
 				19,
 				{
@@ -7738,17 +7744,17 @@ export const WEB_EVENTS: Event[] = [
 					BIZ_SUPPORTS_FB_HOSTING: 4,
 				},
 			],
-			threadId: [20, 'string'],
+			threadId: [20, "string"],
 		},
 		weight: 1,
-		wamChannel: 'regular',
+		wamChannel: "regular",
 		privateStatsIdInt: -1,
 	},
 	{
-		name: 'ChannelGapDetected',
+		name: "ChannelGapDetected",
 		id: 4768,
 		props: {
-			channelIsForeground: [1, 'boolean'],
+			channelIsForeground: [1, "boolean"],
 			channelUserType: [
 				2,
 				{
@@ -7758,18 +7764,18 @@ export const WEB_EVENTS: Event[] = [
 					GUEST: 4,
 				},
 			],
-			cid: [3, 'string'],
-			gapSize: [4, 'integer'],
+			cid: [3, "string"],
+			gapSize: [4, "integer"],
 		},
 		weight: 1,
-		wamChannel: 'regular',
+		wamChannel: "regular",
 		privateStatsIdInt: -1,
 	},
 	{
-		name: 'ChannelMessageHistoryRequest',
+		name: "ChannelMessageHistoryRequest",
 		id: 4770,
 		props: {
-			batchSize: [1, 'integer'],
+			batchSize: [1, "integer"],
 			channelMessageHistoryRequestType: [
 				2,
 				{
@@ -7790,20 +7796,20 @@ export const WEB_EVENTS: Event[] = [
 					GUEST: 4,
 				},
 			],
-			cid: [4, 'string'],
-			processingDurationT: [5, 'timer'],
-			requestDurationT: [6, 'timer'],
-			requestSuccessful: [7, 'boolean'],
+			cid: [4, "string"],
+			processingDurationT: [5, "timer"],
+			requestDurationT: [6, "timer"],
+			requestSuccessful: [7, "boolean"],
 		},
 		weight: 1,
-		wamChannel: 'regular',
+		wamChannel: "regular",
 		privateStatsIdInt: -1,
 	},
 	{
-		name: 'ChannelCoreEvent',
+		name: "ChannelCoreEvent",
 		id: 4692,
 		props: {
-			channelCoreEventSequenceNumber: [8, 'integer'],
+			channelCoreEventSequenceNumber: [8, "integer"],
 			channelCoreEventType: [
 				1,
 				{
@@ -7813,7 +7819,7 @@ export const WEB_EVENTS: Event[] = [
 					UNMUTE: 4,
 				},
 			],
-			channelDirectorySessionId: [7, 'integer'],
+			channelDirectorySessionId: [7, "integer"],
 			channelEntryPoint: [
 				2,
 				{
@@ -7856,9 +7862,9 @@ export const WEB_EVENTS: Event[] = [
 					SIMILAR_CHANNELS: 2,
 				},
 			],
-			cid: [4, 'string'],
-			directoryChannelIndex: [9, 'integer'],
-			entryPointMetadata: [5, 'string'],
+			cid: [4, "string"],
+			directoryChannelIndex: [9, "integer"],
+			entryPointMetadata: [5, "string"],
 			eventSurface: [
 				6,
 				{
@@ -7870,14 +7876,14 @@ export const WEB_EVENTS: Event[] = [
 					CHANNEL_UPDATES_HOME_SEARCH: 6,
 				},
 			],
-			similarChannelsSessionId: [13, 'integer'],
+			similarChannelsSessionId: [13, "integer"],
 		},
 		weight: 1,
-		wamChannel: 'regular',
+		wamChannel: "regular",
 		privateStatsIdInt: -1,
 	},
 	{
-		name: 'UserNoticeError',
+		name: "UserNoticeError",
 		id: 2474,
 		props: {
 			noticeType: [
@@ -7888,7 +7894,7 @@ export const WEB_EVENTS: Event[] = [
 					PDFN_DISCLOSURE: 2,
 				},
 			],
-			userNoticeContentVersion: [2, 'integer'],
+			userNoticeContentVersion: [2, "integer"],
 			userNoticeErrorEvent: [
 				3,
 				{
@@ -7909,19 +7915,19 @@ export const WEB_EVENTS: Event[] = [
 					JSON_FETCH_FORBIDDEN: 15,
 				},
 			],
-			userNoticeId: [1, 'integer'],
+			userNoticeId: [1, "integer"],
 		},
 		weight: 1,
-		wamChannel: 'regular',
+		wamChannel: "regular",
 		privateStatsIdInt: -1,
 	},
 	{
-		name: 'StickerCommonQueryToStaticServer',
+		name: "StickerCommonQueryToStaticServer",
 		id: 2740,
 		props: {
-			httpResponseCode: [2, 'integer'],
-			params: [3, 'string'],
-			queryLatencyMs: [4, 'timer'],
+			httpResponseCode: [2, "integer"],
+			params: [3, "string"],
+			queryLatencyMs: [4, "timer"],
 			queryType: [
 				1,
 				{
@@ -7933,21 +7939,21 @@ export const WEB_EVENTS: Event[] = [
 			],
 		},
 		weight: 1,
-		wamChannel: 'regular',
+		wamChannel: "regular",
 		privateStatsIdInt: -1,
 	},
 	{
-		name: 'MdExpansionAgentBrowserMdId',
+		name: "MdExpansionAgentBrowserMdId",
 		id: 3390,
 		props: {
-			agentId: [1, 'string'],
-			browserId: [2, 'string'],
-			companionMdId: [5, 'integer'],
-			isCustomAgentName: [6, 'boolean'],
-			isNewAgent: [9, 'boolean'],
-			loginTimestamp: [3, 'integer'],
-			logoutTimestamp: [4, 'integer'],
-			mdLinkedCount: [8, 'integer'],
+			agentId: [1, "string"],
+			browserId: [2, "string"],
+			companionMdId: [5, "integer"],
+			isCustomAgentName: [6, "boolean"],
+			isNewAgent: [9, "boolean"],
+			loginTimestamp: [3, "integer"],
+			logoutTimestamp: [4, "integer"],
+			mdLinkedCount: [8, "integer"],
 			multideviceAction: [
 				7,
 				{
@@ -7961,14 +7967,14 @@ export const WEB_EVENTS: Event[] = [
 			],
 		},
 		weight: 1,
-		wamChannel: 'regular',
+		wamChannel: "regular",
 		privateStatsIdInt: -1,
 	},
 	{
-		name: 'PsPhoneNumberHyperlink',
+		name: "PsPhoneNumberHyperlink",
 		id: 3266,
 		props: {
-			isPhoneNumHyperlinkOwner: [1, 'boolean'],
+			isPhoneNumHyperlinkOwner: [1, "boolean"],
 			phoneNumHyperlinkAction: [
 				2,
 				{
@@ -7984,23 +7990,23 @@ export const WEB_EVENTS: Event[] = [
 					CLICK_CALL_ON_WHATSAPP: 10,
 				},
 			],
-			phoneNumberStatusOnWa: [3, 'boolean'],
-			sequenceNumber: [4, 'integer'],
+			phoneNumberStatusOnWa: [3, "boolean"],
+			sequenceNumber: [4, "integer"],
 		},
 		weight: 1,
-		wamChannel: 'private',
+		wamChannel: "private",
 		privateStatsIdInt: 113760892,
 	},
 	{
-		name: 'GroupCreateC',
+		name: "GroupCreateC",
 		id: 156,
 		props: {},
 		weight: 1,
-		wamChannel: 'regular',
+		wamChannel: "regular",
 		privateStatsIdInt: -1,
 	},
 	{
-		name: 'SendRevokeMessage',
+		name: "SendRevokeMessage",
 		id: 1348,
 		props: {
 			messageMediaType: [
@@ -8081,27 +8087,27 @@ export const WEB_EVENTS: Event[] = [
 					INTEROP: 6,
 				},
 			],
-			revokeSendDelay: [3, 'integer'],
+			revokeSendDelay: [3, "integer"],
 		},
 		weight: 1,
-		wamChannel: 'regular',
+		wamChannel: "regular",
 		privateStatsIdInt: -1,
 	},
 	{
-		name: 'UtmMessageSend',
+		name: "UtmMessageSend",
 		id: 4018,
 		props: {
-			businessPhoneNumber: [1, 'integer'],
+			businessPhoneNumber: [1, "integer"],
 		},
 		weight: 1,
-		wamChannel: 'private',
+		wamChannel: "private",
 		privateStatsIdInt: 0,
 	},
 	{
-		name: 'WebcMessageSend',
+		name: "WebcMessageSend",
 		id: 2072,
 		props: {
-			messageIsForward: [3, 'boolean'],
+			messageIsForward: [3, "boolean"],
 			messageMediaType: [
 				2,
 				{
@@ -8169,7 +8175,7 @@ export const WEB_EVENTS: Event[] = [
 					INTERACTIVE_PRODUCT: 62,
 				},
 			],
-			messageSendT: [4, 'timer'],
+			messageSendT: [4, "timer"],
 			messageType: [
 				1,
 				{
@@ -8183,14 +8189,14 @@ export const WEB_EVENTS: Event[] = [
 			],
 		},
 		weight: 1,
-		wamChannel: 'regular',
+		wamChannel: "regular",
 		privateStatsIdInt: -1,
 	},
 	{
-		name: 'MdChatAssignmentSecondaryAction',
+		name: "MdChatAssignmentSecondaryAction",
 		id: 3716,
 		props: {
-			mdChatAssignmentSecondaryActionAgentId: [1, 'string'],
+			mdChatAssignmentSecondaryActionAgentId: [1, "string"],
 			mdChatAssignmentSecondaryActionAssignmentType: [
 				8,
 				{
@@ -8198,7 +8204,7 @@ export const WEB_EVENTS: Event[] = [
 					UNASSIGNED: 1,
 				},
 			],
-			mdChatAssignmentSecondaryActionBrowserId: [2, 'string'],
+			mdChatAssignmentSecondaryActionBrowserId: [2, "string"],
 			mdChatAssignmentSecondaryActionChatType: [
 				3,
 				{
@@ -8218,7 +8224,7 @@ export const WEB_EVENTS: Event[] = [
 					ERROR_OTHER: 2,
 				},
 			],
-			mdChatAssignmentSecondaryActionMdId: [5, 'integer'],
+			mdChatAssignmentSecondaryActionMdId: [5, "integer"],
 			mdChatAssignmentSecondaryActionSource: [
 				6,
 				{
@@ -8238,16 +8244,16 @@ export const WEB_EVENTS: Event[] = [
 			],
 		},
 		weight: 1,
-		wamChannel: 'regular',
+		wamChannel: "regular",
 		privateStatsIdInt: -1,
 	},
 	{
-		name: 'MdChatAssignment',
+		name: "MdChatAssignment",
 		id: 3752,
 		props: {
-			assignerAgentId: [1, 'string'],
-			assignerBrowserId: [2, 'string'],
-			assignerMdId: [3, 'integer'],
+			assignerAgentId: [1, "string"],
+			assignerBrowserId: [2, "string"],
+			assignerMdId: [3, "integer"],
 			chatAssignmentAction: [
 				4,
 				{
@@ -8256,8 +8262,8 @@ export const WEB_EVENTS: Event[] = [
 					ACTION_REASSIGNED: 2,
 				},
 			],
-			chatAssignmentAgentId: [5, 'string'],
-			chatAssignmentBrowserId: [6, 'string'],
+			chatAssignmentAgentId: [5, "string"],
+			chatAssignmentBrowserId: [6, "string"],
 			chatAssignmentChatType: [
 				7,
 				{
@@ -8277,19 +8283,19 @@ export const WEB_EVENTS: Event[] = [
 					CHAT_LIST_SWIPE: 4,
 				},
 			],
-			chatAssignmentMdId: [9, 'integer'],
-			chatsCnt: [10, 'integer'],
+			chatAssignmentMdId: [9, "integer"],
+			chatsCnt: [10, "integer"],
 		},
 		weight: 1,
-		wamChannel: 'regular',
+		wamChannel: "regular",
 		privateStatsIdInt: -1,
 	},
 	{
-		name: 'OtpRetriever',
+		name: "OtpRetriever",
 		id: 3468,
 		props: {
-			businessPhoneNumber: [1, 'integer'],
-			chatId: [19, 'string'],
+			businessPhoneNumber: [1, "integer"],
+			chatId: [19, "string"],
 			chatsFolderType: [
 				12,
 				{
@@ -8320,11 +8326,11 @@ export const WEB_EVENTS: Event[] = [
 					AUTOFILL: 1,
 				},
 			],
-			isKeepChatsArchivedEnabled: [13, 'boolean'],
-			isMessageNotificationEnabled: [14, 'boolean'],
-			isNotificationEnabled: [15, 'boolean'],
-			messageReceivedElapsedTimeSeconds: [11, 'integer'],
-			otpCorrelationId: [20, 'string'],
+			isKeepChatsArchivedEnabled: [13, "boolean"],
+			isMessageNotificationEnabled: [14, "boolean"],
+			isNotificationEnabled: [15, "boolean"],
+			messageReceivedElapsedTimeSeconds: [11, "integer"],
+			otpCorrelationId: [20, "string"],
 			otpEventSource: [
 				5,
 				{
@@ -8362,10 +8368,10 @@ export const WEB_EVENTS: Event[] = [
 					HANDSHAKE_CONFIRMATION_SENT: 16,
 				},
 			],
-			otpFailureReason: [16, 'string'],
-			otpHandshakeElapsedTimeMs: [21, 'integer'],
-			otpHandshakeId: [23, 'string'],
-			otpMaskLinkedDevices: [24, 'boolean'],
+			otpFailureReason: [16, "string"],
+			otpHandshakeElapsedTimeMs: [21, "integer"],
+			otpHandshakeId: [23, "string"],
+			otpMaskLinkedDevices: [24, "boolean"],
 			otpProductType: [
 				7,
 				{
@@ -8374,20 +8380,20 @@ export const WEB_EVENTS: Event[] = [
 					COPY_CODE: 2,
 				},
 			],
-			otpSdkVersion: [22, 'string'],
-			otpSessionId: [8, 'string'],
-			receiverCountryCode: [18, 'string'],
-			templateId: [17, 'string'],
-			thirdPartyPackageNameFromIntent: [9, 'string'],
-			thirdPartyPackageSignatureHash: [10, 'string'],
-			waDeviceId: [25, 'integer'],
+			otpSdkVersion: [22, "string"],
+			otpSessionId: [8, "string"],
+			receiverCountryCode: [18, "string"],
+			templateId: [17, "string"],
+			thirdPartyPackageNameFromIntent: [9, "string"],
+			thirdPartyPackageSignatureHash: [10, "string"],
+			waDeviceId: [25, "integer"],
 		},
 		weight: 1,
-		wamChannel: 'private',
+		wamChannel: "private",
 		privateStatsIdInt: 113760892,
 	},
 	{
-		name: 'BizCatalogView',
+		name: "BizCatalogView",
 		id: 3006,
 		props: {
 			bizPlatform: [
@@ -8399,8 +8405,8 @@ export const WEB_EVENTS: Event[] = [
 					CLOUDAPI: 4,
 				},
 			],
-			cartToggle: [13, 'boolean'],
-			catalogCategoryId: [19, 'string'],
+			cartToggle: [13, "boolean"],
+			catalogCategoryId: [19, "string"],
 			catalogEntryPoint: [
 				2,
 				{
@@ -8429,10 +8435,10 @@ export const WEB_EVENTS: Event[] = [
 					CATALOG_ENTRY_POINT_FLOWS: 23,
 				},
 			],
-			catalogEventSampled: [11, 'boolean'],
-			catalogOwnerJid: [10, 'string'],
-			catalogReportReasonCode: [8, 'string'],
-			catalogSessionId: [3, 'string'],
+			catalogEventSampled: [11, "boolean"],
+			catalogOwnerJid: [10, "string"],
+			catalogReportReasonCode: [8, "string"],
+			catalogSessionId: [3, "string"],
 			catalogViewAction: [
 				1,
 				{
@@ -8479,8 +8485,8 @@ export const WEB_EVENTS: Event[] = [
 					ACTION_PLP_BOTTOM_SHEET_SEE_MORE_DETAILS: 47,
 				},
 			],
-			collectionId: [15, 'string'],
-			collectionIndex: [16, 'string'],
+			collectionId: [15, "string"],
+			collectionIndex: [16, "string"],
 			deepLinkOpenFrom: [
 				12,
 				{
@@ -8500,27 +8506,27 @@ export const WEB_EVENTS: Event[] = [
 					NO_MESSAGES_LAST_24H: 2,
 				},
 			],
-			entryPointConversionApp: [20, 'string'],
-			entryPointConversionSource: [21, 'string'],
-			hasVariants: [23, 'boolean'],
-			isNewProductAddedToCart: [7, 'boolean'],
-			isOrderMsgAttached: [5, 'boolean'],
-			orderId: [4, 'string'],
-			productId: [9, 'string'],
-			productIndex: [17, 'string'],
-			quantity: [6, 'integer'],
-			sequenceNumber: [18, 'integer'],
+			entryPointConversionApp: [20, "string"],
+			entryPointConversionSource: [21, "string"],
+			hasVariants: [23, "boolean"],
+			isNewProductAddedToCart: [7, "boolean"],
+			isOrderMsgAttached: [5, "boolean"],
+			orderId: [4, "string"],
+			productId: [9, "string"],
+			productIndex: [17, "string"],
+			quantity: [6, "integer"],
+			sequenceNumber: [18, "integer"],
 		},
 		weight: 1,
-		wamChannel: 'private',
+		wamChannel: "private",
 		privateStatsIdInt: 0,
 	},
 	{
-		name: 'CatalogBiz',
+		name: "CatalogBiz",
 		id: 1722,
 		props: {
-			cartToggle: [13, 'boolean'],
-			catalogAppealReason: [4, 'string'],
+			cartToggle: [13, "boolean"],
+			catalogAppealReason: [4, "string"],
 			catalogBizAction: [
 				1,
 				{
@@ -8629,10 +8635,10 @@ export const WEB_EVENTS: Event[] = [
 					CATALOG_ENTRY_POINT_FLOWS: 23,
 				},
 			],
-			catalogSessionId: [3, 'string'],
-			collectionCount: [18, 'integer'],
-			collectionId: [14, 'string'],
-			collectionIndex: [15, 'string'],
+			catalogSessionId: [3, "string"],
+			collectionCount: [18, "integer"],
+			collectionId: [14, "string"],
+			collectionIndex: [15, "string"],
 			deepLinkOpenFrom: [
 				8,
 				{
@@ -8644,31 +8650,31 @@ export const WEB_EVENTS: Event[] = [
 					DEEP_LINK_MESSENGER_APP: 6,
 				},
 			],
-			errorCode: [5, 'integer'],
-			isOrderMsgAttached: [10, 'boolean'],
-			orderId: [9, 'string'],
-			productCount: [6, 'integer'],
-			productId: [2, 'string'],
-			productIds: [12, 'string'],
-			productIndex: [16, 'string'],
-			quantity: [11, 'integer'],
+			errorCode: [5, "integer"],
+			isOrderMsgAttached: [10, "boolean"],
+			orderId: [9, "string"],
+			productCount: [6, "integer"],
+			productId: [2, "string"],
+			productIds: [12, "string"],
+			productIndex: [16, "string"],
+			quantity: [11, "integer"],
 		},
 		weight: 1,
-		wamChannel: 'regular',
+		wamChannel: "regular",
 		privateStatsIdInt: -1,
 	},
 	{
-		name: 'WebcImgError',
+		name: "WebcImgError",
 		id: 1700,
 		props: {
-			webcImgErrorCode: [1, 'number'],
+			webcImgErrorCode: [1, "number"],
 		},
 		weight: 1,
-		wamChannel: 'regular',
+		wamChannel: "regular",
 		privateStatsIdInt: -1,
 	},
 	{
-		name: 'GroupJourney',
+		name: "GroupJourney",
 		id: 4512,
 		props: {
 			actionType: [
@@ -8730,8 +8736,8 @@ export const WEB_EVENTS: Event[] = [
 					SERP_LOADED: 54,
 				},
 			],
-			appSessionId: [2, 'string'],
-			groupSize: [3, 'integer'],
+			appSessionId: [2, "string"],
+			groupSize: [3, "integer"],
 			surface: [
 				4,
 				{
@@ -8868,18 +8874,18 @@ export const WEB_EVENTS: Event[] = [
 			],
 		},
 		weight: 1,
-		wamChannel: 'regular',
+		wamChannel: "regular",
 		privateStatsIdInt: -1,
 	},
 	{
-		name: 'WebcMessageQuery',
+		name: "WebcMessageQuery",
 		id: 1876,
 		props: {
-			webcAudioMessageCount: [14, 'integer'],
-			webcBrowserNetworkType: [1, 'string'],
-			webcBrowserStorageQuotaBytes: [20, 'integer'],
-			webcBrowserStorageQuotaUsedBytes: [21, 'integer'],
-			webcChatPosition: [2, 'integer'],
+			webcAudioMessageCount: [14, "integer"],
+			webcBrowserNetworkType: [1, "string"],
+			webcBrowserStorageQuotaBytes: [20, "integer"],
+			webcBrowserStorageQuotaUsedBytes: [21, "integer"],
+			webcChatPosition: [2, "integer"],
 			webcChatType: [
 				13,
 				{
@@ -8890,10 +8896,10 @@ export const WEB_EVENTS: Event[] = [
 					NEWSLETTER: 4,
 				},
 			],
-			webcDocumentMessageCount: [16, 'integer'],
-			webcEarliestMessageIndex: [11, 'integer'],
-			webcEarliestMessageT: [12, 'timer'],
-			webcMessageCount: [4, 'integer'],
+			webcDocumentMessageCount: [16, "integer"],
+			webcEarliestMessageIndex: [11, "integer"],
+			webcEarliestMessageT: [12, "timer"],
+			webcMessageCount: [4, "integer"],
 			webcMessageQueryTrigger: [
 				19,
 				{
@@ -8911,36 +8917,36 @@ export const WEB_EVENTS: Event[] = [
 					LOAD_AROUND: 2,
 				},
 			],
-			webcOtherMessageCount: [18, 'integer'],
-			webcPhotoMessageCount: [7, 'integer'],
-			webcPttMessageCount: [15, 'integer'],
-			webcQueryT: [9, 'timer'],
-			webcResponseBytes: [10, 'integer'],
-			webcStickerMessageCount: [17, 'integer'],
-			webcTextMessageCount: [5, 'integer'],
-			webcVideoMessageCount: [6, 'integer'],
+			webcOtherMessageCount: [18, "integer"],
+			webcPhotoMessageCount: [7, "integer"],
+			webcPttMessageCount: [15, "integer"],
+			webcQueryT: [9, "timer"],
+			webcResponseBytes: [10, "integer"],
+			webcStickerMessageCount: [17, "integer"],
+			webcTextMessageCount: [5, "integer"],
+			webcVideoMessageCount: [6, "integer"],
 		},
 		weight: 1,
-		wamChannel: 'regular',
+		wamChannel: "regular",
 		privateStatsIdInt: -1,
 	},
 	{
-		name: 'MediaPicker',
+		name: "MediaPicker",
 		id: 1038,
 		props: {
-			audienceSelectorClicked: [24, 'boolean'],
-			audienceSelectorUpdated: [25, 'boolean'],
-			chatRecipients: [16, 'integer'],
-			isViewOnce: [22, 'boolean'],
-			mediaPickerAvatarStickers: [33, 'integer'],
-			mediaPickerChanged: [4, 'integer'],
-			mediaPickerCroppedRotated: [10, 'integer'],
-			mediaPickerDeleted: [3, 'integer'],
-			mediaPickerDrawing: [11, 'integer'],
-			mediaPickerFilter: [18, 'integer'],
-			mediaPickerHasLocationSticker: [26, 'boolean'],
-			mediaPickerLikeDoc: [19, 'integer'],
-			mediaPickerNotLikeDoc: [20, 'integer'],
+			audienceSelectorClicked: [24, "boolean"],
+			audienceSelectorUpdated: [25, "boolean"],
+			chatRecipients: [16, "integer"],
+			isViewOnce: [22, "boolean"],
+			mediaPickerAvatarStickers: [33, "integer"],
+			mediaPickerChanged: [4, "integer"],
+			mediaPickerCroppedRotated: [10, "integer"],
+			mediaPickerDeleted: [3, "integer"],
+			mediaPickerDrawing: [11, "integer"],
+			mediaPickerFilter: [18, "integer"],
+			mediaPickerHasLocationSticker: [26, "boolean"],
+			mediaPickerLikeDoc: [19, "integer"],
+			mediaPickerNotLikeDoc: [20, "integer"],
 			mediaPickerOrigin: [
 				14,
 				{
@@ -8998,13 +9004,13 @@ export const WEB_EVENTS: Event[] = [
 					SYSTEM_INTENT: 52,
 				},
 			],
-			mediaPickerOriginThirdParty: [21, 'boolean'],
-			mediaPickerSent: [2, 'integer'],
-			mediaPickerSentUnchanged: [5, 'integer'],
-			mediaPickerSessionId: [29, 'string'],
-			mediaPickerStickers: [12, 'integer'],
-			mediaPickerT: [15, 'timer'],
-			mediaPickerText: [13, 'integer'],
+			mediaPickerOriginThirdParty: [21, "boolean"],
+			mediaPickerSent: [2, "integer"],
+			mediaPickerSentUnchanged: [5, "integer"],
+			mediaPickerSessionId: [29, "string"],
+			mediaPickerStickers: [12, "integer"],
+			mediaPickerT: [15, "timer"],
+			mediaPickerText: [13, "integer"],
 			mediaType: [
 				1,
 				{
@@ -9072,9 +9078,9 @@ export const WEB_EVENTS: Event[] = [
 					INTERACTIVE_PRODUCT: 62,
 				},
 			],
-			motionPhotoImpressionCount: [31, 'integer'],
-			motionPhotoSentCount: [32, 'integer'],
-			photoGalleryDurationT: [23, 'timer'],
+			motionPhotoImpressionCount: [31, "integer"],
+			motionPhotoSentCount: [32, "integer"],
+			photoGalleryDurationT: [23, "timer"],
 			photoQualitySetting: [
 				27,
 				{
@@ -9084,8 +9090,8 @@ export const WEB_EVENTS: Event[] = [
 					HIGHEST_QUALITY: 3,
 				},
 			],
-			pickerSessionId: [30, 'integer'],
-			statusRecipients: [17, 'integer'],
+			pickerSessionId: [30, "integer"],
+			statusRecipients: [17, "integer"],
 			videoQualitySetting: [
 				28,
 				{
@@ -9097,27 +9103,27 @@ export const WEB_EVENTS: Event[] = [
 			],
 		},
 		weight: 1,
-		wamChannel: 'regular',
+		wamChannel: "regular",
 		privateStatsIdInt: -1,
 	},
 	{
-		name: 'WebcStatusSession',
+		name: "WebcStatusSession",
 		id: 1880,
 		props: {
-			webcStatusMutedItemCount: [4, 'integer'],
-			webcStatusMutedRowCount: [7, 'integer'],
-			webcStatusRecentItemCount: [2, 'integer'],
-			webcStatusRecentRowCount: [5, 'integer'],
-			webcStatusSessionId: [1, 'integer'],
-			webcStatusViewedItemCount: [3, 'integer'],
-			webcStatusViewedRowCount: [6, 'integer'],
+			webcStatusMutedItemCount: [4, "integer"],
+			webcStatusMutedRowCount: [7, "integer"],
+			webcStatusRecentItemCount: [2, "integer"],
+			webcStatusRecentRowCount: [5, "integer"],
+			webcStatusSessionId: [1, "integer"],
+			webcStatusViewedItemCount: [3, "integer"],
+			webcStatusViewedRowCount: [6, "integer"],
 		},
 		weight: 1,
-		wamChannel: 'regular',
+		wamChannel: "regular",
 		privateStatsIdInt: -1,
 	},
 	{
-		name: 'TestAnonymousDailyId',
+		name: "TestAnonymousDailyId",
 		id: 2958,
 		props: {
 			psTestEnumField: [
@@ -9127,52 +9133,52 @@ export const WEB_EVENTS: Event[] = [
 					TEST_VALUE2: 2,
 				},
 			],
-			psTestFloatField: [2, 'number'],
+			psTestFloatField: [2, "number"],
 		},
 		weight: 1,
-		wamChannel: 'private',
+		wamChannel: "private",
 		privateStatsIdInt: 248614979,
 	},
 	{
-		name: 'TestAnonymousDaily',
+		name: "TestAnonymousDaily",
 		id: 2328,
 		props: {},
 		weight: 1,
-		wamChannel: 'private',
+		wamChannel: "private",
 		privateStatsIdInt: 113760892,
 	},
 	{
-		name: 'TestAnonymousIdLess',
+		name: "TestAnonymousIdLess",
 		id: 3004,
 		props: {
-			psTimeSinceLastEventInMin: [1, 'integer'],
+			psTimeSinceLastEventInMin: [1, "integer"],
 		},
 		weight: 1,
-		wamChannel: 'private',
+		wamChannel: "private",
 		privateStatsIdInt: 0,
 	},
 	{
-		name: 'TestAnonymousMonthlyId',
+		name: "TestAnonymousMonthlyId",
 		id: 2960,
 		props: {},
 		weight: 1,
-		wamChannel: 'private',
+		wamChannel: "private",
 		privateStatsIdInt: 191000728,
 	},
 	{
-		name: 'TestAnonymousWeeklyId',
+		name: "TestAnonymousWeeklyId",
 		id: 2956,
 		props: {
-			psTestBooleanField: [2, 'boolean'],
-			psTestStringField: [3, 'string'],
-			psTimeSinceLastEventInMin: [1, 'integer'],
+			psTestBooleanField: [2, "boolean"],
+			psTestStringField: [3, "string"],
+			psTimeSinceLastEventInMin: [1, "integer"],
 		},
 		weight: 1,
-		wamChannel: 'private',
+		wamChannel: "private",
 		privateStatsIdInt: 42196056,
 	},
 	{
-		name: 'ChannelSimilarChannels',
+		name: "ChannelSimilarChannels",
 		id: 5202,
 		props: {
 			bannerStatus: [
@@ -9193,8 +9199,8 @@ export const WEB_EVENTS: Event[] = [
 					UNFOLLOW_TAP: 4,
 				},
 			],
-			cid: [3, 'string'],
-			similarChannelDisplayRank: [4, 'integer'],
+			cid: [3, "string"],
+			similarChannelDisplayRank: [4, "integer"],
 			similarChannelEventSurface: [
 				5,
 				{
@@ -9206,8 +9212,8 @@ export const WEB_EVENTS: Event[] = [
 					CHANNEL_UPDATES_HOME_SEARCH: 6,
 				},
 			],
-			similarChannelId: [6, 'string'],
-			similarChannelRank: [7, 'integer'],
+			similarChannelId: [6, "string"],
+			similarChannelRank: [7, "integer"],
 			similarChannelUserType: [
 				9,
 				{
@@ -9217,17 +9223,17 @@ export const WEB_EVENTS: Event[] = [
 					GUEST: 4,
 				},
 			],
-			similarChannelsSessionId: [10, 'integer'],
+			similarChannelsSessionId: [10, "integer"],
 		},
 		weight: 1,
-		wamChannel: 'regular',
+		wamChannel: "regular",
 		privateStatsIdInt: -1,
 	},
 	{
-		name: 'UiMessageYourselfAction',
+		name: "UiMessageYourselfAction",
 		id: 3780,
 		props: {
-			uiMessageYourselfActionSessionId: [1, 'string'],
+			uiMessageYourselfActionSessionId: [1, "string"],
 			uiMessageYourselfActionType: [
 				2,
 				{
@@ -9248,19 +9254,19 @@ export const WEB_EVENTS: Event[] = [
 			],
 		},
 		weight: 1,
-		wamChannel: 'regular',
+		wamChannel: "regular",
 		privateStatsIdInt: -1,
 	},
 	{
-		name: 'MediaStreamPlayback',
+		name: "MediaStreamPlayback",
 		id: 1584,
 		props: {
-			bytesDownloadedStart: [4, 'number'],
-			bytesTransferred: [5, 'number'],
-			didPlay: [15, 'boolean'],
-			forcedPlayCount: [12, 'integer'],
-			initialBufferingT: [7, 'timer'],
-			mediaSize: [2, 'number'],
+			bytesDownloadedStart: [4, "number"],
+			bytesTransferred: [5, "number"],
+			didPlay: [15, "boolean"],
+			forcedPlayCount: [12, "integer"],
+			initialBufferingT: [7, "timer"],
+			mediaSize: [2, "number"],
 			mediaType: [
 				3,
 				{
@@ -9328,10 +9334,10 @@ export const WEB_EVENTS: Event[] = [
 					INTERACTIVE_PRODUCT: 62,
 				},
 			],
-			overallPlayT: [10, 'timer'],
-			overallT: [1, 'timer'],
-			playbackCount: [14, 'integer'],
-			playbackError: [17, 'integer'],
+			overallPlayT: [10, "timer"],
+			overallT: [1, "timer"],
+			playbackCount: [14, "integer"],
+			playbackError: [17, "integer"],
 			playbackOrigin: [
 				16,
 				{
@@ -9352,17 +9358,17 @@ export const WEB_EVENTS: Event[] = [
 					ERROR: 7,
 				},
 			],
-			seekCount: [13, 'integer'],
-			totalRebufferingCount: [9, 'integer'],
-			totalRebufferingT: [8, 'timer'],
-			videoDuration: [6, 'integer'],
+			seekCount: [13, "integer"],
+			totalRebufferingCount: [9, "integer"],
+			totalRebufferingT: [8, "timer"],
+			videoDuration: [6, "integer"],
 		},
 		weight: 1,
-		wamChannel: 'regular',
+		wamChannel: "regular",
 		privateStatsIdInt: -1,
 	},
 	{
-		name: 'PrivacyTipAction',
+		name: "PrivacyTipAction",
 		id: 4794,
 		props: {
 			privacyTipActionType: [
@@ -9376,11 +9382,11 @@ export const WEB_EVENTS: Event[] = [
 			],
 		},
 		weight: 1,
-		wamChannel: 'regular',
+		wamChannel: "regular",
 		privateStatsIdInt: -1,
 	},
 	{
-		name: 'UiAction',
+		name: "UiAction",
 		id: 472,
 		props: {
 			agentEngagementType: [
@@ -9400,11 +9406,11 @@ export const WEB_EVENTS: Event[] = [
 					BOT_3P_BIZ: 3,
 				},
 			],
-			dbMainThreadCount: [13, 'integer'],
-			dbReadsCount: [14, 'integer'],
-			dbWritesCount: [15, 'integer'],
-			deviceCount: [5, 'integer'],
-			isLid: [8, 'boolean'],
+			dbMainThreadCount: [13, "integer"],
+			dbReadsCount: [14, "integer"],
+			dbWritesCount: [15, "integer"],
+			deviceCount: [5, "integer"],
+			isLid: [8, "boolean"],
 			localAddressingMode: [
 				10,
 				{
@@ -9412,7 +9418,7 @@ export const WEB_EVENTS: Event[] = [
 					LID: 2,
 				},
 			],
-			participantCount: [6, 'integer'],
+			participantCount: [6, "integer"],
 			sizeBucket: [
 				4,
 				{
@@ -9444,9 +9450,9 @@ export const WEB_EVENTS: Event[] = [
 					CHANNEL: 5,
 				},
 			],
-			uiActionPreloaded: [2, 'boolean'],
-			uiActionT: [3, 'timer'],
-			uiActionTtrcSurfaceName: [12, 'string'],
+			uiActionPreloaded: [2, "boolean"],
+			uiActionT: [3, "timer"],
+			uiActionTtrcSurfaceName: [12, "string"],
 			uiActionType: [
 				1,
 				{
@@ -9472,11 +9478,11 @@ export const WEB_EVENTS: Event[] = [
 			],
 		},
 		weight: 5000,
-		wamChannel: 'regular',
+		wamChannel: "regular",
 		privateStatsIdInt: -1,
 	},
 	{
-		name: 'AdvertiseTooltipImpression',
+		name: "AdvertiseTooltipImpression",
 		id: 4024,
 		props: {
 			lwiEntryPoint: [
@@ -9552,11 +9558,11 @@ export const WEB_EVENTS: Event[] = [
 			],
 		},
 		weight: 1,
-		wamChannel: 'regular',
+		wamChannel: "regular",
 		privateStatsIdInt: -1,
 	},
 	{
-		name: 'ChannelLinkShare',
+		name: "ChannelLinkShare",
 		id: 4728,
 		props: {
 			channelLinkShareDirection: [
@@ -9584,17 +9590,17 @@ export const WEB_EVENTS: Event[] = [
 					SHARE_LINK_SCREEN: 4,
 				},
 			],
-			cid: [3, 'string'],
+			cid: [3, "string"],
 		},
 		weight: 1,
-		wamChannel: 'regular',
+		wamChannel: "regular",
 		privateStatsIdInt: -1,
 	},
 	{
-		name: 'CommunityFeatureUsage',
+		name: "CommunityFeatureUsage",
 		id: 3696,
 		props: {
-			communityId: [2, 'string'],
+			communityId: [2, "string"],
 			communityUiAction: [
 				4,
 				{
@@ -9612,14 +9618,14 @@ export const WEB_EVENTS: Event[] = [
 			],
 		},
 		weight: 1,
-		wamChannel: 'regular',
+		wamChannel: "regular",
 		privateStatsIdInt: -1,
 	},
 	{
-		name: 'GroupProfilePicture',
+		name: "GroupProfilePicture",
 		id: 3652,
 		props: {
-			groupCreationDs: [1, 'string'],
+			groupCreationDs: [1, "string"],
 			groupProfileAction: [
 				7,
 				{
@@ -9635,8 +9641,8 @@ export const WEB_EVENTS: Event[] = [
 					PROFILE_PIC_UPDATED: 10,
 				},
 			],
-			hasProfilePicture: [3, 'boolean'],
-			isAdmin: [4, 'boolean'],
+			hasProfilePicture: [3, "boolean"],
+			isAdmin: [4, "boolean"],
 			preciseGroupSizeBucket: [
 				5,
 				{
@@ -9673,14 +9679,14 @@ export const WEB_EVENTS: Event[] = [
 			],
 		},
 		weight: 1,
-		wamChannel: 'regular',
+		wamChannel: "regular",
 		privateStatsIdInt: -1,
 	},
 	{
-		name: 'KeepInChatNux',
+		name: "KeepInChatNux",
 		id: 3486,
 		props: {
-			chatEphemeralityDuration: [1, 'integer'],
+			chatEphemeralityDuration: [1, "integer"],
 			kicNuxActionName: [
 				2,
 				{
@@ -9690,7 +9696,7 @@ export const WEB_EVENTS: Event[] = [
 					KIC_SYSTEM_MESSAGE_GENERATE: 4,
 				},
 			],
-			threadId: [3, 'string'],
+			threadId: [3, "string"],
 			trigger: [
 				4,
 				{
@@ -9705,16 +9711,16 @@ export const WEB_EVENTS: Event[] = [
 			],
 		},
 		weight: 1,
-		wamChannel: 'regular',
+		wamChannel: "regular",
 		privateStatsIdInt: -1,
 	},
 	{
-		name: 'LwiEntryPointImpression',
+		name: "LwiEntryPointImpression",
 		id: 2906,
 		props: {
-			businessToolsSessionId: [2, 'string'],
-			catalogSessionId: [1, 'string'],
-			itemsCount: [7, 'integer'],
+			businessToolsSessionId: [2, "string"],
+			catalogSessionId: [1, "string"],
+			itemsCount: [7, "integer"],
 			lwiEntryPoint: [
 				3,
 				{
@@ -9787,20 +9793,20 @@ export const WEB_EVENTS: Event[] = [
 					SMB_HOME_SCREEN_BIZ_HOME_TAB: 5,
 				},
 			],
-			statusSessionId: [5, 'integer'],
-			userHasLinkedFbPage: [4, 'boolean'],
+			statusSessionId: [5, "integer"],
+			userHasLinkedFbPage: [4, "boolean"],
 		},
 		weight: 1,
-		wamChannel: 'regular',
+		wamChannel: "regular",
 		privateStatsIdInt: -1,
 	},
 	{
-		name: 'LwiEntryTap',
+		name: "LwiEntryTap",
 		id: 2770,
 		props: {
-			businessToolsSessionId: [4, 'string'],
-			catalogSessionId: [2, 'string'],
-			itemsCount: [11, 'integer'],
+			businessToolsSessionId: [4, "string"],
+			catalogSessionId: [2, "string"],
+			itemsCount: [11, "integer"],
 			lwiEntryPoint: [
 				3,
 				{
@@ -9863,7 +9869,7 @@ export const WEB_EVENTS: Event[] = [
 					SMB_BUSINESS_HOME_CARD_COUPON_PROMOTION: 57,
 				},
 			],
-			lwiFlowId: [1, 'string'],
+			lwiFlowId: [1, "string"],
 			lwiSubEntryPoint: [
 				7,
 				{
@@ -9874,7 +9880,7 @@ export const WEB_EVENTS: Event[] = [
 					SMB_HOME_SCREEN_BIZ_HOME_TAB: 5,
 				},
 			],
-			statusSessionId: [6, 'integer'],
+			statusSessionId: [6, "integer"],
 			statusTypeMedia: [
 				12,
 				{
@@ -9882,15 +9888,15 @@ export const WEB_EVENTS: Event[] = [
 					VIDEO: 2,
 				},
 			],
-			userHasLinkedFbPage: [5, 'boolean'],
-			waCampaignId: [10, 'string'],
+			userHasLinkedFbPage: [5, "boolean"],
+			waCampaignId: [10, "string"],
 		},
 		weight: 1,
-		wamChannel: 'regular',
+		wamChannel: "regular",
 		privateStatsIdInt: -1,
 	},
 	{
-		name: 'LwiScreen',
+		name: "LwiScreen",
 		id: 2772,
 		props: {
 			adContentRecommendation: [
@@ -9900,8 +9906,8 @@ export const WEB_EVENTS: Event[] = [
 					RECOMMENDED: 2,
 				},
 			],
-			adMediaOriginalAspectRatio: [47, 'string'],
-			adMediaPreviewAspectRatio: [48, 'string'],
+			adMediaOriginalAspectRatio: [47, "string"],
+			adMediaPreviewAspectRatio: [48, "string"],
 			adMediaTypeSelected: [
 				40,
 				{
@@ -9922,7 +9928,7 @@ export const WEB_EVENTS: Event[] = [
 					LWI_ADS_CONTENT_TYPE_STATUSES_ALL: 12,
 				},
 			],
-			alertCount: [33, 'integer'],
+			alertCount: [33, "integer"],
 			audienceType: [
 				45,
 				{
@@ -9938,7 +9944,7 @@ export const WEB_EVENTS: Event[] = [
 					HAS_PENDING_ACTIONS: 3,
 				},
 			],
-			createAdEnabled: [12, 'boolean'],
+			createAdEnabled: [12, "boolean"],
 			ctwaAdAccountType: [
 				58,
 				{
@@ -9975,8 +9981,8 @@ export const WEB_EVENTS: Event[] = [
 					COUNTRY_LEVEL: 2,
 				},
 			],
-			itemCount: [39, 'integer'],
-			lwiAdCampaignId: [46, 'string'],
+			itemCount: [39, "integer"],
+			lwiAdCampaignId: [46, "string"],
 			lwiAdsIdentityType: [
 				22,
 				{
@@ -10026,8 +10032,8 @@ export const WEB_EVENTS: Event[] = [
 					LWI_LOCATION_SYSTEM_SETTING_RESOLUTION_REQUIRED: 37,
 				},
 			],
-			lwiBudgetInLocal: [15, 'integer'],
-			lwiBudgetOptionsInLocal: [54, 'string'],
+			lwiBudgetInLocal: [15, "integer"],
+			lwiBudgetOptionsInLocal: [54, "string"],
 			lwiCtwaAdCtaType: [
 				24,
 				{
@@ -10057,9 +10063,9 @@ export const WEB_EVENTS: Event[] = [
 					LIMITED_DELIVERY: 11,
 				},
 			],
-			lwiCurrency: [16, 'string'],
-			lwiDefaultBudgetInLocal: [17, 'integer'],
-			lwiDefaultDurationInDays: [18, 'integer'],
+			lwiCurrency: [16, "string"],
+			lwiDefaultBudgetInLocal: [17, "integer"],
+			lwiDefaultDurationInDays: [18, "integer"],
 			lwiDefaultTargetingSpec: [
 				19,
 				{
@@ -10068,15 +10074,15 @@ export const WEB_EVENTS: Event[] = [
 					DIFFERS_FROM_TARGETING_SPEC: 3,
 				},
 			],
-			lwiDurationInDays: [20, 'integer'],
-			lwiEventSequenceNumber: [2, 'integer'],
-			lwiExtras: [30, 'string'],
-			lwiFlowId: [1, 'string'],
-			lwiIsFbAppInstalled: [27, 'boolean'],
-			lwiIsIgAppInstalled: [51, 'boolean'],
-			lwiLocationTypesSetOnAudienceSelection: [55, 'string'],
-			lwiMaxDurationInDays: [52, 'integer'],
-			lwiMinDurationInDays: [53, 'integer'],
+			lwiDurationInDays: [20, "integer"],
+			lwiEventSequenceNumber: [2, "integer"],
+			lwiExtras: [30, "string"],
+			lwiFlowId: [1, "string"],
+			lwiIsFbAppInstalled: [27, "boolean"],
+			lwiIsIgAppInstalled: [51, "boolean"],
+			lwiLocationTypesSetOnAudienceSelection: [55, "string"],
+			lwiMaxDurationInDays: [52, "integer"],
+			lwiMinDurationInDays: [53, "integer"],
 			lwiScreenAction: [
 				5,
 				{
@@ -10398,11 +10404,11 @@ export const WEB_EVENTS: Event[] = [
 					LWI_DIALOG_SYSTEM_LOCATION_SETTINGS_RESOLUTION: 74,
 				},
 			],
-			lwiTargetingSpec: [21, 'string'],
-			lwiTotalCtwaAds: [26, 'integer'],
-			lwiViewerHasEditPermission: [28, 'boolean'],
-			lwiViewerHasPromotePermission: [32, 'boolean'],
-			mediaEdited: [49, 'boolean'],
+			lwiTargetingSpec: [21, "string"],
+			lwiTotalCtwaAds: [26, "integer"],
+			lwiViewerHasEditPermission: [28, "boolean"],
+			lwiViewerHasPromotePermission: [32, "boolean"],
+			mediaEdited: [49, "boolean"],
 			onboardingEntryPoint: [
 				38,
 				{
@@ -10411,21 +10417,21 @@ export const WEB_EVENTS: Event[] = [
 					ONBOARDING_ENTRY_POINT_CONSENT_HOST: 3,
 				},
 			],
-			paymentMethodSet: [13, 'boolean'],
-			productId: [3, 'string'],
-			selectedProductsIdsList: [8, 'string'],
-			totalMediaCount: [50, 'integer'],
-			usedSavedAudience: [31, 'boolean'],
-			userHasAdvancedAudience: [35, 'boolean'],
-			userHasBpCredentials: [43, 'boolean'],
-			userHasCatalogItemsToPromote: [10, 'boolean'],
-			userHasChangedDefaultCityLevelAudience: [56, 'boolean'],
-			userHasLinkedFbPage: [7, 'boolean'],
-			userHasMultisourceMedia: [60, 'boolean'],
-			userHasSeenRecommendedBudget: [34, 'boolean'],
-			userHasStatusToPromote: [11, 'boolean'],
-			userProvidedFbConsent: [14, 'boolean'],
-			userWentThroughFbWebLogin: [23, 'boolean'],
+			paymentMethodSet: [13, "boolean"],
+			productId: [3, "string"],
+			selectedProductsIdsList: [8, "string"],
+			totalMediaCount: [50, "integer"],
+			usedSavedAudience: [31, "boolean"],
+			userHasAdvancedAudience: [35, "boolean"],
+			userHasBpCredentials: [43, "boolean"],
+			userHasCatalogItemsToPromote: [10, "boolean"],
+			userHasChangedDefaultCityLevelAudience: [56, "boolean"],
+			userHasLinkedFbPage: [7, "boolean"],
+			userHasMultisourceMedia: [60, "boolean"],
+			userHasSeenRecommendedBudget: [34, "boolean"],
+			userHasStatusToPromote: [11, "boolean"],
+			userProvidedFbConsent: [14, "boolean"],
+			userWentThroughFbWebLogin: [23, "boolean"],
 			validationStatus: [
 				37,
 				{
@@ -10434,14 +10440,14 @@ export const WEB_EVENTS: Event[] = [
 					HAS_ERRORS: 3,
 				},
 			],
-			waAdAccountId: [44, 'string'],
+			waAdAccountId: [44, "string"],
 		},
 		weight: 1,
-		wamChannel: 'regular',
+		wamChannel: "regular",
 		privateStatsIdInt: -1,
 	},
 	{
-		name: 'ManageAdsEntryPointImpression',
+		name: "ManageAdsEntryPointImpression",
 		id: 4124,
 		props: {
 			manageAdsEntryPoint: [
@@ -10455,11 +10461,11 @@ export const WEB_EVENTS: Event[] = [
 			],
 		},
 		weight: 1,
-		wamChannel: 'regular',
+		wamChannel: "regular",
 		privateStatsIdInt: -1,
 	},
 	{
-		name: 'ManageAdsEntryPointTap',
+		name: "ManageAdsEntryPointTap",
 		id: 4126,
 		props: {
 			manageAdsEntryPoint: [
@@ -10473,11 +10479,11 @@ export const WEB_EVENTS: Event[] = [
 			],
 		},
 		weight: 1,
-		wamChannel: 'regular',
+		wamChannel: "regular",
 		privateStatsIdInt: -1,
 	},
 	{
-		name: 'SmbDataSharingConsentScreen',
+		name: "SmbDataSharingConsentScreen",
 		id: 3972,
 		props: {
 			smbDataSharingConsentScreenEntryPoint: [
@@ -10498,14 +10504,14 @@ export const WEB_EVENTS: Event[] = [
 					SMB_DATA_SHARING_CONSENT_SCREEN_CANCEL: 3,
 				},
 			],
-			smbDataSharingConsentScreenVersion: [2, 'integer'],
+			smbDataSharingConsentScreenVersion: [2, "integer"],
 		},
 		weight: 1,
-		wamChannel: 'regular',
+		wamChannel: "regular",
 		privateStatsIdInt: -1,
 	},
 	{
-		name: 'SuspendedGroupDelete',
+		name: "SuspendedGroupDelete",
 		id: 4342,
 		props: {
 			deleteBtnSource: [
@@ -10517,14 +10523,14 @@ export const WEB_EVENTS: Event[] = [
 			],
 		},
 		weight: 1,
-		wamChannel: 'private',
+		wamChannel: "private",
 		privateStatsIdInt: 0,
 	},
 	{
-		name: 'SupportAiSession',
+		name: "SupportAiSession",
 		id: 4970,
 		props: {
-			contactUsEntryPoint: [2, 'string'],
+			contactUsEntryPoint: [2, "string"],
 			supportAiEventType: [
 				1,
 				{
@@ -10548,14 +10554,14 @@ export const WEB_EVENTS: Event[] = [
 			],
 		},
 		weight: 1,
-		wamChannel: 'regular',
+		wamChannel: "regular",
 		privateStatsIdInt: -1,
 	},
 	{
-		name: 'BannerEvent',
+		name: "BannerEvent",
 		id: 1578,
 		props: {
-			bannerId: [3, 'string'],
+			bannerId: [3, "string"],
 			bannerOperation: [
 				2,
 				{
@@ -10641,11 +10647,11 @@ export const WEB_EVENTS: Event[] = [
 			],
 		},
 		weight: 1,
-		wamChannel: 'regular',
+		wamChannel: "regular",
 		privateStatsIdInt: -1,
 	},
 	{
-		name: 'ViewBusinessProfile',
+		name: "ViewBusinessProfile",
 		id: 1522,
 		props: {
 			bizFbSize: [
@@ -10680,11 +10686,11 @@ export const WEB_EVENTS: Event[] = [
 					B1M: 11,
 				},
 			],
-			businessProfileJid: [3, 'string'],
-			catalogSessionId: [6, 'string'],
-			hasCoverPhoto: [12, 'boolean'],
-			isProfileLinked: [11, 'boolean'],
-			isSelfView: [7, 'boolean'],
+			businessProfileJid: [3, "string"],
+			catalogSessionId: [6, "string"],
+			hasCoverPhoto: [12, "boolean"],
+			isProfileLinked: [11, "boolean"],
+			isSelfView: [7, "boolean"],
 			linkedAccount: [
 				5,
 				{
@@ -10723,7 +10729,7 @@ export const WEB_EVENTS: Event[] = [
 					FORWARDED_BIZ_MSG_CHAT_HEADER: 26,
 				},
 			],
-			scrollDepth: [4, 'integer'],
+			scrollDepth: [4, "integer"],
 			viewBusinessProfileAction: [
 				1,
 				{
@@ -10757,19 +10763,19 @@ export const WEB_EVENTS: Event[] = [
 			],
 		},
 		weight: 1,
-		wamChannel: 'regular',
+		wamChannel: "regular",
 		privateStatsIdInt: -1,
 	},
 	{
-		name: 'DisappearingMessageKeepInChat',
+		name: "DisappearingMessageKeepInChat",
 		id: 3482,
 		props: {
-			canEditDmSettings: [16, 'boolean'],
-			chatEphemeralityDuration: [1, 'integer'],
-			isAGroup: [2, 'boolean'],
-			isAdmin: [3, 'boolean'],
-			keptCount: [15, 'integer'],
-			keptDelta: [4, 'integer'],
+			canEditDmSettings: [16, "boolean"],
+			chatEphemeralityDuration: [1, "integer"],
+			isAGroup: [2, "boolean"],
+			isAdmin: [3, "boolean"],
+			keptCount: [15, "integer"],
+			keptDelta: [4, "integer"],
 			kicActionName: [
 				5,
 				{
@@ -10865,22 +10871,22 @@ export const WEB_EVENTS: Event[] = [
 					INTERACTIVE_PRODUCT: 62,
 				},
 			],
-			messageExpiredOnUnkeep: [9, 'boolean'],
-			messageExpiryTimer: [10, 'integer'],
-			messagesInFolder: [11, 'integer'],
-			messagesSelected: [12, 'integer'],
-			threadId: [13, 'string'],
+			messageExpiredOnUnkeep: [9, "boolean"],
+			messageExpiryTimer: [10, "integer"],
+			messagesInFolder: [11, "integer"],
+			messagesSelected: [12, "integer"],
+			threadId: [13, "string"],
 		},
 		weight: 1,
-		wamChannel: 'regular',
+		wamChannel: "regular",
 		privateStatsIdInt: -1,
 	},
 	{
-		name: 'MdBootstrapHistoryDataReceived',
+		name: "MdBootstrapHistoryDataReceived",
 		id: 2998,
 		props: {
-			historySyncChunkOrder: [6, 'integer'],
-			historySyncStageProgress: [5, 'integer'],
+			historySyncChunkOrder: [6, "integer"],
+			historySyncStageProgress: [5, "integer"],
 			mdBootstrapHistoryPayloadType: [
 				3,
 				{
@@ -10900,18 +10906,18 @@ export const WEB_EVENTS: Event[] = [
 					NON_CRITICAL: 2,
 				},
 			],
-			mdSessionId: [1, 'string'],
-			mdTimestamp: [4, 'integer'],
+			mdSessionId: [1, "string"],
+			mdTimestamp: [4, "integer"],
 		},
 		weight: 1,
-		wamChannel: 'regular',
+		wamChannel: "regular",
 		privateStatsIdInt: -1,
 	},
 	{
-		name: 'AttachmentTrayActions',
+		name: "AttachmentTrayActions",
 		id: 3980,
 		props: {
-			actionDurationMs: [1, 'integer'],
+			actionDurationMs: [1, "integer"],
 			attachmentTrayAction: [
 				2,
 				{
@@ -10962,8 +10968,8 @@ export const WEB_EVENTS: Event[] = [
 					LARGEST_BUCKET: 15,
 				},
 			],
-			isAGroup: [5, 'boolean'],
-			isSuccessful: [6, 'boolean'],
+			isAGroup: [5, "boolean"],
+			isSuccessful: [6, "boolean"],
 			sendMediaType: [
 				7,
 				{
@@ -10972,14 +10978,14 @@ export const WEB_EVENTS: Event[] = [
 					MIXED: 3,
 				},
 			],
-			sendTime: [8, 'integer'],
+			sendTime: [8, "integer"],
 		},
 		weight: 1,
-		wamChannel: 'regular',
+		wamChannel: "regular",
 		privateStatsIdInt: -1,
 	},
 	{
-		name: 'AutoMuteLargeGroupActions',
+		name: "AutoMuteLargeGroupActions",
 		id: 3880,
 		props: {
 			autoMuteAction: [
@@ -10994,39 +11000,39 @@ export const WEB_EVENTS: Event[] = [
 					USER_DISMISS_BY_UNMUTE: 7,
 				},
 			],
-			autoMuteGroupId: [2, 'string'],
-			autoMuteGroupSize: [3, 'integer'],
+			autoMuteGroupId: [2, "string"],
+			autoMuteGroupSize: [3, "integer"],
 		},
 		weight: 1,
-		wamChannel: 'regular',
+		wamChannel: "regular",
 		privateStatsIdInt: -1,
 	},
 	{
-		name: 'BusinessMute',
+		name: "BusinessMute",
 		id: 1376,
 		props: {
-			muteT: [2, 'timer'],
-			muteeId: [1, 'string'],
+			muteT: [2, "timer"],
+			muteeId: [1, "string"],
 		},
 		weight: 1,
-		wamChannel: 'regular',
+		wamChannel: "regular",
 		privateStatsIdInt: -1,
 	},
 	{
-		name: 'BusinessUnmute',
+		name: "BusinessUnmute",
 		id: 1378,
 		props: {
-			muteeId: [1, 'string'],
+			muteeId: [1, "string"],
 		},
 		weight: 1,
-		wamChannel: 'regular',
+		wamChannel: "regular",
 		privateStatsIdInt: -1,
 	},
 	{
-		name: 'ChannelOpen',
+		name: "ChannelOpen",
 		id: 4316,
 		props: {
-			channelDirectorySessionId: [8, 'integer'],
+			channelDirectorySessionId: [8, "integer"],
 			channelEntryPoint: [
 				1,
 				{
@@ -11055,7 +11061,7 @@ export const WEB_EVENTS: Event[] = [
 					POST_TOOLTIP: 4,
 				},
 			],
-			channelSessionId: [3, 'integer'],
+			channelSessionId: [3, "integer"],
 			channelUserType: [
 				4,
 				{
@@ -11065,32 +11071,32 @@ export const WEB_EVENTS: Event[] = [
 					GUEST: 4,
 				},
 			],
-			cid: [6, 'string'],
-			hasNetworkConnection: [7, 'boolean'],
-			similarChannelsSessionId: [11, 'integer'],
-			unreadMessages: [5, 'integer'],
+			cid: [6, "string"],
+			hasNetworkConnection: [7, "boolean"],
+			similarChannelsSessionId: [11, "integer"],
+			unreadMessages: [5, "integer"],
 		},
 		weight: 1,
-		wamChannel: 'regular',
+		wamChannel: "regular",
 		privateStatsIdInt: -1,
 	},
 	{
-		name: 'GroupCatchUp',
+		name: "GroupCatchUp",
 		id: 3058,
 		props: {
-			mentionsCountPendingPercentage: [4, 'integer'],
+			mentionsCountPendingPercentage: [4, "integer"],
 		},
 		weight: 1,
-		wamChannel: 'regular',
+		wamChannel: "regular",
 		privateStatsIdInt: -1,
 	},
 	{
-		name: 'InlineVideoPlaybackClosed',
+		name: "InlineVideoPlaybackClosed",
 		id: 2032,
 		props: {
-			inlineVideoCancelBeforePlayStateT: [7, 'timer'],
-			inlineVideoComplete: [8, 'boolean'],
-			inlineVideoCompletionRate: [9, 'integer'],
+			inlineVideoCancelBeforePlayStateT: [7, "timer"],
+			inlineVideoComplete: [8, "boolean"],
+			inlineVideoCompletionRate: [9, "integer"],
 			inlineVideoCtaClick: [
 				10,
 				{
@@ -11100,11 +11106,11 @@ export const WEB_EVENTS: Event[] = [
 					WATCH_MORE_END: 4,
 				},
 			],
-			inlineVideoDurationT: [2, 'timer'],
-			inlineVideoError: [11, 'string'],
-			inlineVideoPlayStartT: [6, 'timer'],
-			inlineVideoPlayed: [3, 'boolean'],
-			inlineVideoStallT: [4, 'timer'],
+			inlineVideoDurationT: [2, "timer"],
+			inlineVideoError: [11, "string"],
+			inlineVideoPlayStartT: [6, "timer"],
+			inlineVideoPlayed: [3, "boolean"],
+			inlineVideoStallT: [4, "timer"],
 			inlineVideoType: [
 				1,
 				{
@@ -11118,7 +11124,7 @@ export const WEB_EVENTS: Event[] = [
 					SHARECHAT: 8,
 				},
 			],
-			inlineVideoWatchT: [5, 'timer'],
+			inlineVideoWatchT: [5, "timer"],
 			messageType: [
 				12,
 				{
@@ -11132,11 +11138,11 @@ export const WEB_EVENTS: Event[] = [
 			],
 		},
 		weight: 1,
-		wamChannel: 'regular',
+		wamChannel: "regular",
 		privateStatsIdInt: -1,
 	},
 	{
-		name: 'MessageDeleteActions',
+		name: "MessageDeleteActions",
 		id: 3626,
 		props: {
 			deleteActionType: [
@@ -11146,7 +11152,7 @@ export const WEB_EVENTS: Event[] = [
 					DELETE_FOR_EVERYONE: 1,
 				},
 			],
-			isAGroup: [2, 'boolean'],
+			isAGroup: [2, "boolean"],
 			mediaType: [
 				6,
 				{
@@ -11214,22 +11220,22 @@ export const WEB_EVENTS: Event[] = [
 					INTERACTIVE_PRODUCT: 62,
 				},
 			],
-			messagesDeleted: [3, 'integer'],
-			threadId: [4, 'string'],
+			messagesDeleted: [3, "integer"],
+			threadId: [4, "string"],
 		},
 		weight: 1,
-		wamChannel: 'regular',
+		wamChannel: "regular",
 		privateStatsIdInt: -1,
 	},
 	{
-		name: 'Ptt',
+		name: "Ptt",
 		id: 458,
 		props: {
-			pttDraftPlayCnt: [7, 'integer'],
-			pttDraftSeekCnt: [8, 'integer'],
-			pttDuration: [5, 'timer'],
-			pttLock: [4, 'boolean'],
-			pttPauseCnt: [9, 'integer'],
+			pttDraftPlayCnt: [7, "integer"],
+			pttDraftSeekCnt: [8, "integer"],
+			pttDuration: [5, "timer"],
+			pttLock: [4, "boolean"],
+			pttPauseCnt: [9, "integer"],
 			pttResult: [
 				1,
 				{
@@ -11238,7 +11244,7 @@ export const WEB_EVENTS: Event[] = [
 					TOO_SHORT: 3,
 				},
 			],
-			pttSize: [3, 'number'],
+			pttSize: [3, "number"],
 			pttSource: [
 				2,
 				{
@@ -11246,18 +11252,18 @@ export const WEB_EVENTS: Event[] = [
 					FROM_VOICEMAIL: 1,
 				},
 			],
-			pttStop: [6, 'boolean'],
-			pttStopTapCnt: [10, 'integer'],
+			pttStop: [6, "boolean"],
+			pttStopTapCnt: [10, "integer"],
 		},
 		weight: 1,
-		wamChannel: 'regular',
+		wamChannel: "regular",
 		privateStatsIdInt: -1,
 	},
 	{
-		name: 'SnackbarDeleteUndo',
+		name: "SnackbarDeleteUndo",
 		id: 3628,
 		props: {
-			isAGroup: [1, 'boolean'],
+			isAGroup: [1, "boolean"],
 			mediaType: [
 				6,
 				{
@@ -11325,7 +11331,7 @@ export const WEB_EVENTS: Event[] = [
 					INTERACTIVE_PRODUCT: 62,
 				},
 			],
-			messagesUndeleted: [2, 'integer'],
+			messagesUndeleted: [2, "integer"],
 			snackbarActionType: [
 				3,
 				{
@@ -11333,14 +11339,14 @@ export const WEB_EVENTS: Event[] = [
 					MESSAGE_UNDELETE: 1,
 				},
 			],
-			threadId: [4, 'string'],
+			threadId: [4, "string"],
 		},
 		weight: 1,
-		wamChannel: 'regular',
+		wamChannel: "regular",
 		privateStatsIdInt: -1,
 	},
 	{
-		name: 'WebInternDogfoodingUpsell',
+		name: "WebInternDogfoodingUpsell",
 		id: 5072,
 		props: {
 			webInternDogfoodingUpsellAction: [
@@ -11353,27 +11359,27 @@ export const WEB_EVENTS: Event[] = [
 			],
 		},
 		weight: 1,
-		wamChannel: 'regular',
+		wamChannel: "regular",
 		privateStatsIdInt: -1,
 	},
 	{
-		name: 'WebcChatOpen',
+		name: "WebcChatOpen",
 		id: 864,
 		props: {
-			webcChatOpenBeforePaintT: [7, 'timer'],
-			webcChatOpenPaintedT: [6, 'timer'],
-			webcChatOpenT: [2, 'timer'],
-			webcFinalRenderedMessageCount: [5, 'integer'],
-			webcRenderedMessageCount: [4, 'integer'],
-			webcUnreadCount: [1, 'number'],
-			webcWindowHeightFloat: [8, 'number'],
+			webcChatOpenBeforePaintT: [7, "timer"],
+			webcChatOpenPaintedT: [6, "timer"],
+			webcChatOpenT: [2, "timer"],
+			webcFinalRenderedMessageCount: [5, "integer"],
+			webcRenderedMessageCount: [4, "integer"],
+			webcUnreadCount: [1, "number"],
+			webcWindowHeightFloat: [8, "number"],
 		},
 		weight: 1,
-		wamChannel: 'regular',
+		wamChannel: "regular",
 		privateStatsIdInt: -1,
 	},
 	{
-		name: 'WebcElectronDeprecationCta',
+		name: "WebcElectronDeprecationCta",
 		id: 4642,
 		props: {
 			webcElectronDeprecationCtaEventType: [
@@ -11401,52 +11407,52 @@ export const WEB_EVENTS: Event[] = [
 			],
 		},
 		weight: 1,
-		wamChannel: 'regular',
+		wamChannel: "regular",
 		privateStatsIdInt: -1,
 	},
 	{
-		name: 'WebcLogin',
+		name: "WebcLogin",
 		id: 1664,
 		props: {
-			webcBrowserNetworkType: [14, 'string'],
-			webcBrowserStorageQuotaBytes: [15, 'integer'],
-			webcBrowserStorageQuotaUsedBytes: [16, 'integer'],
-			webcLoginT: [3, 'timer'],
-			webcPersistentLoginEnabled: [17, 'boolean'],
-			webcQrCodes: [1, 'integer'],
-			webcQrLoadT: [2, 'timer'],
-			webcSyncChatCount: [8, 'integer'],
-			webcSyncChatSize: [10, 'integer'],
-			webcSyncChatT: [9, 'timer'],
-			webcSyncContactCount: [11, 'integer'],
-			webcSyncContactSize: [13, 'integer'],
-			webcSyncContactT: [12, 'timer'],
-			webcSyncMessageCount: [5, 'integer'],
-			webcSyncMessageSize: [7, 'integer'],
-			webcSyncMessageT: [6, 'timer'],
-			webcSyncT: [4, 'timer'],
+			webcBrowserNetworkType: [14, "string"],
+			webcBrowserStorageQuotaBytes: [15, "integer"],
+			webcBrowserStorageQuotaUsedBytes: [16, "integer"],
+			webcLoginT: [3, "timer"],
+			webcPersistentLoginEnabled: [17, "boolean"],
+			webcQrCodes: [1, "integer"],
+			webcQrLoadT: [2, "timer"],
+			webcSyncChatCount: [8, "integer"],
+			webcSyncChatSize: [10, "integer"],
+			webcSyncChatT: [9, "timer"],
+			webcSyncContactCount: [11, "integer"],
+			webcSyncContactSize: [13, "integer"],
+			webcSyncContactT: [12, "timer"],
+			webcSyncMessageCount: [5, "integer"],
+			webcSyncMessageSize: [7, "integer"],
+			webcSyncMessageT: [6, "timer"],
+			webcSyncT: [4, "timer"],
 		},
 		weight: 1,
-		wamChannel: 'regular',
+		wamChannel: "regular",
 		privateStatsIdInt: -1,
 	},
 	{
-		name: 'WebcMemoryStat',
+		name: "WebcMemoryStat",
 		id: 1188,
 		props: {
-			hasVerifiedNumber: [12, 'boolean'],
-			jsHeapSizeLimit: [9, 'integer'],
-			numMessages: [8, 'number'],
-			totalJsHeapSize: [10, 'integer'],
-			uptime: [6, 'number'],
-			usedJsHeapSize: [11, 'integer'],
+			hasVerifiedNumber: [12, "boolean"],
+			jsHeapSizeLimit: [9, "integer"],
+			numMessages: [8, "number"],
+			totalJsHeapSize: [10, "integer"],
+			uptime: [6, "number"],
+			usedJsHeapSize: [11, "integer"],
 		},
 		weight: 1,
-		wamChannel: 'regular',
+		wamChannel: "regular",
 		privateStatsIdInt: -1,
 	},
 	{
-		name: 'WebcMenu',
+		name: "WebcMenu",
 		id: 2504,
 		props: {
 			webcMenuAction: [
@@ -11489,32 +11495,32 @@ export const WEB_EVENTS: Event[] = [
 			],
 		},
 		weight: 1,
-		wamChannel: 'regular',
+		wamChannel: "regular",
 		privateStatsIdInt: -1,
 	},
 	{
-		name: 'ChatFolderOpen',
+		name: "ChatFolderOpen",
 		id: 2808,
 		props: {
-			activityIndicatorCount: [2, 'integer'],
-			folderType: [1, 'string'],
-			hasImportantMessages: [3, 'boolean'],
+			activityIndicatorCount: [2, "integer"],
+			folderType: [1, "string"],
+			hasImportantMessages: [3, "boolean"],
 		},
 		weight: 1,
-		wamChannel: 'regular',
+		wamChannel: "regular",
 		privateStatsIdInt: -1,
 	},
 	{
-		name: 'OrderDetailsActionsSmb',
+		name: "OrderDetailsActionsSmb",
 		id: 3456,
 		props: {
-			acceptedPayMethods: [1, 'string'],
-			actionCategory: [2, 'string'],
-			entryPointConversionSource: [13, 'string'],
-			extraAttributes: [3, 'string'],
-			hasAddedPrice: [4, 'boolean'],
-			hasCatalog: [5, 'boolean'],
-			hasNote: [6, 'boolean'],
+			acceptedPayMethods: [1, "string"],
+			actionCategory: [2, "string"],
+			entryPointConversionSource: [13, "string"],
+			extraAttributes: [3, "string"],
+			hasAddedPrice: [4, "boolean"],
+			hasCatalog: [5, "boolean"],
+			hasNote: [6, "boolean"],
 			lastMessageDirection: [
 				14,
 				{
@@ -11522,8 +11528,8 @@ export const WEB_EVENTS: Event[] = [
 					SELF_INITIATED: 1,
 				},
 			],
-			messageDepth: [15, 'integer'],
-			orderDetailEntryPoint: [7, 'string'],
+			messageDepth: [15, "integer"],
+			orderDetailEntryPoint: [7, "string"],
 			orderDetailsCreationAction: [
 				8,
 				{
@@ -11588,18 +11594,18 @@ export const WEB_EVENTS: Event[] = [
 					CLICK_CREATE_ORDER_DETAILS_FROM_PAYMENT_METHOD_ADDED_PROMPT: 60,
 				},
 			],
-			orderEligibleToSend: [11, 'boolean'],
-			paymentStatus: [9, 'boolean'],
-			paymentType: [10, 'string'],
-			sharingOrderStatusEvents: [12, 'boolean'],
-			threadIdHmac: [16, 'string'],
+			orderEligibleToSend: [11, "boolean"],
+			paymentStatus: [9, "boolean"],
+			paymentType: [10, "string"],
+			sharingOrderStatusEvents: [12, "boolean"],
+			threadIdHmac: [16, "string"],
 		},
 		weight: 1,
-		wamChannel: 'regular',
+		wamChannel: "regular",
 		privateStatsIdInt: -1,
 	},
 	{
-		name: 'WebcStickerMakerEvents',
+		name: "WebcStickerMakerEvents",
 		id: 3104,
 		props: {
 			stickerMakerEventName: [
@@ -11617,18 +11623,18 @@ export const WEB_EVENTS: Event[] = [
 			],
 		},
 		weight: 1,
-		wamChannel: 'regular',
+		wamChannel: "regular",
 		privateStatsIdInt: -1,
 	},
 	{
-		name: 'QuickReply',
+		name: "QuickReply",
 		id: 1468,
 		props: {
-			attachmentGifCount: [7, 'integer'],
-			attachmentImageCount: [5, 'integer'],
-			attachmentVideoCount: [6, 'integer'],
-			isSmartDefault: [10, 'boolean'],
-			labelThreadId: [12, 'string'],
+			attachmentGifCount: [7, "integer"],
+			attachmentImageCount: [5, "integer"],
+			attachmentVideoCount: [6, "integer"],
+			isSmartDefault: [10, "boolean"],
+			labelThreadId: [12, "string"],
 			lastMessageDirection: [
 				16,
 				{
@@ -11636,7 +11642,7 @@ export const WEB_EVENTS: Event[] = [
 					SELF_INITIATED: 1,
 				},
 			],
-			messageDepth: [17, 'integer'],
+			messageDepth: [17, "integer"],
 			quickReplyAction: [
 				1,
 				{
@@ -11656,7 +11662,7 @@ export const WEB_EVENTS: Event[] = [
 					QUICK_REPLY_MESSAGE_SENT: 14,
 				},
 			],
-			quickReplyCount: [2, 'integer'],
+			quickReplyCount: [2, "integer"],
 			quickReplyEntryPoint: [
 				11,
 				{
@@ -11668,8 +11674,8 @@ export const WEB_EVENTS: Event[] = [
 					QUICK_REPLY_ENTRY_POINT_ACTION_BAR: 6,
 				},
 			],
-			quickReplyKeywordCount: [3, 'integer'],
-			quickReplyKeywordMatched: [4, 'boolean'],
+			quickReplyKeywordCount: [3, "integer"],
+			quickReplyKeywordMatched: [4, "boolean"],
 			quickReplyOrigin: [
 				9,
 				{
@@ -11690,16 +11696,16 @@ export const WEB_EVENTS: Event[] = [
 					QUICK_REPLY_TRANSCODE_RESULT_FAIL_VIDEO_UNKNOWN: 6,
 				},
 			],
-			threadCreationDate: [14, 'string'],
-			threadEntryPoint: [13, 'string'],
-			threadIdHmac: [15, 'string'],
+			threadCreationDate: [14, "string"],
+			threadEntryPoint: [13, "string"],
+			threadIdHmac: [15, "string"],
 		},
 		weight: 1,
-		wamChannel: 'regular',
+		wamChannel: "regular",
 		privateStatsIdInt: -1,
 	},
 	{
-		name: 'UserNotice',
+		name: "UserNotice",
 		id: 2472,
 		props: {
 			noticeTriggeredBy: [
@@ -11719,7 +11725,7 @@ export const WEB_EVENTS: Event[] = [
 					PDFN_DISCLOSURE: 2,
 				},
 			],
-			userNoticeContentVersion: [2, 'integer'],
+			userNoticeContentVersion: [2, "integer"],
 			userNoticeEvent: [
 				3,
 				{
@@ -11778,19 +11784,19 @@ export const WEB_EVENTS: Event[] = [
 					PDFN_9_SECONDARY_BTN_CLICKED: 1023,
 				},
 			],
-			userNoticeId: [1, 'integer'],
+			userNoticeId: [1, "integer"],
 		},
 		weight: 1,
-		wamChannel: 'regular',
+		wamChannel: "regular",
 		privateStatsIdInt: -1,
 	},
 	{
-		name: 'MessageContextMenuActions',
+		name: "MessageContextMenuActions",
 		id: 3694,
 		props: {
-			isAGroup: [1, 'boolean'],
-			isMultiAction: [2, 'boolean'],
-			isOriginalSender: [3, 'boolean'],
+			isAGroup: [1, "boolean"],
+			isMultiAction: [2, "boolean"],
+			isOriginalSender: [3, "boolean"],
 			messageContextMenuAction: [
 				4,
 				{
@@ -11819,14 +11825,14 @@ export const WEB_EVENTS: Event[] = [
 			],
 		},
 		weight: 1,
-		wamChannel: 'regular',
+		wamChannel: "regular",
 		privateStatsIdInt: -1,
 	},
 	{
-		name: 'WaFsGroupJoinRequestAction',
+		name: "WaFsGroupJoinRequestAction",
 		id: 3944,
 		props: {
-			groupJid: [1, 'string'],
+			groupJid: [1, "string"],
 			groupJoinRequestAction: [
 				2,
 				{
@@ -11839,16 +11845,16 @@ export const WEB_EVENTS: Event[] = [
 					MEMBERSHIP_REQUEST_CANCEL: 7,
 				},
 			],
-			groupJoinRequestGroupsInCommon: [5, 'integer'],
-			isSuccessful: [3, 'boolean'],
-			serverResponseTime: [4, 'timer'],
+			groupJoinRequestGroupsInCommon: [5, "integer"],
+			isSuccessful: [3, "boolean"],
+			serverResponseTime: [4, "timer"],
 		},
 		weight: 1,
-		wamChannel: 'regular',
+		wamChannel: "regular",
 		privateStatsIdInt: -1,
 	},
 	{
-		name: 'ReportToAdminEvents',
+		name: "ReportToAdminEvents",
 		id: 4420,
 		props: {
 			reportToAdminInteraction: [
@@ -11860,14 +11866,14 @@ export const WEB_EVENTS: Event[] = [
 					CLICK_CANCEL_SEND_FOR_ADMIN_REVIEW: 3,
 				},
 			],
-			rtaGroupId: [2, 'string'],
+			rtaGroupId: [2, "string"],
 		},
 		weight: 1,
-		wamChannel: 'regular',
+		wamChannel: "regular",
 		privateStatsIdInt: -1,
 	},
 	{
-		name: 'ChatAction',
+		name: "ChatAction",
 		id: 2312,
 		props: {
 			chatActionChatType: [
@@ -11892,7 +11898,7 @@ export const WEB_EVENTS: Event[] = [
 					SYSTEM_NOTIFICATIONS: 8,
 				},
 			],
-			chatActionMuteDuration: [4, 'timer'],
+			chatActionMuteDuration: [4, "timer"],
 			chatActionType: [
 				1,
 				{
@@ -11909,17 +11915,17 @@ export const WEB_EVENTS: Event[] = [
 			],
 		},
 		weight: 1,
-		wamChannel: 'regular',
+		wamChannel: "regular",
 		privateStatsIdInt: -1,
 	},
 	{
-		name: 'LabelEvent',
+		name: "LabelEvent",
 		id: 1422,
 		props: {
-			customLabelTitle: [9, 'string'],
-			entryPointConversionSource: [10, 'string'],
-			itemsLabeledCount: [5, 'integer'],
-			labelCount: [4, 'integer'],
+			customLabelTitle: [9, "string"],
+			entryPointConversionSource: [10, "string"],
+			itemsLabeledCount: [5, "integer"],
+			labelCount: [4, "integer"],
 			labelOperation: [
 				2,
 				{
@@ -11933,7 +11939,7 @@ export const WEB_EVENTS: Event[] = [
 					AUTO_ADDED: 8,
 				},
 			],
-			labelOperationEntryPoint: [6, 'string'],
+			labelOperationEntryPoint: [6, "string"],
 			labelTarget: [
 				1,
 				{
@@ -11960,18 +11966,18 @@ export const WEB_EVENTS: Event[] = [
 					SELF_INITIATED: 1,
 				},
 			],
-			messageDepth: [15, 'integer'],
-			predefinedLabelNumber: [3, 'integer'],
-			threadCreationDate: [11, 'string'],
-			threadId: [12, 'string'],
-			threadIdHmac: [13, 'string'],
+			messageDepth: [15, "integer"],
+			predefinedLabelNumber: [3, "integer"],
+			threadCreationDate: [11, "string"],
+			threadId: [12, "string"],
+			threadIdHmac: [13, "string"],
 		},
 		weight: 1,
-		wamChannel: 'regular',
+		wamChannel: "regular",
 		privateStatsIdInt: -1,
 	},
 	{
-		name: 'StatusReportingEvents',
+		name: "StatusReportingEvents",
 		id: 3920,
 		props: {
 			statusReportInteraction: [
@@ -11985,11 +11991,11 @@ export const WEB_EVENTS: Event[] = [
 			],
 		},
 		weight: 1,
-		wamChannel: 'regular',
+		wamChannel: "regular",
 		privateStatsIdInt: -1,
 	},
 	{
-		name: 'BusinessInteraction',
+		name: "BusinessInteraction",
 		id: 3450,
 		props: {
 			businessInteractionAction: [
@@ -12007,7 +12013,7 @@ export const WEB_EVENTS: Event[] = [
 					OTHER: 3,
 				},
 			],
-			businessJid: [3, 'string'],
+			businessJid: [3, "string"],
 			entryPointApp: [
 				4,
 				{
@@ -12038,14 +12044,14 @@ export const WEB_EVENTS: Event[] = [
 					CHANNEL: 6,
 				},
 			],
-			sequenceNumber: [7, 'integer'],
+			sequenceNumber: [7, "integer"],
 		},
 		weight: 1,
-		wamChannel: 'private',
+		wamChannel: "private",
 		privateStatsIdInt: 113760892,
 	},
 	{
-		name: 'BusinessToolsClick',
+		name: "BusinessToolsClick",
 		id: 2218,
 		props: {
 			businessToolsEntryPoint: [
@@ -12088,8 +12094,8 @@ export const WEB_EVENTS: Event[] = [
 					META_VERIFIED: 21,
 				},
 			],
-			businessToolsSequenceNumber: [2, 'integer'],
-			businessToolsSessionId: [1, 'string'],
+			businessToolsSequenceNumber: [2, "integer"],
+			businessToolsSessionId: [1, "string"],
 			linkingTarget: [
 				4,
 				{
@@ -12099,11 +12105,11 @@ export const WEB_EVENTS: Event[] = [
 			],
 		},
 		weight: 1,
-		wamChannel: 'regular',
+		wamChannel: "regular",
 		privateStatsIdInt: -1,
 	},
 	{
-		name: 'BusinessToolsEntry',
+		name: "BusinessToolsEntry",
 		id: 2216,
 		props: {
 			businessToolsEntryPoint: [
@@ -12119,15 +12125,15 @@ export const WEB_EVENTS: Event[] = [
 					ENTRY_BUSINESS_TOOLS_TAB: 7,
 				},
 			],
-			businessToolsSequenceNumber: [2, 'integer'],
-			businessToolsSessionId: [1, 'string'],
+			businessToolsSequenceNumber: [2, "integer"],
+			businessToolsSessionId: [1, "string"],
 		},
 		weight: 1,
-		wamChannel: 'regular',
+		wamChannel: "regular",
 		privateStatsIdInt: -1,
 	},
 	{
-		name: 'BusinessToolsImpression',
+		name: "BusinessToolsImpression",
 		id: 2220,
 		props: {
 			businessToolsEntryPoint: [
@@ -12143,15 +12149,15 @@ export const WEB_EVENTS: Event[] = [
 					ENTRY_BUSINESS_TOOLS_TAB: 7,
 				},
 			],
-			businessToolsSequenceNumber: [2, 'integer'],
-			businessToolsSessionId: [1, 'string'],
+			businessToolsSequenceNumber: [2, "integer"],
+			businessToolsSessionId: [1, "string"],
 		},
 		weight: 1,
-		wamChannel: 'regular',
+		wamChannel: "regular",
 		privateStatsIdInt: -1,
 	},
 	{
-		name: 'CadminDemote',
+		name: "CadminDemote",
 		id: 3426,
 		props: {
 			cadminDemoteOrigin: [
@@ -12172,17 +12178,17 @@ export const WEB_EVENTS: Event[] = [
 					RETRY_CANCEL: 6,
 				},
 			],
-			isLastCadminOrCreator: [4, 'boolean'],
+			isLastCadminOrCreator: [4, "boolean"],
 		},
 		weight: 1,
-		wamChannel: 'regular',
+		wamChannel: "regular",
 		privateStatsIdInt: -1,
 	},
 	{
-		name: 'ChannelAdmin',
+		name: "ChannelAdmin",
 		id: 4556,
 		props: {
-			adminFlowActionSequenceNumber: [1, 'integer'],
+			adminFlowActionSequenceNumber: [1, "integer"],
 			adminFlowType: [
 				2,
 				{
@@ -12213,14 +12219,14 @@ export const WEB_EVENTS: Event[] = [
 					REACTIONS_SET_TO_NONE_EMOJI: 18,
 				},
 			],
-			channelAdminSessionId: [4, 'integer'],
+			channelAdminSessionId: [4, "integer"],
 		},
 		weight: 1,
-		wamChannel: 'regular',
+		wamChannel: "regular",
 		privateStatsIdInt: -1,
 	},
 	{
-		name: 'ChannelDyi',
+		name: "ChannelDyi",
 		id: 4726,
 		props: {
 			channelDyiEventType: [
@@ -12233,11 +12239,11 @@ export const WEB_EVENTS: Event[] = [
 			],
 		},
 		weight: 1,
-		wamChannel: 'regular',
+		wamChannel: "regular",
 		privateStatsIdInt: -1,
 	},
 	{
-		name: 'ChatFilterEvent',
+		name: "ChatFilterEvent",
 		id: 1616,
 		props: {
 			actionType: [
@@ -12299,7 +12305,7 @@ export const WEB_EVENTS: Event[] = [
 					SERP_LOADED: 54,
 				},
 			],
-			activitySessionId: [6, 'string'],
+			activitySessionId: [6, "string"],
 			filterType: [
 				2,
 				{
@@ -12328,11 +12334,11 @@ export const WEB_EVENTS: Event[] = [
 					FAVORITES: 22,
 				},
 			],
-			labelName: [11, 'string'],
-			metadata: [7, 'string'],
-			predefinedId: [10, 'integer'],
-			searchQueryId: [8, 'string'],
-			searchRequestId: [9, 'string'],
+			labelName: [11, "string"],
+			metadata: [7, "string"],
+			predefinedId: [10, "integer"],
+			searchQueryId: [8, "string"],
+			searchRequestId: [9, "string"],
 			searchResultType: [
 				4,
 				{
@@ -12344,7 +12350,7 @@ export const WEB_EVENTS: Event[] = [
 					BUSINESS: 5,
 				},
 			],
-			sessionId: [3, 'integer'],
+			sessionId: [3, "integer"],
 			targetScreen: [
 				5,
 				{
@@ -12353,14 +12359,14 @@ export const WEB_EVENTS: Event[] = [
 			],
 		},
 		weight: 1,
-		wamChannel: 'regular',
+		wamChannel: "regular",
 		privateStatsIdInt: -1,
 	},
 	{
-		name: 'CommunityCreation',
+		name: "CommunityCreation",
 		id: 3492,
 		props: {
-			communityCreationActionCount: [1, 'integer'],
+			communityCreationActionCount: [1, "integer"],
 			communityCreationActionTaken: [
 				2,
 				{
@@ -12407,18 +12413,18 @@ export const WEB_EVENTS: Event[] = [
 					DEEP_LINK_CHANNEL: 8,
 				},
 			],
-			communityCreationSessionId: [4, 'string'],
-			communityId: [6, 'string'],
+			communityCreationSessionId: [4, "string"],
+			communityId: [6, "string"],
 		},
 		weight: 1,
-		wamChannel: 'regular',
+		wamChannel: "regular",
 		privateStatsIdInt: -1,
 	},
 	{
-		name: 'ContactUsSession',
+		name: "ContactUsSession",
 		id: 470,
 		props: {
-			contactUsAutomaticEmail: [3, 'boolean'],
+			contactUsAutomaticEmail: [3, "boolean"],
 			contactUsExitState: [
 				1,
 				{
@@ -12430,21 +12436,21 @@ export const WEB_EVENTS: Event[] = [
 					FAQ: 6,
 				},
 			],
-			contactUsFaq: [2, 'boolean'],
-			contactUsLogs: [4, 'boolean'],
-			contactUsMenuFaqT: [12, 'timer'],
-			contactUsOutage: [5, 'boolean'],
-			contactUsOutageEmail: [6, 'boolean'],
-			contactUsScreenshotC: [19, 'number'],
-			contactUsT: [11, 'timer'],
-			languageCode: [21, 'string'],
+			contactUsFaq: [2, "boolean"],
+			contactUsLogs: [4, "boolean"],
+			contactUsMenuFaqT: [12, "timer"],
+			contactUsOutage: [5, "boolean"],
+			contactUsOutageEmail: [6, "boolean"],
+			contactUsScreenshotC: [19, "number"],
+			contactUsT: [11, "timer"],
+			languageCode: [21, "string"],
 		},
 		weight: 1,
-		wamChannel: 'regular',
+		wamChannel: "regular",
 		privateStatsIdInt: -1,
 	},
 	{
-		name: 'DeepLinkMsgSent',
+		name: "DeepLinkMsgSent",
 		id: 3198,
 		props: {
 			deepLinkAction: [
@@ -12453,14 +12459,14 @@ export const WEB_EVENTS: Event[] = [
 					MSG_SENT: 1,
 				},
 			],
-			deepLinkSessionId: [2, 'string'],
+			deepLinkSessionId: [2, "string"],
 		},
 		weight: 1,
-		wamChannel: 'regular',
+		wamChannel: "regular",
 		privateStatsIdInt: -1,
 	},
 	{
-		name: 'DeepLinkOpen',
+		name: "DeepLinkOpen",
 		id: 2136,
 		props: {
 			deepLinkOpenFrom: [
@@ -12474,7 +12480,7 @@ export const WEB_EVENTS: Event[] = [
 					DEEP_LINK_MESSENGER_APP: 6,
 				},
 			],
-			deepLinkSessionId: [6, 'string'],
+			deepLinkSessionId: [6, "string"],
 			deepLinkType: [
 				3,
 				{
@@ -12597,7 +12603,7 @@ export const WEB_EVENTS: Event[] = [
 					DEEP_LINK_CHAT_LIST: 117,
 				},
 			],
-			isContact: [4, 'boolean'],
+			isContact: [4, "boolean"],
 			linkOwnerType: [
 				5,
 				{
@@ -12606,17 +12612,17 @@ export const WEB_EVENTS: Event[] = [
 					ENT: 3,
 				},
 			],
-			sourceSurface: [7, 'integer'],
+			sourceSurface: [7, "integer"],
 		},
 		weight: 1,
-		wamChannel: 'regular',
+		wamChannel: "regular",
 		privateStatsIdInt: -1,
 	},
 	{
-		name: 'DisappearingMessageChatPicker',
+		name: "DisappearingMessageChatPicker",
 		id: 3398,
 		props: {
-			chatsSelected: [1, 'integer'],
+			chatsSelected: [1, "integer"],
 			dmChatPickerEntryPoint: [
 				2,
 				{
@@ -12634,18 +12640,18 @@ export const WEB_EVENTS: Event[] = [
 					CHAT_PICKER_CHATS_SELECTED: 3,
 				},
 			],
-			ephemeralityDuration: [4, 'integer'],
-			groupChatsSelected: [5, 'integer'],
-			groupSizeDistributionJson: [9, 'string'],
-			newlyEphemeralChats: [7, 'integer'],
-			totalChatsInChatPicker: [8, 'integer'],
+			ephemeralityDuration: [4, "integer"],
+			groupChatsSelected: [5, "integer"],
+			groupSizeDistributionJson: [9, "string"],
+			newlyEphemeralChats: [7, "integer"],
+			totalChatsInChatPicker: [8, "integer"],
 		},
 		weight: 1,
-		wamChannel: 'regular',
+		wamChannel: "regular",
 		privateStatsIdInt: -1,
 	},
 	{
-		name: 'DisappearingModeSettingChange',
+		name: "DisappearingModeSettingChange",
 		id: 3056,
 		props: {
 			disappearingModeEntryPoint: [
@@ -12660,16 +12666,16 @@ export const WEB_EVENTS: Event[] = [
 					PRIVACY_SETTINGS: 7,
 				},
 			],
-			lastToggleTimestamp: [3, 'integer'],
-			newEphemeralityDuration: [2, 'integer'],
-			previousEphemeralityDuration: [1, 'integer'],
+			lastToggleTimestamp: [3, "integer"],
+			newEphemeralityDuration: [2, "integer"],
+			previousEphemeralityDuration: [1, "integer"],
 		},
 		weight: 1,
-		wamChannel: 'regular',
+		wamChannel: "regular",
 		privateStatsIdInt: -1,
 	},
 	{
-		name: 'DisappearingModeSettingEvents',
+		name: "DisappearingModeSettingEvents",
 		id: 3446,
 		props: {
 			disappearingModeEntryPoint: [
@@ -12693,16 +12699,16 @@ export const WEB_EVENTS: Event[] = [
 					LEARN_MORE_CLICK: 4,
 				},
 			],
-			lastToggleTimestamp: [2, 'integer'],
-			newEphemeralityDuration: [3, 'integer'],
-			previousEphemeralityDuration: [4, 'integer'],
+			lastToggleTimestamp: [2, "integer"],
+			newEphemeralityDuration: [3, "integer"],
+			previousEphemeralityDuration: [4, "integer"],
 		},
 		weight: 1,
-		wamChannel: 'regular',
+		wamChannel: "regular",
 		privateStatsIdInt: -1,
 	},
 	{
-		name: 'EditBusinessProfile',
+		name: "EditBusinessProfile",
 		id: 1466,
 		props: {
 			businessProfileEntryPoint: [
@@ -12717,7 +12723,7 @@ export const WEB_EVENTS: Event[] = [
 					DIRECTORY_ONBOARDING: 7,
 				},
 			],
-			editBusinessProfileSessionId: [2, 'string'],
+			editBusinessProfileSessionId: [2, "string"],
 			editProfileAction: [
 				1,
 				{
@@ -12752,22 +12758,22 @@ export const WEB_EVENTS: Event[] = [
 					PROFILE: 7,
 				},
 			],
-			hasAddress: [5, 'boolean'],
-			hasCategory: [4, 'boolean'],
-			hasDescription: [3, 'boolean'],
-			hasEmail: [7, 'boolean'],
-			hasHours: [6, 'boolean'],
-			hasWebsite: [8, 'boolean'],
+			hasAddress: [5, "boolean"],
+			hasCategory: [4, "boolean"],
+			hasDescription: [3, "boolean"],
+			hasEmail: [7, "boolean"],
+			hasHours: [6, "boolean"],
+			hasWebsite: [8, "boolean"],
 		},
 		weight: 1,
-		wamChannel: 'regular',
+		wamChannel: "regular",
 		privateStatsIdInt: -1,
 	},
 	{
-		name: 'EphemeralSettingChange',
+		name: "EphemeralSettingChange",
 		id: 2370,
 		props: {
-			chatEphemeralityDuration: [1, 'integer'],
+			chatEphemeralityDuration: [1, "integer"],
 			ephemeralSettingEntryPoint: [
 				3,
 				{
@@ -12803,15 +12809,15 @@ export const WEB_EVENTS: Event[] = [
 					LARGEST_BUCKET: 18,
 				},
 			],
-			previousEphemeralityDuration: [2, 'integer'],
-			threadId: [6, 'string'],
+			previousEphemeralityDuration: [2, "integer"],
+			threadId: [6, "string"],
 		},
 		weight: 1,
-		wamChannel: 'regular',
+		wamChannel: "regular",
 		privateStatsIdInt: -1,
 	},
 	{
-		name: 'GifFromProviderSent',
+		name: "GifFromProviderSent",
 		id: 1124,
 		props: {
 			gifSearchProvider: [
@@ -12823,11 +12829,11 @@ export const WEB_EVENTS: Event[] = [
 			],
 		},
 		weight: 1,
-		wamChannel: 'regular',
+		wamChannel: "regular",
 		privateStatsIdInt: -1,
 	},
 	{
-		name: 'GifSearchCancelled',
+		name: "GifSearchCancelled",
 		id: 1126,
 		props: {
 			gifSearchProvider: [
@@ -12839,11 +12845,11 @@ export const WEB_EVENTS: Event[] = [
 			],
 		},
 		weight: 1,
-		wamChannel: 'regular',
+		wamChannel: "regular",
 		privateStatsIdInt: -1,
 	},
 	{
-		name: 'GifSearchNoResults',
+		name: "GifSearchNoResults",
 		id: 1128,
 		props: {
 			gifSearchProvider: [
@@ -12853,15 +12859,15 @@ export const WEB_EVENTS: Event[] = [
 					TENOR: 1,
 				},
 			],
-			inputLanguageCode: [3, 'string'],
-			languageCode: [2, 'string'],
+			inputLanguageCode: [3, "string"],
+			languageCode: [2, "string"],
 		},
 		weight: 1,
-		wamChannel: 'regular',
+		wamChannel: "regular",
 		privateStatsIdInt: -1,
 	},
 	{
-		name: 'GifSearchResultTapped',
+		name: "GifSearchResultTapped",
 		id: 1122,
 		props: {
 			gifSearchProvider: [
@@ -12871,14 +12877,14 @@ export const WEB_EVENTS: Event[] = [
 					TENOR: 1,
 				},
 			],
-			rank: [2, 'integer'],
+			rank: [2, "integer"],
 		},
 		weight: 1,
-		wamChannel: 'regular',
+		wamChannel: "regular",
 		privateStatsIdInt: -1,
 	},
 	{
-		name: 'GifSearchSessionStarted',
+		name: "GifSearchSessionStarted",
 		id: 1134,
 		props: {
 			gifSearchProvider: [
@@ -12890,16 +12896,16 @@ export const WEB_EVENTS: Event[] = [
 			],
 		},
 		weight: 1,
-		wamChannel: 'regular',
+		wamChannel: "regular",
 		privateStatsIdInt: -1,
 	},
 	{
-		name: 'KeepInChatErrors',
+		name: "KeepInChatErrors",
 		id: 3698,
 		props: {
-			canEditDmSettings: [7, 'boolean'],
-			isAGroup: [2, 'boolean'],
-			isAdmin: [3, 'boolean'],
+			canEditDmSettings: [7, "boolean"],
+			isAGroup: [2, "boolean"],
+			isAdmin: [3, "boolean"],
 			kicAction: [
 				4,
 				{
@@ -12928,17 +12934,17 @@ export const WEB_EVENTS: Event[] = [
 					UNKNOWN: 999,
 				},
 			],
-			kicMessageEphemeralityDuration: [6, 'integer'],
+			kicMessageEphemeralityDuration: [6, "integer"],
 		},
 		weight: 1,
-		wamChannel: 'regular',
+		wamChannel: "regular",
 		privateStatsIdInt: -1,
 	},
 	{
-		name: 'KeepInChatPerf',
+		name: "KeepInChatPerf",
 		id: 3488,
 		props: {
-			chatEphemeralityDuration: [1, 'integer'],
+			chatEphemeralityDuration: [1, "integer"],
 			kicErrorCode: [
 				2,
 				{
@@ -12960,7 +12966,7 @@ export const WEB_EVENTS: Event[] = [
 					UNKNOWN: 999,
 				},
 			],
-			kicMessageEphemeralityDuration: [3, 'integer'],
+			kicMessageEphemeralityDuration: [3, "integer"],
 			kicRequestType: [
 				4,
 				{
@@ -12968,7 +12974,7 @@ export const WEB_EVENTS: Event[] = [
 					UNKEEP: 2,
 				},
 			],
-			requestSendTime: [5, 'integer'],
+			requestSendTime: [5, "integer"],
 			response: [
 				6,
 				{
@@ -12976,18 +12982,18 @@ export const WEB_EVENTS: Event[] = [
 					ERROR: 2,
 				},
 			],
-			threadId: [7, 'string'],
+			threadId: [7, "string"],
 		},
 		weight: 1,
-		wamChannel: 'regular',
+		wamChannel: "regular",
 		privateStatsIdInt: -1,
 	},
 	{
-		name: 'MessagingUserJourney',
+		name: "MessagingUserJourney",
 		id: 5134,
 		props: {
-			appSessionId: [1, 'string'],
-			isSelfPin: [8, 'boolean'],
+			appSessionId: [1, "string"],
+			isSelfPin: [8, "boolean"],
 			mediaType: [
 				9,
 				{
@@ -13101,7 +13107,7 @@ export const WEB_EVENTS: Event[] = [
 					CLICK_UNPIN: 40,
 				},
 			],
-			pinInChatExpirySecs: [3, 'integer'],
+			pinInChatExpirySecs: [3, "integer"],
 			threadType: [
 				4,
 				{
@@ -13211,7 +13217,7 @@ export const WEB_EVENTS: Event[] = [
 					GROUP_CREATION: 92,
 				},
 			],
-			userJourneyFunnelId: [6, 'string'],
+			userJourneyFunnelId: [6, "string"],
 			userRole: [
 				7,
 				{
@@ -13222,14 +13228,14 @@ export const WEB_EVENTS: Event[] = [
 			],
 		},
 		weight: 1,
-		wamChannel: 'regular',
+		wamChannel: "regular",
 		privateStatsIdInt: -1,
 	},
 	{
-		name: 'MetaVerifiedInteraction',
+		name: "MetaVerifiedInteraction",
 		id: 4870,
 		props: {
-			businessOwnerJid: [1, 'string'],
+			businessOwnerJid: [1, "string"],
 			businessOwnerPlatform: [
 				2,
 				{
@@ -13286,11 +13292,11 @@ export const WEB_EVENTS: Event[] = [
 			],
 		},
 		weight: 1,
-		wamChannel: 'private',
+		wamChannel: "private",
 		privateStatsIdInt: 113760892,
 	},
 	{
-		name: 'PaidMessagingUserInteractionsLogger',
+		name: "PaidMessagingUserInteractionsLogger",
 		id: 4740,
 		props: {
 			pmxActionTarget: [
@@ -13323,7 +13329,7 @@ export const WEB_EVENTS: Event[] = [
 					BUTTON: 2,
 				},
 			],
-			pmxHashedMessageKey: [11, 'integer'],
+			pmxHashedMessageKey: [11, "integer"],
 			pmxHeaderMediaType: [
 				4,
 				{
@@ -13351,17 +13357,17 @@ export const WEB_EVENTS: Event[] = [
 					CUSTOM: 2,
 				},
 			],
-			pmxMessageDeliveredTs: [10, 'integer'],
-			pmxQueryParams: [6, 'string'],
-			pmxSenderCountryCode: [9, 'string'],
-			templateId: [7, 'string'],
+			pmxMessageDeliveredTs: [10, "integer"],
+			pmxQueryParams: [6, "string"],
+			pmxSenderCountryCode: [9, "string"],
+			templateId: [7, "string"],
 		},
 		weight: 1,
-		wamChannel: 'private',
+		wamChannel: "private",
 		privateStatsIdInt: 113760892,
 	},
 	{
-		name: 'PinInChatInteraction',
+		name: "PinInChatInteraction",
 		id: 4436,
 		props: {
 			groupRole: [
@@ -13371,7 +13377,7 @@ export const WEB_EVENTS: Event[] = [
 					MEMBER: 2,
 				},
 			],
-			groupSize: [2, 'integer'],
+			groupSize: [2, "integer"],
 			groupTypeClient: [
 				3,
 				{
@@ -13381,8 +13387,8 @@ export const WEB_EVENTS: Event[] = [
 					PARENT_GROUP: 4,
 				},
 			],
-			isAGroup: [4, 'boolean'],
-			isSelfPin: [8, 'boolean'],
+			isAGroup: [4, "boolean"],
+			isSelfPin: [8, "boolean"],
 			mediaType: [
 				5,
 				{
@@ -13450,21 +13456,21 @@ export const WEB_EVENTS: Event[] = [
 					INTERACTIVE_PRODUCT: 62,
 				},
 			],
-			pinCount: [6, 'integer'],
+			pinCount: [6, "integer"],
 			pinInChatInteractionType: [
 				7,
 				{
 					TAP_ON_BANNER: 1,
 				},
 			],
-			pinIndex: [9, 'integer'],
+			pinIndex: [9, "integer"],
 		},
 		weight: 1,
-		wamChannel: 'regular',
+		wamChannel: "regular",
 		privateStatsIdInt: -1,
 	},
 	{
-		name: 'PinInChatMessageSend',
+		name: "PinInChatMessageSend",
 		id: 4438,
 		props: {
 			groupRole: [
@@ -13483,9 +13489,9 @@ export const WEB_EVENTS: Event[] = [
 					PARENT_GROUP: 4,
 				},
 			],
-			isAGroup: [3, 'boolean'],
-			isSelfParentMessage: [7, 'boolean'],
-			isSelfPin: [8, 'boolean'],
+			isAGroup: [3, "boolean"],
+			isSelfParentMessage: [7, "boolean"],
+			isSelfPin: [8, "boolean"],
 			mediaType: [
 				4,
 				{
@@ -13553,7 +13559,7 @@ export const WEB_EVENTS: Event[] = [
 					INTERACTIVE_PRODUCT: 62,
 				},
 			],
-			pinInChatExpirySecs: [5, 'integer'],
+			pinInChatExpirySecs: [5, "integer"],
 			pinInChatType: [
 				6,
 				{
@@ -13561,14 +13567,14 @@ export const WEB_EVENTS: Event[] = [
 					UNPIN_FOR_ALL: 2,
 				},
 			],
-			timeRemainingToExpirySecs: [9, 'integer'],
+			timeRemainingToExpirySecs: [9, "integer"],
 		},
 		weight: 1,
-		wamChannel: 'regular',
+		wamChannel: "regular",
 		privateStatsIdInt: -1,
 	},
 	{
-		name: 'PnhRequestRevealAction',
+		name: "PnhRequestRevealAction",
 		id: 3808,
 		props: {
 			pnhAction: [
@@ -13607,14 +13613,14 @@ export const WEB_EVENTS: Event[] = [
 					CHAT_INFO_PN_VISIBILITY: 7,
 				},
 			],
-			threadId: [5, 'string'],
+			threadId: [5, "string"],
 		},
 		weight: 1,
-		wamChannel: 'regular',
+		wamChannel: "regular",
 		privateStatsIdInt: -1,
 	},
 	{
-		name: 'PollsActions',
+		name: "PollsActions",
 		id: 3676,
 		props: {
 			chatType: [
@@ -13649,8 +13655,8 @@ export const WEB_EVENTS: Event[] = [
 					LARGEST_BUCKET: 15,
 				},
 			],
-			isAGroup: [6, 'boolean'],
-			isAdmin: [2, 'boolean'],
+			isAGroup: [6, "boolean"],
+			isAdmin: [2, "boolean"],
 			pollAction: [
 				3,
 				{
@@ -13662,8 +13668,8 @@ export const WEB_EVENTS: Event[] = [
 					CHANGE_VOTE: 7,
 				},
 			],
-			pollCreationDs: [4, 'integer'],
-			pollOptionsCount: [5, 'integer'],
+			pollCreationDs: [4, "integer"],
+			pollOptionsCount: [5, "integer"],
 			typeOfGroup: [
 				7,
 				{
@@ -13674,11 +13680,11 @@ export const WEB_EVENTS: Event[] = [
 			],
 		},
 		weight: 1,
-		wamChannel: 'regular',
+		wamChannel: "regular",
 		privateStatsIdInt: -1,
 	},
 	{
-		name: 'PrivacySettingsClick',
+		name: "PrivacySettingsClick",
 		id: 3726,
 		props: {
 			privacyControlEntryPoint: [
@@ -13723,21 +13729,21 @@ export const WEB_EVENTS: Event[] = [
 			],
 		},
 		weight: 1,
-		wamChannel: 'regular',
+		wamChannel: "regular",
 		privateStatsIdInt: -1,
 	},
 	{
-		name: 'PttPlayback',
+		name: "PttPlayback",
 		id: 2044,
 		props: {
-			pttDuration: [12, 'timer'],
-			pttMainThreadBlock: [7, 'boolean'],
-			pttMiniPlayerClick: [15, 'integer'],
-			pttMiniPlayerClose: [16, 'boolean'],
-			pttMiniPlayerPauseCnt: [17, 'integer'],
-			pttPlayRequestT: [1, 'timer'],
-			pttPlaybackFailed: [8, 'boolean'],
-			pttPlaybackOverallT: [4, 'timer'],
+			pttDuration: [12, "timer"],
+			pttMainThreadBlock: [7, "boolean"],
+			pttMiniPlayerClick: [15, "integer"],
+			pttMiniPlayerClose: [16, "boolean"],
+			pttMiniPlayerPauseCnt: [17, "integer"],
+			pttPlayRequestT: [1, "timer"],
+			pttPlaybackFailed: [8, "boolean"],
+			pttPlaybackOverallT: [4, "timer"],
 			pttPlaybackSpeed: [
 				10,
 				{
@@ -13746,9 +13752,9 @@ export const WEB_EVENTS: Event[] = [
 					SPEED_2: 2,
 				},
 			],
-			pttPlaybackSpeedCnt: [11, 'integer'],
-			pttPlayedOutOfChat: [18, 'boolean'],
-			pttPlayedPct: [14, 'number'],
+			pttPlaybackSpeedCnt: [11, "integer"],
+			pttPlayedOutOfChat: [18, "boolean"],
+			pttPlayedPct: [14, "number"],
 			pttPlayer: [
 				9,
 				{
@@ -13762,9 +13768,9 @@ export const WEB_EVENTS: Event[] = [
 					VOIPPLAYER: 7,
 				},
 			],
-			pttPlayerInitT: [2, 'timer'],
-			pttPlayerPlayT: [3, 'timer'],
-			pttSeekCnt: [13, 'integer'],
+			pttPlayerInitT: [2, "timer"],
+			pttPlayerPlayT: [3, "timer"],
+			pttSeekCnt: [13, "integer"],
 			pttTrigger: [
 				5,
 				{
@@ -13786,11 +13792,11 @@ export const WEB_EVENTS: Event[] = [
 			],
 		},
 		weight: 1,
-		wamChannel: 'regular',
+		wamChannel: "regular",
 		privateStatsIdInt: -1,
 	},
 	{
-		name: 'ReactionActions',
+		name: "ReactionActions",
 		id: 3184,
 		props: {
 			mediaType: [
@@ -13881,11 +13887,11 @@ export const WEB_EVENTS: Event[] = [
 			],
 		},
 		weight: 20,
-		wamChannel: 'regular',
+		wamChannel: "regular",
 		privateStatsIdInt: -1,
 	},
 	{
-		name: 'SettingsClick',
+		name: "SettingsClick",
 		id: 2214,
 		props: {
 			settingsClickEntryPoint: [
@@ -13946,11 +13952,11 @@ export const WEB_EVENTS: Event[] = [
 			],
 		},
 		weight: 1,
-		wamChannel: 'regular',
+		wamChannel: "regular",
 		privateStatsIdInt: -1,
 	},
 	{
-		name: 'SettingsSearchInitiate',
+		name: "SettingsSearchInitiate",
 		id: 4014,
 		props: {
 			settingsPageType: [
@@ -13962,14 +13968,14 @@ export const WEB_EVENTS: Event[] = [
 			],
 		},
 		weight: 1,
-		wamChannel: 'regular',
+		wamChannel: "regular",
 		privateStatsIdInt: -1,
 	},
 	{
-		name: 'SettingsSearchTap',
+		name: "SettingsSearchTap",
 		id: 4016,
 		props: {
-			tapItemName: [1, 'string'],
+			tapItemName: [1, "string"],
 			topLevelParentSetting: [
 				2,
 				{
@@ -14011,11 +14017,11 @@ export const WEB_EVENTS: Event[] = [
 			],
 		},
 		weight: 1,
-		wamChannel: 'regular',
+		wamChannel: "regular",
 		privateStatsIdInt: -1,
 	},
 	{
-		name: 'SmbDataSharingConsentSetting',
+		name: "SmbDataSharingConsentSetting",
 		id: 3974,
 		props: {
 			smbDataSharingConsentSettingEntryPoint: [
@@ -14026,19 +14032,19 @@ export const WEB_EVENTS: Event[] = [
 					ENTRY_POINT_LABELS_SCREEN: 2,
 				},
 			],
-			smbDataSharingConsentSettingType: [2, 'boolean'],
-			smbDataSharingConsentSettingVersion: [3, 'integer'],
+			smbDataSharingConsentSettingType: [2, "boolean"],
+			smbDataSharingConsentSettingVersion: [3, "integer"],
 		},
 		weight: 1,
-		wamChannel: 'regular',
+		wamChannel: "regular",
 		privateStatsIdInt: -1,
 	},
 	{
-		name: 'StatusItemView',
+		name: "StatusItemView",
 		id: 1658,
 		props: {
-			isPosterBiz: [23, 'boolean'],
-			isPosterInAddressBook: [25, 'boolean'],
+			isPosterBiz: [23, "boolean"],
+			isPosterInAddressBook: [25, "boolean"],
 			mediaType: [
 				4,
 				{
@@ -14106,11 +14112,11 @@ export const WEB_EVENTS: Event[] = [
 					INTERACTIVE_PRODUCT: 62,
 				},
 			],
-			psaCampaignId: [17, 'string'],
-			psaCampaignItemIndex: [18, 'integer'],
-			psaLinkAvailable: [19, 'boolean'],
-			psaLinkClick: [22, 'boolean'],
-			psaLinkLoadTime: [21, 'timer'],
+			psaCampaignId: [17, "string"],
+			psaCampaignItemIndex: [18, "integer"],
+			psaLinkAvailable: [19, "boolean"],
+			psaLinkClick: [22, "boolean"],
+			psaLinkLoadTime: [21, "timer"],
 			psaLinkOpenResult: [
 				20,
 				{
@@ -14119,13 +14125,13 @@ export const WEB_EVENTS: Event[] = [
 					ERROR: 3,
 				},
 			],
-			statusItemImpressionCount: [14, 'integer'],
-			statusItemIndex: [16, 'integer'],
-			statusItemLength: [7, 'timer'],
-			statusItemLoadTime: [5, 'timer'],
-			statusItemReplied: [8, 'integer'],
-			statusItemUnread: [9, 'boolean'],
-			statusItemViewCount: [10, 'integer'],
+			statusItemImpressionCount: [14, "integer"],
+			statusItemIndex: [16, "integer"],
+			statusItemLength: [7, "timer"],
+			statusItemLoadTime: [5, "timer"],
+			statusItemReplied: [8, "integer"],
+			statusItemUnread: [9, "boolean"],
+			statusItemViewCount: [10, "integer"],
 			statusItemViewResult: [
 				3,
 				{
@@ -14157,8 +14163,8 @@ export const WEB_EVENTS: Event[] = [
 					PARTIAL_IMAGE_DOWNLOAD: 26,
 				},
 			],
-			statusItemViewTime: [6, 'timer'],
-			statusRowIndex: [2, 'integer'],
+			statusItemViewTime: [6, "timer"],
+			statusRowIndex: [2, "integer"],
 			statusRowSection: [
 				11,
 				{
@@ -14179,7 +14185,7 @@ export const WEB_EVENTS: Event[] = [
 					SEE_ALL_SEARCH: 15,
 				},
 			],
-			statusViewerSessionId: [1, 'integer'],
+			statusViewerSessionId: [1, "integer"],
 			urlStatusClicked: [
 				26,
 				{
@@ -14198,15 +14204,15 @@ export const WEB_EVENTS: Event[] = [
 			],
 		},
 		weight: 1,
-		wamChannel: 'regular',
+		wamChannel: "regular",
 		privateStatsIdInt: -1,
 	},
 	{
-		name: 'StatusReply',
+		name: "StatusReply",
 		id: 1180,
 		props: {
-			isPosterBiz: [4, 'boolean'],
-			isPosterInAddressBook: [6, 'boolean'],
+			isPosterBiz: [4, "boolean"],
+			isPosterInAddressBook: [6, "boolean"],
 			statusReplyMessageType: [
 				3,
 				{
@@ -14237,17 +14243,17 @@ export const WEB_EVENTS: Event[] = [
 					ERROR_UNKNOWN: 3,
 				},
 			],
-			statusSessionId: [1, 'integer'],
+			statusSessionId: [1, "integer"],
 		},
 		weight: 1,
-		wamChannel: 'regular',
+		wamChannel: "regular",
 		privateStatsIdInt: -1,
 	},
 	{
-		name: 'StatusRowView',
+		name: "StatusRowView",
 		id: 1656,
 		props: {
-			psaCampaigns: [8, 'string'],
+			psaCampaigns: [8, "string"],
 			statusRowEntryMethod: [
 				5,
 				{
@@ -14259,7 +14265,7 @@ export const WEB_EVENTS: Event[] = [
 					PREVIOUS_ROW_TIMEOUT: 6,
 				},
 			],
-			statusRowIndex: [4, 'integer'],
+			statusRowIndex: [4, "integer"],
 			statusRowSection: [
 				3,
 				{
@@ -14280,17 +14286,17 @@ export const WEB_EVENTS: Event[] = [
 					SEE_ALL_SEARCH: 15,
 				},
 			],
-			statusRowUnreadItemCount: [7, 'integer'],
-			statusRowViewCount: [6, 'integer'],
-			statusSessionId: [1, 'integer'],
-			statusViewerSessionId: [2, 'integer'],
+			statusRowUnreadItemCount: [7, "integer"],
+			statusRowViewCount: [6, "integer"],
+			statusSessionId: [1, "integer"],
+			statusViewerSessionId: [2, "integer"],
 		},
 		weight: 1,
-		wamChannel: 'regular',
+		wamChannel: "regular",
 		privateStatsIdInt: -1,
 	},
 	{
-		name: 'UiRevokeAction',
+		name: "UiRevokeAction",
 		id: 3298,
 		props: {
 			messageAction: [
@@ -14304,18 +14310,18 @@ export const WEB_EVENTS: Event[] = [
 					DELETE_FOR_EVERYONE_SELECTED: 5,
 				},
 			],
-			uiRevokeActionDuration: [2, 'integer'],
-			uiRevokeActionSessionId: [3, 'string'],
+			uiRevokeActionDuration: [2, "integer"],
+			uiRevokeActionSessionId: [3, "string"],
 		},
 		weight: 1,
-		wamChannel: 'regular',
+		wamChannel: "regular",
 		privateStatsIdInt: -1,
 	},
 	{
-		name: 'WaShopsManagement',
+		name: "WaShopsManagement",
 		id: 2908,
 		props: {
-			isShopsProductPreviewVisible: [2, 'boolean'],
+			isShopsProductPreviewVisible: [2, "boolean"],
 			shopsManagementAction: [
 				1,
 				{
@@ -14335,14 +14341,14 @@ export const WEB_EVENTS: Event[] = [
 					ACTION_CLICK_CANCEL_FROM_EDIT_BIZ_PROFILE: 14,
 				},
 			],
-			shopsSellerJid: [3, 'string'],
+			shopsSellerJid: [3, "string"],
 		},
 		weight: 1,
-		wamChannel: 'regular',
+		wamChannel: "regular",
 		privateStatsIdInt: -1,
 	},
 	{
-		name: 'WebcButterbarEvent',
+		name: "WebcButterbarEvent",
 		id: 3932,
 		props: {
 			webcButterbarAction: [
@@ -14368,26 +14374,26 @@ export const WEB_EVENTS: Event[] = [
 			],
 		},
 		weight: 1,
-		wamChannel: 'regular',
+		wamChannel: "regular",
 		privateStatsIdInt: -1,
 	},
 	{
-		name: 'WebcEmojiOpen',
+		name: "WebcEmojiOpen",
 		id: 1166,
 		props: {
-			webcEmojiOpenTab: [1, 'string'],
+			webcEmojiOpenTab: [1, "string"],
 		},
 		weight: 1,
-		wamChannel: 'regular',
+		wamChannel: "regular",
 		privateStatsIdInt: -1,
 	},
 	{
-		name: 'WebcLinkPreviewDisplay',
+		name: "WebcLinkPreviewDisplay",
 		id: 3864,
 		props: {
-			didFallbackNonHq: [2, 'boolean'],
-			didRequestHq: [3, 'boolean'],
-			didRespondHqPreview: [4, 'boolean'],
+			didFallbackNonHq: [2, "boolean"],
+			didRequestHq: [3, "boolean"],
+			didRespondHqPreview: [4, "boolean"],
 			webcDisplayStatus: [
 				1,
 				{
@@ -14401,25 +14407,25 @@ export const WEB_EVENTS: Event[] = [
 			],
 		},
 		weight: 1,
-		wamChannel: 'regular',
+		wamChannel: "regular",
 		privateStatsIdInt: -1,
 	},
 	{
-		name: 'WhatsappQuickPromotionClientEligibilityWaterfall',
+		name: "WhatsappQuickPromotionClientEligibilityWaterfall",
 		id: 4360,
 		props: {
-			eligibilityStatus: [1, 'boolean'],
-			instanceLogData: [5, 'string'],
-			promotionId: [2, 'string'],
-			qpFailureReason: [3, 'string'],
-			step: [4, 'string'],
+			eligibilityStatus: [1, "boolean"],
+			instanceLogData: [5, "string"],
+			promotionId: [2, "string"],
+			qpFailureReason: [3, "string"],
+			step: [4, "string"],
 		},
 		weight: 1,
-		wamChannel: 'regular',
+		wamChannel: "regular",
 		privateStatsIdInt: -1,
 	},
 	{
-		name: 'GatedChatOpened',
+		name: "GatedChatOpened",
 		id: 3150,
 		props: {
 			chatGatedReason: [
@@ -14429,33 +14435,33 @@ export const WEB_EVENTS: Event[] = [
 					COUNTRY: 2,
 				},
 			],
-			selfInitiated: [2, 'boolean'],
+			selfInitiated: [2, "boolean"],
 		},
 		weight: 1,
-		wamChannel: 'regular',
+		wamChannel: "regular",
 		privateStatsIdInt: -1,
 	},
 	{
-		name: 'HfmTextSearchComplete',
+		name: "HfmTextSearchComplete",
 		id: 2186,
 		props: {},
 		weight: 1,
-		wamChannel: 'regular',
+		wamChannel: "regular",
 		privateStatsIdInt: -1,
 	},
 	{
-		name: 'SmbPaidMessagesButtonLogger',
+		name: "SmbPaidMessagesButtonLogger",
 		id: 4508,
 		props: {
-			businessPhoneNumber: [1, 'integer'],
-			pmButtonCount: [2, 'integer'],
+			businessPhoneNumber: [1, "integer"],
+			pmButtonCount: [2, "integer"],
 			pmButtonEventType: [
 				3,
 				{
 					CLICK: 0,
 				},
 			],
-			pmButtonIndex: [4, 'integer'],
+			pmButtonIndex: [4, "integer"],
 			pmButtonType: [
 				5,
 				{
@@ -14466,19 +14472,19 @@ export const WEB_EVENTS: Event[] = [
 					CTA_CATALOG_ITEM: 4,
 				},
 			],
-			pmIsTrackableLink: [7, 'string'],
-			pmServerCampaignId: [6, 'string'],
+			pmIsTrackableLink: [7, "string"],
+			pmServerCampaignId: [6, "string"],
 		},
 		weight: 1,
-		wamChannel: 'private',
+		wamChannel: "private",
 		privateStatsIdInt: 113760892,
 	},
 	{
-		name: 'SystemMessageClick',
+		name: "SystemMessageClick",
 		id: 5082,
 		props: {
-			isAGroup: [1, 'boolean'],
-			isANewThread: [2, 'boolean'],
+			isAGroup: [1, "boolean"],
+			isANewThread: [2, "boolean"],
 			systemMessageCategory: [
 				3,
 				{
@@ -14508,15 +14514,15 @@ export const WEB_EVENTS: Event[] = [
 			],
 		},
 		weight: 1,
-		wamChannel: 'regular',
+		wamChannel: "regular",
 		privateStatsIdInt: -1,
 	},
 	{
-		name: 'ViewOnceScreenshotActions',
+		name: "ViewOnceScreenshotActions",
 		id: 3606,
 		props: {
-			isAGroup: [1, 'boolean'],
-			threadId: [2, 'string'],
+			isAGroup: [1, "boolean"],
+			threadId: [2, "string"],
 			voMessageType: [
 				3,
 				{
@@ -14547,14 +14553,14 @@ export const WEB_EVENTS: Event[] = [
 			],
 		},
 		weight: 1,
-		wamChannel: 'regular',
+		wamChannel: "regular",
 		privateStatsIdInt: -1,
 	},
 	{
-		name: 'CtwaConsumerDisclosure',
+		name: "CtwaConsumerDisclosure",
 		id: 4406,
 		props: {
-			ctwaConsumerDisclosureVersion: [3, 'integer'],
+			ctwaConsumerDisclosureVersion: [3, "integer"],
 			disclosureAction: [
 				1,
 				{
@@ -14577,29 +14583,29 @@ export const WEB_EVENTS: Event[] = [
 			],
 		},
 		weight: 1,
-		wamChannel: 'private',
+		wamChannel: "private",
 		privateStatsIdInt: 0,
 	},
 	{
-		name: 'Ctwa3pdConversion',
+		name: "Ctwa3pdConversion",
 		id: 5138,
 		props: {
-			ctwa3pdConversionMetadata: [1, 'string'],
-			ctwa3pdConversionSubtype: [2, 'string'],
-			ctwa3pdConversionType: [3, 'string'],
-			ctwa3pdSchemaVersion: [4, 'integer'],
-			ctwa3pdSurfaceType: [5, 'string'],
-			ctwaTrackingPayload: [6, 'string'],
+			ctwa3pdConversionMetadata: [1, "string"],
+			ctwa3pdConversionSubtype: [2, "string"],
+			ctwa3pdConversionType: [3, "string"],
+			ctwa3pdSchemaVersion: [4, "integer"],
+			ctwa3pdSurfaceType: [5, "string"],
+			ctwaTrackingPayload: [6, "string"],
 		},
 		weight: 1,
-		wamChannel: 'regular',
+		wamChannel: "regular",
 		privateStatsIdInt: -1,
 	},
 	{
-		name: 'CtwaLabelSignal',
+		name: "CtwaLabelSignal",
 		id: 4662,
 		props: {
-			ctwaLabelSignalVersion: [1, 'integer'],
+			ctwaLabelSignalVersion: [1, "integer"],
 			ctwaLabelTarget: [
 				2,
 				{
@@ -14616,25 +14622,25 @@ export const WEB_EVENTS: Event[] = [
 					ORDER_COMPLETE: 3,
 				},
 			],
-			deepLinkConversionData: [4, 'string'],
-			deepLinkConversionSource: [5, 'string'],
-			eventSharingSettingEnabled: [6, 'boolean'],
-			globalSharingSettingEnabled: [7, 'boolean'],
+			deepLinkConversionData: [4, "string"],
+			deepLinkConversionSource: [5, "string"],
+			eventSharingSettingEnabled: [6, "boolean"],
+			globalSharingSettingEnabled: [7, "boolean"],
 		},
 		weight: 1,
-		wamChannel: 'regular',
+		wamChannel: "regular",
 		privateStatsIdInt: -1,
 	},
 	{
-		name: 'CtwaOrderSignal',
+		name: "CtwaOrderSignal",
 		id: 4264,
 		props: {
-			ctwaOrderSignalVersion: [1, 'integer'],
-			deepLinkConversionData: [2, 'string'],
-			deepLinkConversionSource: [3, 'string'],
-			eventSharingSettingEnabled: [4, 'boolean'],
-			globalSharingSettingEnabled: [5, 'boolean'],
-			orderPaid: [8, 'boolean'],
+			ctwaOrderSignalVersion: [1, "integer"],
+			deepLinkConversionData: [2, "string"],
+			deepLinkConversionSource: [3, "string"],
+			eventSharingSettingEnabled: [4, "boolean"],
+			globalSharingSettingEnabled: [5, "boolean"],
+			orderPaid: [8, "boolean"],
 			orderSignalType: [
 				6,
 				{
@@ -14656,11 +14662,11 @@ export const WEB_EVENTS: Event[] = [
 			],
 		},
 		weight: 1,
-		wamChannel: 'regular',
+		wamChannel: "regular",
 		privateStatsIdInt: -1,
 	},
 	{
-		name: 'PsChannelPostForward',
+		name: "PsChannelPostForward",
 		id: 4746,
 		props: {
 			channelForwardContentType: [
@@ -14681,7 +14687,7 @@ export const WEB_EVENTS: Event[] = [
 					CHANNEL: 5,
 				},
 			],
-			cid: [2, 'string'],
+			cid: [2, "string"],
 			mediaType: [
 				3,
 				{
@@ -14749,17 +14755,17 @@ export const WEB_EVENTS: Event[] = [
 					INTERACTIVE_PRODUCT: 62,
 				},
 			],
-			postId: [4, 'string'],
+			postId: [4, "string"],
 		},
 		weight: 1,
-		wamChannel: 'private',
+		wamChannel: "private",
 		privateStatsIdInt: 0,
 	},
 	{
-		name: 'WebContactListStartNewChat',
+		name: "WebContactListStartNewChat",
 		id: 4560,
 		props: {
-			webContactListStartNewChatSearch: [1, 'boolean'],
+			webContactListStartNewChatSearch: [1, "boolean"],
 			webContactListStartNewChatType: [
 				2,
 				{
@@ -14770,613 +14776,506 @@ export const WEB_EVENTS: Event[] = [
 			],
 		},
 		weight: 1,
-		wamChannel: 'regular',
+		wamChannel: "regular",
 		privateStatsIdInt: -1,
 	},
 	{
-		name: 'WebcMediaEditorSend',
+		name: "WebcMediaEditorSend",
 		id: 2890,
 		props: {
-			blurImageCount: [7, 'integer'],
-			editedImageCount: [2, 'integer'],
-			emojiLayerCount: [5, 'integer'],
-			imageCount: [1, 'integer'],
-			paintedImageCount: [3, 'integer'],
-			stickerLayerCount: [6, 'integer'],
-			textLayerCount: [4, 'integer'],
+			blurImageCount: [7, "integer"],
+			editedImageCount: [2, "integer"],
+			emojiLayerCount: [5, "integer"],
+			imageCount: [1, "integer"],
+			paintedImageCount: [3, "integer"],
+			stickerLayerCount: [6, "integer"],
+			textLayerCount: [4, "integer"],
 		},
 		weight: 1,
-		wamChannel: 'regular',
+		wamChannel: "regular",
 		privateStatsIdInt: -1,
 	},
-]
+];
 
 export const WEB_GLOBALS: Global[] = [
 	{
-		'name': 'abKey2',
-		'id': 4473,
-		'type': 'string',
-		'validator': 'string',
-		'channels': [
-			'regular'
-		]
+		name: "abKey2",
+		id: 4473,
+		type: "string",
+		validator: "string",
+		channels: ["regular"],
 	},
 	{
-		'name': 'appBuild',
-		'id': 1657,
-		'type': {
-			'DEBUG': 1,
-			'ALPHA': 2,
-			'BETA': 3,
-			'RELEASE': 4
+		name: "appBuild",
+		id: 1657,
+		type: {
+			DEBUG: 1,
+			ALPHA: 2,
+			BETA: 3,
+			RELEASE: 4,
 		},
-		'channels': [
-			'regular',
-			'private'
-		]
+		channels: ["regular", "private"],
 	},
 	{
-		'name': 'appIsBetaRelease',
-		'id': 21,
-		'type': 'boolean',
-		'validator': 'boolean',
-		'channels': [
-			'regular',
-			'private'
-		]
+		name: "appIsBetaRelease",
+		id: 21,
+		type: "boolean",
+		validator: "boolean",
+		channels: ["regular", "private"],
 	},
 	{
-		'name': 'appVersion',
-		'id': 17,
-		'type': 'string',
-		'validator': 'string',
-		'channels': [
-			'regular',
-			'private'
-		]
+		name: "appVersion",
+		id: 17,
+		type: "string",
+		validator: "string",
+		channels: ["regular", "private"],
 	},
 	{
-		'name': 'browser',
-		'id': 779,
-		'type': 'string',
-		'validator': 'string',
-		'channels': [
-			'regular'
-		]
+		name: "browser",
+		id: 779,
+		type: "string",
+		validator: "string",
+		channels: ["regular"],
 	},
 	{
-		'name': 'browserVersion',
-		'id': 295,
-		'type': 'string',
-		'validator': 'string',
-		'channels': [
-			'regular'
-		]
+		name: "browserVersion",
+		id: 295,
+		type: "string",
+		validator: "string",
+		channels: ["regular"],
 	},
 	{
-		'name': 'datacenter',
-		'id': 2795,
-		'type': 'string',
-		'validator': 'string',
-		'channels': [
-			'regular'
-		]
+		name: "datacenter",
+		id: 2795,
+		type: "string",
+		validator: "string",
+		channels: ["regular"],
 	},
 	{
-		'name': 'deviceClassification',
-		'id': 14507,
-		'type': {
-			'MOBILE': 0,
-			'TABLET': 1,
-			'WEARABLES': 2,
-			'VR': 3,
-			'DESKTOP': 4,
-			'FOLDABLE': 5,
-			'AR_GLASS': 6,
-			'UNDEFINED': 100
+		name: "deviceClassification",
+		id: 14507,
+		type: {
+			MOBILE: 0,
+			TABLET: 1,
+			WEARABLES: 2,
+			VR: 3,
+			DESKTOP: 4,
+			FOLDABLE: 5,
+			AR_GLASS: 6,
+			UNDEFINED: 100,
 		},
-		'channels': [
-			'regular'
-		]
+		channels: ["regular"],
 	},
 	{
-		'name': 'deviceName',
-		'id': 13,
-		'type': 'string',
-		'validator': 'string',
-		'channels': [
-			'regular',
-			'private'
-		]
+		name: "deviceName",
+		id: 13,
+		type: "string",
+		validator: "string",
+		channels: ["regular", "private"],
 	},
 	{
-		'name': 'deviceVersion',
-		'id': 4505,
-		'type': 'string',
-		'validator': 'string',
-		'channels': [
-			'regular'
-		]
+		name: "deviceVersion",
+		id: 4505,
+		type: "string",
+		validator: "string",
+		channels: ["regular"],
 	},
 	{
-		'name': 'expoKey',
-		'id': 5029,
-		'type': 'string',
-		'validator': 'string',
-		'channels': [
-			'regular',
-			'private'
-		]
+		name: "expoKey",
+		id: 5029,
+		type: "string",
+		validator: "string",
+		channels: ["regular", "private"],
 	},
 	{
-		'name': 'mcc',
-		'id': 5,
-		'type': 'integer',
-		'channels': [
-			'regular',
-			'private'
-		]
+		name: "mcc",
+		id: 5,
+		type: "integer",
+		channels: ["regular", "private"],
 	},
 	{
-		'name': 'memClass',
-		'id': 655,
-		'type': 'integer',
-		'channels': [
-			'regular',
-			'private'
-		]
+		name: "memClass",
+		id: 655,
+		type: "integer",
+		channels: ["regular", "private"],
 	},
 	{
-		'name': 'mnc',
-		'id': 3,
-		'type': 'integer',
-		'channels': [
-			'regular',
-			'private'
-		]
+		name: "mnc",
+		id: 3,
+		type: "integer",
+		channels: ["regular", "private"],
 	},
 	{
-		'name': 'networkIsWifi',
-		'id': 23,
-		'type': 'boolean',
-		'validator': 'boolean',
-		'channels': [
-			'regular'
-		]
+		name: "networkIsWifi",
+		id: 23,
+		type: "boolean",
+		validator: "boolean",
+		channels: ["regular"],
 	},
 	{
-		'name': 'ocVersion',
-		'id': 6251,
-		'type': 'integer',
-		'channels': [
-			'regular',
-			'private'
-		]
+		name: "ocVersion",
+		id: 6251,
+		type: "integer",
+		channels: ["regular", "private"],
 	},
 	{
-		'name': 'osVersion',
-		'id': 15,
-		'type': 'string',
-		'validator': 'string',
-		'channels': [
-			'regular',
-			'private'
-		]
+		name: "osVersion",
+		id: 15,
+		type: "string",
+		validator: "string",
+		channels: ["regular", "private"],
 	},
 	{
-		'name': 'platform',
-		'id': 11,
-		'type': {
-			'IPHONE': 1,
-			'ANDROID': 2,
-			'BB': 3,
-			'BBX': 7,
-			'S40': 4,
-			'SYMBIAN': 5,
-			'WP': 6,
-			'WEBCLIENT': 8,
-			'OSMETA': 11,
-			'ENT': 12,
-			'SMBA': 13,
-			'KAIOS': 14,
-			'SMBI': 15,
-			'WINDOWS': 16,
-			'WEB': 17,
-			'PORTAL': 18,
-			'BLOKS': 19,
-			'BLUEA': 20,
-			'BLUEI': 21,
-			'FBLITEA': 22,
-			'GREENA': 23,
-			'GREENI': 24,
-			'IGDA': 25,
-			'IGDI': 26,
-			'IGLITEA': 27,
-			'MLITEA': 28,
-			'MSGRA': 29,
-			'MSGRI': 30,
-			'MSGRP': 31,
-			'MSGRW': 32,
-			'IGDW': 33,
-			'PAGE': 34,
-			'MSGRDM': 35,
-			'MSGRDW': 36,
-			'MSGROM': 37,
-			'MSGROC': 38,
-			'MSGRM': 43,
-			'IGDM': 44,
-			'WEARM': 45,
-			'CAPI': 46,
-			'XR': 47,
-			'MACOS': 48,
-			'WAMETA_REPL': 49,
-			'ARDEV': 50,
-			'WEAROS': 51,
-			'MSGRVR': 52,
-			'BLUEW': 53,
-			'IPHONEWAMETATEST': 54,
-			'MSGRAR': 57,
-			'IPAD': 58,
-			'WAVOIP_CLI': 59,
-			'MSGRT': 60,
-			'IGDT': 61,
-			'ANDROIDWAMETATEST': 62,
-			'MSGRSG': 63,
-			'IGDSG': 64,
-			'INTEROP': 65,
-			'INTEROP_MSGR': 66,
-			'TEST': 9,
-			'UNKNOWN': 10
+		name: "platform",
+		id: 11,
+		type: {
+			IPHONE: 1,
+			ANDROID: 2,
+			BB: 3,
+			BBX: 7,
+			S40: 4,
+			SYMBIAN: 5,
+			WP: 6,
+			WEBCLIENT: 8,
+			OSMETA: 11,
+			ENT: 12,
+			SMBA: 13,
+			KAIOS: 14,
+			SMBI: 15,
+			WINDOWS: 16,
+			WEB: 17,
+			PORTAL: 18,
+			BLOKS: 19,
+			BLUEA: 20,
+			BLUEI: 21,
+			FBLITEA: 22,
+			GREENA: 23,
+			GREENI: 24,
+			IGDA: 25,
+			IGDI: 26,
+			IGLITEA: 27,
+			MLITEA: 28,
+			MSGRA: 29,
+			MSGRI: 30,
+			MSGRP: 31,
+			MSGRW: 32,
+			IGDW: 33,
+			PAGE: 34,
+			MSGRDM: 35,
+			MSGRDW: 36,
+			MSGROM: 37,
+			MSGROC: 38,
+			MSGRM: 43,
+			IGDM: 44,
+			WEARM: 45,
+			CAPI: 46,
+			XR: 47,
+			MACOS: 48,
+			WAMETA_REPL: 49,
+			ARDEV: 50,
+			WEAROS: 51,
+			MSGRVR: 52,
+			BLUEW: 53,
+			IPHONEWAMETATEST: 54,
+			MSGRAR: 57,
+			IPAD: 58,
+			WAVOIP_CLI: 59,
+			MSGRT: 60,
+			IGDT: 61,
+			ANDROIDWAMETATEST: 62,
+			MSGRSG: 63,
+			IGDSG: 64,
+			INTEROP: 65,
+			INTEROP_MSGR: 66,
+			TEST: 9,
+			UNKNOWN: 10,
 		},
-		'channels': [
-			'regular',
-			'private'
-		]
+		channels: ["regular", "private"],
 	},
 	{
-		'name': 'psCountryCode',
-		'id': 6833,
-		'type': 'string',
-		'validator': 'string',
-		'channels': [
-			'private'
-		]
+		name: "psCountryCode",
+		id: 6833,
+		type: "string",
+		validator: "string",
+		channels: ["private"],
 	},
 	{
-		'name': 'psId',
-		'id': 6005,
-		'type': 'string',
-		'validator': 'string',
-		'channels': [
-			'private'
-		]
+		name: "psId",
+		id: 6005,
+		type: "string",
+		validator: "string",
+		channels: ["private"],
 	},
 	{
-		'name': 'serviceImprovementOptOut',
-		'id': 13293,
-		'type': 'boolean',
-		'validator': 'boolean',
-		'channels': [
-			'regular',
-			'private'
-		]
+		name: "serviceImprovementOptOut",
+		id: 13293,
+		type: "boolean",
+		validator: "boolean",
+		channels: ["regular", "private"],
 	},
 	{
-		'name': 'streamId',
-		'id': 3543,
-		'type': 'integer',
-		'channels': [
-			'regular',
-			'private'
-		]
+		name: "streamId",
+		id: 3543,
+		type: "integer",
+		channels: ["regular", "private"],
 	},
 	{
-		'name': 'wametaLoggerTestFilter',
-		'id': 15881,
-		'type': 'string',
-		'validator': 'string',
-		'channels': [
-			'regular',
-			'private'
-		]
+		name: "wametaLoggerTestFilter",
+		id: 15881,
+		type: "string",
+		validator: "string",
+		channels: ["regular", "private"],
 	},
 	{
-		'name': 'webcBucket',
-		'id': 875,
-		'type': 'string',
-		'validator': 'string',
-		'channels': [
-			'regular'
-		]
+		name: "webcBucket",
+		id: 875,
+		type: "string",
+		validator: "string",
+		channels: ["regular"],
 	},
 	{
-		'name': 'webcEnv',
-		'id': 633,
-		'type': {
-			'PROD': 0,
-			'INTERN': 1,
-			'DEV': 2,
-			'E2E': 3
+		name: "webcEnv",
+		id: 633,
+		type: {
+			PROD: 0,
+			INTERN: 1,
+			DEV: 2,
+			E2E: 3,
 		},
-		'channels': [
-			'regular'
-		]
+		channels: ["regular"],
 	},
 	{
-		'name': 'webcNativeAutolaunch',
-		'id': 1009,
-		'type': 'boolean',
-		'validator': 'boolean',
-		'channels': [
-			'regular'
-		]
+		name: "webcNativeAutolaunch",
+		id: 1009,
+		type: "boolean",
+		validator: "boolean",
+		channels: ["regular"],
 	},
 	{
-		'name': 'webcNativeBetaUpdates',
-		'id': 1007,
-		'type': 'boolean',
-		'validator': 'boolean',
-		'channels': [
-			'regular'
-		]
+		name: "webcNativeBetaUpdates",
+		id: 1007,
+		type: "boolean",
+		validator: "boolean",
+		channels: ["regular"],
 	},
 	{
-		'name': 'webcPhoneAppVersion',
-		'id': 1005,
-		'type': 'string',
-		'validator': 'string',
-		'channels': [
-			'regular'
-		]
+		name: "webcPhoneAppVersion",
+		id: 1005,
+		type: "string",
+		validator: "string",
+		channels: ["regular"],
 	},
 	{
-		'name': 'webcPhoneCharging',
-		'id': 783,
-		'type': 'boolean',
-		'validator': 'boolean',
-		'channels': [
-			'regular'
-		]
+		name: "webcPhoneCharging",
+		id: 783,
+		type: "boolean",
+		validator: "boolean",
+		channels: ["regular"],
 	},
 	{
-		'name': 'webcPhoneDeviceManufacturer',
-		'id': 829,
-		'type': 'string',
-		'validator': 'string',
-		'channels': [
-			'regular'
-		]
+		name: "webcPhoneDeviceManufacturer",
+		id: 829,
+		type: "string",
+		validator: "string",
+		channels: ["regular"],
 	},
 	{
-		'name': 'webcPhoneDeviceModel',
-		'id': 831,
-		'type': 'string',
-		'validator': 'string',
-		'channels': [
-			'regular'
-		]
+		name: "webcPhoneDeviceModel",
+		id: 831,
+		type: "string",
+		validator: "string",
+		channels: ["regular"],
 	},
 	{
-		'name': 'webcPhoneOsBuildNumber',
-		'id': 833,
-		'type': 'string',
-		'validator': 'string',
-		'channels': [
-			'regular'
-		]
+		name: "webcPhoneOsBuildNumber",
+		id: 833,
+		type: "string",
+		validator: "string",
+		channels: ["regular"],
 	},
 	{
-		'name': 'webcPhoneOsVersion',
-		'id': 835,
-		'type': 'string',
-		'validator': 'string',
-		'channels': [
-			'regular'
-		]
+		name: "webcPhoneOsVersion",
+		id: 835,
+		type: "string",
+		validator: "string",
+		channels: ["regular"],
 	},
 	{
-		'name': 'webcPhonePlatform',
-		'id': 707,
-		'type': {
-			'IPHONE': 1,
-			'ANDROID': 2,
-			'BB': 3,
-			'BBX': 7,
-			'S40': 4,
-			'SYMBIAN': 5,
-			'WP': 6,
-			'WEBCLIENT': 8,
-			'OSMETA': 11,
-			'ENT': 12,
-			'SMBA': 13,
-			'KAIOS': 14,
-			'SMBI': 15,
-			'WINDOWS': 16,
-			'WEB': 17,
-			'PORTAL': 18,
-			'BLOKS': 19,
-			'BLUEA': 20,
-			'BLUEI': 21,
-			'FBLITEA': 22,
-			'GREENA': 23,
-			'GREENI': 24,
-			'IGDA': 25,
-			'IGDI': 26,
-			'IGLITEA': 27,
-			'MLITEA': 28,
-			'MSGRA': 29,
-			'MSGRI': 30,
-			'MSGRP': 31,
-			'MSGRW': 32,
-			'IGDW': 33,
-			'PAGE': 34,
-			'MSGRDM': 35,
-			'MSGRDW': 36,
-			'MSGROM': 37,
-			'MSGROC': 38,
-			'MSGRM': 43,
-			'IGDM': 44,
-			'WEARM': 45,
-			'CAPI': 46,
-			'XR': 47,
-			'MACOS': 48,
-			'WAMETA_REPL': 49,
-			'ARDEV': 50,
-			'WEAROS': 51,
-			'MSGRVR': 52,
-			'BLUEW': 53,
-			'IPHONEWAMETATEST': 54,
-			'MSGRAR': 57,
-			'IPAD': 58,
-			'WAVOIP_CLI': 59,
-			'MSGRT': 60,
-			'IGDT': 61,
-			'ANDROIDWAMETATEST': 62,
-			'MSGRSG': 63,
-			'IGDSG': 64,
-			'INTEROP': 65,
-			'INTEROP_MSGR': 66,
-			'TEST': 9,
-			'UNKNOWN': 10
+		name: "webcPhonePlatform",
+		id: 707,
+		type: {
+			IPHONE: 1,
+			ANDROID: 2,
+			BB: 3,
+			BBX: 7,
+			S40: 4,
+			SYMBIAN: 5,
+			WP: 6,
+			WEBCLIENT: 8,
+			OSMETA: 11,
+			ENT: 12,
+			SMBA: 13,
+			KAIOS: 14,
+			SMBI: 15,
+			WINDOWS: 16,
+			WEB: 17,
+			PORTAL: 18,
+			BLOKS: 19,
+			BLUEA: 20,
+			BLUEI: 21,
+			FBLITEA: 22,
+			GREENA: 23,
+			GREENI: 24,
+			IGDA: 25,
+			IGDI: 26,
+			IGLITEA: 27,
+			MLITEA: 28,
+			MSGRA: 29,
+			MSGRI: 30,
+			MSGRP: 31,
+			MSGRW: 32,
+			IGDW: 33,
+			PAGE: 34,
+			MSGRDM: 35,
+			MSGRDW: 36,
+			MSGROM: 37,
+			MSGROC: 38,
+			MSGRM: 43,
+			IGDM: 44,
+			WEARM: 45,
+			CAPI: 46,
+			XR: 47,
+			MACOS: 48,
+			WAMETA_REPL: 49,
+			ARDEV: 50,
+			WEAROS: 51,
+			MSGRVR: 52,
+			BLUEW: 53,
+			IPHONEWAMETATEST: 54,
+			MSGRAR: 57,
+			IPAD: 58,
+			WAVOIP_CLI: 59,
+			MSGRT: 60,
+			IGDT: 61,
+			ANDROIDWAMETATEST: 62,
+			MSGRSG: 63,
+			IGDSG: 64,
+			INTEROP: 65,
+			INTEROP_MSGR: 66,
+			TEST: 9,
+			UNKNOWN: 10,
 		},
-		'channels': [
-			'regular'
-		]
+		channels: ["regular"],
 	},
 	{
-		'name': 'webcTabId',
-		'id': 3727,
-		'type': 'string',
-		'validator': 'string',
-		'channels': [
-			'regular'
-		]
+		name: "webcTabId",
+		id: 3727,
+		type: "string",
+		validator: "string",
+		channels: ["regular"],
 	},
 	{
-		'name': 'webcWebArch',
-		'id': 6605,
-		'type': 'string',
-		'validator': 'string',
-		'channels': [
-			'regular'
-		]
+		name: "webcWebArch",
+		id: 6605,
+		type: "string",
+		validator: "string",
+		channels: ["regular"],
 	},
 	{
-		'name': 'webcWebDeviceManufacturer',
-		'id': 6599,
-		'type': 'string',
-		'validator': 'string',
-		'channels': [
-			'regular'
-		]
+		name: "webcWebDeviceManufacturer",
+		id: 6599,
+		type: "string",
+		validator: "string",
+		channels: ["regular"],
 	},
 	{
-		'name': 'webcWebDeviceModel',
-		'id': 6601,
-		'type': 'string',
-		'validator': 'string',
-		'channels': [
-			'regular'
-		]
+		name: "webcWebDeviceModel",
+		id: 6601,
+		type: "string",
+		validator: "string",
+		channels: ["regular"],
 	},
 	{
-		'name': 'webcWebOsReleaseNumber',
-		'id': 6603,
-		'type': 'string',
-		'validator': 'string',
-		'channels': [
-			'regular'
-		]
+		name: "webcWebOsReleaseNumber",
+		id: 6603,
+		type: "string",
+		validator: "string",
+		channels: ["regular"],
 	},
 	{
-		'name': 'webcWebPlatform',
-		'id': 899,
-		'type': {
-			'WEB': 1,
-			'WIN32': 2,
-			'DARWIN': 3,
-			'IOS_TABLET': 4,
-			'ANDROID_TABLET': 5,
-			'WINSTORE': 6,
-			'MACSTORE': 7,
-			'DARWIN_BETA': 8,
-			'WIN32_BETA': 9,
-			'PWA': 10
+		name: "webcWebPlatform",
+		id: 899,
+		type: {
+			WEB: 1,
+			WIN32: 2,
+			DARWIN: 3,
+			IOS_TABLET: 4,
+			ANDROID_TABLET: 5,
+			WINSTORE: 6,
+			MACSTORE: 7,
+			DARWIN_BETA: 8,
+			WIN32_BETA: 9,
+			PWA: 10,
 		},
-		'channels': [
-			'regular',
-			'private'
-		]
+		channels: ["regular", "private"],
 	},
 	{
-		'name': 'yearClass',
-		'id': 689,
-		'type': 'integer',
-		'channels': [
-			'regular',
-			'private'
-		]
+		name: "yearClass",
+		id: 689,
+		type: "integer",
+		channels: ["regular", "private"],
 	},
 	{
-		'name': 'yearClass2016',
-		'id': 2617,
-		'type': 'integer',
-		'channels': [
-			'regular',
-			'private'
-		]
+		name: "yearClass2016",
+		id: 2617,
+		type: "integer",
+		channels: ["regular", "private"],
 	},
 	{
-		'name': 'commitTime',
-		'id': 47,
-		'type': 'integer',
-		'channels': [
-			'regular',
-			'private'
-		]
+		name: "commitTime",
+		id: 47,
+		type: "integer",
+		channels: ["regular", "private"],
 	},
 	{
-		'name': 'sequenceNumber',
-		'id': 3433,
-		'type': 'integer',
-		'channels': [
-			'regular',
-			'private'
-		]
-	}
-]
+		name: "sequenceNumber",
+		id: 3433,
+		type: "integer",
+		channels: ["regular", "private"],
+	},
+];
 
 export const FLAG_BYTE = 8,
 	FLAG_GLOBAL = 0,
 	FLAG_EVENT = 1,
 	FLAG_FIELD = 2,
-	FLAG_EXTENDED = 4
+	FLAG_EXTENDED = 4;
 
 export type Event = {
-    name: string
-    id: number
-    props: {[key: string]: [number, string | {[key: string]: number}]}
-    weight: number
-    wamChannel: string
-    privateStatsIdInt: number
-}
+	name: string;
+	id: number;
+	props: { [key: string]: [number, string | { [key: string]: number }] };
+	weight: number;
+	wamChannel: string;
+	privateStatsIdInt: number;
+};
 
 export type Global = {
-	name: string
-	id: number
-	type: string | {[key: string]: number}
-	validator?: string
-	channels: string[]
-}
+	name: string;
+	id: number;
+	type: string | { [key: string]: number };
+	validator?: string;
+	channels: string[];
+};
 
-type EventByName<T extends Event['name']> = Extract<Event, { name: T }>
+type EventByName<T extends Event["name"]> = Extract<Event, { name: T }>;
 
 export type EventInputType = {
-	[key in Event['name']]: {
+	[key in Event["name"]]: {
 		props: {
 			// @ts-ignore
-			[k in keyof EventByName<key>['props']]: any
-		}
-		globals: { [x: string]: any }
-	}
-} & {}
+			[k in keyof EventByName<key>["props"]]: any;
+		};
+		globals: { [x: string]: any };
+	};
+} & {};

@@ -1,103 +1,109 @@
-import { Boom } from '@hapi/boom'
-import { Logger } from 'pino'
-import { NOISE_MODE, WA_CERT_DETAILS } from '../Defaults'
-import * as proto from '../Proto'
-import { KeyPair } from '../Types'
-import { BinaryNode, decodeBinaryNode } from '../WABinary'
-import { aesDecryptGCM, aesEncryptGCM, Curve, hkdf, sha256 } from './crypto'
-import { readBinaryNode } from './proto-utils'
+import { Boom } from "@hapi/boom";
+import type { Logger } from "pino";
+import { NOISE_MODE, WA_CERT_DETAILS } from "../Defaults";
+import * as proto from "../Proto";
+import type { KeyPair } from "../Types";
+import { type BinaryNode, decodeBinaryNode } from "../WABinary";
+import { aesDecryptGCM, aesEncryptGCM, Curve, hkdf, sha256 } from "./crypto";
+import { readBinaryNode } from "./proto-utils";
 
 const generateIV = (counter: number) => {
-	const iv = new ArrayBuffer(12)
-	new DataView(iv).setUint32(8, counter)
+	const iv = new ArrayBuffer(12);
+	new DataView(iv).setUint32(8, counter);
 
-	return new Uint8Array(iv)
-}
+	return new Uint8Array(iv);
+};
 
 export const makeNoiseHandler = ({
 	keyPair: { private: privateKey, public: publicKey },
 	NOISE_HEADER,
 	mobile,
 	logger,
-	routingInfo
+	routingInfo,
 }: {
-	keyPair: KeyPair
-	NOISE_HEADER: Uint8Array
-	mobile: boolean
-	logger: Logger
-	routingInfo?: Buffer | undefined
+	keyPair: KeyPair;
+	NOISE_HEADER: Uint8Array;
+	mobile: boolean;
+	logger: Logger;
+	routingInfo?: Uint8Array | undefined;
 }) => {
-	logger = logger.child({ class: 'ns' })
+	logger = logger.child({ class: "ns" });
 
 	const authenticate = (data: Uint8Array) => {
-		if(!isFinished) {
-			hash = sha256(Buffer.concat([hash, data]))
+		if (!isFinished) {
+			hash = sha256(new Uint8Array([...hash, ...data]));
 		}
-	}
+	};
 
 	const encrypt = (plaintext: Uint8Array) => {
-		const result = aesEncryptGCM(plaintext, encKey, generateIV(writeCounter), hash)
+		const result = aesEncryptGCM(
+			plaintext,
+			encKey,
+			generateIV(writeCounter),
+			hash,
+		);
 
-		writeCounter += 1
+		writeCounter += 1;
 
-		authenticate(result)
-		return result
-	}
+		authenticate(result);
+		return result;
+	};
 
 	const decrypt = (ciphertext: Uint8Array) => {
 		// before the handshake is finished, we use the same counter
 		// after handshake, the counters are different
-		const iv = generateIV(isFinished ? readCounter : writeCounter)
-		const result = aesDecryptGCM(ciphertext, decKey, iv, hash)
+		const iv = generateIV(isFinished ? readCounter : writeCounter);
+		const result = aesDecryptGCM(ciphertext, decKey, iv, hash);
 
-		if(isFinished) {
-			readCounter += 1
+		if (isFinished) {
+			readCounter += 1;
 		} else {
-			writeCounter += 1
+			writeCounter += 1;
 		}
 
-		authenticate(ciphertext)
-		return result
-	}
+		authenticate(ciphertext);
+		return result;
+	};
 
 	const localHKDF = (data: Uint8Array) => {
-		const key = hkdf(Buffer.from(data), 64, { salt, info: '' })
-		return [key.slice(0, 32), key.slice(32)]
-	}
+		const key = hkdf(data, 64, { salt, info: "" });
+
+		return [key.slice(0, 32), key.slice(32)];
+	};
 
 	const mixIntoKey = (data: Uint8Array) => {
-		const [write, read] = localHKDF(data)
-		salt = write
-		encKey = read
-		decKey = read
-		readCounter = 0
-		writeCounter = 0
-	}
+		const [write, read] = localHKDF(data);
+		salt = write;
+		encKey = read;
+		decKey = read;
+		readCounter = 0;
+		writeCounter = 0;
+	};
 
 	const finishInit = () => {
-		const [write, read] = localHKDF(new Uint8Array(0))
-		encKey = write
-		decKey = read
-		hash = Buffer.from([])
-		readCounter = 0
-		writeCounter = 0
-		isFinished = true
-	}
+		const [write, read] = localHKDF(new Uint8Array(0));
+		encKey = write;
+		decKey = read;
+		hash = new Uint8Array();
+		readCounter = 0;
+		writeCounter = 0;
+		isFinished = true;
+	};
 
-	const data = Buffer.from(NOISE_MODE)
-	let hash = Buffer.from(data.byteLength === 32 ? data : sha256(data))
-	let salt = hash
-	let encKey = hash
-	let decKey = hash
-	let readCounter = 0
-	let writeCounter = 0
-	let isFinished = false
-	let sentIntro = false
+	const data = new TextEncoder().encode(NOISE_MODE);
+	let hash = data.byteLength === 32 ? data : sha256(data);
+	let salt = hash;
+	let encKey = hash;
+	let decKey = hash;
+	let readCounter = 0;
+	let writeCounter = 0;
+	let isFinished = false;
+	let sentIntro = false;
 
-	let inBytes = Buffer.alloc(0)
+	let inBytes = new Uint8Array();
 
-	authenticate(NOISE_HEADER)
-	authenticate(publicKey)
+	authenticate(NOISE_HEADER);
+	authenticate(publicKey);
 
 	return {
 		encrypt,
@@ -105,94 +111,118 @@ export const makeNoiseHandler = ({
 		authenticate,
 		mixIntoKey,
 		finishInit,
-		processHandshake: ({ serverHello }: proto.HandshakeMessage, noiseKey: KeyPair) => {
-			authenticate(serverHello!.ephemeral!)
-			mixIntoKey(Curve.sharedKey(privateKey, serverHello!.ephemeral!))
+		processHandshake: (
+			{ serverHello }: proto.HandshakeMessage,
+			noiseKey: KeyPair,
+		) => {
+			authenticate(serverHello?.ephemeral!);
+			mixIntoKey(Curve.sharedKey(privateKey, serverHello?.ephemeral!));
 
-			const decStaticContent = decrypt(serverHello!.static!)
-			mixIntoKey(Curve.sharedKey(privateKey, decStaticContent))
+			const decStaticContent = decrypt(serverHello?.static!);
+			mixIntoKey(Curve.sharedKey(privateKey, decStaticContent));
 
-			const certDecoded = decrypt(serverHello!.payload!)
+			const certDecoded = decrypt(serverHello?.payload!);
 
-			if(mobile) {
-				readBinaryNode(proto.readCertChainNoiseCertificate, certDecoded)
+			if (mobile) {
+				readBinaryNode(proto.readCertChainNoiseCertificate, certDecoded);
 			} else {
-				const { intermediate: certIntermediate } = readBinaryNode(proto.readCertChain, certDecoded)
+				const { intermediate: certIntermediate } = readBinaryNode(
+					proto.readCertChain,
+					certDecoded,
+				);
 
-				const { issuerSerial } = readBinaryNode(proto.readCertChainNoiseCertificateDetails, certIntermediate!.details!)
+				const { issuerSerial } = readBinaryNode(
+					proto.readCertChainNoiseCertificateDetails,
+					certIntermediate?.details!,
+				);
 
-				if(issuerSerial !== WA_CERT_DETAILS.SERIAL) {
-					throw new Boom('certification match failed', { statusCode: 400 })
+				if (issuerSerial !== WA_CERT_DETAILS.SERIAL) {
+					throw new Boom("certification match failed", { statusCode: 400 });
 				}
 			}
 
-			const keyEnc = encrypt(noiseKey.public)
-			mixIntoKey(Curve.sharedKey(noiseKey.private, serverHello!.ephemeral!))
+			const keyEnc = encrypt(noiseKey.public);
+			mixIntoKey(Curve.sharedKey(noiseKey.private, serverHello?.ephemeral!));
 
-			return keyEnc
+			return keyEnc;
 		},
-		encodeFrame: (data: Buffer | Uint8Array) => {
-			if(isFinished) {
-				data = encrypt(data)
+		encodeFrame: (data: Uint8Array) => {
+			if (isFinished) {
+				data = encrypt(data);
 			}
 
-			let header: Buffer
+			let header: Uint8Array;
 
-			if(routingInfo) {
-				header = Buffer.alloc(7)
-				header.write('ED', 0, 'utf8')
-				header.writeUint8(0, 2)
-				header.writeUint8(1, 3)
-				header.writeUint8(routingInfo.byteLength >> 16, 4)
-				header.writeUint16BE(routingInfo.byteLength & 65535, 5)
-				header = Buffer.concat([header, routingInfo, NOISE_HEADER])
+			if (routingInfo) {
+				header = new Uint8Array(7);
+				const headerView = new DataView(header.buffer);
+				const encoder = new TextEncoder();
+				encoder.encodeInto("ED", header);
+				headerView.setUint8(2, 0);
+				headerView.setUint8(3, 1);
+				headerView.setUint8(4, routingInfo.byteLength >> 16);
+				headerView.setUint16(5, routingInfo.byteLength & 65535);
+				header = new Uint8Array([...header, ...routingInfo, ...NOISE_HEADER]);
 			} else {
-				header = Buffer.from(NOISE_HEADER)
+				header = new Uint8Array(NOISE_HEADER);
 			}
 
-			const introSize = sentIntro ? 0 : header.length
-			const frame = Buffer.alloc(introSize + 3 + data.byteLength)
+			const introSize = sentIntro ? 0 : header.length;
+			const frame = new Uint8Array(introSize + 3 + data.byteLength);
+			const frameView = new DataView(frame.buffer);
 
-			if(!sentIntro) {
-				frame.set(header)
-				sentIntro = true
+			if (!sentIntro) {
+				frame.set(header);
+				sentIntro = true;
 			}
 
-			frame.writeUInt8(data.byteLength >> 16, introSize)
-			frame.writeUInt16BE(65535 & data.byteLength, introSize + 1)
-			frame.set(data, introSize + 3)
+			frameView.setUint8(introSize, data.byteLength >> 16);
+			frameView.setUint16(introSize + 1, 65535 & data.byteLength);
+			frame.set(data, introSize + 3);
 
-			return frame
+			return frame;
 		},
-		decodeFrame: async(newData: Buffer | Uint8Array, onFrame: (buff: Uint8Array | BinaryNode) => void) => {
+		decodeFrame: async (
+			newData: Uint8Array,
+			onFrame: (data: Uint8Array, binaryNode?: BinaryNode) => void,
+		) => {
 			// the binary protocol uses its own framing mechanism
 			// on top of the WS frames
 			// so we get this data and separate out the frames
 			const getBytesSize = () => {
-				if(inBytes.length >= 3) {
-					return (inBytes.readUInt8() << 16) | inBytes.readUInt16BE(1)
+				if (inBytes.byteLength >= 3) {
+					const view = new DataView(
+						inBytes.buffer,
+						inBytes.byteOffset,
+						inBytes.byteLength,
+					);
+					return (view.getUint8(0) << 16) | view.getUint16(1);
 				}
-			}
+			};
 
-			inBytes = Buffer.concat([ inBytes, newData ])
+			inBytes = new Uint8Array([...inBytes, ...newData]);
 
-			logger.trace(`recv ${newData.length} bytes, total recv ${inBytes.length} bytes`)
+			logger.trace(
+				`recv ${newData.length} bytes, total recv ${inBytes.length} bytes`,
+			);
 
-			let size = getBytesSize()
-			while(size && inBytes.length >= size + 3) {
-				let frame: Uint8Array | BinaryNode = inBytes.slice(3, size + 3)
-				inBytes = inBytes.slice(size + 3)
+			let size = getBytesSize();
+			while (size && inBytes.length >= size + 3) {
+				const frame = inBytes.slice(3, size + 3);
+				inBytes = inBytes.slice(size + 3);
 
-				if(isFinished) {
-					const result = decrypt(frame)
-					frame = await decodeBinaryNode(result)
+				let binaryNode: BinaryNode | undefined;
+
+				if (isFinished) {
+					const result = decrypt(frame);
+					binaryNode = await decodeBinaryNode(result);
 				}
 
-				logger.trace({ msg: (frame as any)?.attrs?.id }, 'recv frame')
+				logger.trace({ msg: (frame as any)?.attrs?.id }, "recv frame");
 
-				onFrame(frame)
-				size = getBytesSize()
+				onFrame(frame, binaryNode);
+				size = getBytesSize();
 			}
-		}
-	}
-}
+		},
+	};
+};

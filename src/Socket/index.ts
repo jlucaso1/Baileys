@@ -1,13 +1,12 @@
-import { DEFAULT_CONNECTION_CONFIG } from '../Defaults'
-import { UserFacingSocketConfig } from '../Types'
-import { makeRegistrationSocket as _makeSocket } from './registration'
+import { DEFAULT_CONNECTION_CONFIG } from "../Defaults";
+import type { UserFacingSocketConfig } from "../Types";
+import { makeRegistrationSocket as _makeSocket } from "./registration";
 
 // export the last socket layer
-export const makeWASocket = (config: UserFacingSocketConfig) => (
+export const makeWASocket = (config: UserFacingSocketConfig) =>
 	_makeSocket({
 		...DEFAULT_CONNECTION_CONFIG,
-		...config
-	})
-)
+		...config,
+	});
 
-export type WASocket = ReturnType<typeof makeWASocket>
+export type WASocket = ReturnType<typeof makeWASocket>;

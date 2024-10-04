@@ -1,85 +1,84 @@
-import { WAMediaUpload } from './Message'
+import type { WAMediaUpload } from "./Message";
 
 export type CatalogResult = {
 	data: {
-		paging: { cursors: { before: string, after: string } }
-		// eslint-disable-next-line @typescript-eslint/no-explicit-any
-		data: any[]
-	}
-}
+		paging: { cursors: { before: string; after: string } };
+		data: any[];
+	};
+};
 
 export type ProductCreateResult = {
-	data: { product: {} }
-}
+	data: { product: any };
+};
 
 export type CatalogStatus = {
-	status: string
-	canAppeal: boolean
-}
+	status: string;
+	canAppeal: boolean;
+};
 
 export type CatalogCollection = {
-	id: string
-	name: string
-	products: Product[]
+	id: string;
+	name: string;
+	products: Product[];
 
-	status: CatalogStatus
-}
+	status: CatalogStatus;
+};
 
-export type ProductAvailability = 'in stock'
+export type ProductAvailability = "in stock";
 
 export type ProductBase = {
-	name: string
-	retailerId?: string
-	url?: string
-	description: string
-	price: number
-	currency: string
-	isHidden?: boolean
-}
+	name: string;
+	retailerId?: string;
+	url?: string;
+	description: string;
+	price: number;
+	currency: string;
+	isHidden?: boolean;
+};
 
 export type ProductCreate = ProductBase & {
 	/** ISO country code for product origin. Set to undefined for no country */
-	originCountryCode: string | undefined
+	originCountryCode: string | undefined;
 	/** images of the product */
-	images: WAMediaUpload[]
-}
+	images: WAMediaUpload[];
+};
 
-export type ProductUpdate = Omit<ProductCreate, 'originCountryCode'>
+export type ProductUpdate = Omit<ProductCreate, "originCountryCode">;
 
 export type Product = ProductBase & {
-	id: string
-	imageUrls: { [_: string]: string }
-	reviewStatus: { [_: string]: string }
-	availability: ProductAvailability
-}
+	id: string;
+	imageUrls: { [_: string]: string };
+	reviewStatus: { [_: string]: string };
+	availability: ProductAvailability;
+};
 
 export type OrderPrice = {
-	currency: string
-	total: number
-}
+	currency: string;
+	total: number;
+};
 
 export type OrderProduct = {
-	id: string
-	imageUrl: string
-	name: string
-	quantity: number
+	id: string;
+	imageUrl: string;
+	name: string;
+	quantity: number;
 
-	currency: string
-	price: number
-}
+	currency: string;
+	price: number;
+};
 
 export type OrderDetails = {
-	price: OrderPrice
-	products: OrderProduct[]
-}
+	price: OrderPrice;
+	products: OrderProduct[];
+};
 
-export type CatalogCursor = string
+export type CatalogCursor = string;
 
 export type GetCatalogOptions = {
 	/** cursor to start from */
-	cursor?: CatalogCursor
+	cursor?: CatalogCursor;
 	/** number of products to fetch */
-	limit?: number
+	limit?: number;
 
-	jid?: string
-}
+	jid?: string;
+};

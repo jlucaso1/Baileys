@@ -1,1 +1,1 @@
-export * from '../../WAProto/WAProto'
+export * from "../../WAProto/WAProto";
