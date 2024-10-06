@@ -1,7 +1,6 @@
 import { randomBytes } from "node:crypto";
 import NodeCache from "node-cache";
 import type { Logger } from "pino";
-import { v4 as uuidv4 } from "uuid";
 import { DEFAULT_CACHE_TTLS } from "../Defaults";
 import type {
 	AuthenticationCreds,
@@ -220,10 +219,10 @@ export const initAuthCreds = (): AuthenticationCreds => {
 			unarchiveChats: false,
 		},
 		// mobile creds
-		deviceId: Buffer.from(uuidv4().replace(/-/g, ""), "hex").toString(
+		deviceId: Buffer.from(crypto.randomUUID().replace(/-/g, ""), "hex").toString(
 			"base64url",
 		),
-		phoneId: uuidv4(),
+		phoneId: crypto.randomUUID(),
 		identityId: randomBytes(20),
 		registered: false,
 		backupToken: randomBytes(20),

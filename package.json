@@ -38,8 +38,7 @@
     "format": "biome format --write src/**/*.ts",
     "lint": "biome lint --write src/**/*.ts",
     "prepack": "tsc",
-    "release": "release-it",
-    "test": "bun test"
+    "release": "release-it"
   },
   "dependencies": {
     "@adiwajshing/keyed-db": "^0.2.4",
@@ -58,7 +57,6 @@
   },
   "devDependencies": {
     "@biomejs/biome": "1.9.3",
-    "@types/bun": "^1.1.8",
     "@types/long": "^5.0.0",
     "@types/sharp": "^0.29.4",
     "@types/ws": "^8.0.0",
