@@ -93,32 +93,30 @@ export const decodeDecompressedBinaryNode = (
 		}
 	}
 
-	const unpackByte = (tag: number, value: number) => {
-		if (tag === TAGS.NIBBLE_8) {
-			return unpackNibble(value)
-		} else if (tag === TAGS.HEX_8) {
-			return unpackHex(value)
-		} else {
-			throw new Error('unknown tag: ' + tag)
-		}
-	}
-
 	const readPacked8 = (tag: number) => {
 		const startByte = readByte()!
-		let value = ''
+		const length = startByte & 127
+		const value = Buffer.allocUnsafe(length * 2)
 
-		for (let i = 0; i < (startByte & 127); i++) {
+		const unpack = tag === TAGS.NIBBLE_8 ? unpackNibble : tag === TAGS.HEX_8 ? unpackHex : null
+		if (!unpack) {
+			throw new Error('unknown tag: ' + tag)
+		}
+
+		for (let i = 0; i < length; i++) {
 			const curByte = readByte()!
 
-			value += String.fromCharCode(unpackByte(tag, (curByte & 0xf0) >> 4))
-			value += String.fromCharCode(unpackByte(tag, curByte & 0x0f))
+			value[2 * i] = unpack((curByte & 0xf0) >> 4)
+			value[2 * i + 1] = unpack(curByte & 0x0f)
 		}
+
+		let result = value.toString('utf-8')
 
 		if (startByte >> 7 !== 0) {
-			value = value.slice(0, -1)
+			result = result.slice(0, -1)
 		}
 
-		return value
+		return result
 	}
 
 	const isListTag = (tag: number) => {
