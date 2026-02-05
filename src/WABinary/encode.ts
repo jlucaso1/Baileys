@@ -28,8 +28,8 @@ const encodeBinaryNodeInner = (
 	}
 
 	const pushBytes = (bytes: Uint8Array | Buffer | number[]) => {
-		for (const b of bytes) {
-			buffer.push(b)
+		for (let i = 0; i < bytes.length; i++) {
+			buffer.push(bytes[i]!)
 		}
 	}
 
