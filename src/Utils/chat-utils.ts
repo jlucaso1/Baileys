@@ -24,6 +24,7 @@ import { toNumber } from './generics'
 import type { ILogger } from './logger'
 import { LT_HASH_ANTI_TAMPERING } from './lt-hash'
 import { downloadContentFromMessage } from './messages-media'
+import { decodeSyncdMutationsStream, decodeSyncdSnapshotStream } from './protobuf-stream'
 import { emitSyncActionResults, processContactAction } from './sync-action-utils'
 
 type FetchAppStateSyncKey = (keyId: string) => Promise<proto.Message.IAppStateSyncKeyData | null | undefined>
@@ -204,7 +205,9 @@ export const encodeSyncdPatch = async (
 }
 
 export const decodeSyncdMutations = async (
-	msgMutations: (proto.ISyncdMutation | proto.ISyncdRecord)[],
+	msgMutations:
+		| (proto.ISyncdMutation | proto.ISyncdRecord)[]
+		| AsyncIterable<proto.ISyncdMutation | proto.ISyncdRecord>,
 	initialState: LTHashState,
 	getAppStateSyncKey: FetchAppStateSyncKey,
 	onMutation: (mutation: ChatMutation) => void,
@@ -214,7 +217,7 @@ export const decodeSyncdMutations = async (
 	// indexKey used to HMAC sign record.index.blob
 	// valueEncryptionKey used to AES-256-CBC encrypt record.value.blob[0:-32]
 	// the remaining record.value.blob[0:-32] is the mac, it the HMAC sign of key.keyId + decoded proto data + length of bytes in keyId
-	for (const msgMutation of msgMutations) {
+	for await (const msgMutation of msgMutations) {
 		// if it's a syncdmutation, get the operation property
 		// otherwise, if it's only a record -- it'll be a SET mutation
 		const operation = 'operation' in msgMutation ? msgMutation.operation : proto.SyncdMutation.SyncdOperation.SET
@@ -284,22 +287,55 @@ export const decodeSyncdPatch = async (
 		}
 
 		const mainKey = await mutationKeys(mainKeyObj.keyData!)
-		const mutationmacs = msg.mutations!.map(mutation => mutation.record!.value!.blob!.slice(-32))
+		const mutationMacs: Uint8Array[] = []
 
-		const patchMac = generatePatchMac(
-			msg.snapshotMac!,
-			mutationmacs,
-			toNumber(msg.version!.version),
-			name,
-			mainKey.patchMacKey
-		)
-		if (Buffer.compare(patchMac, msg.patchMac!) !== 0) {
-			throw new Boom('Invalid patch mac')
+		const mutations = msg.mutations!
+		let stream:
+			| (proto.ISyncdMutation | proto.ISyncdRecord)[]
+			| AsyncIterable<proto.ISyncdMutation | proto.ISyncdRecord> = mutations as any
+
+		// if mutations is an array, we can check it, otherwise we iterate
+		if (Array.isArray(mutations)) {
+			for (const mutation of mutations) {
+				mutationMacs.push(mutation.record!.value!.blob!.slice(-32))
+			}
+
+			const patchMac = generatePatchMac(
+				msg.snapshotMac!,
+				mutationMacs,
+				toNumber(msg.version!.version),
+				name,
+				mainKey.patchMacKey
+			)
+			if (Buffer.compare(patchMac, msg.patchMac!) !== 0) {
+				throw new Boom('Invalid patch mac')
+			}
+		} else {
+			const mutationStream = mutations as unknown as AsyncIterable<proto.ISyncdMutation>
+			const mutationList: (proto.ISyncdMutation | proto.ISyncdRecord)[] = []
+			for await (const mutation of mutationStream) {
+				mutationMacs.push(mutation.record!.value!.blob!.slice(-32))
+				mutationList.push(mutation)
+			}
+
+			const patchMac = generatePatchMac(
+				msg.snapshotMac!,
+				mutationMacs,
+				toNumber(msg.version!.version),
+				name,
+				mainKey.patchMacKey
+			)
+			if (Buffer.compare(patchMac, msg.patchMac!) !== 0) {
+				throw new Boom('Invalid patch mac')
+			}
+
+			stream = mutationList
 		}
+
+		return decodeSyncdMutations(stream, initialState, getAppStateSyncKey, onMutation, validateMacs)
 	}
 
-	const result = await decodeSyncdMutations(msg.mutations!, initialState, getAppStateSyncKey, onMutation, validateMacs)
-	return result
+	return decodeSyncdMutations(msg.mutations!, initialState, getAppStateSyncKey, onMutation, validateMacs)
 }
 
 export const extractSyncdPatches = async (result: BinaryNode, options: RequestInit) => {
@@ -328,8 +364,21 @@ export const extractSyncdPatches = async (result: BinaryNode, options: RequestIn
 				}
 
 				const blobRef = proto.ExternalBlobReference.decode(snapshotNode.content as Buffer)
-				const data = await downloadExternalBlob(blobRef, options)
-				snapshot = proto.SyncdSnapshot.decode(data)
+				const stream = await downloadExternalBlobStream(blobRef, options)
+				const iterator = decodeSyncdSnapshotStream(stream)
+
+				snapshot = { records: [] }
+				for await (const part of iterator) {
+					if (part.type === 'version') {
+						snapshot.version = part.value
+					} else if (part.type === 'mac') {
+						snapshot.mac = part.value
+					} else if (part.type === 'keyId') {
+						snapshot.keyId = part.value
+					} else if (part.type === 'record') {
+						snapshot.records!.push(part.value)
+					}
+				}
 			}
 
 			for (let { content } of patches) {
@@ -354,8 +403,47 @@ export const extractSyncdPatches = async (result: BinaryNode, options: RequestIn
 	return final
 }
 
-export const downloadExternalBlob = async (blob: proto.IExternalBlobReference, options: RequestInit) => {
+export const downloadExternalBlobStream = async (blob: proto.IExternalBlobReference, options: RequestInit) => {
 	const stream = await downloadContentFromMessage(blob, 'md-app-state', { options })
+	return stream
+}
+
+export const downloadExternalBlob = async (blob: proto.IExternalBlobReference, options: RequestInit) => {
+	const stream = await downloadExternalBlobStream(blob, options)
+	if (blob.fileSizeBytes) {
+		const size = toNumber(blob.fileSizeBytes)
+		// Only preallocate if the size is valid and reasonable
+		if (size > 0) {
+			const buffer = Buffer.allocUnsafe(size)
+			let offset = 0
+			let overflow = false
+			const chunks: Buffer[] = []
+
+			for await (const chunk of stream) {
+				if (overflow) {
+					chunks.push(chunk)
+					continue
+				}
+
+				if (offset + chunk.length > buffer.length) {
+					overflow = true
+					chunks.push(buffer.subarray(0, offset))
+					chunks.push(chunk)
+					continue
+				}
+
+				chunk.copy(buffer, offset)
+				offset += chunk.length
+			}
+
+			if (overflow) {
+				return Buffer.concat(chunks)
+			}
+
+			return buffer.subarray(0, offset)
+		}
+	}
+
 	const bufferArray: Buffer[] = []
 	for await (const chunk of stream) {
 		bufferArray.push(chunk)
@@ -365,9 +453,8 @@ export const downloadExternalBlob = async (blob: proto.IExternalBlobReference, o
 }
 
 export const downloadExternalPatch = async (blob: proto.IExternalBlobReference, options: RequestInit) => {
-	const buffer = await downloadExternalBlob(blob, options)
-	const syncData = proto.SyncdMutations.decode(buffer)
-	return syncData
+	const stream = await downloadExternalBlobStream(blob, options)
+	return decodeSyncdMutationsStream(stream)
 }
 
 export const decodeSyncdSnapshot = async (
@@ -440,8 +527,9 @@ export const decodePatches = async (
 		if (syncd.externalMutations) {
 			logger?.trace({ name, version }, 'downloading external patch')
 			const ref = await downloadExternalPatch(syncd.externalMutations, options)
-			logger?.debug({ name, version, mutations: ref.mutations.length }, 'downloaded external patch')
-			syncd.mutations?.push(...ref.mutations)
+			logger?.debug({ name, version }, 'downloaded external patch')
+			// @ts-ignore
+			syncd.mutations = ref
 		}
 
 		const patchVersion = toNumber(version!.version)
