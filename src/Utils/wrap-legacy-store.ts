@@ -25,6 +25,15 @@ type ProtoCodec = {
 const protoLookup = proto as unknown as Record<string, ProtoCodec>
 const ADVSignedDeviceIdentity: ProtoCodec = protoLookup.ADVSignedDeviceIdentity! ?? protoLookup.AdvSignedDeviceIdentity!
 
+type WarnFn = (msg: string, err?: unknown) => void
+
+function warn(msg: string, err?: unknown) {
+	if (_warnFn) _warnFn(msg, err)
+	else console.warn(`[wrapLegacyStore] ${msg}`, err ?? '')
+}
+
+let _warnFn: WarnFn | undefined
+
 // ---- Config ----
 
 export interface WrappedLegacyStore extends JsStoreCallbacks {
@@ -347,7 +356,7 @@ function updateCredsFromDevice(bytes: Uint8Array, creds: AuthenticationCreds): v
 			}
 		}
 	} catch (e) {
-		console.warn('[wrapLegacyStore] updateCredsFromDevice failed:', e)
+		warn('updateCredsFromDevice failed:', e)
 	}
 }
 
@@ -484,8 +493,13 @@ function normalizeAccountForEncode(account: {
 
 export async function wrapLegacyStore(
 	state: AuthenticationState,
-	saveCreds: () => Promise<void>
+	saveCreds: () => Promise<void>,
+	logger?: { warn: (obj: unknown, msg?: string) => void }
 ): Promise<WrappedLegacyStore> {
+	if (logger) {
+		_warnFn = (msg, err) => logger.warn({ err }, msg)
+	}
+
 	if (!state.creds || !state.keys) {
 		throw new Error('wrapLegacyStore requires an AuthenticationState with creds and keys')
 	}
@@ -539,7 +553,7 @@ export async function wrapLegacyStore(
 			const val = await storeGetOne(type, id)
 			return val != null ? toBuf(val as Uint8Array) : null // eslint-disable-line eqeqeq -- intentional null+undefined check
 		} catch (e) {
-			console.warn(`[wrapLegacyStore] GET ${type}/${id} failed:`, e)
+			warn(`GET ${type}/${id} failed:`, e)
 			return null
 		}
 	}
@@ -549,7 +563,7 @@ export async function wrapLegacyStore(
 		try {
 			await storeSetOne(type, id, Buffer.from(value))
 		} catch (e) {
-			console.warn(`[wrapLegacyStore] SET ${type}/${id} failed:`, e)
+			warn(`SET ${type}/${id} failed:`, e)
 		}
 	}
 
@@ -558,7 +572,7 @@ export async function wrapLegacyStore(
 		try {
 			await storeSetOne(type, id, null)
 		} catch (e) {
-			console.warn(`[wrapLegacyStore] DELETE ${type}/${id} failed:`, e)
+			warn(`DELETE ${type}/${id} failed:`, e)
 		}
 	}
 
@@ -596,12 +610,12 @@ export async function wrapLegacyStore(
 					if (value == null) return null // eslint-disable-line eqeqeq -- intentional null+undefined check
 					return converters[bridgeStore]?.toBridge(key, value) ?? toBuf(value as Uint8Array)
 				} catch (e) {
-					console.warn(`[wrapLegacyStore] GET ${bridgeStore}/${key} failed:`, e)
+					warn(`GET ${bridgeStore}/${key} failed:`, e)
 					return null
 				}
 			}
 
-			console.warn(`[wrapLegacyStore] GET unknown store: ${bridgeStore}/${key}`)
+			warn(`GET unknown store: ${bridgeStore}/${key}`)
 			return null
 		},
 
@@ -621,7 +635,7 @@ export async function wrapLegacyStore(
 						creds.account = ADVSignedDeviceIdentity.decode(value)
 						debounceSave()
 					} catch (e) {
-						console.warn('[wrapLegacyStore] failed to decode account update:', e)
+						warn('failed to decode account update:', e)
 					}
 
 					return
@@ -640,13 +654,13 @@ export async function wrapLegacyStore(
 					const typed = converters[bridgeStore]?.fromBridge(key, value) ?? Buffer.from(value)
 					await storeSetOne(type, upstreamKey, typed)
 				} catch (e) {
-					console.warn(`[wrapLegacyStore] SET ${bridgeStore}/${key} failed:`, e)
+					warn(`SET ${bridgeStore}/${key} failed:`, e)
 				}
 
 				return
 			}
 
-			console.warn(`[wrapLegacyStore] SET unknown store: ${bridgeStore}/${key}`)
+			warn(`SET unknown store: ${bridgeStore}/${key}`)
 		},
 
 		async delete(bridgeStore, key) {
@@ -690,7 +704,7 @@ export async function wrapLegacyStore(
 			await writeBinary(type, key, arr) // persist under bridge key for future reads
 			return arr
 		} catch (e) {
-			console.warn(`[wrapLegacyStore] identity fallback failed for ${key}:`, e)
+			warn(`identity fallback failed for ${key}:`, e)
 			return null
 		}
 	}

@@ -1,6 +1,7 @@
 import { Boom } from '@hapi/boom'
 import { Readable } from 'stream'
-import type { UploadMediaResult } from 'whatsapp-rust-bridge'
+import type { ReadableStream as WebReadableStream } from 'stream/web'
+import type { UploadMediaResult, WasmWhatsAppClient } from 'whatsapp-rust-bridge'
 import { proto } from '../../WAProto/index.js'
 import {
 	CALL_AUDIO_PREFIX,
@@ -99,19 +100,17 @@ export const generateLinkPreviewIfRequired = async (
 	}
 }
 
-const assertColor = async (color: number | string) => {
-	let assertedColor
+const assertColor = (color: number | string): number => {
 	if (typeof color === 'number') {
-		assertedColor = color > 0 ? color : 0xffffffff + Number(color) + 1
-	} else {
-		let hex = color.trim().replace('#', '')
-		if (hex.length <= 6) {
-			hex = 'FF' + hex.padStart(6, '0')
-		}
-
-		assertedColor = parseInt(hex, 16)
-		return assertedColor
+		return color > 0 ? color : 0xffffffff + Number(color) + 1
 	}
+
+	let hex = color.trim().replace('#', '')
+	if (hex.length <= 6) {
+		hex = 'FF' + hex.padStart(6, '0')
+	}
+
+	return parseInt(hex, 16)
 }
 
 export const prepareWAMessageMedia = async (
@@ -481,7 +480,7 @@ export const generateWAMessageContent = async (
 		m.eventMessage.name = message.event.name
 		m.eventMessage.description = message.event.description
 		m.eventMessage.startTime = startTime
-		m.eventMessage.endTime = message.event.endDate ? message.event.endDate.getTime() / 1000 : undefined
+		m.eventMessage.endTime = message.event.endDate ? Math.floor(message.event.endDate.getTime() / 1000) : undefined
 		m.eventMessage.isCanceled = message.event.isCancelled ?? false
 		m.eventMessage.extraGuestsAllowed = message.event.extraGuestsAllowed
 		m.eventMessage.isScheduleCall = message.event.isScheduleCall ?? false
@@ -643,7 +642,7 @@ export const generateWAMessageFromContent = (
 	) {
 		/* @ts-ignore */
 		innerMessage[key].contextInfo = {
-			...(((innerMessage[key] as Record<string, unknown>).contextInfo as Record<string, unknown>) || {}),
+			...((innerMessage[key] as Record<string, unknown>).contextInfo as Record<string, unknown>),
 			expiration: options.ephemeralExpiration || WA_DEFAULT_EPHEMERAL
 			//ephemeralSettingTimestamp: options.ephemeralOptions.eph_setting_ts?.toString()
 		}
@@ -769,7 +768,7 @@ export type DownloadMediaMessageContext = {
 	logger: ILogger
 	/** Bridge client for media download — handles CDN failover, auth refresh,
 	 *  HMAC-SHA256 verification, and AES-256-CBC decryption internally. */
-	waClient: Pick<import('whatsapp-rust-bridge').WasmWhatsAppClient, 'downloadMedia' | 'downloadMediaStream'>
+	waClient: Pick<WasmWhatsAppClient, 'downloadMedia' | 'downloadMediaStream'>
 }
 
 /**
@@ -836,7 +835,7 @@ export const downloadMediaMessage = async <Type extends 'buffer' | 'stream'>(
 
 		// Stream mode: Web ReadableStream from Rust → Node.js Readable
 		const webStream = ctx.waClient.downloadMediaStream(...args)
-		return Readable.fromWeb(webStream as import('stream/web').ReadableStream)
+		return Readable.fromWeb(webStream as WebReadableStream)
 	}
 }
 

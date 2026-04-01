@@ -32,8 +32,7 @@ export const makeMessageMethods = (ctx: SocketContext) => ({
 		content: AnyMessageContent,
 		options?: Omit<MessageGenerationOptions, 'waClient' | 'logger' | 'userJid' | 'mediaInNote'>
 	): Promise<WAMessage | undefined> => {
-		await ctx.ensureInit()
-		const client = ctx.getClient()
+		const client = await ctx.getClient()
 		const user = ctx.getUser()
 		const userJid = user?.id ? jidNormalizedUser(user.id) : ''
 
@@ -90,8 +89,7 @@ export const makeMessageMethods = (ctx: SocketContext) => ({
 	},
 
 	updateMediaMessage: async (message: WAMessage): Promise<WAMessage> => {
-		await ctx.ensureInit()
-		const client = ctx.getClient()
+		const client = await ctx.getClient()
 
 		const content = normalizeMessageContent(message.message)
 		const mediaContent = getMediaContent(content)
@@ -144,8 +142,7 @@ export const makeMessageMethods = (ctx: SocketContext) => ({
 		message: WAProto.IMessage,
 		{ messageId, statusJidList }: MessageRelayOptions = {}
 	): Promise<string> => {
-		await ctx.ensureInit()
-		const client = ctx.getClient()
+		const client = await ctx.getClient()
 
 		// Rust handles messageContextInfo internally (reporting tokens, message secrets).
 		// Strip it to avoid conflicts with the Rust-generated values.
@@ -163,8 +160,7 @@ export const makeMessageMethods = (ctx: SocketContext) => ({
 	},
 
 	readMessages: async (keys: { remoteJid: string; id: string; participant?: string }[]) => {
-		await ctx.ensureInit()
-		await ctx.getClient().readMessages(keys)
+		await (await ctx.getClient()).readMessages(keys)
 	},
 
 	/**
@@ -176,7 +172,6 @@ export const makeMessageMethods = (ctx: SocketContext) => ({
 	 * Not supported: 'played', 'hist_sync', 'peer_msg' (logged as warning)
 	 */
 	sendReceipt: async (jid: string, participant: string | undefined, messageIds: string[], type: MessageReceiptType) => {
-		await ctx.ensureInit()
 		if (!messageIds.length) return
 
 		if (type === 'read' || type === 'read-self') {
@@ -185,7 +180,7 @@ export const makeMessageMethods = (ctx: SocketContext) => ({
 				id,
 				...(participant ? { participant } : {})
 			}))
-			await ctx.getClient().readMessages(keys)
+			await (await ctx.getClient()).readMessages(keys)
 		} else {
 			// delivered/sender/inactive receipts are sent automatically by the Rust bridge
 			// played/hist_sync/peer_msg require bridge-side support
@@ -200,22 +195,7 @@ export const makeMessageMethods = (ctx: SocketContext) => ({
 	 * Send receipts for multiple message keys, grouped by JID and participant.
 	 */
 	sendReceipts: async (keys: WAMessageKey[], type: MessageReceiptType) => {
-		await ctx.ensureInit()
-		const client = ctx.getClient()
-
-		// Group by (jid, participant), skip fromMe
-		const groups = new Map<string, { jid: string; participant: string | undefined; ids: string[] }>()
-		for (const { remoteJid, id, participant, fromMe } of keys) {
-			if (fromMe || !remoteJid || !id) continue
-			const groupKey = `${remoteJid}:${participant ?? ''}`
-			let entry = groups.get(groupKey)
-			if (!entry) {
-				entry = { jid: remoteJid, participant: participant ?? undefined, ids: [] }
-				groups.set(groupKey, entry)
-			}
-
-			entry.ids.push(id)
-		}
+		const client = await ctx.getClient()
 
 		if (type === 'read' || type === 'read-self') {
 			const readKeys = keys
@@ -240,8 +220,6 @@ export const makeMessageMethods = (ctx: SocketContext) => ({
 		messageKey: WAMessageKey,
 		_msgData?: Partial<WAMessage>
 	): Promise<string | undefined> => {
-		await ctx.ensureInit()
-
 		const message: WAProto.IMessage = {
 			protocolMessage: {
 				peerDataOperationRequestMessage: {
@@ -252,6 +230,6 @@ export const makeMessageMethods = (ctx: SocketContext) => ({
 			}
 		}
 
-		return ctx.getClient().relayMessage(messageKey.remoteJid!, message, null)
+		return (await ctx.getClient()).relayMessage(messageKey.remoteJid!, message, null)
 	}
 })

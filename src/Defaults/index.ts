@@ -9,7 +9,7 @@ export const CALL_AUDIO_PREFIX = 'https://call.whatsapp.com/voice/'
 
 export const WA_DEFAULT_EPHEMERAL = 7 * 24 * 60 * 60
 
-export const URL_REGEX = /https:\/\/(?![^:@\/\s]+:[^:@\/\s]+@)[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}(:\d+)?(\/[^\s]*)?/g
+export const URL_REGEX = /https:\/\/(?![^:@/\s]+:[^:@/\s]+@)[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}(:\d+)?(\/[^\s]*)?/g
 
 export type MediaType =
 	| 'image'

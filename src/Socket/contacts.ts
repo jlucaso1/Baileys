@@ -2,7 +2,7 @@ import type { SocketContext } from './types'
 
 export const makeContactMethods = (ctx: SocketContext) => ({
 	onWhatsApp: async (...jids: string[]) => {
-		const client = ctx.getClient()
+		const client = await ctx.getClient()
 		const results: { exists: boolean; jid: string }[] = []
 		for (const jid of jids) {
 			const r = await client.isOnWhatsApp(jid)
@@ -15,11 +15,11 @@ export const makeContactMethods = (ctx: SocketContext) => ({
 	},
 
 	profilePictureUrl: async (jid: string, type: 'preview' | 'image' = 'preview') => {
-		const result = await ctx.getClient().profilePictureUrl(jid, type)
+		const result = await (await ctx.getClient()).profilePictureUrl(jid, type)
 		return result?.url
 	},
 
 	fetchUserInfo: async (...jids: string[]) => {
-		return ctx.getClient().fetchUserInfo(jids)
+		return await (await ctx.getClient()).fetchUserInfo(jids)
 	}
 })

@@ -62,30 +62,25 @@ export const makeEventHandler = (
 		onPairSuccess?: (data: { platform?: string; businessName?: string }) => void
 	}
 ) => {
-	return (event: WhatsAppEvent & { type: string; data?: unknown }) => {
+	return (event: WhatsAppEvent) => {
 		const { ev } = ctx
 
+		const emitClose = (reason: string, statusCode: number) =>
+			ev.emit('connection.update', {
+				connection: 'close',
+				lastDisconnect: { error: new Boom(reason, { statusCode }), date: new Date() }
+			} as Partial<ConnectionState>)
+
 		switch (event.type) {
-			// ── Connection lifecycle ──
 			case 'connected':
-				// whatsapp-rust already sends available presence on connect internally
 				ev.emit('connection.update', { connection: 'open' } as Partial<ConnectionState>)
 				break
 
 			case 'disconnected':
-				ev.emit('connection.update', {
-					connection: 'close',
-					lastDisconnect: {
-						error: new Boom('Connection closed', { statusCode: DisconnectReason.connectionClosed }),
-						date: new Date()
-					}
-				} as Partial<ConnectionState>)
+				emitClose('Connection closed', DisconnectReason.connectionClosed)
 				break
 
 			case 'qr':
-				ev.emit('connection.update', { qr: event.data.code } as Partial<ConnectionState>)
-				break
-
 			case 'pairing_code':
 				ev.emit('connection.update', { qr: event.data.code } as Partial<ConnectionState>)
 				break
@@ -103,69 +98,27 @@ export const makeEventHandler = (
 			}
 
 			case 'pair_error':
-				ev.emit('connection.update', {
-					connection: 'close',
-					lastDisconnect: {
-						error: new Boom('Pairing failed: ' + event.data.error, {
-							statusCode: DisconnectReason.connectionClosed
-						}),
-						date: new Date()
-					}
-				} as Partial<ConnectionState>)
+				emitClose('Pairing failed: ' + event.data.error, DisconnectReason.connectionClosed)
 				break
 
 			case 'logged_out':
-				ev.emit('connection.update', {
-					connection: 'close',
-					lastDisconnect: {
-						error: new Boom('Logged out', { statusCode: DisconnectReason.loggedOut }),
-						date: new Date()
-					}
-				} as Partial<ConnectionState>)
+				emitClose('Logged out', DisconnectReason.loggedOut)
 				break
 
 			case 'connect_failure':
-				ev.emit('connection.update', {
-					connection: 'close',
-					lastDisconnect: {
-						error: new Boom(event.data.message || 'Connection failure', {
-							statusCode: DisconnectReason.connectionClosed
-						}),
-						date: new Date()
-					}
-				} as Partial<ConnectionState>)
+				emitClose(event.data.message || 'Connection failure', DisconnectReason.connectionClosed)
 				break
 
 			case 'stream_error':
-				ev.emit('connection.update', {
-					connection: 'close',
-					lastDisconnect: {
-						error: new Boom('Stream error: ' + event.data.code, {
-							statusCode: DisconnectReason.badSession
-						}),
-						date: new Date()
-					}
-				} as Partial<ConnectionState>)
+				emitClose('Stream error: ' + event.data.code, DisconnectReason.badSession)
 				break
 
 			case 'client_outdated':
-				ev.emit('connection.update', {
-					connection: 'close',
-					lastDisconnect: {
-						error: new Boom('Client outdated', { statusCode: DisconnectReason.badSession }),
-						date: new Date()
-					}
-				} as Partial<ConnectionState>)
+				emitClose('Client outdated', DisconnectReason.badSession)
 				break
 
 			case 'temporary_ban':
-				ev.emit('connection.update', {
-					connection: 'close',
-					lastDisconnect: {
-						error: new Boom('Temporary ban', { statusCode: DisconnectReason.forbidden }),
-						date: new Date()
-					}
-				} as Partial<ConnectionState>)
+				emitClose('Temporary ban', DisconnectReason.forbidden)
 				break
 
 			// ── Messages ──
@@ -192,7 +145,7 @@ export const makeEventHandler = (
 				const d = event.data
 				const chat = d.source.chat
 				const sender = d.source.sender
-				const firstId = d.message_ids?.[0]
+				const firstId = event.data.message_ids?.[0]
 				if (chat && firstId) {
 					ev.emit('message-receipt.update', [
 						{
@@ -220,15 +173,7 @@ export const makeEventHandler = (
 				break
 			}
 
-			case 'contact_update': {
-				const d = event.data
-				if (d.jid) {
-					ev.emit('contacts.update', [{ id: jidStr(d.jid) }])
-				}
-
-				break
-			}
-
+			case 'contact_update':
 			case 'contact_updated': {
 				const d = event.data
 				if (d.jid) {
@@ -327,12 +272,12 @@ export const makeEventHandler = (
 
 			case 'star_update': {
 				const d = event.data
-				if (d.chat_jid && d.message_id) {
+				if (d.chat_jid && event.data.message_id) {
 					ev.emit('messages.update', [
 						{
 							key: {
 								remoteJid: jidStr(d.chat_jid),
-								id: d.message_id,
+								id: event.data.message_id,
 								fromMe: d.from_me,
 								participant: d.participant_jid ? jidStr(d.participant_jid) : undefined
 							},

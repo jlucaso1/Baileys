@@ -1,13 +1,15 @@
 import { Boom } from '@hapi/boom'
-import { exec } from 'child_process'
+import { execFile } from 'child_process'
 import { createReadStream, promises as fs } from 'fs'
 import type { IAudioMetadata } from 'music-metadata'
 import { tmpdir } from 'os'
 import { join } from 'path'
 import { Readable } from 'stream'
+import type { ReadableStream as WebReadableStream } from 'stream/web'
 import type { WAMediaUpload } from '../Types'
-const randomId = () => globalThis.crypto.randomUUID()
 import type { ILogger } from './logger'
+
+const randomId = () => globalThis.crypto.randomUUID()
 
 const getTmpFilesDirectory = () => tmpdir()
 
@@ -34,14 +36,17 @@ const extractVideoThumb = async (
 	size: { width: number; height: number }
 ) =>
 	new Promise<void>((resolve, reject) => {
-		const cmd = `ffmpeg -ss ${time} -i ${path} -y -vf scale=${size.width}:-1 -vframes 1 -f image2 ${destPath}`
-		exec(cmd, err => {
-			if (err) {
-				reject(err)
-			} else {
-				resolve()
+		execFile(
+			'ffmpeg',
+			['-ss', time, '-i', path, '-y', '-vf', `scale=${size.width}:-1`, '-vframes', '1', '-f', 'image2', destPath],
+			err => {
+				if (err) {
+					reject(err)
+				} else {
+					resolve()
+				}
 			}
-		})
+		)
 	})
 
 export const extractImageThumb = async (bufferOrFilePath: Readable | Buffer | string, width = 32) => {
@@ -65,8 +70,14 @@ export const extractImageThumb = async (bufferOrFilePath: Readable | Buffer | st
 			}
 		}
 	} else if ('jimp' in lib && typeof lib.jimp?.Jimp === 'object') {
-		// eslint-disable-next-line @typescript-eslint/no-explicit-any -- dynamic lib
-		const jimp = await (lib.jimp.Jimp as any).read(bufferOrFilePath)
+		const JimpClass = lib.jimp.Jimp as {
+			read: (input: Buffer | string) => Promise<{
+				width: number
+				height: number
+				resize: (opts: unknown) => { getBuffer: (mime: string, opts: unknown) => Promise<Buffer> }
+			}>
+		}
+		const jimp = await JimpClass.read(bufferOrFilePath)
 		const dimensions = {
 			width: jimp.width,
 			height: jimp.height
@@ -255,8 +266,7 @@ export const getHttpStream = async (url: string | URL, options: RequestInit & { 
 	}
 
 	// @ts-ignore Node18+ Readable.fromWeb exists
-	// eslint-disable-next-line @typescript-eslint/no-explicit-any -- Node.js web stream compat
-	return response.body instanceof Readable ? response.body : Readable.fromWeb(response.body as any)
+	return response.body instanceof Readable ? response.body : Readable.fromWeb(response.body as WebReadableStream)
 }
 
 export type MediaDownloadOptions = {

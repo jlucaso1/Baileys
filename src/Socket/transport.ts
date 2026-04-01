@@ -26,8 +26,11 @@ export const makeTransport = (config: TransportConfig): JsTransportCallbacks => 
 			ws = newWs
 
 			return new Promise<void>((resolve, reject) => {
+				let settled = false
+
 				newWs.onopen = () => {
 					if (ws !== newWs) return
+					settled = true
 					handle?.onConnected()
 					resolve()
 				}
@@ -41,12 +44,19 @@ export const makeTransport = (config: TransportConfig): JsTransportCallbacks => 
 				newWs.onclose = () => {
 					if (ws !== newWs) return
 					handle?.onDisconnected()
+					if (!settled) {
+						settled = true
+						reject(new Error('WebSocket closed before open'))
+					}
 				}
 
 				newWs.onerror = event => {
 					if (ws !== newWs) return
 					logger.error({ err: event }, 'WebSocket error')
-					reject(new Error('WebSocket connection failed'))
+					if (!settled) {
+						settled = true
+						reject(new Error('WebSocket connection failed'))
+					}
 				}
 			})
 		},

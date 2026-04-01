@@ -78,7 +78,7 @@ export async function useBridgeStore(folder: string): Promise<NonNullable<Authen
 
 			// Skip write if value is identical to cached version
 			const prev = cache.get(cacheKey)
-			if (prev?.length === value.length && prev.every((b, i) => b === value[i])) {
+			if (prev && Buffer.from(prev).equals(Buffer.from(value))) {
 				return
 			}
 

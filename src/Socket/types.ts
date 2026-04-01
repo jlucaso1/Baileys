@@ -10,10 +10,10 @@ export interface SocketContext {
 	fullConfig: SocketConfig
 	getUser: () => { id?: string; lid?: string } | undefined
 	setUser: (u: { id?: string; lid?: string }) => void
-	/** Waits for init and throws if it failed */
-	ensureInit: () => Promise<void>
-	/** Returns the bridge client, throwing if not initialized */
-	getClient: () => WasmWhatsAppClient
+	/** Returns the bridge client, awaiting initialization if needed */
+	getClient: () => Promise<WasmWhatsAppClient>
+	/** Returns the bridge client synchronously, throws if not yet initialized */
+	getClientSync: () => WasmWhatsAppClient
 	/** Raw stanza EventEmitter for CB: pattern compat */
 	ws: EventEmitter
 }

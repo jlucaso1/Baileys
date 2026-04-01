@@ -1,3 +1,4 @@
+import type { JsStoreCallbacks } from 'whatsapp-rust-bridge'
 import type { proto } from '../../WAProto/index.js'
 import type { Contact } from './Contact'
 
@@ -127,7 +128,7 @@ export type AuthenticationState = {
 	/** @deprecated Signal keys are managed by the Rust bridge. This field is unused. */
 	keys?: SignalKeyStore
 	/** Bridge storage for persistent WASM state. Auto-created by useMultiFileAuthState. */
-	store?: import('whatsapp-rust-bridge').JsStoreCallbacks & {
+	store?: JsStoreCallbacks & {
 		/** Flush all pending debounced writes to disk. Called automatically on disconnect. */
 		flush?(): Promise<void>
 	}

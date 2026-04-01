@@ -25,7 +25,7 @@ export type FullJid = {
 }
 
 export const jidEncode = (user: string | number | null, server: JidServer, device?: number, agent?: number) => {
-	return `${user || ''}${!!agent ? `_${agent}` : ''}${!!device ? `:${device}` : ''}@${server}`
+	return `${user || ''}${agent ? `_${agent}` : ''}${device ? `:${device}` : ''}@${server}`
 }
 
 export const jidDecode = (jid: string | undefined): FullJid | undefined => {

@@ -1,5 +1,6 @@
 import type { Readable } from 'stream'
 import type { URL } from 'url'
+import type { UploadMediaResult, WasmWhatsAppClient } from 'whatsapp-rust-bridge'
 import { proto } from '../../WAProto/index.js'
 import type { MediaType } from '../Defaults'
 import type { GroupMetadata } from './GroupMetadata'
@@ -331,10 +332,7 @@ export type MediaGenerationOptions = {
 	logger?: ILogger
 	mediaTypeOverride?: MediaType
 	/** Bridge client — handles encryption + upload internally */
-	waClient: Pick<
-		import('whatsapp-rust-bridge').WasmWhatsAppClient,
-		'uploadMedia' | 'encryptMediaStream' | 'uploadEncryptedMediaStream'
-	>
+	waClient: Pick<WasmWhatsAppClient, 'uploadMedia' | 'encryptMediaStream' | 'uploadEncryptedMediaStream'>
 	/** cache media so it does not have to be uploaded again */
 	mediaCache?: CacheStore
 
@@ -360,7 +358,7 @@ export type MediaGenerationOptions = {
 		mediaType: MediaType,
 		waClient: MediaGenerationOptions['waClient']
 	) => Promise<{
-		upload: import('whatsapp-rust-bridge').UploadMediaResult
+		upload: UploadMediaResult
 		metadata?: Partial<MediaMetadata>
 	}>
 }

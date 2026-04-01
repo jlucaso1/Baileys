@@ -3,19 +3,19 @@ import type { SocketContext } from './types'
 
 export const makeChatActionMethods = (ctx: SocketContext) => ({
 	pinChat: async (jid: string, pin: boolean) => {
-		await ctx.getClient().pinChat(jid, pin)
+		await (await ctx.getClient()).pinChat(jid, pin)
 	},
 
 	muteChat: async (jid: string, muteUntil?: number | null) => {
-		await ctx.getClient().muteChat(jid, muteUntil)
+		await (await ctx.getClient()).muteChat(jid, muteUntil)
 	},
 
 	archiveChat: async (jid: string, archive: boolean) => {
-		await ctx.getClient().archiveChat(jid, archive)
+		await (await ctx.getClient()).archiveChat(jid, archive)
 	},
 
 	starMessage: async (jid: string, messageId: string, star: boolean) => {
-		await ctx.getClient().starMessage(jid, messageId, star)
+		await (await ctx.getClient()).starMessage(jid, messageId, star)
 	},
 
 	/**
@@ -26,7 +26,7 @@ export const makeChatActionMethods = (ctx: SocketContext) => ({
 	 * Not yet in bridge (app-state patches): clear, contact, disableLinkPreviews, labels, quickReply
 	 */
 	chatModify: async (mod: ChatModification, jid: string) => {
-		const client = ctx.getClient()
+		const client = await ctx.getClient()
 		if ('archive' in mod) {
 			await client.archiveChat(jid, mod.archive)
 		} else if ('pin' in mod) {

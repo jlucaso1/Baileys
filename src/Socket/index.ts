@@ -22,43 +22,37 @@ import type { SocketContext } from './types'
 
 let wasmInitialized = false
 
-/** Helper: await init then return the bridge client */
-async function requireClient(ctx: SocketContext): Promise<WasmWhatsAppClient> {
-	await ctx.ensureInit()
-	return ctx.getClient()
-}
-
 /** Build the signalRepository object that delegates to the bridge */
 function makeSignalRepository(ctx: SocketContext) {
 	return {
 		decryptMessage: async (opts: { jid: string; type: 'pkmsg' | 'msg'; ciphertext: Uint8Array }) => {
-			return (await requireClient(ctx)).signalDecryptMessage(opts.jid, opts.type, opts.ciphertext)
+			return (await ctx.getClient()).signalDecryptMessage(opts.jid, opts.type, opts.ciphertext)
 		},
 		encryptMessage: async (opts: {
 			jid: string
 			data: Uint8Array
 		}): Promise<{ type: 'pkmsg' | 'msg'; ciphertext: Uint8Array }> => {
-			return (await requireClient(ctx)).signalEncryptMessage(opts.jid, opts.data)
+			return (await ctx.getClient()).signalEncryptMessage(opts.jid, opts.data)
 		},
 		decryptGroupMessage: async (opts: { group: string; authorJid: string; msg: Uint8Array }) => {
-			return (await requireClient(ctx)).signalDecryptGroupMessage(opts.group, opts.authorJid, opts.msg)
+			return (await ctx.getClient()).signalDecryptGroupMessage(opts.group, opts.authorJid, opts.msg)
 		},
 		encryptGroupMessage: async (opts: {
 			group: string
 			data: Uint8Array
 			meId: string
 		}): Promise<{ senderKeyDistributionMessage: Uint8Array; ciphertext: Uint8Array }> => {
-			return (await requireClient(ctx)).signalEncryptGroupMessage(opts.group, opts.data, opts.meId)
+			return (await ctx.getClient()).signalEncryptGroupMessage(opts.group, opts.data, opts.meId)
 		},
 		processSenderKeyDistributionMessage: async (): Promise<void> => {},
 		injectE2ESession: async (): Promise<void> => {},
 		validateSession: async (jid: string): Promise<{ exists: boolean; reason?: string }> => {
-			const exists = await (await requireClient(ctx)).signalValidateSession(jid)
+			const exists = await (await ctx.getClient()).signalValidateSession(jid)
 			return { exists }
 		},
 		jidToSignalProtocolAddress: (jid: string): string => {
 			try {
-				return ctx.getClient().jidToSignalProtocolAddress(jid)
+				return ctx.getClientSync().jidToSignalProtocolAddress(jid)
 			} catch {
 				return `${jid}.0`
 			}
@@ -67,7 +61,7 @@ function makeSignalRepository(ctx: SocketContext) {
 			return { migrated: 0, skipped: 0, total: 0 }
 		},
 		deleteSession: async (jids: string[]): Promise<void> => {
-			return (await requireClient(ctx)).signalDeleteSessions(jids)
+			return (await ctx.getClient()).signalDeleteSessions(jids)
 		}
 	}
 }
@@ -125,13 +119,16 @@ const makeWASocket = (config: UserFacingSocketConfig) => {
 		setUser: u => {
 			user = u
 		},
-		ensureInit: async () => {
+		getClient: async () => {
 			await initPromise
 			if (initError) {
 				throw new Boom('Bridge client failed to initialize: ' + initError.message, { statusCode: 500 })
 			}
+
+			if (!client) throw new Boom('Client not initialized', { statusCode: 500 })
+			return client
 		},
-		getClient: () => {
+		getClientSync: () => {
 			if (!client) throw new Boom('Client not initialized', { statusCode: 500 })
 			return client
 		}
@@ -283,7 +280,7 @@ const makeWASocket = (config: UserFacingSocketConfig) => {
 		get authState() {
 			return {
 				creds: {
-					...(auth.creds ?? {}),
+					...auth.creds,
 					me: user ? ({ id: user.id, lid: user.lid } as Contact) : undefined,
 					account: cachedAccount,
 					platform: pairedAccount?.platform
@@ -293,13 +290,13 @@ const makeWASocket = (config: UserFacingSocketConfig) => {
 		},
 		generateMessageTag,
 		sendNode: async (frame: BinaryNode) => {
-			return (await requireClient(ctx)).sendNode(frame)
+			return (await ctx.getClient()).sendNode(frame)
 		},
 		assertSessions: async (jids: string[], force?: boolean) => {
-			return (await requireClient(ctx)).assertSessions(jids, force ?? false)
+			return (await ctx.getClient()).assertSessions(jids, force ?? false)
 		},
 		getUSyncDevices: async (jids: string[], useCache: boolean, ignoreZeroDevices: boolean) => {
-			return (await requireClient(ctx)).getUSyncDevices(jids, useCache, ignoreZeroDevices)
+			return (await ctx.getClient()).getUSyncDevices(jids, useCache, ignoreZeroDevices)
 		},
 		waitForMessage: <T = BinaryNode>(msgId: string, timeoutMs?: number): Promise<T> => {
 			return new Promise<T>((resolve, reject) => {
@@ -336,14 +333,14 @@ const makeWASocket = (config: UserFacingSocketConfig) => {
 			return resultPromise
 		},
 		sendRawMessage: async (data: Uint8Array | Buffer) => {
-			return (await requireClient(ctx)).sendRawMessage(data instanceof Uint8Array ? data : new Uint8Array(data))
+			return (await ctx.getClient()).sendRawMessage(data instanceof Uint8Array ? data : new Uint8Array(data))
 		},
 		createParticipantNodes: async (
 			jids: string[],
 			message: proto.IMessage,
 			extraAttrs?: BinaryNode['attrs']
 		): Promise<{ nodes: BinaryNode[]; shouldIncludeDeviceIdentity: boolean }> => {
-			return (await requireClient(ctx)).createParticipantNodes(jids, message, extraAttrs ?? {})
+			return (await ctx.getClient()).createParticipantNodes(jids, message, extraAttrs ?? {})
 		},
 		signalRepository: makeSignalRepository(ctx),
 		/** @deprecated Pre-key management is handled by the Rust bridge. */
@@ -356,65 +353,63 @@ const makeWASocket = (config: UserFacingSocketConfig) => {
 		setAutoReconnect: (enabled: boolean) => {
 			client?.setAutoReconnect(enabled)
 		},
-		sendPresenceUpdate: (presence: 'available' | 'unavailable') => {
-			return ctx.getClient().sendPresence(presence)
+		sendPresenceUpdate: async (presence: 'available' | 'unavailable') => {
+			return (await ctx.getClient()).sendPresence(presence)
 		},
 		fetchPrivacySettings: async () => {
-			return ctx.getClient().fetchPrivacySettings()
+			return (await ctx.getClient()).fetchPrivacySettings()
 		},
 		updatePrivacySetting: async (category: string, value: string) => {
-			await ctx.getClient().updatePrivacySetting(category, value)
+			await (await ctx.getClient()).updatePrivacySetting(category, value)
 		},
 		updateLastSeenPrivacy: async (value: string) => {
-			await ctx.getClient().updatePrivacySetting('last', value)
+			await (await ctx.getClient()).updatePrivacySetting('last', value)
 		},
 		updateOnlinePrivacy: async (value: string) => {
-			await ctx.getClient().updatePrivacySetting('online', value)
+			await (await ctx.getClient()).updatePrivacySetting('online', value)
 		},
 		updateProfilePicturePrivacy: async (value: string) => {
-			await ctx.getClient().updatePrivacySetting('profile', value)
+			await (await ctx.getClient()).updatePrivacySetting('profile', value)
 		},
 		updateStatusPrivacy: async (value: string) => {
-			await ctx.getClient().updatePrivacySetting('status', value)
+			await (await ctx.getClient()).updatePrivacySetting('status', value)
 		},
 		updateReadReceiptsPrivacy: async (value: string) => {
-			await ctx.getClient().updatePrivacySetting('readreceipts', value)
+			await (await ctx.getClient()).updatePrivacySetting('readreceipts', value)
 		},
 		updateGroupsAddPrivacy: async (value: string) => {
-			await ctx.getClient().updatePrivacySetting('groupadd', value)
+			await (await ctx.getClient()).updatePrivacySetting('groupadd', value)
 		},
 		updateDefaultDisappearingMode: async (duration: number) => {
-			await ctx.getClient().updateDefaultDisappearingMode(duration)
+			await (await ctx.getClient()).updateDefaultDisappearingMode(duration)
 		},
 		rejectCall: async (callId: string, callFrom: string) => {
-			await ctx.getClient().rejectCall(callId, callFrom)
+			await (await ctx.getClient()).rejectCall(callId, callFrom)
 		},
 		fetchStatus: async (...jids: string[]) => {
-			return ctx.getClient().fetchStatus(jids) as Promise<Array<{ jid: string; status?: string }>>
+			return (await ctx.getClient()).fetchStatus(jids) as Promise<Array<{ jid: string; status?: string }>>
 		},
 		getBusinessProfile: async (jid: string) => {
-			return ctx.getClient().getBusinessProfile(jid)
+			return (await ctx.getClient()).getBusinessProfile(jid)
 		},
 		fetchMessageHistory: async (
 			count: number,
 			oldestMsgKey: { remoteJid?: string | null; id?: string | null; fromMe?: boolean | null },
 			oldestMsgTimestamp: number
 		) => {
-			return ctx
-				.getClient()
-				.fetchMessageHistory(
-					count,
-					oldestMsgKey.remoteJid || '',
-					oldestMsgKey.id || '',
-					oldestMsgKey.fromMe || false,
-					oldestMsgTimestamp
-				)
+			return (await ctx.getClient()).fetchMessageHistory(
+				count,
+				oldestMsgKey.remoteJid || '',
+				oldestMsgKey.id || '',
+				oldestMsgKey.fromMe || false,
+				oldestMsgTimestamp
+			)
 		},
 		groupMemberAddMode: async (jid: string, mode: 'admin_add' | 'all_member_add') => {
-			await ctx.getClient().groupMemberAddMode(jid, mode)
+			await (await ctx.getClient()).groupMemberAddMode(jid, mode)
 		},
 		sendStatusMessage: async (message: Record<string, unknown>, recipients: string[]): Promise<string> => {
-			return ctx.getClient().sendStatusMessage(message, recipients)
+			return (await ctx.getClient()).sendStatusMessage(message, recipients)
 		},
 		...makeMessageMethods(ctx),
 		...makeGroupMethods(ctx),
@@ -432,7 +427,7 @@ const makeWASocket = (config: UserFacingSocketConfig) => {
 			return downloadMediaMessage(message, type, options, {
 				logger,
 				reuploadRequest: (m: WAMessage) => sock.updateMediaMessage(m),
-				waClient: ctx.getClient()
+				waClient: await ctx.getClient()
 			})
 		}
 	}
