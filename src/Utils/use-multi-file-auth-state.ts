@@ -1,5 +1,5 @@
 import { mkdir, stat } from 'fs/promises'
-import type { AuthenticationState } from '../Types'
+import type { AuthenticationState } from '../Types/index'
 import { useBridgeStore } from './use-bridge-store'
 
 /**

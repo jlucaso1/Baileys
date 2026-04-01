@@ -1,5 +1,5 @@
 import type { GroupMetadataResult } from 'whatsapp-rust-bridge'
-import type { GroupMetadata } from '../Types'
+import type { GroupMetadata } from '../Types/index'
 import type { SocketContext } from './types'
 
 /** Convert bridge GroupMetadataResult to Baileys GroupMetadata */
@@ -19,6 +19,7 @@ function bridgeGroupToMetadata(g: GroupMetadataResult): GroupMetadata {
 		isCommunity: g.isParentGroup,
 		linkedParent: g.parentGroupJid,
 		size: g.size,
+		// Bridge doesn't distinguish superadmin from admin
 		participants: g.participants.map(p => ({
 			id: p.jid,
 			isAdmin: p.isAdmin,

@@ -13,6 +13,7 @@ import { readFileSync, writeFileSync } from 'fs'
 import { dirname, join } from 'path'
 import { fileURLToPath } from 'url'
 import { fetchLatestWaWebVersion } from '../src/Utils/generics.ts'
+import process from "node:process";
 
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = dirname(__filename)

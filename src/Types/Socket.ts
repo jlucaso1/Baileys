@@ -1,6 +1,6 @@
 import type { URL } from 'url'
 import type { CacheConfig } from 'whatsapp-rust-bridge'
-import { proto } from '../../WAProto/index.js'
+import type { proto } from '../../WAProto/index.js'
 import type { ILogger } from '../Utils/logger'
 import type { AuthenticationState } from './Auth'
 

@@ -17,8 +17,7 @@
   "types": "lib/index.d.ts",
   "files": [
     "lib/**/*",
-    "WAProto/**/*",
-    "engine-requirements.js"
+    "WAProto/**/*"
   ],
   "scripts": {
     "build": "tsc -P tsconfig.build.json && tsc-esm-fix --tsconfig=tsconfig.build.json --ext=.js",
@@ -31,7 +30,6 @@
     "lint:fix": "npm run format && npm run lint -- --fix",
     "prepack": "npm run build",
     "prepare": "npm run build",
-    "preinstall": "node ./engine-requirements.js",
     "release": "release-it",
     "test": "node --experimental-vm-modules ./node_modules/.bin/jest --testMatch '**/*.test.ts'",
     "test:e2e": "NODE_TLS_REJECT_UNAUTHORIZED=0 ADV_SECRET_KEY=AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA= SOCKET_URL=wss://127.0.0.1:8080/ws/chat node --experimental-vm-modules ./node_modules/.bin/jest --testMatch '**/*.test-e2e.ts' --runInBand --forceExit",

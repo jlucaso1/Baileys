@@ -1,7 +1,7 @@
 import { Boom } from '@hapi/boom'
-import { DEFAULT_CONNECTION_CONFIG } from '../Defaults'
+import { DEFAULT_CONNECTION_CONFIG } from '../Defaults/index'
 const baileysVersion = DEFAULT_CONNECTION_CONFIG.version
-import type { WAVersion } from '../Types'
+import type { WAVersion } from '../Types/index'
 
 /** unix timestamp of a date in seconds */
 export const unixTimestampSeconds = (date: Date = new Date()) => Math.floor(date.getTime() / 1000)

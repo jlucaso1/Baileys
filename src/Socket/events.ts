@@ -1,8 +1,7 @@
 import { Boom } from '@hapi/boom'
 import type { MessageInfo, WhatsAppEvent } from 'whatsapp-rust-bridge'
-import { proto } from '../../WAProto/index.js'
-import type { BaileysEventMap, BinaryNode, ConnectionState, WAMessage, WAPresence } from '../Types'
-import { DisconnectReason, WAProto } from '../Types'
+import type { BaileysEventMap, BinaryNode, ConnectionState, WAMessage, WAPresence } from '../Types/index'
+import { DisconnectReason, WAProto } from '../Types/index'
 import type { SocketContext } from './types'
 import { jidStr } from './types'
 
@@ -40,7 +39,7 @@ const emitCBEvents = (ctx: SocketContext, node: BinaryNode) => {
 
 /** Convert bridge message event data to a Baileys WAMessage */
 const bridgeMessageToWAMessage = (msgData: Record<string, unknown>, info: MessageInfo): WAMessage => {
-	const message = msgData as unknown as proto.IMessage
+	const message = msgData as unknown as WAProto.IMessage
 	return WAProto.WebMessageInfo.fromObject({
 		key: {
 			remoteJid: jidStr(info.source.chat),

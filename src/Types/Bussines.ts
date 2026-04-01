@@ -1,4 +1,4 @@
-import type { proto } from '../../WAProto'
+import type { proto } from '../../WAProto/index.js'
 
 export type DayOfWeekBussines = 'sun' | 'mon' | 'tue' | 'wed' | 'thu' | 'fri' | 'sat'
 

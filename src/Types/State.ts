@@ -1,4 +1,4 @@
-import { Boom } from '@hapi/boom'
+import type { Boom } from '@hapi/boom'
 import type { Contact } from './Contact'
 
 export type WAConnectionState = 'open' | 'connecting' | 'close'

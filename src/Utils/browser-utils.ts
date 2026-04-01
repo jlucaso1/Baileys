@@ -1,5 +1,5 @@
 import { platform, release } from 'os'
-import type { BrowsersMap } from '../Types'
+import type { BrowsersMap } from '../Types/index'
 
 const PLATFORM_MAP = {
 	aix: 'AIX',

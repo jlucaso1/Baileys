@@ -1,8 +1,10 @@
 import { Boom } from '@hapi/boom'
 import { jest } from '@jest/globals'
+import { Buffer } from 'node:buffer'
 import { mkdtempSync, readFileSync, rmSync } from 'node:fs'
 import { tmpdir } from 'node:os'
 import { join } from 'node:path'
+import process from 'node:process'
 import P from 'pino'
 import makeWASocket, {
 	DisconnectReason,

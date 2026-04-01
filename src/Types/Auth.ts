@@ -1,3 +1,4 @@
+import { Buffer } from 'node:buffer'
 import type { JsStoreCallbacks } from 'whatsapp-rust-bridge'
 import type { proto } from '../../WAProto/index.js'
 import type { Contact } from './Contact'

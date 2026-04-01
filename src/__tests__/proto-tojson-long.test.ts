@@ -1,4 +1,4 @@
-import '../index.js'
+import '../index.ts'
 import { proto } from '../../WAProto/index.js'
 
 describe('proto serialization', () => {

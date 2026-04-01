@@ -9,8 +9,8 @@ import type {
 	WAMessage,
 	WAMessageContent,
 	WAMessageKey
-} from '../Types'
-import { WAProto } from '../Types'
+} from '../Types/index'
+import { WAProto } from '../Types/index'
 import { generateWAMessage, getContentType, normalizeMessageContent } from '../Utils/messages'
 import { jidNormalizedUser } from '../WABinary/index'
 import type { SocketContext } from './types'

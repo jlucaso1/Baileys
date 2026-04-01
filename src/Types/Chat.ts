@@ -1,6 +1,6 @@
 import type { proto } from '../../WAProto/index.js'
 import type { AccountSettings } from './Auth'
-import type { QuickReplyAction } from './Bussines.js'
+import type { QuickReplyAction } from './Bussines'
 import type { BufferedEventData } from './Events'
 import type { LabelActionBody } from './Label'
 import type { ChatLabelAssociationActionBody } from './LabelAssociation'

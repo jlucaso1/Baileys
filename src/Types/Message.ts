@@ -2,7 +2,7 @@ import type { Readable } from 'stream'
 import type { URL } from 'url'
 import type { UploadMediaResult, WasmWhatsAppClient } from 'whatsapp-rust-bridge'
 import { proto } from '../../WAProto/index.js'
-import type { MediaType } from '../Defaults'
+import type { MediaType } from '../Defaults/index'
 import type { GroupMetadata } from './GroupMetadata'
 import type { CacheStore } from './Socket'
 
@@ -35,6 +35,7 @@ export type WAGenericMediaMessage =
 	| proto.Message.IStickerMessage
 export const WAMessageStubType = proto.WebMessageInfo.StubType
 export const WAMessageStatus = proto.WebMessageInfo.Status
+import { Buffer } from 'node:buffer'
 import type { ILogger } from '../Utils/logger'
 export type WAMediaPayloadURL = { url: URL | string }
 export type WAMediaPayloadStream = { stream: Readable }

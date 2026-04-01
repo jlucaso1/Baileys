@@ -12,10 +12,11 @@
  */
 
 import { mkdir, readFile, stat, unlink, writeFile } from 'fs/promises'
+import { Buffer } from 'node:buffer'
 import { join } from 'path'
 import type { JsStoreCallbacks } from 'whatsapp-rust-bridge'
 import { proto } from '../../WAProto/index.js'
-import type { AuthenticationCreds, AuthenticationState, LTHashState, SignalDataTypeMap } from '../Types'
+import type { AuthenticationCreds, AuthenticationState, LTHashState, SignalDataTypeMap } from '../Types/index'
 
 // Runtime WAProto exports ADVSignedDeviceIdentity but d.ts uses AdvSignedDeviceIdentity
 type ProtoCodec = {

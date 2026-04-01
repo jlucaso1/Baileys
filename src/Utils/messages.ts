@@ -1,4 +1,5 @@
 import { Boom } from '@hapi/boom'
+import { Buffer } from 'node:buffer'
 import { Readable } from 'stream'
 import type { ReadableStream as WebReadableStream } from 'stream/web'
 import type { UploadMediaResult, WasmWhatsAppClient } from 'whatsapp-rust-bridge'
@@ -10,7 +11,7 @@ import {
 	type MediaType,
 	URL_REGEX,
 	WA_DEFAULT_EPHEMERAL
-} from '../Defaults'
+} from '../Defaults/index'
 import type {
 	AnyMediaMessageContent,
 	AnyMessageContent,
@@ -22,9 +23,9 @@ import type {
 	WAMessage,
 	WAMessageContent,
 	WATextMessage
-} from '../Types'
-import { WAMessageStatus, WAProto } from '../Types'
-import { isJidGroup, isJidNewsletter, isJidStatusBroadcast, jidNormalizedUser } from '../WABinary'
+} from '../Types/index'
+import { WAMessageStatus, WAProto } from '../Types/index'
+import { isJidGroup, isJidNewsletter, isJidStatusBroadcast, jidNormalizedUser } from '../WABinary/index'
 import { unixTimestampSeconds } from './generics'
 import type { ILogger } from './logger'
 import {

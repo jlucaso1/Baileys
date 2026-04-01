@@ -10,6 +10,7 @@ import { jest } from '@jest/globals'
 import { mkdtempSync, rmSync } from 'node:fs'
 import { tmpdir } from 'node:os'
 import { join } from 'node:path'
+import process from 'node:process'
 import P from 'pino'
 import makeWASocket, { type BinaryNode, DisconnectReason, jidNormalizedUser, useMultiFileAuthState } from '../../index'
 

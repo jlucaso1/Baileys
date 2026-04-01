@@ -1,6 +1,6 @@
 import type { EventEmitter } from 'events'
 import type { WasmWhatsAppClient } from 'whatsapp-rust-bridge'
-import type { BaileysEventEmitter, SocketConfig } from '../Types'
+import type { BaileysEventEmitter, SocketConfig } from '../Types/index'
 import type { ILogger } from '../Utils/logger'
 
 /** Shared context passed to all Socket method factories */

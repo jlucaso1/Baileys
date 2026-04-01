@@ -1,4 +1,4 @@
-import type { ChatModification, WAPatchName } from '../Types'
+import type { ChatModification, WAPatchName } from '../Types/index'
 import type { SocketContext } from './types'
 
 export const makeChatActionMethods = (ctx: SocketContext) => ({

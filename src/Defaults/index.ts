@@ -1,4 +1,4 @@
-import type { AuthenticationState, SocketConfig, WAVersion } from '../Types'
+import type { AuthenticationState, SocketConfig, WAVersion } from '../Types/index'
 import { Browsers } from '../Utils/browser-utils'
 import logger from '../Utils/logger'
 

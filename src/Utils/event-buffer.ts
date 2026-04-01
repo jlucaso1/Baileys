@@ -1,5 +1,5 @@
 import EventEmitter from 'events'
-import type { BaileysEventEmitter, BaileysEventMap } from '../Types'
+import type { BaileysEventEmitter, BaileysEventMap } from '../Types/index'
 
 /**
  * Simple event emitter with `process()` support for Baileys events.
