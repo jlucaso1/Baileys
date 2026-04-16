@@ -89,8 +89,9 @@ export const generateLinkPreviewIfRequired = async (
 	getUrlInfo: MessageGenerationOptions['getUrlInfo'],
 	logger: MessageGenerationOptions['logger']
 ) => {
+	if (!getUrlInfo) return
 	const url = extractUrlFromText(text)
-	if (!!getUrlInfo && url) {
+	if (url) {
 		try {
 			const urlInfo = await getUrlInfo(url)
 			return urlInfo
