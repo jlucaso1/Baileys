@@ -1,4 +1,4 @@
-import { platform, release } from 'os'
+import { platform, release } from 'node:os'
 import type { BrowsersMap } from '../Types/index'
 
 const PLATFORM_MAP = {

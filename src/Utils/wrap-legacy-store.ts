@@ -11,9 +11,9 @@
  * ```
  */
 
-import { mkdir, readFile, stat, unlink, writeFile } from 'fs/promises'
 import { Buffer } from 'node:buffer'
-import { join } from 'path'
+import { mkdir, readFile, stat, unlink, writeFile } from 'node:fs/promises'
+import { join } from 'node:path'
 import type { JsStoreCallbacks } from 'whatsapp-rust-bridge'
 import { proto } from '../../WAProto/index.js'
 import type { AuthenticationCreds, AuthenticationState, LTHashState, SignalDataTypeMap } from '../Types/index'

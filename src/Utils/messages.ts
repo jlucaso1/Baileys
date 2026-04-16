@@ -1,6 +1,6 @@
 import { Boom } from '@hapi/boom'
 import { Buffer } from 'node:buffer'
-import { Readable } from 'stream'
+import { Readable } from 'node:stream'
 import type { ReadableStream as WebReadableStream } from 'stream/web'
 import type { UploadMediaResult, WasmWhatsAppClient } from 'whatsapp-rust-bridge'
 import { proto } from '../../WAProto/index.js'

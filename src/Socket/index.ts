@@ -1,6 +1,6 @@
 import { Boom } from '@hapi/boom'
-import { EventEmitter } from 'events'
 import { Buffer } from 'node:buffer'
+import { EventEmitter } from 'node:events'
 import { createWhatsAppClient, initWasmEngine, type WasmWhatsAppClient } from 'whatsapp-rust-bridge'
 import type { proto } from '../../WAProto/index.js'
 import { DEFAULT_CONNECTION_CONFIG } from '../Defaults/index'

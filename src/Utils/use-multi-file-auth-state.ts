@@ -1,4 +1,4 @@
-import { mkdir, stat } from 'fs/promises'
+import { mkdir, stat } from 'node:fs/promises'
 import type { AuthenticationState } from '../Types/index'
 import { useBridgeStore } from './use-bridge-store'
 
