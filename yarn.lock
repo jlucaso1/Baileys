@@ -2546,7 +2546,7 @@ __metadata:
     tsc-esm-fix: "npm:^3.1.2"
     tsx: "npm:^4.20.3"
     typescript: "npm:^5.8.2"
-    whatsapp-rust-bridge: "npm:0.6.0-alpha.7"
+    whatsapp-rust-bridge: "npm:0.6.0-alpha.8"
   peerDependencies:
     audio-decode: ^2.1.3
     jimp: ^1.6.0
@@ -8799,10 +8799,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"whatsapp-rust-bridge@npm:0.6.0-alpha.7":
-  version: 0.6.0-alpha.7
-  resolution: "whatsapp-rust-bridge@npm:0.6.0-alpha.7"
-  checksum: 10c0/f40df1eaea6659c0d2063c5c25a3a4e345dcebe339ba13840e020a9a5594a43c4ef373a15a31c3531654ba697abdc24d1a0d8dbd0aa178e7929afae60a9d2192
+"whatsapp-rust-bridge@npm:0.6.0-alpha.8":
+  version: 0.6.0-alpha.8
+  resolution: "whatsapp-rust-bridge@npm:0.6.0-alpha.8"
+  checksum: 10c0/cb015b04541ab1418099dadc4bea737d17ad9f5ecd64486bec01220764585e4e35ec39897354eac04559f1b43ec38f8fc0d09b451d9106bbec28df93be6beb8b
   languageName: node
   linkType: hard
 

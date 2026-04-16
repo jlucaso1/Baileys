@@ -342,7 +342,6 @@ export const makeEventHandler = (
 			case 'contact_number_changed':
 			case 'contact_sync_requested':
 			case 'user_about_update':
-			case 'joined_group':
 				// These events exist but have no standard Baileys equivalent
 				ctx.logger.trace({ eventType: event.type }, 'bridge event (no Baileys mapping)')
 				break
