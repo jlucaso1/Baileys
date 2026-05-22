@@ -3,11 +3,16 @@ import * as libsignal from 'libsignal'
 // @ts-ignore
 import { PreKeyWhisperMessage } from 'libsignal/src/protobufs'
 import { LRUCache } from 'lru-cache'
-import type { LIDMapping, SignalAuthState, SignalKeyStoreWithTransaction } from '../Types'
+import type {
+	LIDMapping,
+	RecordRef,
+	SignalAuthState,
+	SignalKeyStoreWithRecordTransaction,
+	SignalKeyStoreWithTransaction
+} from '../Types'
 import type { SignalRepositoryWithLIDStore } from '../Types/Signal'
 import { generateSignalPubKey } from '../Utils'
 import type { ILogger } from '../Utils/logger'
-import { makeKeyedMutex } from '../Utils/make-mutex'
 import {
 	isHostedLidUser,
 	isHostedPnUser,
@@ -22,6 +27,37 @@ import { SenderKeyName } from './Group/sender-key-name'
 import { SenderKeyRecord } from './Group/sender-key-record'
 import { GroupCipher, GroupSessionBuilder, SenderKeyDistributionMessage } from './Group'
 import { LIDMappingStore } from './lid-mapping'
+
+/**
+ * Resolve a signal-protocol-address string (`user[_domainType].device`) to its
+ * post-LID-mapping form. If `id` is already a LID/HOSTED_LID address, or no PN
+ * mapping exists, it's returned unchanged.
+ *
+ * Lifted from `signalStorage()`'s closure (where it was hidden as a private
+ * helper) so the repository methods can pre-resolve before acquiring locks —
+ * otherwise `transactWith` would lock the raw PN id while
+ * `loadSession`/`storeSession`/`saveIdentity` internally rewrite to the LID
+ * form, letting two callers think they're touching different records when
+ * they're actually mutating the same underlying storage row.
+ */
+async function resolveSignalAddressId(id: string, lidMapping: LIDMappingStore): Promise<string> {
+	if (!id.includes('.')) return id
+
+	const [deviceId, device] = id.split('.')
+	const [user, domainType_] = deviceId!.split('_')
+	const domainType = parseInt(domainType_ || '0')
+
+	if (domainType === WAJIDDomains.LID || domainType === WAJIDDomains.HOSTED_LID) return id
+
+	const pnJid = `${user!}${device !== '0' ? `:${device}` : ''}@${domainType === WAJIDDomains.HOSTED ? 'hosted' : 's.whatsapp.net'}`
+	const lidForPN = await lidMapping.getLIDForPN(pnJid)
+	if (lidForPN) {
+		const lidAddr = jidToSignalProtocolAddress(lidForPN)
+		return lidAddr.toString()
+	}
+
+	return id
+}
 
 /** Extract identity key from PreKeyWhisperMessage for identity change detection */
 function extractIdentityFromPkmsg(ciphertext: Uint8Array): Uint8Array | undefined {
@@ -55,8 +91,31 @@ export function makeLibSignalRepository(
 ): SignalRepositoryWithLIDStore {
 	const lidMapping = new LIDMappingStore(auth.keys as SignalKeyStoreWithTransaction, logger, pnToLIDFunc)
 	const storage = signalStorage(auth, lidMapping)
+	// Bound delegate so repository methods can pre-resolve before acquiring locks.
+	const resolveLIDSignalAddress = (id: string) => resolveSignalAddressId(id, lidMapping)
 
-	const parsedKeys = auth.keys as SignalKeyStoreWithTransaction
+	/**
+	 * Build a per-call `signalStorage` instance whose resolver returns
+	 * `wireJid` for `rawAddr` (and falls through to the standard `lidMapping`
+	 * lookup for any other id libsignal might pass — e.g. the participant
+	 * field on a sender-key operation, which is not the one we pre-resolved).
+	 *
+	 * This is what closes the TOCTOU on resolved-address divergence: the
+	 * outer transactWith locks on `wireJid`, and every storage call libsignal
+	 * makes inside that scope uses the SAME `wireJid` for the row it
+	 * reads/writes — no independent re-resolution that could land on a
+	 * different row if the mapping changed mid-flight.
+	 */
+	const pinResolutionForStorage = (rawAddr: string, wireJid: string) =>
+		signalStorage(auth, lidMapping, async (id: string) => {
+			if (id === rawAddr) return wireJid
+			return resolveSignalAddressId(id, lidMapping)
+		})
+
+	// Baileys' `addTransactionCapability` returns a store with `transactWith`
+	// implemented; narrow to the record-transaction variant so the internal
+	// call sites don't have to null-check the (publicly optional) method.
+	const parsedKeys = auth.keys as SignalKeyStoreWithRecordTransaction
 	const migratedSessionCache = new LRUCache<string, true>({
 		// Bounded to prevent unbounded growth for high-cardinality accounts.
 		max: 10_000,
@@ -64,48 +123,6 @@ export function makeLibSignalRepository(
 		ttlAutopurge: true,
 		updateAgeOnGet: true
 	})
-
-	// `parsedKeys.transaction` skips its mutex when nested in another ALS
-	// transaction, so two outbound sends triggered from different recv
-	// handlers can hit the same Signal session in parallel. This mutex
-	// always acquires, keyed by the resolved (PN→LID) Signal address so
-	// PN- and LID-addressed calls converge.
-	const sessionMutex = makeKeyedMutex()
-
-	// Sorted to prevent deadlocks between callers asking for overlapping sets.
-	const withSessionLocks = async <T>(keys: string[], work: () => Promise<T>): Promise<T> => {
-		const sorted = Array.from(new Set(keys)).sort()
-		const acquire = async (idx: number): Promise<T> => {
-			if (idx >= sorted.length) return work()
-			return sessionMutex.mutex(sorted[idx]!, () => acquire(idx + 1))
-		}
-
-		return acquire(0)
-	}
-
-	// `signalStorage.{load,store}Session` resolve PN→LID internally; the cipher
-	// is constructed with this pre-resolved address so storage's `id` is already
-	// LID-form and its internal re-resolution becomes a no-op. Without this,
-	// the LID mapping could populate between mutex acquisition and the storage
-	// hook, locking one key and mutating another.
-	const resolveSignalAddress = async (jid: string): Promise<libsignal.ProtocolAddress> => {
-		if (isPnUser(jid) || isHostedPnUser(jid)) {
-			const lidForPN = await lidMapping.getLIDForPN(jid)
-			if (lidForPN) {
-				return jidToSignalProtocolAddress(lidForPN)
-			}
-		}
-
-		return jidToSignalProtocolAddress(jid)
-	}
-
-	const resolveSessionKey = async (jid: string): Promise<string> => (await resolveSignalAddress(jid)).toString()
-
-	// Fall back to `transaction` for external auth stores that don't implement
-	// `isolatedTransaction`. The fallback reintroduces the visibility race for
-	// those stores but preserves backwards compatibility.
-	const runIsolated = <T>(exec: () => Promise<T>, key: string): Promise<T> =>
-		parsedKeys.isolatedTransaction ? parsedKeys.isolatedTransaction(exec) : parsedKeys.transaction(exec, key)
 
 	const ensureSenderKeyAndCreateSkdm = async (group: string, meId: string) => {
 		const senderName = jidToSignalSenderKeyName(group, meId)
@@ -124,10 +141,9 @@ export function makeLibSignalRepository(
 			const senderName = jidToSignalSenderKeyName(group, authorJid)
 			const cipher = new GroupCipher(storage, senderName)
 
-			// Use transaction to ensure atomicity
-			return parsedKeys.transaction(async () => {
+			return parsedKeys.transactWith({ records: [{ type: 'sender-key', id: senderName.toString() }] }, async () => {
 				return cipher.decrypt(msg)
-			}, group)
+			})
 		},
 		async processSenderKeyDistributionMessage({ item, authorJid }) {
 			const builder = new GroupSessionBuilder(storage)
@@ -136,7 +152,6 @@ export function makeLibSignalRepository(
 			}
 
 			const senderName = jidToSignalSenderKeyName(item.groupId, authorJid)
-
 			const senderMsg = new SenderKeyDistributionMessage(
 				null,
 				null,
@@ -145,78 +160,112 @@ export function makeLibSignalRepository(
 				item.axolotlSenderKeyDistributionMessage
 			)
 			const senderNameStr = senderName.toString()
-			const { [senderNameStr]: senderKey } = await auth.keys.get('sender-key', [senderNameStr])
-			if (!senderKey) {
-				await storage.storeSenderKey(senderName, new SenderKeyRecord())
-			}
 
-			return parsedKeys.transaction(async () => {
+			// The "ensure a SenderKeyRecord exists" check runs INSIDE the
+			// per-record transactWith below. The previous pre-lock get + write
+			// here was both redundant and unsafe: a concurrent
+			// `processSenderKeyDistributionMessage` (or any other writer to the
+			// same sender-key record) could commit a populated record between
+			// our pre-lock read and our pre-lock write, which our write would
+			// then clobber with an empty record. Removing it eliminates that
+			// race window without changing observable behavior — the in-lock
+			// re-check handles the first-time-seeing-this-sender case.
+			return parsedKeys.transactWith({ records: [{ type: 'sender-key', id: senderNameStr }] }, async () => {
 				const { [senderNameStr]: senderKey } = await auth.keys.get('sender-key', [senderNameStr])
 				if (!senderKey) {
 					await storage.storeSenderKey(senderName, new SenderKeyRecord())
 				}
 
 				await builder.process(senderName, senderMsg)
-			}, item.groupId)
+			})
 		},
 		async decryptMessage({ jid, type, ciphertext }) {
-			const addr = await resolveSignalAddress(jid)
-			const session = new libsignal.SessionCipher(storage, addr)
-			const sessionKey = addr.toString()
+			const addr = jidToSignalProtocolAddress(jid)
+			const addrStr = addr.toString()
 
-			// `saveIdentity` may delete the session when the identity key
-			// changes, so it must hold the lock alongside the decrypt.
-			return sessionMutex.mutex(sessionKey, () =>
-				runIsolated(async () => {
-					if (type === 'pkmsg') {
-						const identityKey = extractIdentityFromPkmsg(ciphertext)
-						if (identityKey) {
-							const identityChanged = await storage.saveIdentity(sessionKey, identityKey)
-							if (identityChanged) {
-								logger.info(
-									{ jid, addr: sessionKey },
-									'identity key changed or new contact, session will be re-established'
-								)
-							}
+			// Pre-resolve the wire id ONCE, then thread it through libsignal's
+			// internal storage calls via a pinned `signalStorage` instance.
+			// Without pinning, `storage.loadSession`/`storeSession`/`saveIdentity`
+			// each independently re-resolve via `lidMapping` — if a mapping
+			// change lands between our pre-resolve (for the lock) and any of
+			// those internal calls, the actual row hit can drift away from
+			// the locked record. Pinning makes the entire operation use
+			// `wireJid` everywhere `addrStr` would appear.
+			const wireJid = await resolveLIDSignalAddress(addrStr)
+			const pinnedStorage = pinResolutionForStorage(addrStr, wireJid)
+			const session = new libsignal.SessionCipher(pinnedStorage, addr)
+
+			// H1 fix: pkmsg identity-key save runs INSIDE the per-jid transaction
+			// scope, sharing the session+identity-key locks with the decrypt
+			// itself. Previously the save happened before the transaction was
+			// opened, so a concurrent send for the same jid could load the stale
+			// session under its own meId-keyed lock and then commit it back over
+			// the cleared one.
+			const records: RecordRef[] = [{ type: 'session', id: wireJid }]
+			if (type === 'pkmsg') {
+				records.push({ type: 'identity-key', id: wireJid })
+			}
+
+			async function doDecrypt() {
+				let result: Buffer
+				switch (type) {
+					case 'pkmsg':
+						result = await session.decryptPreKeyWhisperMessage(ciphertext)
+						break
+					case 'msg':
+						result = await session.decryptWhisperMessage(ciphertext)
+						break
+				}
+
+				return result
+			}
+
+			return parsedKeys.transactWith({ records }, async () => {
+				if (type === 'pkmsg') {
+					const identityKey = extractIdentityFromPkmsg(ciphertext)
+					if (identityKey) {
+						const identityChanged = await pinnedStorage.saveIdentity(addrStr, identityKey)
+						if (identityChanged) {
+							logger.info({ jid, addr: addrStr }, 'identity key changed or new contact, session will be re-established')
 						}
 					}
+				}
 
-					switch (type) {
-						case 'pkmsg':
-							return await session.decryptPreKeyWhisperMessage(ciphertext)
-						case 'msg':
-							return await session.decryptWhisperMessage(ciphertext)
-					}
-				}, sessionKey)
-			)
+				return await doDecrypt()
+			})
 		},
 
 		async encryptMessage({ jid, data }) {
-			const addr = await resolveSignalAddress(jid)
-			const cipher = new libsignal.SessionCipher(storage, addr)
-			const sessionKey = addr.toString()
-			return sessionMutex.mutex(sessionKey, () =>
-				runIsolated(async () => {
-					const { type: sigType, body } = await cipher.encrypt(data)
-					const type: 'pkmsg' | 'msg' = sigType === 3 ? 'pkmsg' : 'msg'
-					return { type, ciphertext: Buffer.from(body, 'binary') }
-				}, sessionKey)
-			)
+			const addr = jidToSignalProtocolAddress(jid)
+			const addrStr = addr.toString()
+			// Pre-resolve + pin so libsignal's internal storage calls use the
+			// same wire id we lock on (see decryptMessage for rationale).
+			const wireJid = await resolveLIDSignalAddress(addrStr)
+			const pinnedStorage = pinResolutionForStorage(addrStr, wireJid)
+			const cipher = new libsignal.SessionCipher(pinnedStorage, addr)
+
+			return parsedKeys.transactWith({ records: [{ type: 'session', id: wireJid }] }, async () => {
+				const { type: sigType, body } = await cipher.encrypt(data)
+				const type = sigType === 3 ? 'pkmsg' : 'msg'
+				return { type, ciphertext: Buffer.from(body, 'binary') }
+			})
 		},
 
 		async encryptGroupMessage({ group, meId, data }) {
-			return parsedKeys.transaction(async () => {
-				const { senderName, skdm } = await ensureSenderKeyAndCreateSkdm(group, meId)
+			const senderName = jidToSignalSenderKeyName(group, meId)
+			return parsedKeys.transactWith({ records: [{ type: 'sender-key', id: senderName.toString() }] }, async () => {
+				const { skdm } = await ensureSenderKeyAndCreateSkdm(group, meId)
 				const ciphertext = await new GroupCipher(storage, senderName).encrypt(data)
 				return { ciphertext, senderKeyDistributionMessage: skdm.serialize() }
-			}, group)
+			})
 		},
 
 		async getSenderKeyDistributionMessage({ group, meId }) {
-			return parsedKeys.transaction(async () => {
+			const senderName = jidToSignalSenderKeyName(group, meId)
+			return parsedKeys.transactWith({ records: [{ type: 'sender-key', id: senderName.toString() }] }, async () => {
 				const { skdm } = await ensureSenderKeyAndCreateSkdm(group, meId)
 				return skdm.serialize()
-			}, group)
+			})
 		},
 
 		async hasSenderKey({ group, meId }) {
@@ -246,15 +295,18 @@ export function makeLibSignalRepository(
 
 		async injectE2ESession({ jid, session }) {
 			logger.trace({ jid }, 'injecting E2EE session')
-			const addr = await resolveSignalAddress(jid)
-			const cipher = new libsignal.SessionBuilder(storage, addr)
-			const sessionKey = addr.toString()
-			return sessionMutex.mutex(sessionKey, () =>
-				runIsolated(async () => {
-					// `.d.ts` marks prekey required but runtime allows it absent.
-					await cipher.initOutgoing(session as unknown as Parameters<typeof cipher.initOutgoing>[0])
-				}, sessionKey)
-			)
+			const addr = jidToSignalProtocolAddress(jid)
+			const addrStr = addr.toString()
+			// Pre-resolve + pin so libsignal's internal storage calls use the
+			// same wire id we lock on (see decryptMessage for rationale).
+			const wireJid = await resolveLIDSignalAddress(addrStr)
+			const pinnedStorage = pinResolutionForStorage(addrStr, wireJid)
+			const cipher = new libsignal.SessionBuilder(pinnedStorage, addr)
+			return parsedKeys.transactWith({ records: [{ type: 'session', id: wireJid }] }, async () => {
+				// libsignal runtime accepts an absent prekey (initOutgoing checks `device.preKey && ...`)
+				// but the bundled .d.ts marks it required.
+				await cipher.initOutgoing(session as unknown as Parameters<typeof cipher.initOutgoing>[0])
+			})
 		},
 		jidToSignalProtocolAddress(jid) {
 			return jidToSignalProtocolAddress(jid).toString()
@@ -282,32 +334,29 @@ export function makeLibSignalRepository(
 			}
 		},
 
-		async deleteSessionForJid(jid: string) {
-			const sessionKey = await resolveSessionKey(jid)
-			await sessionMutex.mutex(sessionKey, () =>
-				runIsolated(async () => {
-					await auth.keys.set({ session: { [sessionKey]: null } })
-				}, sessionKey)
-			)
-		},
-
 		async deleteSession(jids: string[]) {
 			if (!jids.length) return
 
+			// Convert JIDs to signal addresses, pre-resolve each to its wire id
+			// so the lock and the actual session-row deletion target the SAME
+			// storage record (PN → LID mapping is transparent inside
+			// `signalStorage`, so without pre-resolution the lock could be on
+			// the PN form while the delete lands on the LID form).
 			const sessionUpdates: { [key: string]: null } = {}
-			const sessionKeys = await Promise.all(
-				jids.map(async jid => {
-					const sessionKey = await resolveSessionKey(jid)
-					sessionUpdates[sessionKey] = null
-					return sessionKey
-				})
-			)
+			const sessionAddrs: string[] = []
+			for (const jid of jids) {
+				const addr = jidToSignalProtocolAddress(jid).toString()
+				const wireJid = await resolveLIDSignalAddress(addr)
+				sessionUpdates[wireJid] = null
+				sessionAddrs.push(wireJid)
+			}
 
-			return withSessionLocks(sessionKeys, () =>
-				runIsolated(async () => {
-					await auth.keys.set({ session: sessionUpdates })
-				}, sessionKeys[0]!)
-			)
+			// H4 fix: lock by the actual session record ids instead of a synthetic
+			// `delete-N-sessions` key. Now serializes against concurrent
+			// encrypt/decrypt transactions for any of these jids.
+			return parsedKeys.transactWith({ records: sessionAddrs.map(id => ({ type: 'session', id })) }, async () => {
+				await auth.keys.set({ session: sessionUpdates })
+			})
 		},
 
 		close() {
@@ -380,7 +429,10 @@ export function makeLibSignalRepository(
 				'bulk device migration complete - all user devices processed'
 			)
 
-			// Prepare migration operations with addressing metadata
+			// Prepare migration operations with addressing metadata up-front so
+			// we can build a precise lock scope before entering the critical
+			// section (H4 fix: lock the actual session record ids + the
+			// device-list record, instead of a synthetic `migrate-N-...` key).
 			type MigrationOp = {
 				fromJid: string
 				toJid: string
@@ -407,60 +459,62 @@ export function makeLibSignalRepository(
 				}
 			})
 
-			// Lock PN and LID per device so concurrent encrypt/decrypt can't
-			// race the read+rewrite below.
-			const mutexKeys = migrationOps.flatMap(op => [op.fromAddr.toString(), op.toAddr.toString()])
+			const sessionRecords: RecordRef[] = []
+			for (const op of migrationOps) {
+				sessionRecords.push({ type: 'session', id: op.fromAddr.toString() })
+				sessionRecords.push({ type: 'session', id: op.toAddr.toString() })
+			}
 
-			return withSessionLocks(mutexKeys, () =>
-				runIsolated(
-					async (): Promise<{ migrated: number; skipped: number; total: number }> => {
-						const totalOps = migrationOps.length
-						let migratedCount = 0
+			return parsedKeys.transactWith(
+				{
+					records: [{ type: 'device-list', id: user }, ...sessionRecords]
+				},
+				async (): Promise<{ migrated: number; skipped: number; total: number }> => {
+					const totalOps = migrationOps.length
+					let migratedCount = 0
 
-						// Bulk fetch PN sessions - already exist (verified during device discovery)
-						const pnAddrStrings = Array.from(new Set(migrationOps.map(op => op.fromAddr.toString())))
-						const pnSessions = await parsedKeys.get('session', pnAddrStrings)
+					// Bulk fetch PN sessions - already exist (verified during device discovery)
+					const pnAddrStrings = Array.from(new Set(migrationOps.map(op => op.fromAddr.toString())))
+					const pnSessions = await parsedKeys.get('session', pnAddrStrings)
 
-						// Prepare bulk session updates (PN → LID migration + deletion)
-						const sessionUpdates: { [key: string]: Uint8Array | null } = {}
+					// Prepare bulk session updates (PN → LID migration + deletion)
+					const sessionUpdates: { [key: string]: Uint8Array | null } = {}
 
+					for (const op of migrationOps) {
+						const pnAddrStr = op.fromAddr.toString()
+						const lidAddrStr = op.toAddr.toString()
+
+						const pnSession = pnSessions[pnAddrStr]
+						if (pnSession) {
+							// Session exists (guaranteed from device discovery)
+							const fromSession = libsignal.SessionRecord.deserialize(pnSession)
+							if (fromSession.haveOpenSession()) {
+								// Queue for bulk update: copy to LID, delete from PN
+								sessionUpdates[lidAddrStr] = fromSession.serialize()
+								sessionUpdates[pnAddrStr] = null
+
+								migratedCount++
+							}
+						}
+					}
+
+					// Single bulk session update for all migrations
+					if (Object.keys(sessionUpdates).length > 0) {
+						await parsedKeys.set({ session: sessionUpdates })
+						logger.debug({ migratedSessions: migratedCount }, 'bulk session migration complete')
+
+						// Cache device-level migrations
 						for (const op of migrationOps) {
-							const pnAddrStr = op.fromAddr.toString()
-							const lidAddrStr = op.toAddr.toString()
-
-							const pnSession = pnSessions[pnAddrStr]
-							if (pnSession) {
-								// Session exists (guaranteed from device discovery)
-								const fromSession = libsignal.SessionRecord.deserialize(pnSession)
-								if (fromSession.haveOpenSession()) {
-									// Queue for bulk update: copy to LID, delete from PN
-									sessionUpdates[lidAddrStr] = fromSession.serialize()
-									sessionUpdates[pnAddrStr] = null
-
-									migratedCount++
-								}
+							if (sessionUpdates[op.toAddr.toString()]) {
+								const deviceKey = `${op.pnUser}.${op.deviceId}`
+								migratedSessionCache.set(deviceKey, true)
 							}
 						}
+					}
 
-						// Single bulk session update for all migrations
-						if (Object.keys(sessionUpdates).length > 0) {
-							await parsedKeys.set({ session: sessionUpdates })
-							logger.debug({ migratedSessions: migratedCount }, 'bulk session migration complete')
-
-							// Cache device-level migrations
-							for (const op of migrationOps) {
-								if (sessionUpdates[op.toAddr.toString()]) {
-									const deviceKey = `${op.pnUser}.${op.deviceId}`
-									migratedSessionCache.set(deviceKey, true)
-								}
-							}
-						}
-
-						const skippedCount = totalOps - migratedCount
-						return { migrated: migratedCount, skipped: skippedCount, total: totalOps }
-					},
-					mutexKeys[0] ?? `migrate-${jidDecode(toJid)?.user}`
-				)
+					const skippedCount = totalOps - migratedCount
+					return { migrated: migratedCount, skipped: skippedCount, total: totalOps }
+				}
 			)
 		}
 	}
@@ -494,32 +548,24 @@ const jidToSignalSenderKeyName = (group: string, user: string): SenderKeyName =>
 
 function signalStorage(
 	{ creds, keys }: SignalAuthState,
-	lidMapping: LIDMappingStore
+	lidMapping: LIDMappingStore,
+	/**
+	 * Optional pinned-resolution override. When the repository methods
+	 * pre-resolve `addrStr → wireJid` to scope a `transactWith` lock, they
+	 * pass a per-call `signalStorage` instance with `pinnedResolver` set so
+	 * libsignal's internal storage calls don't independently re-resolve
+	 * (which would TOCTOU against a mid-flight LID mapping change — see
+	 * Stage 3 round 2 commit). The function receives the same raw `id`
+	 * libsignal would pass and returns the wire form to use, bypassing
+	 * any consult of `lidMapping`.
+	 */
+	pinnedResolver?: (id: string) => Promise<string>
 ): SenderKeyStore &
 	libsignal.SignalStorage & {
 		loadIdentityKey(id: string): Promise<Uint8Array | undefined>
 		saveIdentity(id: string, identityKey: Uint8Array): Promise<boolean>
 	} {
-	// Shared function to resolve PN signal address to LID if mapping exists
-	const resolveLIDSignalAddress = async (id: string): Promise<string> => {
-		if (id.includes('.')) {
-			const [deviceId, device] = id.split('.')
-			const [user, domainType_] = deviceId!.split('_')
-			const domainType = parseInt(domainType_ || '0')
-
-			if (domainType === WAJIDDomains.LID || domainType === WAJIDDomains.HOSTED_LID) return id
-
-			const pnJid = `${user!}${device !== '0' ? `:${device}` : ''}@${domainType === WAJIDDomains.HOSTED ? 'hosted' : 's.whatsapp.net'}`
-
-			const lidForPN = await lidMapping.getLIDForPN(pnJid)
-			if (lidForPN) {
-				const lidAddr = jidToSignalProtocolAddress(lidForPN)
-				return lidAddr.toString()
-			}
-		}
-
-		return id
-	}
+	const resolveLIDSignalAddress = pinnedResolver ?? ((id: string) => resolveSignalAddressId(id, lidMapping))
 
 	return {
 		loadSession: async (id: string) => {
@@ -550,27 +596,43 @@ function signalStorage(
 		},
 		saveIdentity: async (id: string, identityKey: Uint8Array): Promise<boolean> => {
 			const wireJid = await resolveLIDSignalAddress(id)
-			const { [wireJid]: existingKey } = await keys.get('identity-key', [wireJid])
 
-			const keysMatch =
-				existingKey?.length === identityKey.length && existingKey.every((byte, i) => byte === identityKey[i])
+			// H3 fix: the read-then-write sequence and the cross-type
+			// session+identity-key write run inside a single transactWith. The
+			// commit lands as ONE state.set covering both types — readers can
+			// no longer observe `session=null` paired with the OLD identity-key.
+			const txKeys = keys as SignalKeyStoreWithRecordTransaction
+			return txKeys.transactWith(
+				{
+					records: [
+						{ type: 'identity-key', id: wireJid },
+						{ type: 'session', id: wireJid }
+					]
+				},
+				async () => {
+					const { [wireJid]: existingKey } = await txKeys.get('identity-key', [wireJid])
 
-			if (existingKey && !keysMatch) {
-				// Identity changed - clear session and update key
-				await keys.set({
-					session: { [wireJid]: null },
-					'identity-key': { [wireJid]: identityKey }
-				})
-				return true
-			}
+					const keysMatch =
+						existingKey?.length === identityKey.length && existingKey.every((byte, i) => byte === identityKey[i])
 
-			if (!existingKey) {
-				// New contact - Trust on First Use (TOFU)
-				await keys.set({ 'identity-key': { [wireJid]: identityKey } })
-				return true
-			}
+					if (existingKey && !keysMatch) {
+						// Identity changed — clear session and update key atomically.
+						await txKeys.set({
+							session: { [wireJid]: null },
+							'identity-key': { [wireJid]: identityKey }
+						})
+						return true
+					}
 
-			return false
+					if (!existingKey) {
+						// New contact - Trust on First Use (TOFU)
+						await txKeys.set({ 'identity-key': { [wireJid]: identityKey } })
+						return true
+					}
+
+					return false
+				}
+			)
 		},
 		loadPreKey: async (id: number | string) => {
 			const keyId = id.toString()

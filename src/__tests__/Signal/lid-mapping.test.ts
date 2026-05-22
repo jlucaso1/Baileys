@@ -1,16 +1,21 @@
 import { jest } from '@jest/globals'
 import P from 'pino'
 import { LIDMappingStore } from '../../Signal/lid-mapping'
-import type { LIDMapping, SignalDataTypeMap, SignalKeyStoreWithTransaction } from '../../Types'
+import type {
+	LIDMapping,
+	SignalDataTypeMap,
+	SignalKeyStoreWithRecordTransaction,
+	SignalKeyStoreWithTransaction
+} from '../../Types'
 
 const HOSTED_DEVICE_ID = 99
 
-const mockKeys: jest.Mocked<SignalKeyStoreWithTransaction> = {
+const mockKeys: jest.Mocked<SignalKeyStoreWithRecordTransaction> = {
 	get: jest.fn<SignalKeyStoreWithTransaction['get']>() as any,
 	set: jest.fn<SignalKeyStoreWithTransaction['set']>(),
 	transaction: jest.fn<SignalKeyStoreWithTransaction['transaction']>(async (work: () => any) => await work()) as any,
-	isolatedTransaction: jest.fn<NonNullable<SignalKeyStoreWithTransaction['isolatedTransaction']>>(
-		async (work: () => any) => await work()
+	transactWith: jest.fn<SignalKeyStoreWithRecordTransaction['transactWith']>(
+		async (_scope, work) => await work()
 	) as any,
 	isInTransaction: jest.fn<SignalKeyStoreWithTransaction['isInTransaction']>()
 }

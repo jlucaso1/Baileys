@@ -14,6 +14,7 @@ import {
 	UPLOAD_TIMEOUT
 } from '../Defaults'
 import {
+	type AuthenticationCreds,
 	type LIDMapping,
 	type NewChatMessageCapInfo,
 	QueryIds,
@@ -160,16 +161,53 @@ export const makeSocket = (config: SocketConfig) => {
 	}
 
 	/**
-	 * Wait for a message with a certain tag to be received
-	 * @param msgId the message tag to await
-	 * @param timeoutMs timeout after which the promise will reject
+	 * Tracks the message tags currently awaiting a server response. Used to
+	 * detect — and warn about — duplicate stanzas the server stutter-sends for
+	 * the same tag (M9). The Set is cleared in `waitForMessage`'s finally block.
 	 */
-	const waitForMessage = async <T>(msgId: string, timeoutMs = defaultQueryTimeoutMs) => {
+	const inFlightQueryTags = new Set<string>()
+
+	/**
+	 * Wait for a message with a certain tag to be received.
+	 *
+	 * Stage 8 (M9): on timeout this now throws a typed `QueryTimeoutError`
+	 * instead of resolving `undefined`. The previous behavior let downstream
+	 * `if (result && 'tag' in result)` checks fall through, masking timeouts
+	 * as "missing tag" or "TypeError on result.tag" depending on the caller.
+	 */
+	const waitForMessage = async <T>(msgId: string, timeoutMs = defaultQueryTimeoutMs): Promise<T> => {
+		if (inFlightQueryTags.has(msgId)) {
+			// Should not happen under normal use — `query` auto-generates ids
+			// — but a caller that hand-rolls a tag could collide. The
+			// previous behavior just logged a warning and registered the
+			// second listener anyway, meaning the original waiter could see
+			// its response stolen by the second registration's stanza
+			// handler (or vice versa). Throw instead so the second caller
+			// learns immediately and can choose a different tag; callers
+			// can branch on `err.output.statusCode === 409`.
+			throw new Boom('duplicate in-flight query tag', {
+				statusCode: 409,
+				data: { msgId }
+			})
+		}
+
+		inFlightQueryTags.add(msgId)
+
 		let onRecv: ((data: T) => void) | undefined
 		let onErr: ((err: Error) => void) | undefined
+		let resolvedOnce = false
 		try {
 			const result = await promiseTimeout<T>(timeoutMs, (resolve, reject) => {
 				onRecv = data => {
+					if (resolvedOnce) {
+						// Server emitted a second stanza for the same tag.
+						// Surface it so operators can investigate; the first
+						// response has already been delivered to the caller.
+						logger?.warn?.({ msgId }, 'duplicate response for in-flight query tag (later response dropped)')
+						return
+					}
+
+					resolvedOnce = true
 					resolve(data)
 				}
 
@@ -190,14 +228,17 @@ export const makeSocket = (config: SocketConfig) => {
 			})
 			return result
 		} catch (error) {
-			// Catch timeout and return undefined instead of throwing
 			if (error instanceof Boom && error.output?.statusCode === DisconnectReason.timedOut) {
 				logger?.warn?.({ msgId }, 'timed out waiting for message')
-				return undefined
+				throw new Boom(`Timed out waiting for response to query ${msgId}`, {
+					statusCode: DisconnectReason.timedOut,
+					data: { msgId, timeoutMs }
+				})
 			}
 
 			throw error
 		} finally {
+			inFlightQueryTags.delete(msgId)
 			if (onRecv) ws.off(`TAG:${msgId}`, onRecv)
 			if (onErr) {
 				ws.off('close', onErr)
@@ -489,26 +530,54 @@ export const makeSocket = (config: SocketConfig) => {
 			return
 		}
 
+		// Generate ONCE (outside the retry loop): pre-keys are persisted to
+		// the store, and `nextPreKeyId` advances so a parallel call doesn't
+		// reuse the id range. `firstUnuploadedPreKeyId` is HELD BACK in
+		// `commitUpdate` and only emitted after the server confirms — so a
+		// permanent upload failure leaves the local store carrying the
+		// generated keys ready for the next attempt (instead of marking
+		// them as "uploaded" prematurely and orphaning them).
+		let pendingNode: BinaryNode | undefined
+		let pendingCommit: Partial<AuthenticationCreds> | undefined
+
 		const uploadLogic = async (retryCount: number): Promise<void> => {
 			logger.info({ count, retryCount }, 'uploading pre-keys')
 
-			// Generate and save pre-keys atomically (prevents ID collisions on retry)
-			const node = await keys.transaction(async () => {
-				logger.debug({ requestedCount: count }, 'generating pre-keys with requested count')
-				const { update, node } = await getNextPreKeysNode({ creds, keys }, count)
-				// Update credentials immediately to prevent duplicate IDs on retry
-				ev.emit('creds.update', update)
-				return node
-			}, creds?.me?.id || 'upload-pre-keys')
+			if (!pendingNode) {
+				const generated = await keys.transaction(async () => {
+					logger.debug({ requestedCount: count }, 'generating pre-keys with requested count')
+					const { allocUpdate, commitUpdate, node } = await getNextPreKeysNode({ creds, keys }, count)
+					// Allocation half: commit immediately so parallel generation
+					// never collides on the same id range.
+					ev.emit('creds.update', allocUpdate)
+					return { node, commitUpdate }
+				}, creds?.me?.id || 'upload-pre-keys')
+				pendingNode = generated.node
+				pendingCommit = generated.commitUpdate
+			}
 
-			// Upload to server (outside transaction, can fail without affecting local keys)
+			// Bail out before the network call if the socket is gone — the
+			// next reconnect will run uploadPreKeysToServerIfRequired and
+			// retry naturally.
+			if (!ws.isOpen) {
+				throw new Boom('socket closed mid-upload, deferring to reconnect', {
+					statusCode: DisconnectReason.connectionClosed
+				})
+			}
+
 			try {
-				await query(node)
+				await query(pendingNode)
 				logger.info({ count }, 'uploaded pre-keys successfully')
+				// Commit half: advance firstUnuploadedPreKeyId NOW that the
+				// server has the keys.
+				if (pendingCommit) ev.emit('creds.update', pendingCommit)
 			} catch (uploadError) {
 				logger.error({ uploadError: (uploadError as Error).toString(), count }, 'Failed to upload pre-keys to server')
 
 				// Recurse into uploadLogic; calling uploadPreKeys would await its own in-flight promise.
+				// `pendingNode` + `pendingCommit` are preserved so the retry
+				// uses the SAME node (same key range) — the keys are already
+				// in the store; the server just hasn't acknowledged them.
 				if (retryCount < 3) {
 					const backoffDelay = Math.min(1000 * Math.pow(2, retryCount), 10000)
 					logger.info(`Retrying pre-key upload in ${backoffDelay}ms`)
@@ -516,6 +585,9 @@ export const makeSocket = (config: SocketConfig) => {
 					return uploadLogic(retryCount + 1)
 				}
 
+				// Permanent failure: leave `firstUnuploadedPreKeyId` UNCHANGED so
+				// the next uploadPreKeysToServerIfRequired call re-attempts
+				// these same keys instead of skipping past them.
 				throw uploadError
 			}
 		}
